@@ -1,118 +1,641 @@
-/**
- * About component - À propos du projet Foyer Amélioré Apeli
- */
 import React from "react";
+import { Link } from "react-router-dom";
+
+/* ── données ── */
+const palmares = [
+  { label: "Trophées de meilleur club", detail: "Classé 1er club de gymnastique au Togo depuis sa création" },
+  { label: "Médailles individuelles", detail: "Nombreuses distinctions décernées à nos athlètes en compétition" },
+  { label: "Culture d'excellence", detail: "Encadrement rigoureux axé sur la performance et la régularité" },
+];
+
+const valeurs = [
+  { title: "Discipline",      desc: "Chaque séance forge la rigueur et l'autodiscipline indispensables à la réussite sportive et personnelle." },
+  { title: "Confiance en soi", desc: "Le sport comme vecteur de développement personnel et de construction identitaire chez les jeunes." },
+  { title: "Persévérance",    desc: "Apprendre à dépasser ses limites, à rebondir après l'échec et à progresser continuellement." },
+  { title: "Inclusion",        desc: "Le sport comme outil d'éducation, d'intégration et de transformation sociale au Togo." },
+];
+
+const axes = [
+  {
+    num: "01",
+    title: "Axe Sport & Bien-être",
+    desc: "Accueillir des jeunes de tous niveaux et leur faire découvrir les bienfaits du sport sur leur corps et leur mental.",
+    disciplines: ["Gymnastique", "Boxe", "Fitness & Cross Training"],
+  },
+  {
+    num: "02",
+    title: "Axe Excellence",
+    desc: "Détecter les talents et les préparer aux compétitions régionales, nationales et internationales.",
+    disciplines: ["Préparation compétitive", "Suivi individualisé", "Stages et regroupements"],
+  },
+];
+
+const coaches = [
+  { title: "Certifiés FIG",       detail: "Fédération Internationale de Gymnastique" },
+  { title: "Diplômés STAPS",       detail: "Sciences et Techniques des Activités Physiques et Sportives" },
+  { title: "Sports de combat",     detail: "Spécialistes en boxe et préparation physique" },
+  { title: "Préparation physique", detail: "Coaches en renforcement musculaire et fitness" },
+];
+
+const social = [
+  { label: "Bourses partielles",            desc: "Réduction significative des frais d'adhésion pour les familles à revenus modestes." },
+  { label: "Bourses totales",               desc: "Prise en charge complète pour les jeunes talents identifiés sans ressources suffisantes." },
+  { label: "Détection des talents",         desc: "Programme actif de repérage des jeunes prometteurs dans les quartiers de Lomé." },
+  { label: "Accompagnement personnalisé",   desc: "Suivi humain et pédagogique au-delà du cadre sportif pour chaque enfant accompagné." },
+  { label: "Réduction fratrie",          desc: "Tarifs préférentiels à partir de 3 enfants d'une même famille inscrits au club." },
+];
+
+const timeline = [
+  { year: "2022", event: "Création du Youth Sports Club à Lomé" },
+  { year: "2022", event: "Premières séances de gymnastique au Stade de Kégué" },
+  { year: "2023", event: "1er titre de meilleur club aux compétitions nationales" },
+  { year: "2023", event: "Lancement du programme de bourses sportives" },
+  { year: "2024", event: "Ouverture des disciplines Boxe et Fitness" },
+  { year: "2024", event: "Mise en place de l'axe Excellence et détection de talents" },
+];
+
+const scoped = `
+  /* ── Hero About ── */
+  .about-hero {
+    background: linear-gradient(120deg, #07152d, #102a50 60%, #113766);
+    padding: 5rem 1rem 3rem;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  .about-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 70% 30%, rgba(239,125,34,0.2), transparent 45%);
+    pointer-events: none;
+  }
+  .about-hero-eyebrow {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12rem;
+    color: #f8c15a;
+    margin-bottom: 0.9rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .about-hero-eyebrow::before,
+  .about-hero-eyebrow::after {
+    content: '';
+    flex: 0 0 30px;
+    height: 1px;
+    background: #f8c15a;
+    opacity: 0.5;
+  }
+  .about-hero h1 {
+    font-size: clamp(1.9rem, 5vw, 3.2rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+    position: relative;
+    color: #fff;
+  }
+  .about-hero-sub {
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    color: #cedcf7;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    line-height: 1.7;
+    position: relative;
+  }
+  .about-hero-chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    position: relative;
+  }
+  .about-chip {
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fff;
+    background: rgba(255,255,255,0.09);
+  }
+
+  /* ── Stats ── */
+  .about-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .about-stat {
+    background: #fff;
+    border-radius: 14px;
+    padding: 1.3rem 0.75rem;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(165,85,20,0.10);
+  }
+  .about-stat-num {
+    display: block;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 800;
+    color: #ef7d22;
+    line-height: 1.1;
+  }
+  .about-stat-label {
+    display: block;
+    font-size: 0.8rem;
+    color: #8b592f;
+    margin-top: 4px;
+  }
+
+  /* ── Timeline ── */
+  .about-timeline {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    padding-left: 2rem;
+  }
+  .about-timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, #ef7d22, #f2cfac);
+    border-radius: 2px;
+  }
+  .about-tl-item {
+    position: relative;
+    margin-bottom: 1.25rem;
+    padding-left: 1rem;
+  }
+  .about-tl-item:last-child { margin-bottom: 0; }
+  .about-tl-item::before {
+    content: '';
+    position: absolute;
+    left: -1.68rem;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ef7d22;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 2px #ef7d22;
+  }
+  .about-tl-year {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #ef7d22;
+    margin-bottom: 2px;
+  }
+  .about-tl-event {
+    font-size: 0.9rem;
+    color: #6c4622;
+    line-height: 1.5;
+  }
+
+  /* ── Palmarès ── */
+  .about-palmares-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 1.35rem 1.25rem;
+    box-shadow: 0 8px 24px rgba(165,85,20,0.10);
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .about-palmares-icon {
+    font-size: 1.8rem;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .about-palmares-card h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #9b4708;
+    margin-bottom: 3px;
+  }
+  .about-palmares-card p {
+    font-size: 0.83rem;
+    color: #6c4622;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* ── Valeurs ── */
+  .about-valeur-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 1.5rem 1.25rem;
+    box-shadow: 0 8px 24px rgba(165,85,20,0.10);
+    border-top: 3px solid #ef7d22;
+  }
+  .about-valeur-icon {
+    font-size: 1.6rem;
+    display: block;
+    margin-bottom: 0.65rem;
+  }
+  .about-valeur-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #9b4708;
+    margin-bottom: 0.4rem;
+  }
+  .about-valeur-card p {
+    font-size: 0.85rem;
+    color: #6c4622;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ── Axes ── */
+  .about-axe-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 1.75rem 1.5rem;
+    box-shadow: 0 8px 24px rgba(165,85,20,0.10);
+    position: relative;
+    overflow: hidden;
+  }
+  .about-axe-num {
+    position: absolute;
+    right: 1rem;
+    top: 0.5rem;
+    font-size: 4rem;
+    font-weight: 800;
+    color: #fff1dd;
+    line-height: 1;
+    user-select: none;
+  }
+  .about-axe-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #9b4708;
+    margin-bottom: 0.5rem;
+  }
+  .about-axe-card > p {
+    font-size: 0.88rem;
+    color: #6c4622;
+    line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+  .about-axe-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .about-axe-tag {
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 999px;
+    border: 1px solid #f2cfac;
+    color: #8a4a17;
+    background: #fff8ef;
+  }
+
+  /* ── Coaches ── */
+  .about-coach-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 1.4rem 1.25rem;
+    box-shadow: 0 8px 24px rgba(165,85,20,0.10);
+    text-align: center;
+  }
+  .about-coach-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #fff1dd;
+    border: 2px solid #f2cfac;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.85rem;
+    font-size: 1.5rem;
+  }
+  .about-coach-card h3 { font-size: 0.95rem; font-weight: 700; color: #9b4708; margin-bottom: 3px; }
+  .about-coach-card p  { font-size: 0.8rem; color: #6c4622; line-height: 1.45; margin: 0; }
+
+  /* ── Social ── */
+  .about-social-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 1.4rem 1.25rem;
+    box-shadow: 0 8px 24px rgba(165,85,20,0.10);
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .about-social-icon {
+    font-size: 1.6rem;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .about-social-card h3 { font-size: 0.9rem; font-weight: 700; color: #9b4708; margin-bottom: 3px; }
+  .about-social-card p  { font-size: 0.82rem; color: #6c4622; line-height: 1.5; margin: 0; }
+
+  /* ── Contact ── */
+  .about-contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .about-contact-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 1.5rem 1.25rem;
+    box-shadow: 0 8px 24px rgba(165,85,20,0.10);
+    text-align: center;
+  }
+  .about-contact-card .about-contact-icon {
+    font-size: 1.8rem;
+    display: block;
+    margin-bottom: 0.65rem;
+  }
+  .about-contact-card h3 { font-size: 0.95rem; font-weight: 700; color: #9b4708; margin-bottom: 0.4rem; }
+  .about-contact-card p  { font-size: 0.85rem; color: #6c4622; line-height: 1.55; margin: 0; }
+  .about-contact-card a  { color: #ef7d22; font-weight: 600; }
+
+  /* ── CTA ── */
+  .about-cta {
+    background: linear-gradient(120deg, #07152d, #102a50 60%, #113766);
+    border-radius: 16px;
+    padding: 3rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .about-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 75% 25%, rgba(239,125,34,0.2), transparent 40%);
+    pointer-events: none;
+  }
+  .about-cta h2 { font-size: clamp(1.4rem, 3.5vw, 2.2rem); font-weight: 800; color: #fff; margin-bottom: 0.6rem; position: relative; }
+  .about-cta p  { font-size: 0.92rem; color: #cedcf7; margin-bottom: 1.5rem; position: relative; }
+  .about-cta-actions { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; position: relative; }
+  .btn-outline-white {
+    display: inline-block;
+    padding: 0.75rem 1.2rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-family: inherit;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.35);
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .btn-outline-white:hover { background: rgba(255,255,255,0.08); }
+
+  /* ── Responsive ── */
+  @media (max-width: 1120px) {
+    .about-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .about-contact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 768px) {
+    .about-hero { padding: 4.5rem 0.85rem 2.5rem; }
+    .about-cta { padding: 2.5rem 1rem; border-radius: 12px; }
+    .about-contact-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 520px) {
+    .about-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .about-cta-actions { flex-direction: column; align-items: stretch; }
+    .about-cta-actions .btn,
+    .about-cta-actions .btn-outline-white { text-align: center; }
+  }
+`;
 
 const About = () => {
   return (
-    <section
-      className="padding"
-      id="about"
-      style={{
-        width: "100%",
-        maxWidth: "100%",
-        boxSizing: "border-box",
-        overflowX: "hidden",
-        position: "relative",
-        background: "#f8f9fa",
-      }}
-    >
-      <div
-        style={{
-          backgroundColor: "white",
-          width: "90%",
-          maxWidth: "900px",
-          padding: "clamp(1rem, 4vw, 2rem)",
-          margin: "0 auto",
-          textAlign: "center",
-          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-          borderRadius: "12px",
-          boxSizing: "border-box",
-          wordBreak: "break-word",
-        }}
-      >
-        <h2 style={{ fontSize: "clamp(1.3rem, 3vw, 1.8rem)", color: "#2c3e50", paddingTop: 0 }}>
-          À propos du Projet
-        </h2>
+    <>
+      <style>{scoped}</style>
 
-        <p
-          className="large"
-          style={{
-            fontSize: "clamp(0.85rem, 1.8vw, 1.05rem)",
-            lineHeight: "1.7",
-            wordBreak: "break-word",
-            color: "#555",
-          }}
-        >
-          Le projet <strong>Foyer Amélioré Apeli</strong> vise à optimiser un dispositif de cuisson innovant développé par la doctorante <strong>Mme AMOUZOU-ATCHOE Akoua Gabriela</strong> de l'Université de Lomé. Notre équipe <strong>Elephant</strong> (Team 19) travaille sur la reconception du foyer en intégrant l'utilisation de pellets issus de résidus agricoles, l'adaptation aux différentes tailles de marmites, l'Intelligence Artificielle, l'Internet des Objets et l'automatisation pour rendre la cuisson plus précise, efficiente et accessible.
-        </p>
-
-        <hr style={{ margin: "2rem auto", width: "80%" }} />
-
-        <div
-          style={{
-            textAlign: "left",
-            margin: "2rem auto",
-            maxWidth: "800px",
-            boxSizing: "border-box",
-          }}
-        >
-          <h3 style={{ textAlign: "center", color: "#e67e22", marginBottom: "1rem", fontSize: "clamp(1rem, 2vw, 1.25rem)" }}>
-            Technologies & Innovations
-          </h3>
-          <ul
-            style={{
-              columns: "auto 2",
-              columnGap: "2rem",
-              fontSize: "clamp(0.8rem, 1.5vw, 0.95rem)",
-              padding: "0 0.5rem",
-              listStylePosition: "inside",
-              boxSizing: "border-box",
-            }}
-          >
-            {[
-              "Reconception du foyer Apeli",
-              "Pellets (résidus agricoles)",
-              "Adaptation multi-tailles marmites",
-              "Evacuation optimisée des cendres",
-              "Chatbot IA cuisine (RAG + LLM)",
-              "Capteurs de température connectés",
-              "Capteurs de poids de marmite",
-              "Serveur MCP pour ventilateur",
-              "Contrôle automatique d'aération",
-              "Recettes guidées par l'IA",
-            ].map((skill) => (
-              <li
-                key={skill}
-                style={{
-                  marginBottom: "0.75rem",
-                  breakInside: "avoid",
-                  wordBreak: "break-word",
-                }}
-              >
-                {skill}
-              </li>
-            ))}
-          </ul>
+      {/* ══ PRÉSENTATION ══ */}
+      <section className="section">
+        <div className="section-header">
+          <h2>Qui sommes-nous ?</h2>
+          <p>
+            Le Youth Sports Club (YSC) est une association sportive basée à
+            Lomé, fondée en 2022. Depuis sa création, le club s&apos;est
+            imposé comme une référence nationale, notamment en gymnastique, en
+            se classant régulièrement parmi les meilleurs clubs lors des
+            compétitions et en remportant de nombreux trophées.
+          </p>
         </div>
+        <div className="wide">
+          <p style={{ fontSize: "0.95rem", color: "#6c4622", lineHeight: "1.8", maxWidth: "820px" }}>
+            Au-delà de la performance sportive, le Youth Sports Club
+            s&apos;inscrit dans une démarche sociale visant à favoriser
+            l&apos;accès au sport pour tous, notamment à travers des
+            dispositifs de bourses et d&apos;accompagnement des jeunes issus de
+            milieux modestes. Le club considère le sport comme un puissant
+            outil d&apos;éducation, d&apos;inclusion et de transformation
+            sociale.
+          </p>
+        </div>
+      </section>
 
-        <hr style={{ margin: "2rem auto", width: "80%" }} />
+      {/* ══ PALMARÈS ══ */}
+      <section className="section section-alt">
+        <div className="section-header">
+          <h2>Un club performant</h2>
+          <p>
+            Depuis sa création, le YSC se classe régulièrement parmi les
+            meilleurs clubs lors des compétitions nationales.
+          </p>
+        </div>
+        <div className="grid three-columns">
+          {palmares.map((p) => (
+            <div className="about-palmares-card" key={p.label}>
+              <div>
+                <h3>{p.label}</h3>
+                <p>{p.detail}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
-        <p
-          style={{
-            padding: "1rem",
-            fontSize: "clamp(0.8rem, 1.5vw, 0.95rem)",
-            maxWidth: "800px",
-            margin: "0 auto",
-            lineHeight: "1.7",
-            wordBreak: "break-word",
-            color: "#555",
-          }}
-        >
-          Notre approche est double : d'abord résoudre les limites du foyer actuel (alimentation en combustible, évacuation des cendres, adaptation aux tailles de marmites) par une reconception utilisant des pellets, puis intégrer un dispositif connecté avec capteurs IoT et une IA qui, via un serveur MCP, contrôle le ventilateur d'aération pour maintenir la température idéale de cuisson — guidant l'utilisateur pas à pas dans la préparation de ses plats.
-        </p>
-      </div>
-    </section>
+      {/* ══ TIMELINE ══ */}
+      <section className="section">
+        <div className="section-header">
+          <h2>Notre histoire</h2>
+          <p>Les grandes étapes du Youth Sports Club depuis sa fondation.</p>
+        </div>
+        <div className="about-timeline">
+          {timeline.map((t, i) => (
+            <div className="about-tl-item" key={i}>
+              <div className="about-tl-year">{t.year}</div>
+              <div className="about-tl-event">{t.event}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ══ MISSION & VALEURS ══ */}
+      <section className="section section-alt">
+        <div className="section-header">
+          <h2>Mission &amp; valeurs</h2>
+          <p>
+            Accompagner les jeunes dans leur développement physique, mental et
+            social. Le YSC ne forme pas uniquement des sportifs, mais participe
+            à la construction de jeunes responsables et ambitieux.
+          </p>
+        </div>
+        <div className="grid two-columns" style={{ marginBottom: "1.5rem" }}>
+          <div className="card" style={{ background: "linear-gradient(135deg,#07152d,#102a50)", color: "#fff" }}>
+            <h3 style={{ color: "#f8c15a", marginBottom: "0.5rem" }}>Notre vision</h3>
+            <p style={{ color: "#cedcf7", lineHeight: "1.7", fontSize: "0.92rem" }}>
+              Faire du Youth Sports Club un acteur majeur du développement
+              sportif au Togo et en Afrique, en formant des athlètes
+              performants et des jeunes épanouis, capables de rayonner
+              au-delà des frontières.
+            </p>
+          </div>
+          <div className="card" style={{ background: "linear-gradient(135deg,#b64f09,#ef7d22)", color: "#fff" }}>
+            <h3 style={{ color: "#fff8ef", marginBottom: "0.5rem" }}>Notre mission</h3>
+            <p style={{ color: "rgba(255,255,255,0.88)", lineHeight: "1.7", fontSize: "0.92rem" }}>
+              Offrir à chaque jeune, quel que soit son milieu, un cadre
+              d&apos;excellence sportive et humaine pour se dépasser, croire
+              en lui-même et construire son avenir avec ambition.
+            </p>
+          </div>
+        </div>
+        <div className="grid two-columns">
+          {valeurs.map((v) => (
+            <div className="about-valeur-card" key={v.title}>
+              <h3>{v.title}</h3>
+              <p>{v.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ══ AXES ══ */}
+      <section className="section">
+        <div className="section-header">
+          <h2>Nos axes de développement</h2>
+          <p>Le club s&apos;organise autour de deux axes complémentaires pour couvrir tous les profils.</p>
+        </div>
+        <div className="grid two-columns">
+          {axes.map((a) => (
+            <div className="about-axe-card" key={a.num}>
+              <span className="about-axe-num" aria-hidden="true">{a.num}</span>
+              <h3>{a.title}</h3>
+              <p>{a.desc}</p>
+              <div className="about-axe-tags">
+                {a.disciplines.map((d) => (
+                  <span className="about-axe-tag" key={d}>{d}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ══ ENCADREMENT ══ */}
+      <section className="section section-alt">
+        <div className="section-header">
+          <h2>Un encadrement qualifié</h2>
+          <p>
+            Chaque séance est animée par des professionnels certifiés et
+            adaptée à l&apos;âge et au niveau des participants.
+          </p>
+        </div>
+        <div className="grid two-columns">
+          {coaches.map((c) => (
+            <div className="about-coach-card" key={c.title}>
+              <h3>{c.title}</h3>
+              <p>{c.detail}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ══ ENGAGEMENT SOCIAL ══ */}
+      <section className="section">
+        <div className="section-header">
+          <h2>Engagement social</h2>
+          <p>
+            Le YSC s&apos;engage activement pour l&apos;inclusion et
+            l&apos;accessibilité du sport. Des dispositifs concrets
+            accompagnent les jeunes issus de milieux modestes.
+          </p>
+        </div>
+        <div className="grid two-columns">
+          {social.map((s) => (
+            <div className="about-social-card" key={s.label}>
+              <div>
+                <h3>{s.label}</h3>
+                <p>{s.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ══ CONTACT ══ */}
+      <section className="section section-alt">
+        <div className="section-header">
+          <h2>Nous contacter</h2>
+          <p>Une question, un renseignement ? Notre équipe vous répond rapidement.</p>
+        </div>
+        <div className="about-contact-grid">
+          <div className="about-contact-card">
+            <h3>Adresse</h3>
+            <p>Stade de Kégué<br />Lomé, Togo</p>
+          </div>
+          <div className="about-contact-card">
+            <h3>Téléphone</h3>
+            <p>
+              <a href="tel:+22899670186">+228 99 67 01 86</a>
+            </p>
+          </div>
+          <div className="about-contact-card">
+            <h3>Email</h3>
+            <p>
+              <a href="mailto:youthsportsclub.togo@gmail.com">
+                youthsportsclub.togo@gmail.com
+              </a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ══ CTA ══ */}
+      <section className="section">
+        <div className="wide">
+          <div className="about-cta">
+            <h2>Rejoignez le Youth Sports Club</h2>
+            <p>
+              Tous niveaux acceptés · Encadrement professionnel · Stade de
+              Kégué, Lomé
+            </p>
+            <div className="about-cta-actions">
+              <Link className="btn btn-primary" to="/rejoindre">
+                S&apos;inscrire maintenant
+              </Link>
+              <Link className="btn-outline-white" to="/rejoindre">
+                Voir les tarifs
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 };
 

@@ -1,196 +1,110 @@
-/**
- * Application component - Foyer Amélioré Apeli
- * Team Elephant - Innovation Crunch Time 2026 - Université de Lomé
- */
-
-import React, { useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-
-import About from "./Components/About";
-import Footer from "./Components/Footer";
+import React from "react";
+import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom";
 import Header from "./Components/Header";
 import Home from "./Components/Home";
-import Portfolio from "./Components/Portfolio";
-import Chatbot from "./Components/Chatbot";
-import Doctorante from "./Components/Doctorante";
-import Team from "./Components/Team";
-import FoyerApeli from "./Components/FoyerApeli";
-import ClientProfile from "./Components/ClientProfile";
-import MentionsLegales from "./Components/MentionsLegales";
+import About from "./Components/About";
+import Footer from "./Components/Footer";
 import ConditionsGeneralesUtilisation from "./Components/ConditionsGeneralesUtilisation";
 import PolitiqueProtectionDonneesPersonnelles from "./Components/PolitiqueProtectionDonneesPersonnelles";
-import PolitiqueCookies from "./Components/PolitiqueCookies";
-import DeclarationAccessibilite from "./Components/DeclarationAccessibilite";
-import Securite from "./Components/Securite";
-
+import {
+  EventsPage,
+  TrainingSessionsPage,
+  JoinClubPage,
+  PartnersPage,
+  ResultsPage,
+} from "./Components/Pages";
 import "./styles.css";
 
-// Initialisation des données
-import { initializeData } from "./utils/initializeData";
-initializeData();
+const Layout = ({ children }) => (
+  <div id="main">
+    <Header />
+    <main className="page-content">{children}</main>
+    <Footer />
+  </div>
+);
 
-const primaryColor = "#1a1a2e";
-const secondaryColor = "#e67e22";
-
-// Layout principal avec gestion du défilement
-const Layout = ({ children, noFooter }) => {
-  const location = useLocation();
-
-  useEffect(() => {
-    if (location.pathname === '/' && location.state?.scrollTo) {
-      const sectionId = location.state.scrollTo;
-      setTimeout(() => {
-        scrollToSection(sectionId);
-        window.history.replaceState({}, document.title);
-      }, 100);
-    }
-  }, [location]);
-
-  useEffect(() => {
-    if (location.pathname === '/' && location.hash) {
-      const sectionId = location.hash.replace('#', '');
-      setTimeout(() => {
-        scrollToSection(sectionId);
-      }, 100);
-    }
-  }, [location.pathname, location.hash]);
-
-  const scrollToSection = (sectionId, attempt = 0) => {
-    if (!sectionId) return;
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const headerEl = document.querySelector("header");
-      const headerHeight = headerEl?.offsetHeight ?? 70;
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-      setTimeout(() => {
-        window.scrollBy({ top: -headerHeight, behavior: "smooth" });
-      }, 50);
-      return;
-    }
-    if (attempt < 20) {
-      setTimeout(() => scrollToSection(sectionId, attempt + 1), 100);
-    }
-  };
-
-  return (
-    <div id="main">
-      <Header />
-      {children}
-      {!noFooter && (
-        <Footer primaryColor={primaryColor} secondaryColor={secondaryColor} />
-      )}
-    </div>
-  );
-};
-
-// Page d'accueil
-const HomePage = () => {
-  return (
-    <>
-      <Home />
-      <About />
-      <Portfolio />
-    </>
-  );
-};
-
-const App = () => {
-  return (
-    <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-      <Routes>
-        {/* Page d'accueil */}
-        <Route path="/" element={
+const App = () => (
+  <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+    <Routes>
+      <Route
+        path="/"
+        element={
           <Layout>
-            <HomePage />
+            <Home />
           </Layout>
-        } />
-        
-        {/* Chatbot IA Cuisine - sans footer car interface pleine page */}
-        <Route path="/chatbot" element={
-          <Layout noFooter>
-            <Chatbot />
-          </Layout>
-        } />
-
-        {/* Page Recherche */}
-        <Route path="/recherche" element={
+        }
+      />
+      <Route
+        path="/a-propos"
+        element={
           <Layout>
-            <Doctorante />
+            <About />
           </Layout>
-        } />
-
-        {/* Page Équipe */}
-        <Route path="/equipe" element={
+        }
+      />
+      <Route path="/disciplines" element={<Navigate to="/entrainements" replace />} />
+      <Route path="/cours-prives" element={<Navigate to="/rejoindre" replace />} />
+      <Route
+        path="/rejoindre"
+        element={
           <Layout>
-            <Team />
+            <JoinClubPage />
           </Layout>
-        } />
-
-        {/* Page Foyer Apeli */}
-        <Route path="/foyer" element={
+        }
+      />
+      <Route path="/tarifs" element={<Navigate to="/rejoindre" replace />} />
+      <Route
+        path="/evenements"
+        element={
           <Layout>
-            <FoyerApeli />
+            <EventsPage />
           </Layout>
-        } />
-        
-        {/* Profil */}
-        <Route path="/profile" element={
+        }
+      />
+      <Route
+        path="/resultats"
+        element={
           <Layout>
-            <ClientProfile />
+            <ResultsPage />
           </Layout>
-        } />
-
-        {/* Mentions Légales */}
-        <Route path="/mentions-legales" element={
+        }
+      />
+      <Route
+        path="/entrainements"
+        element={
           <Layout>
-            <MentionsLegales />
+            <TrainingSessionsPage />
           </Layout>
-        } />
-
-        {/* Conditions Générales d'Utilisation */}
-        <Route path="/conditions-generales-utilisation" element={
+        }
+      />
+      <Route
+        path="/partenaires"
+        element={
           <Layout>
-            <ConditionsGeneralesUtilisation />
+            <PartnersPage />
           </Layout>
-        } />
-
-        {/* Politique de Protection des Données Personnelles */}
-        <Route path="/politique-protection-donnees-personnelles" element={
+        }
+      />
+      <Route path="/contact" element={<Navigate to="/a-propos" replace />} />
+      <Route
+        path="/politique-confidentialite"
+        element={
           <Layout>
             <PolitiqueProtectionDonneesPersonnelles />
           </Layout>
-        } />
-
-        {/* Politique de Cookies */}
-        <Route path="/politique-cookies" element={
+        }
+      />
+      <Route
+        path="/conditions-utilisation"
+        element={
           <Layout>
-            <PolitiqueCookies />
+            <ConditionsGeneralesUtilisation />
           </Layout>
-        } />
-
-        {/* Déclaration d'Accessibilité */}
-        <Route path="/declaration-accessibilite" element={
-          <Layout>
-            <DeclarationAccessibilite />
-          </Layout>
-        } />
-
-        {/* Sécurité */}
-        <Route path="/securite" element={
-          <Layout>
-            <Securite />
-          </Layout>
-        } />
-        
-        {/* Route de fallback */}
-        <Route path="*" element={
-          <Layout>
-            <HomePage />
-          </Layout>
-        } />
-      </Routes>
-    </Router>
-  );
-};
+        }
+      />
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
+  </Router>
+);
 
 export default App;
