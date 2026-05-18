@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 // ─── Assets ────────────────────────────────────────────────────────────────
 import videoSrc from "url:../images/private-training.mp4";
 import galleryA from "../images/472902518_601111642868247_3421823822486160063_n.jpg";
@@ -12,11 +14,8 @@ const Badge = ({ children }) => <span className="ysc-badge">{children}</span>;
 
 const SectionLabel = ({ children }) => <p className="ysc-section-label">{children}</p>;
 
-const FeatureRow = ({ icon, text }) => (
+const FeatureRow = ({ text }) => (
   <li className="ysc-feature-row">
-    <span className="ysc-feature-icon" aria-hidden="true">
-      {icon}
-    </span>
     <span>{text}</span>
   </li>
 );
@@ -67,11 +66,6 @@ const scoped = `
     font-size: 0.95rem;
     color: var(--ysc-text);
     margin-bottom: 0.5rem;
-  }
-
-  .ysc-feature-icon {
-    font-size: 1.2rem;
-    flex-shrink: 0;
   }
 
   /* ── 1. Hero Split ── */
@@ -259,15 +253,6 @@ const scoped = `
 
   .ysc-btn--full { width: 100%; }
 
-  .ysc-btn__arrow {
-    font-size: 1.2rem;
-    transition: transform 0.2s;
-  }
-
-  .ysc-btn:hover .ysc-btn__arrow {
-    transform: translateX(4px);
-  }
-
   .ysc-form-note {
     text-align: center;
     font-size: 0.8rem;
@@ -315,21 +300,33 @@ const scoped = `
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transform: scale(1.05);
   }
 
   .ysc-video-hero__overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+    background:
+      linear-gradient(
+        110deg,
+        rgba(6, 18, 41, 0.84) 0%,
+        rgba(6, 18, 41, 0.63) 45%,
+        rgba(8, 24, 54, 0.86) 100%
+      ),
+      radial-gradient(circle at 80% 20%, rgba(61,126,196,0.26), transparent 38%);
     display: flex;
-    align-items: flex-end;
+    align-items: center;
+    justify-content: center;
     padding: 2rem;
+    text-align: center;
   }
 
   .ysc-video-hero__tagline {
     color: var(--ysc-white);
     font-weight: 600;
-    font-size: 1rem;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    max-width: 700px;
+    line-height: 1.5;
   }
 
   .ysc-private__cards {
@@ -347,11 +344,6 @@ const scoped = `
     border: 1px solid #e1ecf8;
   }
 
-  .ysc-info-card__icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-
   .ysc-info-card h3 {
     font-size: 1.25rem;
     font-weight: 800;
@@ -360,24 +352,13 @@ const scoped = `
   }
 
   .ysc-info-card ul {
-    list-style: none;
-    padding: 0;
+    padding-left: 1.15rem;
   }
 
   .ysc-info-card li {
-    position: relative;
-    padding-left: 1.5rem;
     margin-bottom: 0.75rem;
     font-size: 0.95rem;
     color: var(--ysc-text);
-  }
-
-  .ysc-info-card li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: var(--ysc-primary);
-    font-weight: 900;
   }
 
   .ysc-tel-link {
@@ -520,28 +501,16 @@ const scoped = `
   
   .ysc-social-list li {
     display: flex;
-    align-items: center;
-    gap: 1rem;
+    align-items: flex-start;
     font-size: 1.05rem;
     color: var(--ysc-text);
   }
   
-  .ysc-social-bullet {
-    font-size: 1.2rem;
-  }
-  
   .ysc-social-objective {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
     padding: 1.5rem;
     background: #fff8ef;
     border-radius: 12px;
     border: 1px dashed #ef7d22;
-  }
-  
-  .ysc-social-obj-icon {
-    font-size: 1.5rem;
   }
   
   .ysc-social-objective p {
@@ -612,8 +581,8 @@ export const JoinClubPage = () => (
           className="ysc-join-hero__img"
         />
         {/* Floating trust chips anchored on the photo */}
-        <div className="ysc-chip ysc-chip--topleft">🏆 +200 membres actifs</div>
-        <div className="ysc-chip ysc-chip--bottomright">⭐ Suivi personnalisé</div>
+        <div className="ysc-chip ysc-chip--topleft">+200 membres actifs</div>
+        <div className="ysc-chip ysc-chip--bottomright">Suivi personnalisé</div>
       </div>
 
       {/* Right: headline + benefits + form */}
@@ -640,9 +609,9 @@ export const JoinClubPage = () => (
 
         {/* Quick-benefits strip */}
         <ul className="ysc-benefits-strip" aria-label="Avantages">
-          <FeatureRow icon="🎯" text="Programme sur mesure" />
-          <FeatureRow icon="📈" text="Progression mesurable" />
-          <FeatureRow icon="🌍" text="Communauté bienveillante" />
+          <FeatureRow text="Programme sur mesure" />
+          <FeatureRow text="Progression mesurable" />
+          <FeatureRow text="Communauté bienveillante" />
         </ul>
       </div>
     </section>
@@ -695,13 +664,10 @@ export const JoinClubPage = () => (
 
           <button type="submit" className="ysc-btn ysc-btn--primary ysc-btn--full">
             <span>Créer mon compte membre</span>
-            <span className="ysc-btn__arrow" aria-hidden="true">
-              →
-            </span>
           </button>
 
           <p className="ysc-form-note">
-            🔒 Vos données sont confidentielles et ne seront jamais partagées.
+            Vos données sont confidentielles et ne seront jamais partagées.
           </p>
         </form>
       </div>
@@ -735,9 +701,6 @@ export const JoinClubPage = () => (
       {/* 3c. Cards: Objectives + Modalities */}
       <div className="ysc-private__cards">
         <article className="ysc-info-card">
-          <div className="ysc-info-card__icon" aria-hidden="true">
-            🎯
-          </div>
           <h3>Objectifs</h3>
           <ul>
             <li>Progression technique accélérée</li>
@@ -748,12 +711,9 @@ export const JoinClubPage = () => (
         </article>
 
         <article className="ysc-info-card">
-          <div className="ysc-info-card__icon" aria-hidden="true">
-            📋
-          </div>
           <h3>Modalités</h3>
           <ul>
-            <li>🏡 Cours privés à domicile disponibles pour toutes nos disciplines</li>
+            <li>Cours privés à domicile disponibles pour toutes nos disciplines</li>
             <li>À domicile ou en extérieur selon vos préférences</li>
             <li>Encadrement par des coachs certifiés</li>
             <li>Flexibilité horaire — week-end inclus</li>
@@ -789,9 +749,6 @@ export const JoinClubPage = () => (
             />
           </div>
           <div className="ysc-testimonial__body">
-            <span className="ysc-testimonial__stars" aria-label="5 étoiles">
-              ★★★★★
-            </span>
             <blockquote className="ysc-testimonial__quote">
               "Merci pour tout ce que vous avez fait pour notre famille. On est tellement contents
               d'avoir commencé cette aventure avec YSC depuis les premiers jours. Vous avez une
@@ -810,7 +767,7 @@ export const JoinClubPage = () => (
           <div className="ysc-social-header">
             <SectionLabel>Engagement</SectionLabel>
             <h2 id="social-heading" className="ysc-social-heading">
-              ❤️ PROGRAMME SOCIAL YSC
+              PROGRAMME SOCIAL YSC
               <br />
               <span>Le sport pour tous</span>
             </h2>
@@ -824,20 +781,17 @@ export const JoinClubPage = () => (
 
             <ul className="ysc-social-list">
               <li>
-                <span className="ysc-social-bullet">🔷</span>
                 <span>
                   <strong>Bourse de 50 %</strong> sur la mensualité
                 </span>
               </li>
               <li>
-                <span className="ysc-social-bullet">🔷</span>
                 <span>
                   <strong>Entraînement gratuit</strong> possible pour les enfants issus de familles
                   en difficulté
                 </span>
               </li>
               <li>
-                <span className="ysc-social-bullet">🔷</span>
                 <span>
                   <strong>Aides spécifiques</strong> selon les besoins (transport, accompagnement)
                 </span>
@@ -845,9 +799,6 @@ export const JoinClubPage = () => (
             </ul>
 
             <div className="ysc-social-objective">
-              <span className="ysc-social-obj-icon" aria-hidden="true">
-                🎯
-              </span>
               <p>
                 <strong>Objectif :</strong> permettre à chaque enfant motivé de pratiquer la
                 gymnastique, quelles que soient les conditions sociales.
@@ -862,9 +813,6 @@ export const JoinClubPage = () => (
         <p className="ysc-private__cta-text">Prêt à passer au niveau supérieur ?</p>
         <a href="tel:+22899670186" className="ysc-btn ysc-btn--primary">
           <span>Réserver une séance privée</span>
-          <span className="ysc-btn__arrow" aria-hidden="true">
-            →
-          </span>
         </a>
         <p className="ysc-private__cta-note">
           Réponse sous 24h • Première séance découverte offerte
@@ -872,4 +820,182 @@ export const JoinClubPage = () => (
       </div>
     </section>
   </>
+);
+
+const upcomingEvents = [
+  {
+    title: "Portes ouvertes du club",
+    date: "Samedi 8 juin · 10h00",
+    place: "Stade de Kégué, Lomé",
+    details:
+      "Découverte gratuite de la gymnastique, de la boxe et du fitness avec les coachs du club.",
+  },
+  {
+    title: "Challenge jeunes talents",
+    date: "Dimanche 23 juin · 09h00",
+    place: "Complexe sportif municipal",
+    details:
+      "Démonstrations techniques, ateliers de progression et détection des profils à potentiel.",
+  },
+  {
+    title: "Journée famille & sport",
+    date: "Samedi 6 juillet · 15h00",
+    place: "Parc sportif de Lomé",
+    details:
+      "Animations sportives, mini-tournois et temps d'échange avec l'équipe pédagogique.",
+  },
+];
+
+const trainingPrograms = [
+  {
+    title: "Gymnastique",
+    audience: "Enfants et adolescents",
+    schedule: "Mardi, jeudi et samedi",
+    focus: "Coordination, souplesse et maîtrise corporelle",
+  },
+  {
+    title: "Boxe éducative",
+    audience: "Jeunes et adultes",
+    schedule: "Lundi, mercredi et vendredi",
+    focus: "Condition physique, discipline et gestion de l'effort",
+  },
+  {
+    title: "Fitness & Cross Training",
+    audience: "Adultes",
+    schedule: "Mardi, jeudi et samedi",
+    focus: "Renforcement musculaire, cardio et mobilité",
+  },
+];
+
+const clubResults = [
+  { year: "2024", item: "Meilleur club formateur (district)", note: "Gymnastique" },
+  { year: "2023", item: "1re place challenge interclubs", note: "Catégorie jeunes" },
+  { year: "2023", item: "Finaliste coupe régionale", note: "Équipe mixte" },
+  { year: "2022", item: "Lancement du pôle compétition", note: "Première saison" },
+];
+
+const partnerTypes = [
+  {
+    title: "Institutions sportives",
+    description:
+      "Collaboration avec les structures sportives locales pour l'organisation des entraînements et événements.",
+  },
+  {
+    title: "Entreprises engagées",
+    description:
+      "Soutien matériel et logistique pour accompagner les jeunes athlètes dans leur progression.",
+  },
+  {
+    title: "Partenaires sociaux",
+    description:
+      "Actions communes pour faciliter l'accès au sport des familles et des enfants en difficulté.",
+  },
+];
+
+export const EventsPage = () => (
+  <section className="section">
+    <div className="section-header">
+      <h2>Événements du club</h2>
+      <p>
+        Retrouvez les prochaines activités ouvertes aux membres, aux familles et aux futurs
+        adhérents.
+      </p>
+    </div>
+
+    <div className="grid three-columns">
+      {upcomingEvents.map((event) => (
+        <article className="card" key={event.title}>
+          <h3>{event.title}</h3>
+          <p>
+            <strong>{event.date}</strong>
+          </p>
+          <p>{event.place}</p>
+          <p>{event.details}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+);
+
+export const TrainingSessionsPage = () => (
+  <section className="section section-alt">
+    <div className="section-header">
+      <h2>Entraînements</h2>
+      <p>
+        Des programmes structurés et progressifs pour chaque niveau, avec un encadrement qualifié.
+      </p>
+    </div>
+
+    <div className="grid three-columns">
+      {trainingPrograms.map((program) => (
+        <article className="card" key={program.title}>
+          <h3>{program.title}</h3>
+          <p>
+            <strong>Public :</strong> {program.audience}
+          </p>
+          <p>
+            <strong>Fréquence :</strong> {program.schedule}
+          </p>
+          <p>{program.focus}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+);
+
+export const ResultsPage = () => (
+  <section className="section">
+    <div className="section-header">
+      <h2>Résultats</h2>
+      <p>
+        Une progression continue du club et de nos athlètes grâce à un travail régulier et
+        collectif.
+      </p>
+    </div>
+
+    <div className="grid two-columns">
+      {clubResults.map((result) => (
+        <article className="card" key={`${result.year}-${result.item}`}>
+          <h3>{result.item}</h3>
+          <p>
+            <strong>{result.year}</strong>
+          </p>
+          <p>{result.note}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+);
+
+export const PartnersPage = () => (
+  <section className="section section-alt">
+    <div className="section-header">
+      <h2>Partenaires</h2>
+      <p>
+        Le développement du club est possible grâce au soutien de partenaires institutionnels,
+        économiques et sociaux.
+      </p>
+    </div>
+
+    <div className="grid three-columns">
+      {partnerTypes.map((partner) => (
+        <article className="card" key={partner.title}>
+          <h3>{partner.title}</h3>
+          <p>{partner.description}</p>
+        </article>
+      ))}
+    </div>
+
+    <div className="wide section">
+      <div className="card">
+        <h3>Vous souhaitez soutenir le club ?</h3>
+        <p>
+          Rejoignez notre réseau de partenaires pour contribuer à la formation sportive des jeunes.
+        </p>
+        <Link className="btn btn-primary" to="/rejoindre">
+          Devenir partenaire
+        </Link>
+      </div>
+    </div>
+  </section>
 );
