@@ -1,10 +1,11 @@
+import React from "react";
 import { Link } from "react-router-dom";
-import fitnessDisciplineImage from "url:../images/474394443_609527335360011_3887746446676892278_n.jpg";
-import gymDisciplineImage from "url:../images/480777236_636877472624997_71086379626942907_n.jpg";
-import boxeDisciplineImage from "url:../images/home-boxe.png";
 import heroVideoOne from "url:../images/WhatsApp Video 2026-05-16 at 13.55.02.mp4";
 import heroVideoTwo from "url:../images/WhatsApp Video 2026-05-16 at 13.56.37.mp4";
 import heroVideoThree from "url:../images/WhatsApp Video 2026-05-16 at 14.02.58.mp4";
+import gymDisciplineImage from "url:../images/480777236_636877472624997_71086379626942907_n.jpg";
+import boxeDisciplineImage from "url:../images/home-boxe.png";
+import fitnessDisciplineImage from "url:../images/474394443_609527335360011_3887746446676892278_n.jpg";
 
 /* ── données statiques ── */
 const disciplines = [
@@ -36,12 +37,21 @@ const disciplines = [
 
 const coaches = [
   {
+   
+,
+ 
+   
     title: "Certifiés FIG",
-    desc: "Entraîneurs certifiés par la Fédération Internationale de Gymnastique.",
+,
+ 
+   
+    desc: "Entraîneurs certifiés p
+  ar la Fédération Internationale de Gymnastique.",,
+ 
   },
   {
     title: "Diplômés STAPS",
-    desc: "Professionnels en Sciences et Techniques des Activités Physiques et Sportives.",
+    desc: "Professionnels n Sciences et Techniques des Activités Physiques et Sportives.",
   },
   {
     title: "Préparation physique",
@@ -50,7 +60,7 @@ const coaches = [
 ];
 
 const horaires = [
-  { who: "12 ans et plus", time: "08h – 10h" },
+  { who: "12 ans et plus", time:"08h – 10h" },
   { who: "11 ans et moins", time: "10h – 12h" },
   { who: "Adultes", time: "10h30 – 11h30" },
 ];
@@ -469,9 +479,8 @@ const Home = () => {
                 preload="metadata"
               />
             </div>
-          ))}
-        </div>
-        <div className="ysc-hero-overlay" />
+          ))}a formtion et
+        </di  className="ysc-hero-overlay" />
         <div className="ysc-hero-inner">
           <p className="ysc-hero-eyebrow">Lomé, Togo · Fondé en 2022</p>
           <h1>
@@ -489,14 +498,16 @@ const Home = () => {
               En savoir plus
             </Link>
           </div>
-        </div>
-      </section>
+        </div> ion>
+           
 
       {/* ══ DISCIPLINES ══ */}
       <section className="section">
         <div className="section-header">
           <h2>Nos disciplines</h2>
           <p>
+                
+              
             Trois activités complémentaires pour tous les profils et tous les niveaux, encadrées par
             des professionnels qualifiés.
           </p>
@@ -560,9 +571,9 @@ const Home = () => {
                   </tr>
                 ))}
               </tbody>
-            </table>
-          </div>
-        </div>
+            </table>/div>
+           iv>
+           
       </section>
 
       {/* ══ MISSION ══ */}
@@ -572,8 +583,8 @@ const Home = () => {
           <p>
             Le YSC accompagne les jeunes dans leur développement physique, mental et social. Il ne
             forme pas uniquement des sportifs, mais participe à la construction de jeunes
-            responsables et ambitieux.
-          </p>
+            responsables et ambitieux. p>
+           
         </div>
       </section>
 
@@ -597,15 +608,16 @@ const Home = () => {
       </section>
 
       {/* ══ ENGAGEMENT SOCIAL ══ */}
-      <section className="section">
-        <div className="section-header">
-          <h2>Engagement social</h2>
-        </div>
-        <div className="wide">
+      <section className="section">sName="section-header">
+                 Egement social</h2>
+        </div>dansleures t uivi
+        <div classe">
           <div className="card">
             <div className="ysc-social-inner">
               <div className="ysc-social-text">
-                <h3>L&apos;accès au sport pour tous</h3>
+                <h3>L&apos;accès au sport pour tous</h
+                      3>
+                    
                 <p>
                   Le YSC s&apos;engage activement pour l&apos;inclusion et l&apos;accessibilité du
                   sport. Des dispositifs concrets accompagnent les jeunes issus de milieux modestes
@@ -623,10 +635,7 @@ const Home = () => {
               <div className="ysc-social-stat">
                 <span className="ysc-social-stat-num">100%</span>
                 <span className="ysc-social-stat-label">Inclusif</span>
-              </div>
-            </div>
-          </div>
-        </div>
+              <div>iv>v>
       </section>
 
       {/* ══ CTA FINAL ══ */}

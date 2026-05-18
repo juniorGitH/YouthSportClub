@@ -26,7 +26,6 @@
   },
   "rules": {
     "prettier/prettier": ["warn", { "endOfLine": "auto" }],
-    "react/prop-types": "warn",
-    "react/react-in-jsx-scope": "off"
+    "react/prop-types": "warn"
   }
 }

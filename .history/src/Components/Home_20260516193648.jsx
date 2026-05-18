@@ -1,10 +1,11 @@
+import React from "react";
 import { Link } from "react-router-dom";
-import fitnessDisciplineImage from "url:../images/474394443_609527335360011_3887746446676892278_n.jpg";
-import gymDisciplineImage from "url:../images/480777236_636877472624997_71086379626942907_n.jpg";
-import boxeDisciplineImage from "url:../images/home-boxe.png";
 import heroVideoOne from "url:../images/WhatsApp Video 2026-05-16 at 13.55.02.mp4";
 import heroVideoTwo from "url:../images/WhatsApp Video 2026-05-16 at 13.56.37.mp4";
 import heroVideoThree from "url:../images/WhatsApp Video 2026-05-16 at 14.02.58.mp4";
+import gymDisciplineImage from "url:../images/480777236_636877472624997_71086379626942907_n.jpg";
+import boxeDisciplineImage from "url:../images/home-boxe.png";
+import fitnessDisciplineImage from "url:../images/474394443_609527335360011_3887746446676892278_n.jpg";
 
 /* ── données statiques ── */
 const disciplines = [
@@ -35,31 +36,22 @@ const disciplines = [
 ];
 
 const coaches = [
-  {
-    title: "Certifiés FIG",
-    desc: "Entraîneurs certifiés par la Fédération Internationale de Gymnastique.",
-  },
-  {
-    title: "Diplômés STAPS",
-    desc: "Professionnels en Sciences et Techniques des Activités Physiques et Sportives.",
-  },
-  {
-    title: "Préparation physique",
-    desc: "Spécialistes en préparation physique et sports de combat.",
-  },
+  { title: "Certifiés FIG",        desc: "Entraîneurs certifiés par la Fédération Internationale de Gymnastique." },
+  { title: "Diplômés STAPS",        desc: "Professionnels en Sciences et Techniques des Activités Physiques et Sportives." },
+  { title: "Préparation physique",  desc: "Spécialistes en préparation physique et sports de combat." },
 ];
 
 const horaires = [
-  { who: "12 ans et plus", time: "08h – 10h" },
+  { who: "12 ans et plus",  time: "08h – 10h" },
   { who: "11 ans et moins", time: "10h – 12h" },
-  { who: "Adultes", time: "10h30 – 11h30" },
+  { who: "Adultes",         time: "10h30 – 11h30" },
 ];
 
 const tarifs = [
-  { label: "Inscription", value: "5 000 FCFA" },
-  { label: "Mensualité enfant", value: "20 000 FCFA" },
-  { label: "Mensualité adulte", value: "15 000 FCFA" },
-  { label: "Réduction fratrie", value: "3 enfants et +" },
+  { label: "Inscription",        value: "5 000 FCFA" },
+  { label: "Mensualité enfant",  value: "20 000 FCFA" },
+  { label: "Mensualité adulte",  value: "15 000 FCFA" },
+  { label: "Réduction fratrie",  value: "3 enfants et +" },
 ];
 
 const socialTags = [
@@ -478,8 +470,9 @@ const Home = () => {
             YOUTH <em className="ysc-hero-accent">SPORTS</em> CLUB
           </h1>
           <p className="ysc-hero-sub">
-            Association sportive de référence nationale, spécialisée dans la formation et
-            l&apos;encadrement des jeunes à travers la gymnastique, la boxe et le fitness.
+            Association sportive de référence nationale, spécialisée dans la
+            formation et l&apos;encadrement des jeunes à travers la
+            gymnastique, la boxe et le fitness.
           </p>
           <div className="hero-actions">
             <Link className="btn btn-primary" to="/rejoindre">
@@ -497,16 +490,14 @@ const Home = () => {
         <div className="section-header">
           <h2>Nos disciplines</h2>
           <p>
-            Trois activités complémentaires pour tous les profils et tous les niveaux, encadrées par
-            des professionnels qualifiés.
+            Trois activités complémentaires pour tous les profils et tous les
+            niveaux, encadrées par des professionnels qualifiés.
           </p>
         </div>
         <div className="grid three-columns">
           {disciplines.map((d) => (
             <article className="ysc-disc-card" key={d.num}>
-              <span className="ysc-disc-num" aria-hidden="true">
-                {d.num}
-              </span>
+              <span className="ysc-disc-num" aria-hidden="true">{d.num}</span>
               {d.image && (
                 <img
                   className="ysc-disc-image"
@@ -570,9 +561,9 @@ const Home = () => {
         <div className="section-header">
           <h2>Notre mission</h2>
           <p>
-            Le YSC accompagne les jeunes dans leur développement physique, mental et social. Il ne
-            forme pas uniquement des sportifs, mais participe à la construction de jeunes
-            responsables et ambitieux.
+            Le YSC accompagne les jeunes dans leur développement physique,
+            mental et social. Il ne forme pas uniquement des sportifs, mais
+            participe à la construction de jeunes responsables et ambitieux.
           </p>
         </div>
       </section>
@@ -582,8 +573,8 @@ const Home = () => {
         <div className="section-header">
           <h2>Un encadrement qualifié</h2>
           <p>
-            Chaque séance est animée par des professionnels certifiés et adaptée à l&apos;âge et au
-            niveau des participants.
+            Chaque séance est animée par des professionnels certifiés et
+            adaptée à l&apos;âge et au niveau des participants.
           </p>
         </div>
         <div className="grid three-columns">
@@ -607,16 +598,15 @@ const Home = () => {
               <div className="ysc-social-text">
                 <h3>L&apos;accès au sport pour tous</h3>
                 <p>
-                  Le YSC s&apos;engage activement pour l&apos;inclusion et l&apos;accessibilité du
-                  sport. Des dispositifs concrets accompagnent les jeunes issus de milieux modestes
-                  dans leur parcours sportif et de vie : bourses, réductions familiales et suivi
-                  personnalisé.
+                  Le YSC s&apos;engage activement pour l&apos;inclusion et
+                  l&apos;accessibilité du sport. Des dispositifs concrets
+                  accompagnent les jeunes issus de milieux modestes dans leur
+                  parcours sportif et de vie : bourses, réductions familiales
+                  et suivi personnalisé.
                 </p>
                 <div className="ysc-tags">
                   {socialTags.map((t) => (
-                    <span className="ysc-tag" key={t}>
-                      {t}
-                    </span>
+                    <span className="ysc-tag" key={t}>{t}</span>
                   ))}
                 </div>
               </div>
@@ -634,7 +624,10 @@ const Home = () => {
         <div className="wide">
           <div className="ysc-cta">
             <h2>Prêt à rejoindre le club ?</h2>
-            <p>Tous niveaux acceptés · Encadrement professionnel · Stade de Kégué, Lomé</p>
+            <p>
+              Tous niveaux acceptés · Encadrement professionnel · Stade de
+              Kégué, Lomé
+            </p>
             <div className="ysc-cta-actions">
               <Link className="btn btn-primary" to="/rejoindre">
                 S&apos;inscrire maintenant
