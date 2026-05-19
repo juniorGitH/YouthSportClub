@@ -601,7 +601,7 @@ const About = () => {
           <div className="about-contact-card">
             <h3>Téléphone</h3>
             <p>
-              <a href="tel:+22899670186">+228 99 67 01 86</a>
+              <a href="tel:+22891534885">+228 91 53 48 85</a>
             </p>
           </div>
           <div className="about-contact-card">
