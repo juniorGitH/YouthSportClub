@@ -1,7 +1,6 @@
 // ─── Assets ────────────────────────────────────────────────────────────────
 import {
   faArrowTrendUp,
-  faBullseye,
   faChildReaching,
   faHandHoldingDollar,
   faHeartPulse,
@@ -12,12 +11,9 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import videoSrc from "url:../images/Cours privé.mp4";
-import videoCta from "url:../images/2coursprivé.mp4";
-import championImg from "../images/chamipon.jpeg";
-import ensembleImg from "../images/photoensemble.jpeg";
 import galleryA from "../images/472902518_601111642868247_3421823822486160063_n.jpg";
+import championImg from "../images/chamipon.jpeg";
 import galleryLarge from "../images/Screenshot 2026-05-17 124137.png";
-import joinImage from "../images/Screenshot 2026-05-17 125026.png";
 import galleryB from "../images/WhatsApp Image 2026-05-16 at 17.46.30.jpeg";
 import testimonialImg from "../images/WhatsApp Image 2026-05-16 at 17.46.33.jpeg";
 
@@ -27,11 +23,8 @@ const Badge = ({ children }) => <span className="ysc-badge">{children}</span>;
 
 const SectionLabel = ({ children }) => <p className="ysc-section-label">{children}</p>;
 
-const FeatureRow = ({ icon, text }) => (
+const FeatureRow = ({ text }) => (
   <li className="ysc-feature-row">
-    <span className="ysc-feature-icon" aria-hidden="true">
-      {icon}
-    </span>
     <span>{text}</span>
   </li>
 );
@@ -342,15 +335,6 @@ const scoped = `
 
   .ysc-btn--full { width: 100%; }
 
-  .ysc-btn__arrow {
-    font-size: 1.2rem;
-    transition: transform 0.2s;
-  }
-
-  .ysc-btn:hover .ysc-btn__arrow {
-    transform: translateX(4px);
-  }
-
   .ysc-form-note {
     text-align: center;
     font-size: 0.8rem;
@@ -398,21 +382,33 @@ const scoped = `
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transform: scale(1.05);
   }
 
   .ysc-video-hero__overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+    background:
+      linear-gradient(
+        110deg,
+        rgba(6, 18, 41, 0.84) 0%,
+        rgba(6, 18, 41, 0.63) 45%,
+        rgba(8, 24, 54, 0.86) 100%
+      ),
+      radial-gradient(circle at 80% 20%, rgba(61,126,196,0.26), transparent 38%);
     display: flex;
-    align-items: flex-end;
+    align-items: center;
+    justify-content: center;
     padding: 2rem;
+    text-align: center;
   }
 
   .ysc-video-hero__tagline {
     color: var(--ysc-white);
     font-weight: 600;
-    font-size: 1rem;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    max-width: 700px;
+    line-height: 1.5;
   }
 
   .ysc-private__cards {
@@ -465,8 +461,7 @@ const scoped = `
   }
 
   .ysc-info-card ul {
-    list-style: none;
-    padding: 0;
+    padding-left: 1.15rem;
   }
 
   .ysc-info-card li {
@@ -642,8 +637,7 @@ const scoped = `
   
   .ysc-social-list li {
     display: flex;
-    align-items: center;
-    gap: 1rem;
+    align-items: flex-start;
     font-size: 1.05rem;
     color: var(--ysc-text);
   }
@@ -657,9 +651,6 @@ const scoped = `
   }
   
   .ysc-social-objective {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
     padding: 1.5rem;
     background: #fff8ef;
     border-radius: 12px;
@@ -746,14 +737,18 @@ export const JoinClubPage = () => {
     phone: "",
     email: "",
     objective: "",
-    objectiveDetails: ""
+    objectiveDetails: "",
   });
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
     // Extract property name from id (e.g., 'f-name' -> 'name')
-    const field = id.replace("f-", "").replace("-", "P").replace("pName", "parentName").replace("pPhone", "parentPhone");
-    
+    const field = id
+      .replace("f-", "")
+      .replace("-", "P")
+      .replace("pName", "parentName")
+      .replace("pPhone", "parentPhone");
+
     // Mapping manual fixes for IDs to state keys
     const idMap = {
       "f-name": "name",
@@ -764,12 +759,12 @@ export const JoinClubPage = () => {
       "f-phone": "phone",
       "f-email": "email",
       "f-objective": "objective",
-      "f-objective-details": "objectiveDetails"
+      "f-objective-details": "objectiveDetails",
     };
 
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [idMap[id] || field]: value
+      [idMap[id] || field]: value,
     }));
   };
 
@@ -793,21 +788,21 @@ export const JoinClubPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     const { name, dob, parentName, parentPhone, discipline, phone, email, objective } = formData;
-    
+
     // Format date from YYYY-MM-DD to DD/MM/YYYY
     const formattedDob = dob ? dob.split("-").reverse().join("/") : "";
-    
-    let message = `Bonjour YSC,\n\nNouvelle demande d’inscription :\n\n`;
+
+    let message = `Bonjour YSC,\n\nNouvelle demande d'inscription :\n\n`;
     message += `Nom : ${name}\n`;
     message += `Date de naissance : ${formattedDob}\n`;
-    
+
     if (registrationType === "child") {
       message += `Parent : ${parentName}\n`;
       message += `Téléphone parent : ${parentPhone}\n`;
     }
-    
+
     message += `Discipline : ${discipline}\n`;
     message += `Téléphone : ${phone}\n`;
     message += `Email : ${email || "Non renseigné"}\n`;
@@ -888,9 +883,6 @@ export const JoinClubPage = () => {
             <h2 id="form-heading" className="ysc-form-heading">
               Rejoindre le club
             </h2>
-            {/* <p className="ysc-form-subheading">
-              Complétez le formulaire — notre équipe vous contacte sous 24h via WhatsApp.
-            </p> */}
           </div>
 
           <form className="ysc-form" onSubmit={handleSubmit}>
@@ -1008,16 +1000,15 @@ export const JoinClubPage = () => {
 
             <label className="ysc-checkbox-field">
               <input type="checkbox" required />
-              <span className="ysc-checkbox-text">J’accepte d’être contacté via WhatsApp.</span>
+              <span className="ysc-checkbox-text">J'accepte d'être contacté via WhatsApp.</span>
             </label>
 
             <button type="submit" className="ysc-btn ysc-btn--primary ysc-btn--full">
-              <span>Envoyer ma demande d’inscription</span>
+              <span>Envoyer ma demande d'inscription</span>
               <span className="ysc-btn__arrow" aria-hidden="true">
                 →
               </span>
             </button>
-
 
             <p className="ysc-form-note">
               🔒 Vos données sont confidentielles et ne seront jamais partagées.
@@ -1026,219 +1017,211 @@ export const JoinClubPage = () => {
         </div>
       </section>
 
-    {/* ── 3. PRIVATE TRAINING ───────────────────────────────────────────── */}
-    <section className="ysc-private" aria-labelledby="private-heading">
-      {/* 3a. Section intro */}
-      <div className="ysc-private__intro">
-        <SectionLabel>Cours privés</SectionLabel>
-        <h2 id="private-heading" className="ysc-private__title">
-          Développez votre
-          <br />
-          <em>plein potentiel</em>
-        </h2>
-        <p className="ysc-private__subtitle">
-          Séances individuelles adaptées à chaque objectif, niveau et rythme de vie.
-        </p>
-      </div>
-
-      {/* 3b. Video hero */}
-      <div className="ysc-video-hero" aria-label="Vidéo de présentation des cours privés">
-        <video className="ysc-video-hero__vid" src={videoSrc} autoPlay muted loop playsInline />
-        <div className="ysc-video-hero__overlay" aria-hidden="true">
-          <p className="ysc-video-hero__tagline">
-            Coaching individuel · Tous niveaux · À domicile ou en extérieur
+      {/* ── 3. PRIVATE TRAINING ───────────────────────────────────────────── */}
+      <section className="ysc-private" aria-labelledby="private-heading">
+        {/* 3a. Section intro */}
+        <div className="ysc-private__intro">
+          <SectionLabel>Cours privés</SectionLabel>
+          <h2 id="private-heading" className="ysc-private__title">
+            Développez votre
+            <br />
+            <em>plein potentiel</em>
+          </h2>
+          <p className="ysc-private__subtitle">
+            Séances individuelles adaptées à chaque objectif, niveau et rythme de vie.
           </p>
         </div>
-      </div>
 
-      {/* 3c. Cards: Objectives + Modalities */}
-      <div className="ysc-private__cards">
-        <article className="ysc-info-card ysc-info-card--objectives">
-          <div className="ysc-info-card__icon-badge" aria-hidden="true">
-            <i className="ti ti-target-arrow"></i>
-          </div>
-          <h3>Objectifs</h3>
-          <ul>
-            <li>
-              <span className="ysc-info-card__li-badge">
-                <i className="ti ti-chart-line"></i>
-              </span>
-              Progression technique accélérée
-            </li>
-            <li>
-              <span className="ysc-info-card__li-badge">
-                <i className="ti ti-adjustments-horizontal"></i>
-              </span>
-              Programme adapté à l'âge et au niveau
-            </li>
-            <li>
-              <span className="ysc-info-card__li-badge">
-                <i className="ti ti-brain"></i>
-              </span>
-              Préparation physique et mentale ciblée
-            </li>
-            <li>
-              <span className="ysc-info-card__li-badge">
-                <i className="ti ti-mood-smile"></i>
-              </span>
-              Développement de la confiance en soi
-            </li>
-          </ul>
-        </article>
-
-        <article className="ysc-info-card ysc-info-card--modalities">
-          <div className="ysc-info-card__icon-badge" aria-hidden="true">
-            <i className="ti ti-clipboard-list"></i>
-          </div>
-          <h3>Modalités</h3>
-          <ul>
-            <li>
-              <span className="ysc-info-card__li-badge">
-                <i className="ti ti-home-move"></i>
-              </span>
-              Cours privés à domicile disponibles pour toutes nos disciplines
-            </li>
-            <li>
-              <span className="ysc-info-card__li-badge">
-                <i className="ti ti-map-pin"></i>
-              </span>
-              À domicile ou en extérieur selon vos préférences
-            </li>
-            <li>
-              <span className="ysc-info-card__li-badge">
-                <i className="ti ti-award"></i>
-              </span>
-              Encadrement par des coachs certifiés
-            </li>
-            <li>
-              <span className="ysc-info-card__li-badge">
-                <i className="ti ti-calendar-time"></i>
-              </span>
-              Flexibilité horaire — week-end inclus
-            </li>
-            <li>
-              <span className="ysc-info-card__li-badge">
-                <i className="ti ti-phone"></i>
-              </span>
-              Contact rapide :{" "}
-              <a href="tel:+22891534885" className="ysc-tel-link">
-                +228 91 53 48 85
-              </a>
-            </li>
-          </ul>
-        </article>
-      </div>
-
-      {/* 3d. Photo gallery */}
-      <div className="ysc-gallery" aria-label="Galerie photos des cours privés">
-        <div className="ysc-gallery__large">
-          <img src={galleryLarge} alt="Séance privée en action" />
-        </div>
-        <div className="ysc-gallery__stack">
-          <img src={galleryA} alt="Entraînement individuel" />
-          <img src={galleryB} alt="Coach et athlète en séance" />
-        </div>
-      </div>
-
-      {/* 3e. Testimonial */}
-      <div className="ysc-testimonial-wrapper" aria-label="Témoignage client">
-        <figure className="ysc-testimonial">
-          <div className="ysc-testimonial__avatar-wrap">
-            <img
-              src={testimonialImg}
-              alt="Cora-CW, Piper-Beckett et Mosa"
-              className="ysc-testimonial__avatar"
-            />
-          </div>
-          <div className="ysc-testimonial__body">
-            <span className="ysc-testimonial__stars" aria-label="5 étoiles">
-              ★★★★★
-            </span>
-            <blockquote className="ysc-testimonial__quote">
-              "Merci pour tout ce que vous avez fait pour notre famille. On est tellement contents
-              d'avoir commencé cette aventure avec YSC depuis les premiers jours. Vous avez une
-              passion, une vision et une expertise uniques — nous n'allons jamais vous oublier."
-            </blockquote>
-            <figcaption className="ysc-testimonial__author">
-              Cora-CW, Piper-Beckett &amp; Mosa
-            </figcaption>
-          </div>
-        </figure>
-      </div>
-
-      {/* ── 4. SOCIAL PROGRAM ────────────────────────────────────────────── */}
-      <section className="ysc-social-section" aria-labelledby="social-heading">
-        <div className="ysc-social-section__inner">
-          <div className="ysc-social-header">
-            <SectionLabel>Engagement</SectionLabel>
-            <h2 id="social-heading" className="ysc-social-heading">
-              ❤️ PROGRAMME SOCIAL YSC
-              <br />
-              <span>Le sport pour tous</span>
-            </h2>
-          </div>
-
-          <div className="ysc-social-content">
-            <p className="ysc-social-intro">
-              Parce que le sport doit rester accessible à tous, YSC met en place un programme social
-              pour soutenir les familles et accompagner les jeunes motivés par la gymnastique.
+        {/* 3b. Video hero */}
+        <div className="ysc-video-hero" aria-label="Vidéo de présentation des cours privés">
+          <video className="ysc-video-hero__vid" src={videoSrc} autoPlay muted loop playsInline />
+          <div className="ysc-video-hero__overlay" aria-hidden="true">
+            <p className="ysc-video-hero__tagline">
+              Coaching individuel · Tous niveaux · À domicile ou en extérieur
             </p>
+          </div>
+        </div>
 
-            <ul className="ysc-social-list">
+        {/* 3c. Cards: Objectives + Modalities */}
+        <div className="ysc-private__cards">
+          <article className="ysc-info-card ysc-info-card--objectives">
+            <div className="ysc-info-card__icon-badge" aria-hidden="true">
+              <i className="ti ti-target-arrow"></i>
+            </div>
+            <h3>Objectifs</h3>
+            <ul>
               <li>
-                <span className="ysc-social-bullet">
-                  <FontAwesomeIcon icon={faHandHoldingDollar} />
+                <span className="ysc-info-card__li-badge">
+                  <i className="ti ti-chart-line"></i>
                 </span>
-                <span>
-                  <strong>Bourse de 50 %</strong> sur la mensualité
-                </span>
+                Progression technique accélérée
               </li>
               <li>
-                <span className="ysc-social-bullet">
-                  <FontAwesomeIcon icon={faChildReaching} />
+                <span className="ysc-info-card__li-badge">
+                  <i className="ti ti-adjustments-horizontal"></i>
                 </span>
-                <span>
-                  <strong>Entraînement gratuit</strong> possible pour les enfants issus de familles
-                  en difficulté
-                </span>
+                Programme adapté à l'âge et au niveau
               </li>
               <li>
-                <span className="ysc-social-bullet">
-                  <FontAwesomeIcon icon={faVanShuttle} />
+                <span className="ysc-info-card__li-badge">
+                  <i className="ti ti-brain"></i>
                 </span>
-                <span>
-                  <strong>Aides spécifiques</strong> selon les besoins (transport, accompagnement)
+                Préparation physique et mentale ciblée
+              </li>
+              <li>
+                <span className="ysc-info-card__li-badge">
+                  <i className="ti ti-mood-smile"></i>
                 </span>
+                Développement de la confiance en soi
               </li>
             </ul>
+          </article>
 
-            <div className="ysc-social-objective">
-              <span className="ysc-social-obj-icon" aria-hidden="true">
-                <FontAwesomeIcon icon={faHeartPulse} />
-              </span>
-              <p>
-                <strong>Objectif :</strong> permettre à chaque enfant motivé de pratiquer la
-                gymnastique, quelles que soient les conditions sociales.
-              </p>
+          <article className="ysc-info-card ysc-info-card--modalities">
+            <div className="ysc-info-card__icon-badge" aria-hidden="true">
+              <i className="ti ti-clipboard-list"></i>
             </div>
+            <h3>Modalités</h3>
+            <ul>
+              <li>
+                <span className="ysc-info-card__li-badge">
+                  <i className="ti ti-home-move"></i>
+                </span>
+                Cours privés à domicile disponibles pour toutes nos disciplines
+              </li>
+              <li>
+                <span className="ysc-info-card__li-badge">
+                  <i className="ti ti-map-pin"></i>
+                </span>
+                À domicile ou en extérieur selon vos préférences
+              </li>
+              <li>
+                <span className="ysc-info-card__li-badge">
+                  <i className="ti ti-award"></i>
+                </span>
+                Encadrement par des coachs certifiés
+              </li>
+              <li>
+                <span className="ysc-info-card__li-badge">
+                  <i className="ti ti-calendar-time"></i>
+                </span>
+                Flexibilité horaire — week-end inclus
+              </li>
+              <li>
+                <span className="ysc-info-card__li-badge">
+                  <i className="ti ti-phone"></i>
+                </span>
+                Contact rapide :{" "}
+                <a href="tel:+22891534885" className="ysc-tel-link">
+                  +228 91 53 48 85
+                </a>
+              </li>
+            </ul>
+          </article>
+        </div>
+
+        {/* 3d. Photo gallery */}
+        <div className="ysc-gallery" aria-label="Galerie photos des cours privés">
+          <div className="ysc-gallery__large">
+            <img src={galleryLarge} alt="Séance privée en action" />
+          </div>
+          <div className="ysc-gallery__stack">
+            <img src={galleryA} alt="Entraînement individuel" />
+            <img src={galleryB} alt="Coach et athlète en séance" />
           </div>
         </div>
-      </section>
 
-      {/* 3f. Final CTA */}
-      <div className="ysc-private__cta">
-        <p className="ysc-private__cta-text">Prêt à passer au niveau supérieur ?</p>
-        <a href="#registration-form" onClick={scrollToForm} className="ysc-btn ysc-btn--primary">
-          <span>Réserver une séance privée</span>
-          <span className="ysc-btn__arrow" aria-hidden="true">
-            →
-          </span>
-        </a>
-        {/* <p className="ysc-private__cta-note">
-          Réponse sous 24h • Première séance découverte offerte
-        </p> */}
-      </div>
-    </section>
-  </>
-);
+        {/* 3e. Testimonial */}
+        <div className="ysc-testimonial-wrapper" aria-label="Témoignage client">
+          <figure className="ysc-testimonial">
+            <div className="ysc-testimonial__avatar-wrap">
+              <img
+                src={testimonialImg}
+                alt="Cora-CW, Piper-Beckett et Mosa"
+                className="ysc-testimonial__avatar"
+              />
+            </div>
+            <div className="ysc-testimonial__body">
+              <blockquote className="ysc-testimonial__quote">
+                "Merci pour tout ce que vous avez fait pour notre famille. On est tellement contents
+                d'avoir commencé cette aventure avec YSC depuis les premiers jours. Vous avez une
+                passion, une vision et une expertise uniques — nous n'allons jamais vous oublier."
+              </blockquote>
+              <figcaption className="ysc-testimonial__author">
+                Cora-CW, Piper-Beckett &amp; Mosa
+              </figcaption>
+            </div>
+          </figure>
+        </div>
+
+        {/* ── 4. SOCIAL PROGRAM ────────────────────────────────────────────── */}
+        <section className="ysc-social-section" aria-labelledby="social-heading">
+          <div className="ysc-social-section__inner">
+            <div className="ysc-social-header">
+              <SectionLabel>Engagement</SectionLabel>
+              <h2 id="social-heading" className="ysc-social-heading">
+                PROGRAMME SOCIAL YSC
+                <br />
+                <span>Le sport pour tous</span>
+              </h2>
+            </div>
+
+            <div className="ysc-social-content">
+              <p className="ysc-social-intro">
+                Parce que le sport doit rester accessible à tous, YSC met en place un programme
+                social pour soutenir les familles et accompagner les jeunes motivés par la
+                gymnastique.
+              </p>
+
+              <ul className="ysc-social-list">
+                <li>
+                  <span className="ysc-social-bullet">
+                    <FontAwesomeIcon icon={faHandHoldingDollar} />
+                  </span>
+                  <span>
+                    <strong>Bourse de 50 %</strong> sur la mensualité
+                  </span>
+                </li>
+                <li>
+                  <span className="ysc-social-bullet">
+                    <FontAwesomeIcon icon={faChildReaching} />
+                  </span>
+                  <span>
+                    <strong>Entraînement gratuit</strong> possible pour les enfants issus de
+                    familles en difficulté
+                  </span>
+                </li>
+                <li>
+                  <span className="ysc-social-bullet">
+                    <FontAwesomeIcon icon={faVanShuttle} />
+                  </span>
+                  <span>
+                    <strong>Aides spécifiques</strong> selon les besoins (transport, accompagnement)
+                  </span>
+                </li>
+              </ul>
+
+              <div className="ysc-social-objective">
+                <span className="ysc-social-obj-icon" aria-hidden="true">
+                  <FontAwesomeIcon icon={faHeartPulse} />
+                </span>
+                <p>
+                  <strong>Objectif :</strong> permettre à chaque enfant motivé de pratiquer la
+                  gymnastique, quelles que soient les conditions sociales.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 3f. Final CTA */}
+        <div className="ysc-private__cta">
+          <p className="ysc-private__cta-text">Prêt à passer au niveau supérieur ?</p>
+          <a href="#registration-form" onClick={scrollToForm} className="ysc-btn ysc-btn--primary">
+            <span>Réserver une séance privée</span>
+          </a>
+        </div>
+      </section>
+    </>
+  );
 };
