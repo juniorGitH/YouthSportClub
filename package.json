@@ -1,23 +1,23 @@
 {
-  "name": "educator-js-codespace-template",
+  "name": "Younth Sports club",
   "version": "1.0.0",
-  "description": "Educator JS Codespace Template",
-  "homepage": "https://apeli-elephant.me",
+  "description": "YSC",
+  "homepage": "https://youthsportsclubtogo.com ",
   "scripts": {
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html",
-    "build-gh": "parcel build src/index.html --public-url \"/\" && powershell -Command \"Copy-Item -Path dist/index.html -Destination dist/404.html\" && powershell -Command \"Set-Content -Path dist/CNAME -Value 'apeli-elephant.me'\"",
+    "build-gh": "parcel build src/index.html --public-url \"/\" && powershell -Command \"Copy-Item -Path dist/index.html -Destination dist/404.html\" && powershell -Command \"Set-Content -Path dist/CNAME -Value 'youthsportsclubtogo.com '\"",
     "predeploy": "npm run build-gh",
     "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/juniorGitH/apeli.git"
+    "url": "https://github.com/juniorGitH/YouthSportClub.git"
   },
-  "author": "Microsoft",
-  "license": "ISC",
+  "author": "Emmanuel AMELA",
+  "license": "YSC",
   "bugs": {
-    "url": "https://github.com/juniorGitH/apeli/issues"
+    "url": "https://github.com/juniorGitH/YouthSportClub/issues"
   },
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^7.1.0",

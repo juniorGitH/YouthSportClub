@@ -2,6 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import historyTeamImage from "../images/WhatsApp Image 2026-05-16 at 16.18.39.jpeg";
 import figCertifiedImage from "../images/WhatsApp Image 2026-05-16 at 16.12.14 (1).jpeg";
+import stapsImageOne from "../images/WhatsApp Image 2026-05-19 at 11.58.31.jpeg";
+import stapsImageTwo from "../images/WhatsApp Image 2026-05-19 at 12.32.39.jpeg";
+import combatImageOne from "../images/WhatsApp Image 2026-04-10 at 22.00.43 (1)-Bswh1-OT.jpeg";
+import combatImageTwo from "../images/WhatsApp Image 2026-05-22 at 15.06.55.jpeg";
+import combatImageThree from "../images/WhatsApp Image 2026-05-22 at 15.07.50.jpeg";
+import prepImage from "../images/WhatsApp Image 2026-05-22 at 15.20.21 (1).jpeg";
 
 /* ── données ── */
 const palmares = [
@@ -32,9 +38,29 @@ const coaches = [
     image: figCertifiedImage,
     imageAlt: "Coachs certifiés FIG avec attestations de participation",
   },
-  { title: "Diplômés STAPS",       detail: "Sciences et Techniques des Activités Physiques et Sportives" },
-  { title: "Sports de combat",     detail: "Spécialistes en boxe et préparation physique" },
-  { title: "Préparation physique", detail: "Coaches en renforcement musculaire et fitness" },
+  {
+    title: "Diplômés STAPS",
+    detail: "Sciences et Techniques des Activités Physiques et Sportives",
+    images: [
+      { src: stapsImageOne, alt: "Diplômés STAPS - remise de diplôme" },
+      { src: stapsImageTwo, alt: "Diplômés STAPS - présentation du diplôme" },
+    ],
+  },
+  {
+    title: "Sports de combat",
+    detail: "Spécialistes en boxe et préparation physique",
+    images: [
+      { src: combatImageOne, alt: "Athlète de sports de combat en compétition" },
+      { src: combatImageTwo, alt: "Champion en sports de combat avec ceinture" },
+      { src: combatImageThree, alt: "Podium et récompenses en sports de combat" },
+    ],
+  },
+  {
+    title: "Préparation physique",
+    detail: "Coaches en renforcement musculaire et fitness",
+    image: prepImage,
+    imageAlt: "Coach en préparation physique et renforcement musculaire",
+  },
 ];
 
 const social = [
@@ -331,19 +357,42 @@ const scoped = `
   }
 
   /* ── Coaches ── */
+  .about-coach-grid {
+    align-items: stretch;
+  }
   .about-coach-card {
     background: #fff;
     border-radius: 14px;
     padding: 1.4rem 1.25rem;
     box-shadow: 0 8px 24px rgba(165,85,20,0.10);
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    height: 100%;
+    overflow: hidden;
   }
   .about-coach-image {
+    display: block;
     width: 100%;
     aspect-ratio: 4 / 3;
     object-fit: cover;
     border-radius: 10px;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0;
+    border: 1px solid #f2cfac;
+  }
+  .about-coach-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.6rem;
+    margin-bottom: 0;
+  }
+  .about-coach-gallery-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: 10px;
     border: 1px solid #f2cfac;
   }
   .about-coach-avatar {
@@ -535,7 +584,7 @@ const About = () => {
           <h2>Nos axes de développement</h2>
           <p>Le club s&apos;organise autour de deux axes complémentaires pour couvrir tous les profils.</p>
         </div>
-        <div className="grid two-columns">
+        <div className="grid two-columns about-coach-grid">
           {axes.map((a) => (
             <div className="about-axe-card" key={a.num}>
               <span className="about-axe-num" aria-hidden="true">{a.num}</span>
@@ -563,13 +612,27 @@ const About = () => {
         <div className="grid two-columns">
           {coaches.map((c) => (
             <div className="about-coach-card" key={c.title}>
-              {c.image && (
-                <img
-                  src={c.image}
-                  alt={c.imageAlt || c.title}
-                  className="about-coach-image"
-                  loading="lazy"
-                />
+              {c.images ? (
+                <div className="about-coach-gallery">
+                  {c.images.map((image) => (
+                    <img
+                      key={image.src}
+                      src={image.src}
+                      alt={image.alt || c.title}
+                      className="about-coach-gallery-image"
+                      loading="lazy"
+                    />
+                  ))}
+                </div>
+              ) : (
+                c.image && (
+                  <img
+                    src={c.image}
+                    alt={c.imageAlt || c.title}
+                    className="about-coach-image"
+                    loading="lazy"
+                  />
+                )
               )}
               <h3>{c.title}</h3>
               <p>{c.detail}</p>

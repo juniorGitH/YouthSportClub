@@ -10,7 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import videoSrc from "url:../images/Cours privé.mp4";
+import videoSrc from "url:../images/cours-prive.mp4";
 import galleryA from "../images/472902518_601111642868247_3421823822486160063_n.jpg";
 import championImg from "../images/chamipon.jpeg";
 import galleryLarge from "../images/Screenshot 2026-05-17 124137.png";
@@ -23,8 +23,11 @@ const Badge = ({ children }) => <span className="ysc-badge">{children}</span>;
 
 const SectionLabel = ({ children }) => <p className="ysc-section-label">{children}</p>;
 
-const FeatureRow = ({ text }) => (
+const FeatureRow = ({ icon, text }) => (
   <li className="ysc-feature-row">
+    <span className="ysc-feature-icon" aria-hidden="true">
+      {icon}
+    </span>
     <span>{text}</span>
   </li>
 );
@@ -79,9 +82,11 @@ const scoped = `
   }
 
   .ysc-feature-icon {
-    font-size: 1.75rem;
+    font-size: 1.1rem;
     color: var(--ysc-primary);
     flex-shrink: 0;
+    width: 1.5rem;
+    text-align: center;
   }
 
   /* ── 1. Hero Split ── */
@@ -461,7 +466,8 @@ const scoped = `
   }
 
   .ysc-info-card ul {
-    padding-left: 1.15rem;
+    padding-left: 0;
+    list-style: none;
   }
 
   .ysc-info-card li {
@@ -638,74 +644,194 @@ const scoped = `
   .ysc-social-list li {
     display: flex;
     align-items: flex-start;
+    gap: 0.75rem;
     font-size: 1.05rem;
     color: var(--ysc-text);
   }
-  
+
   .ysc-social-bullet {
     font-size: 1.25rem;
     color: var(--ysc-primary);
     width: 24px;
+    flex-shrink: 0;
     display: flex;
     justify-content: center;
+    padding-top: 2px;
   }
-  
+
   .ysc-social-objective {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
     padding: 1.5rem;
     background: #fff8ef;
     border-radius: 12px;
     border: 1px dashed #ef7d22;
   }
-  
+
   .ysc-social-obj-icon {
     font-size: 1.5rem;
     color: #ef7d22;
+    flex-shrink: 0;
+    padding-top: 2px;
   }
-  
+
   .ysc-social-objective p {
     font-size: 0.95rem;
     color: #6c4622;
     margin: 0;
   }
 
-  .ysc-private__cta {
+  /* ── 5. CTA Final ── */
+  .ysc-final-cta {
+    padding: 5rem 1rem;
+    background: var(--ysc-white);
+  }
+
+  .ysc-final-cta__inner {
     text-align: center;
     background: var(--ysc-white);
     border: 1px solid rgba(47, 111, 178, 0.15);
     box-shadow: 0 18px 45px rgba(47, 111, 178, 0.08);
     padding: 4rem 2rem;
     border-radius: var(--ysc-radius);
-    color: var(--ysc-text);
     max-width: 1100px;
-    margin: 4rem auto 0;
-    position: relative;
-    overflow: visible;
+    margin: 0 auto;
   }
 
-  .ysc-private__cta-video {
-    display: none;
-  }
-
-  .ysc-private__cta-content {
-    position: relative;
-    z-index: 1;
-  }
-
-  .ysc-private__cta::after {
-    display: none;
-  }
-
-  .ysc-private__cta-text {
+  .ysc-final-cta__text {
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
     color: var(--ysc-primary-dark);
   }
 
-  .ysc-private__cta-note {
-    font-size: 0.85rem;
+  /* ── Sub-pages (Events, Training, Results, Partners) ── */
+  .ysc-page {
+    background: var(--ysc-white);
+  }
+
+  .ysc-page-hero {
+    padding: 4rem 1rem 3rem;
+    background: var(--ysc-bg-alt);
+    text-align: center;
+  }
+
+  .ysc-page-hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    color: var(--ysc-primary-dark);
+    margin-bottom: 0.75rem;
+  }
+
+  .ysc-page-hero p {
+    font-size: 1.1rem;
     color: var(--ysc-text-light);
-    margin-top: 1rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+  }
+
+  .ysc-hero-img {
+    width: 100%;
+    max-width: 1000px;
+    height: 340px;
+    object-fit: cover;
+    border-radius: var(--ysc-radius);
+    display: block;
+    margin: 0 auto;
+  }
+
+  .ysc-page-section {
+    padding: 4rem 1rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .ysc-page-section--alt {
+    background: var(--ysc-bg-alt);
+    max-width: 100%;
+    padding: 4rem 1rem;
+  }
+
+  .ysc-page-section--alt .ysc-page-section__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .ysc-page-section__header {
+    margin-bottom: 2.5rem;
+  }
+
+  .ysc-page-section__header h2 {
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    font-weight: 800;
+    color: var(--ysc-primary-dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .ysc-page-section__header p {
+    font-size: 1rem;
+    color: var(--ysc-text-light);
+  }
+
+  .ysc-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .ysc-cards-grid--two {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ysc-card {
+    background: var(--ysc-white);
+    padding: 2rem;
+    border-radius: var(--ysc-radius);
+    border: 1px solid #e1ecf8;
+    box-shadow: var(--ysc-shadow);
+  }
+
+  .ysc-card h3 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--ysc-primary-dark);
+    margin-bottom: 1rem;
+  }
+
+  .ysc-card p {
+    font-size: 0.95rem;
+    color: var(--ysc-text);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+  }
+
+  .ysc-card ul {
+    padding-left: 1.2rem;
+    margin: 0;
+  }
+
+  .ysc-card li {
+    font-size: 0.95rem;
+    color: var(--ysc-text);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+  }
+
+  .ysc-photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .ysc-photo-grid img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
   }
 
   /* ── Responsive ── */
@@ -716,13 +842,110 @@ const scoped = `
     .ysc-form-grid { grid-template-columns: 1fr; }
     .ysc-field--full { grid-column: span 1; }
     .ysc-private__cards { grid-template-columns: 1fr; }
-    .ysc-gallery { grid-template-columns: 1fr; }
     .ysc-gallery__large { height: 300px; }
     .ysc-testimonial { flex-direction: column; text-align: center; padding: 2rem; }
     .ysc-testimonial__avatar-wrap { width: 100px; height: 100px; }
     .ysc-social-content { padding: 2rem 1.5rem; }
+    .ysc-cards-grid { grid-template-columns: 1fr; }
+    .ysc-cards-grid--two { grid-template-columns: 1fr; }
+    .ysc-photo-grid { grid-template-columns: 1fr; }
+    .ysc-gallery__stack { grid-template-columns: 1fr; }
   }
 `;
+
+const events = [
+  {
+    title: "Stage de perfectionnement (gymnastique)",
+    date: "15 - 20 juin 2026",
+    location: "Stade de Kégué",
+    description:
+      "Travail technique, souplesse et préparation aux compétitions avec un encadrement renforcé.",
+  },
+  {
+    title: "Tournoi amical de boxe éducative",
+    date: "05 juillet 2026",
+    location: "Dojo Youth Sports Club",
+    description: "Rencontres encadrées pour développer discipline, respect et maîtrise de soi.",
+  },
+  {
+    title: "Journée portes ouvertes",
+    date: "24 août 2026",
+    location: "Youth Sports Club",
+    description: "Essais gratuits, démonstrations et inscriptions sur place pour toutes les familles.",
+  },
+];
+
+const eventsGallery = [
+  {
+    src: galleryLarge,
+    alt: "Démonstration de gymnastique du Youth Sports Club",
+  },
+  {
+    src: galleryA,
+    alt: "Séance collective du Youth Sports Club",
+  },
+  {
+    src: galleryB,
+    alt: "Photo de groupe des athlètes du club",
+  },
+];
+
+const trainingPrograms = [
+  {
+    title: "Gymnastique",
+    level: "Débutant à avancé",
+    ages: "6-16 ans",
+    description: "Souplesse, coordination, agrès et préparation physique progressive.",
+  },
+  {
+    title: "Boxe éducative",
+    level: "Initiation & perfectionnement",
+    ages: "10 ans et +",
+    description: "Travail technique, cardio et confiance en soi dans un cadre sécurisé.",
+  },
+  {
+    title: "Fitness & cross training",
+    level: "Tous niveaux",
+    ages: "Adolescents & adultes",
+    description: "Renforcement musculaire, mobilité et cardio pour une forme complète.",
+  },
+];
+
+const trainingSchedule = [
+  { day: "Mercredi", time: "14h00 - 18h00", focus: "Gymnastique & boxe" },
+  { day: "Samedi", time: "08h00 - 12h00", focus: "Gymnastique enfants & fitness adultes" },
+  { day: "Dimanche", time: "08h30 - 11h30", focus: "Renforcement & séances privées" },
+];
+
+const resultsHighlights = [
+  {
+    title: "Championnats nationaux 2025",
+    detail: "5 médailles remportées dont 2 en or et 1 en argent.",
+  },
+  {
+    title: "Gala régional 2024",
+    detail: "Prix du club le plus prometteur et mention spéciale pour la formation.",
+  },
+  {
+    title: "Compétitions scolaires",
+    detail: "8 podiums en catégories juniors avec une progression continue.",
+  },
+];
+
+const partners = [
+  {
+    title: "Établissements scolaires",
+    detail: "Collèges et lycées de Lomé qui orientent des jeunes vers nos programmes.",
+  },
+  {
+    title: "Structures sportives",
+    detail: "Clubs amis et fédérations locales pour l'organisation d'événements partagés.",
+  },
+  {
+    title: "Entreprises solidaires",
+    detail: "Soutien financier ou matériel pour nos bourses sportives et projets sociaux.",
+  },
+];
 
 // ─── Join Club Page ─────────────────────────────────────────────────────────
 
@@ -834,8 +1057,8 @@ export const JoinClubPage = () => {
             className="ysc-join-hero__img"
           />
           {/* Floating trust chips anchored on the photo */}
-          <div className="ysc-chip ysc-chip--topleft">🏆 +200 membres actifs</div>
-          <div className="ysc-chip ysc-chip--bottomright">⭐ Suivi personnalisé</div>
+          <div className="ysc-chip ysc-chip--topleft"> +100 membres actifs</div>
+          <div className="ysc-chip ysc-chip--bottomright"> Suivi personnalisé</div>
         </div>
 
         {/* Right: headline + benefits + form */}
@@ -1050,30 +1273,19 @@ export const JoinClubPage = () => {
             </div>
             <h3>Objectifs</h3>
             <ul>
-              <li>
-                <span className="ysc-info-card__li-badge">
-                  <i className="ti ti-chart-line"></i>
-                </span>
-                Progression technique accélérée
-              </li>
-              <li>
-                <span className="ysc-info-card__li-badge">
-                  <i className="ti ti-adjustments-horizontal"></i>
-                </span>
-                Programme adapté à l'âge et au niveau
-              </li>
-              <li>
-                <span className="ysc-info-card__li-badge">
-                  <i className="ti ti-brain"></i>
-                </span>
-                Préparation physique et mentale ciblée
-              </li>
-              <li>
-                <span className="ysc-info-card__li-badge">
-                  <i className="ti ti-mood-smile"></i>
-                </span>
-                Développement de la confiance en soi
-              </li>
+              {[
+                { icon: "ti-chart-line", text: "Progression technique accélérée" },
+                { icon: "ti-adjustments-horizontal", text: "Programme adapté à l'âge et au niveau" },
+                { icon: "ti-brain", text: "Préparation physique et mentale ciblée" },
+                { icon: "ti-mood-smile", text: "Développement de la confiance en soi" },
+              ].map(({ icon, text }) => (
+                <li key={text}>
+                  <span className="ysc-info-card__li-badge">
+                    <i className={`ti ${icon}`} aria-hidden="true"></i>
+                  </span>
+                  {text}
+                </li>
+              ))}
             </ul>
           </article>
 
@@ -1083,33 +1295,22 @@ export const JoinClubPage = () => {
             </div>
             <h3>Modalités</h3>
             <ul>
+              {[
+                { icon: "ti-home-move", text: "Cours privés à domicile disponibles pour toutes nos disciplines" },
+                { icon: "ti-map-pin", text: "À domicile ou en extérieur selon vos préférences" },
+                { icon: "ti-award", text: "Encadrement par des coachs certifiés" },
+                { icon: "ti-calendar-time", text: "Flexibilité horaire — week-end inclus" },
+              ].map(({ icon, text }) => (
+                <li key={text}>
+                  <span className="ysc-info-card__li-badge">
+                    <i className={`ti ${icon}`} aria-hidden="true"></i>
+                  </span>
+                  {text}
+                </li>
+              ))}
               <li>
                 <span className="ysc-info-card__li-badge">
-                  <i className="ti ti-home-move"></i>
-                </span>
-                Cours privés à domicile disponibles pour toutes nos disciplines
-              </li>
-              <li>
-                <span className="ysc-info-card__li-badge">
-                  <i className="ti ti-map-pin"></i>
-                </span>
-                À domicile ou en extérieur selon vos préférences
-              </li>
-              <li>
-                <span className="ysc-info-card__li-badge">
-                  <i className="ti ti-award"></i>
-                </span>
-                Encadrement par des coachs certifiés
-              </li>
-              <li>
-                <span className="ysc-info-card__li-badge">
-                  <i className="ti ti-calendar-time"></i>
-                </span>
-                Flexibilité horaire — week-end inclus
-              </li>
-              <li>
-                <span className="ysc-info-card__li-badge">
-                  <i className="ti ti-phone"></i>
+                  <i className="ti ti-phone" aria-hidden="true"></i>
                 </span>
                 Contact rapide :{" "}
                 <a href="tel:+22891534885" className="ysc-tel-link">
@@ -1154,74 +1355,258 @@ export const JoinClubPage = () => {
           </figure>
         </div>
 
-        {/* ── 4. SOCIAL PROGRAM ────────────────────────────────────────────── */}
-        <section className="ysc-social-section" aria-labelledby="social-heading">
-          <div className="ysc-social-section__inner">
-            <div className="ysc-social-header">
-              <SectionLabel>Engagement</SectionLabel>
-              <h2 id="social-heading" className="ysc-social-heading">
-                PROGRAMME SOCIAL YSC
-                <br />
-                <span>Le sport pour tous</span>
-              </h2>
-            </div>
+      </section>
 
-            <div className="ysc-social-content">
-              <p className="ysc-social-intro">
-                Parce que le sport doit rester accessible à tous, YSC met en place un programme
-                social pour soutenir les familles et accompagner les jeunes motivés par la
-                gymnastique.
-              </p>
+      {/* ── 4. SOCIAL PROGRAM ── section FRÈRE */}
+      <section className="ysc-social-section" aria-labelledby="social-heading">
+        <div className="ysc-social-section__inner">
+          <div className="ysc-social-header">
+            <SectionLabel>Engagement</SectionLabel>
+            <h2 id="social-heading" className="ysc-social-heading">
+              Programme social YSC
+              <span>Le sport pour tous</span>
+            </h2>
+          </div>
 
-              <ul className="ysc-social-list">
-                <li>
-                  <span className="ysc-social-bullet">
-                    <FontAwesomeIcon icon={faHandHoldingDollar} />
-                  </span>
-                  <span>
-                    <strong>Bourse de 50 %</strong> sur la mensualité
-                  </span>
-                </li>
-                <li>
-                  <span className="ysc-social-bullet">
-                    <FontAwesomeIcon icon={faChildReaching} />
-                  </span>
-                  <span>
-                    <strong>Entraînement gratuit</strong> possible pour les enfants issus de
-                    familles en difficulté
-                  </span>
-                </li>
-                <li>
-                  <span className="ysc-social-bullet">
-                    <FontAwesomeIcon icon={faVanShuttle} />
-                  </span>
-                  <span>
-                    <strong>Aides spécifiques</strong> selon les besoins (transport, accompagnement)
-                  </span>
-                </li>
-              </ul>
+          <div className="ysc-social-content">
+            <p className="ysc-social-intro">
+              Parce que le sport doit rester accessible à tous, YSC met en place un programme social
+              pour soutenir les familles et accompagner les jeunes motivés par la gymnastique.
+            </p>
 
-              <div className="ysc-social-objective">
-                <span className="ysc-social-obj-icon" aria-hidden="true">
-                  <FontAwesomeIcon icon={faHeartPulse} />
+            <ul className="ysc-social-list">
+              <li>
+                <span className="ysc-social-bullet">
+                  <FontAwesomeIcon icon={faHandHoldingDollar} />
                 </span>
-                <p>
-                  <strong>Objectif :</strong> permettre à chaque enfant motivé de pratiquer la
-                  gymnastique, quelles que soient les conditions sociales.
-                </p>
-              </div>
+                <span>
+                  <strong>Bourse de 50 %</strong> sur la mensualité
+                </span>
+              </li>
+              <li>
+                <span className="ysc-social-bullet">
+                  <FontAwesomeIcon icon={faChildReaching} />
+                </span>
+                <span>
+                  <strong>Entraînement gratuit</strong> possible pour les enfants issus de familles
+                  en difficulté
+                </span>
+              </li>
+              <li>
+                <span className="ysc-social-bullet">
+                  <FontAwesomeIcon icon={faVanShuttle} />
+                </span>
+                <span>
+                  <strong>Aides spécifiques</strong> selon les besoins (transport, accompagnement)
+                </span>
+              </li>
+            </ul>
+
+            <div className="ysc-social-objective">
+              <span className="ysc-social-obj-icon" aria-hidden="true">
+                <FontAwesomeIcon icon={faHeartPulse} />
+              </span>
+              <p>
+                <strong>Objectif :</strong> permettre à chaque enfant motivé de pratiquer la
+                gymnastique, quelles que soient les conditions sociales.
+              </p>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* 3f. Final CTA */}
-        <div className="ysc-private__cta">
-          <p className="ysc-private__cta-text">Prêt à passer au niveau supérieur ?</p>
+      {/* ── 5. CTA FINAL ── */}
+      <section className="ysc-final-cta">
+        <div className="ysc-final-cta__inner">
+          <p className="ysc-final-cta__text">Prêt à passer au niveau supérieur ?</p>
           <a href="#registration-form" onClick={scrollToForm} className="ysc-btn ysc-btn--primary">
             <span>Réserver une séance privée</span>
+            <span aria-hidden="true">→</span>
           </a>
         </div>
       </section>
     </>
   );
 };
+
+// ─── Events Page ─────────────────────────────────────────────────────────────
+
+export const EventsPage = () => (
+  <>
+    <style>{scoped}</style>
+
+    <section className="ysc-page-hero">
+      <SectionLabel>Agenda</SectionLabel>
+      <h1>Événements</h1>
+      <p>Stages, rencontres et compétitions pour toute la communauté Youth Sports Club.</p>
+      <img src={galleryLarge} alt="Événement sportif du club" className="ysc-hero-img" />
+    </section>
+
+    <div className="ysc-page-section--alt">
+      <div className="ysc-page-section__inner">
+        <div className="ysc-page-section__header">
+          <h2>Calendrier à venir</h2>
+          <p>Les prochains temps forts pour les athlètes, familles et partenaires.</p>
+        </div>
+        <div className="ysc-cards-grid">
+          {events.map((event) => (
+            <article className="ysc-card" key={event.title}>
+              <h3>{event.title}</h3>
+              <p>
+                <strong>Date :</strong> {event.date}
+              </p>
+              <p>
+                <strong>Lieu :</strong> {event.location}
+              </p>
+              <p>{event.description}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div className="ysc-page-section">
+      <div className="ysc-page-section__header">
+        <h2>Images récentes</h2>
+        <p>Des souvenirs d'entraînements, démonstrations et compétitions.</p>
+      </div>
+      <div className="ysc-photo-grid">
+        {eventsGallery.map((photo) => (
+          <img key={photo.src} src={photo.src} alt={photo.alt} />
+        ))}
+      </div>
+    </div>
+  </>
+);
+
+// ─── Training Sessions Page ─────────────────────────────────────────────────
+
+export const TrainingSessionsPage = () => (
+  <>
+    <style>{scoped}</style>
+
+    <section className="ysc-page-hero">
+      <SectionLabel>Disciplines</SectionLabel>
+      <h1>Entraînements</h1>
+      <p>Des séances adaptées à chaque âge, chaque niveau et chaque objectif sportif.</p>
+      <img src={galleryA} alt="Séance d'entraînement encadrée" className="ysc-hero-img" />
+    </section>
+
+    <div className="ysc-page-section--alt">
+      <div className="ysc-page-section__inner">
+        <div className="ysc-page-section__header">
+          <h2>Disciplines proposées</h2>
+          <p>Un encadrement complet pour progresser en toute sécurité.</p>
+        </div>
+        <div className="ysc-cards-grid">
+          {trainingPrograms.map((program) => (
+            <article className="ysc-card" key={program.title}>
+              <h3>{program.title}</h3>
+              <p>
+                <strong>Niveau :</strong> {program.level}
+              </p>
+              <p>
+                <strong>Âges :</strong> {program.ages}
+              </p>
+              <p>{program.description}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div className="ysc-page-section">
+      <div className="ysc-page-section__header">
+        <h2>Horaires &amp; organisation</h2>
+        <p>Des créneaux réguliers et des séances privées sur demande.</p>
+      </div>
+      <div className="ysc-cards-grid ysc-cards-grid--two">
+        <article className="ysc-card">
+          <h3>Planning hebdomadaire</h3>
+          <ul>
+            {trainingSchedule.map((slot) => (
+              <li key={slot.day}>
+                <strong>{slot.day}</strong> — {slot.time} : {slot.focus}
+              </li>
+            ))}
+          </ul>
+        </article>
+        <article className="ysc-card">
+          <h3>Encadrement</h3>
+          <p>
+            Chaque séance inclut un échauffement structuré, un travail technique et une phase de
+            récupération. Les groupes sont limités pour assurer un suivi personnalisé.
+          </p>
+          <p>
+            Les séances privées sont possibles sur rendez-vous pour des objectifs spécifiques ou une
+            reprise progressive.
+          </p>
+        </article>
+      </div>
+    </div>
+  </>
+);
+
+// ─── Results Page ───────────────────────────────────────────────────────────
+
+export const ResultsPage = () => (
+  <>
+    <style>{scoped}</style>
+
+    <section className="ysc-page-hero">
+      <SectionLabel>Palmarès</SectionLabel>
+      <h1>Résultats &amp; palmarès</h1>
+      <p>Une progression constante portée par la rigueur et l'esprit d'équipe.</p>
+      <img src={championImg} alt="Athlètes du club récompensés" className="ysc-hero-img" />
+    </section>
+
+    <div className="ysc-page-section--alt">
+      <div className="ysc-page-section__inner">
+        <div className="ysc-page-section__header">
+          <h2>Moments clés</h2>
+          <p>Quelques repères récents qui illustrent la dynamique du club.</p>
+        </div>
+        <div className="ysc-cards-grid">
+          {resultsHighlights.map((result) => (
+            <article className="ysc-card" key={result.title}>
+              <h3>{result.title}</h3>
+              <p>{result.detail}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </>
+);
+
+// ─── Partners Page ──────────────────────────────────────────────────────────
+
+export const PartnersPage = () => (
+  <>
+    <style>{scoped}</style>
+
+    <section className="ysc-page-hero">
+      <SectionLabel>Réseau</SectionLabel>
+      <h1>Partenaires</h1>
+      <p>Ils soutiennent le Youth Sports Club et partagent notre vision éducative.</p>
+      <img src={galleryB} alt="Partenaires et membres du club" className="ysc-hero-img" />
+    </section>
+
+    <div className="ysc-page-section--alt">
+      <div className="ysc-page-section__inner">
+        <div className="ysc-page-section__header">
+          <h2>Nos collaborations</h2>
+          <p>Un réseau local engagé pour la jeunesse et le développement sportif.</p>
+        </div>
+        <div className="ysc-cards-grid">
+          {partners.map((partner) => (
+            <article className="ysc-card" key={partner.title}>
+              <h3>{partner.title}</h3>
+              <p>{partner.detail}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </>
+);

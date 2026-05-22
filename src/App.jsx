@@ -1,5 +1,5 @@
-import React from "react";
-import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom";
+import React, { useEffect } from "react";
+import { BrowserRouter as Router, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import Header from "./Components/Header";
 import Home from "./Components/Home";
 import About from "./Components/About";
@@ -23,8 +23,19 @@ const Layout = ({ children }) => (
   </div>
 );
 
+const ScrollToTop = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  return null;
+};
+
 const App = () => (
   <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+    <ScrollToTop />
     <Routes>
       <Route
         path="/"
