@@ -1,18 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import historyTeamImage from "../images/WhatsApp Image 2026-05-16 at 16.18.39.jpeg";
+import figCertifiedImage from "../images/WhatsApp Image 2026-05-16 at 16.12.14 (1).jpeg";
 
 /* ── données ── */
 const palmares = [
   { label: "Trophées de meilleur club", detail: "Classé 1er club de gymnastique au Togo depuis sa création" },
   { label: "Médailles individuelles", detail: "Nombreuses distinctions décernées à nos athlètes en compétition" },
   { label: "Culture d'excellence", detail: "Encadrement rigoureux axé sur la performance et la régularité" },
-];
-
-const valeurs = [
-  { title: "Discipline",      desc: "Chaque séance forge la rigueur et l'autodiscipline indispensables à la réussite sportive et personnelle." },
-  { title: "Confiance en soi", desc: "Le sport comme vecteur de développement personnel et de construction identitaire chez les jeunes." },
-  { title: "Persévérance",    desc: "Apprendre à dépasser ses limites, à rebondir après l'échec et à progresser continuellement." },
-  { title: "Inclusion",        desc: "Le sport comme outil d'éducation, d'intégration et de transformation sociale au Togo." },
 ];
 
 const axes = [
@@ -31,7 +26,12 @@ const axes = [
 ];
 
 const coaches = [
-  { title: "Certifiés FIG",       detail: "Fédération Internationale de Gymnastique" },
+  {
+    title: "Certifiés FIG",
+    detail: "Fédération Internationale de Gymnastique",
+    image: figCertifiedImage,
+    imageAlt: "Coachs certifiés FIG avec attestations de participation",
+  },
   { title: "Diplômés STAPS",       detail: "Sciences et Techniques des Activités Physiques et Sportives" },
   { title: "Sports de combat",     detail: "Spécialistes en boxe et préparation physique" },
   { title: "Préparation physique", detail: "Coaches en renforcement musculaire et fitness" },
@@ -151,6 +151,34 @@ const scoped = `
     font-size: 0.8rem;
     color: #8b592f;
     margin-top: 4px;
+  }
+
+  /* ── Intro with team image ── */
+  .about-intro-layout {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+  }
+  .about-intro-text {
+    font-size: 0.95rem;
+    color: #6c4622;
+    line-height: 1.8;
+  }
+  .about-team-image-wrap {
+    background: #fff;
+    border-radius: 14px;
+    padding: 0.75rem;
+    box-shadow: 0 8px 24px rgba(165,85,20,0.10);
+  }
+  .about-team-image {
+    display: block;
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+    max-height: 640px;
   }
 
   /* ── Timeline ── */
@@ -310,6 +338,14 @@ const scoped = `
     box-shadow: 0 8px 24px rgba(165,85,20,0.10);
     text-align: center;
   }
+  .about-coach-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 0.8rem;
+    border: 1px solid #f2cfac;
+  }
   .about-coach-avatar {
     width: 56px;
     height: 56px;
@@ -404,6 +440,8 @@ const scoped = `
   @media (max-width: 1120px) {
     .about-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .about-contact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .about-intro-layout { grid-template-columns: 1fr; }
+    .about-team-image { max-height: 520px; }
   }
   @media (max-width: 768px) {
     .about-hero { padding: 4.5rem 0.85rem 2.5rem; }
@@ -435,16 +473,22 @@ const About = () => {
             compétitions et en remportant de nombreux trophées.
           </p>
         </div>
-        <div className="wide">
-          <p style={{ fontSize: "0.95rem", color: "#6c4622", lineHeight: "1.8", maxWidth: "820px" }}>
-            Au-delà de la performance sportive, le Youth Sports Club
-            s&apos;inscrit dans une démarche sociale visant à favoriser
-            l&apos;accès au sport pour tous, notamment à travers des
-            dispositifs de bourses et d&apos;accompagnement des jeunes issus de
-            milieux modestes. Le club considère le sport comme un puissant
-            outil d&apos;éducation, d&apos;inclusion et de transformation
-            sociale.
+        <div className="about-intro-layout">
+          <p className="about-intro-text">
+            Au-delà de la performance sportive, le Youth Sports Club s&apos;inscrit dans une
+            démarche sociale visant à favoriser l&apos;accès au sport pour tous, notamment à
+            travers des dispositifs de bourses et d&apos;accompagnement des jeunes issus de milieux
+            modestes. Le club considère le sport comme un puissant outil d&apos;éducation,
+            d&apos;inclusion et de transformation sociale.
           </p>
+          <div className="about-team-image-wrap">
+            <img
+              src={historyTeamImage}
+              alt="Équipe du Youth Sports Club"
+              className="about-team-image"
+              loading="lazy"
+            />
+          </div>
         </div>
       </section>
 
@@ -485,45 +529,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* ══ MISSION & VALEURS ══ */}
-      <section className="section section-alt">
-        <div className="section-header">
-          <h2>Mission &amp; valeurs</h2>
-          <p>
-            Accompagner les jeunes dans leur développement physique, mental et
-            social. Le YSC ne forme pas uniquement des sportifs, mais participe
-            à la construction de jeunes responsables et ambitieux.
-          </p>
-        </div>
-        <div className="grid two-columns" style={{ marginBottom: "1.5rem" }}>
-          <div className="card" style={{ background: "linear-gradient(135deg,#07152d,#102a50)", color: "#fff" }}>
-            <h3 style={{ color: "#f8c15a", marginBottom: "0.5rem" }}>Notre vision</h3>
-            <p style={{ color: "#cedcf7", lineHeight: "1.7", fontSize: "0.92rem" }}>
-              Faire du Youth Sports Club un acteur majeur du développement
-              sportif au Togo et en Afrique, en formant des athlètes
-              performants et des jeunes épanouis, capables de rayonner
-              au-delà des frontières.
-            </p>
-          </div>
-          <div className="card" style={{ background: "linear-gradient(135deg,#b64f09,#ef7d22)", color: "#fff" }}>
-            <h3 style={{ color: "#fff8ef", marginBottom: "0.5rem" }}>Notre mission</h3>
-            <p style={{ color: "rgba(255,255,255,0.88)", lineHeight: "1.7", fontSize: "0.92rem" }}>
-              Offrir à chaque jeune, quel que soit son milieu, un cadre
-              d&apos;excellence sportive et humaine pour se dépasser, croire
-              en lui-même et construire son avenir avec ambition.
-            </p>
-          </div>
-        </div>
-        <div className="grid two-columns">
-          {valeurs.map((v) => (
-            <div className="about-valeur-card" key={v.title}>
-              <h3>{v.title}</h3>
-              <p>{v.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* ══ AXES ══ */}
       <section className="section">
         <div className="section-header">
@@ -558,6 +563,14 @@ const About = () => {
         <div className="grid two-columns">
           {coaches.map((c) => (
             <div className="about-coach-card" key={c.title}>
+              {c.image && (
+                <img
+                  src={c.image}
+                  alt={c.imageAlt || c.title}
+                  className="about-coach-image"
+                  loading="lazy"
+                />
+              )}
               <h3>{c.title}</h3>
               <p>{c.detail}</p>
             </div>

@@ -34,21 +34,6 @@ const disciplines = [
   },
 ];
 
-const coaches = [
-  {
-    title: "Certifiés FIG",
-    desc: "Entraîneurs certifiés par la Fédération Internationale de Gymnastique.",
-  },
-  {
-    title: "Diplômés STAPS",
-    desc: "Professionnels en Sciences et Techniques des Activités Physiques et Sportives.",
-  },
-  {
-    title: "Préparation physique",
-    desc: "Spécialistes en préparation physique et sports de combat.",
-  },
-];
-
 const horaires = [
   { who: "12 ans et plus", time: "08h – 10h" },
   { who: "11 ans et moins", time: "10h – 12h" },
@@ -270,29 +255,6 @@ const scoped = `
     letter-spacing: 0.06em;
   }
   .ysc-tarif-link:hover { text-decoration: underline; }
-
-  /* Coach cards */
-  .ysc-coach-card {
-    background: #fff;
-    border-radius: 14px;
-    padding: 1.5rem 1.25rem;
-    box-shadow: 0 8px 24px rgba(13,45,84,0.12);
-    text-align: center;
-  }
-  .ysc-coach-avatar {
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    background: #eaf2fc;
-    border: 2px solid #c9dcf2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 0.85rem;
-    font-size: 1.4rem;
-  }
-  .ysc-coach-card h3 { font-size: 0.95rem; font-weight: 700; color: #1f4f8a; margin-bottom: 4px; }
-  .ysc-coach-card p  { font-size: 0.82rem; color: #355274; line-height: 1.5; margin: 0; }
 
   /* Social */
   .ysc-social-inner {
@@ -562,37 +524,6 @@ const Home = () => {
               </tbody>
             </table>
           </div>
-        </div>
-      </section>
-
-      {/* ══ MISSION ══ */}
-      <section className="section">
-        <div className="section-header">
-          <h2>Notre mission</h2>
-          <p>
-            Le YSC accompagne les jeunes dans leur développement physique, mental et social. Il ne
-            forme pas uniquement des sportifs, mais participe à la construction de jeunes
-            responsables et ambitieux.
-          </p>
-        </div>
-      </section>
-
-      {/* ══ ENCADREMENT ══ */}
-      <section className="section section-alt">
-        <div className="section-header">
-          <h2>Un encadrement qualifié</h2>
-          <p>
-            Chaque séance est animée par des professionnels certifiés et adaptée à l&apos;âge et au
-            niveau des participants.
-          </p>
-        </div>
-        <div className="grid three-columns">
-          {coaches.map((c) => (
-            <div className="ysc-coach-card" key={c.title}>
-              <h3>{c.title}</h3>
-              <p>{c.desc}</p>
-            </div>
-          ))}
         </div>
       </section>
 
