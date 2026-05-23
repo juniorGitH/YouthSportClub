@@ -40157,6 +40157,12 @@ var _whatsAppImage20260516At174630Jpeg = require("../images/WhatsApp Image 2026-
 var _whatsAppImage20260516At174630JpegDefault = parcelHelpers.interopDefault(_whatsAppImage20260516At174630Jpeg);
 var _whatsAppImage20260516At174633Jpeg = require("../images/WhatsApp Image 2026-05-16 at 17.46.33.jpeg");
 var _whatsAppImage20260516At174633JpegDefault = parcelHelpers.interopDefault(_whatsAppImage20260516At174633Jpeg);
+var _whatsAppImage20260522At150655Jpeg = require("../images/WhatsApp Image 2026-05-22 at 15.06.55.jpeg");
+var _whatsAppImage20260522At150655JpegDefault = parcelHelpers.interopDefault(_whatsAppImage20260522At150655Jpeg);
+var _whatsAppImage20260522At150750Jpeg = require("../images/WhatsApp Image 2026-05-22 at 15.07.50.jpeg");
+var _whatsAppImage20260522At150750JpegDefault = parcelHelpers.interopDefault(_whatsAppImage20260522At150750Jpeg);
+var _whatsAppImage20260522At1520211Jpeg = require("../images/WhatsApp Image 2026-05-22 at 15.20.21 (1).jpeg");
+var _whatsAppImage20260522At1520211JpegDefault = parcelHelpers.interopDefault(_whatsAppImage20260522At1520211Jpeg);
 var _s = $RefreshSig$();
 // ─── Sub-components ─────────────────────────────────────────────────────────
 const Badge = ({ children  })=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -40164,7 +40170,7 @@ const Badge = ({ children  })=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", 
         children: children
     }, void 0, false, {
         fileName: "src/Components/Pages.jsx",
-        lineNumber: 22,
+        lineNumber: 25,
         columnNumber: 33
     }, undefined);
 _c = Badge;
@@ -40173,7 +40179,7 @@ const SectionLabel = ({ children  })=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("
         children: children
     }, void 0, false, {
         fileName: "src/Components/Pages.jsx",
-        lineNumber: 24,
+        lineNumber: 27,
         columnNumber: 40
     }, undefined);
 _c1 = SectionLabel;
@@ -40186,20 +40192,20 @@ const FeatureRow = ({ icon , text  })=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(
                 children: icon
             }, void 0, false, {
                 fileName: "src/Components/Pages.jsx",
-                lineNumber: 28,
+                lineNumber: 31,
                 columnNumber: 5
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                 children: text
             }, void 0, false, {
                 fileName: "src/Components/Pages.jsx",
-                lineNumber: 31,
+                lineNumber: 34,
                 columnNumber: 5
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/Components/Pages.jsx",
-        lineNumber: 27,
+        lineNumber: 30,
         columnNumber: 3
     }, undefined);
 _c2 = FeatureRow;
@@ -40383,6 +40389,23 @@ const scoped = `
     box-shadow: var(--ysc-shadow);
   }
 
+  .ysc-form-block {
+    margin-bottom: 2rem;
+  }
+
+  .ysc-form-section-title {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--ysc-primary-dark);
+    margin-bottom: 0.75rem;
+  }
+
+  .ysc-form-hint {
+    font-size: 0.85rem;
+    color: var(--ysc-text-light);
+    margin-bottom: 1rem;
+  }
+
   .ysc-form-grid {
     display: flex;
     flex-direction: column;
@@ -40460,8 +40483,9 @@ const scoped = `
 
   .ysc-radio-group {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
     margin-top: 0.5rem;
+    flex-wrap: wrap;
   }
 
   .ysc-radio-item {
@@ -41048,49 +41072,24 @@ const eventsGallery = [
         alt: "D\xe9monstration de gymnastique du Youth Sports Club"
     },
     {
+        src: (0, _whatsAppImage20260522At150655JpegDefault.default),
+        alt: "Entra\xeenement de gymnastique r\xe9cent"
+    },
+    {
+        src: (0, _whatsAppImage20260522At150750JpegDefault.default),
+        alt: "S\xe9ance de boxe \xe9ducative"
+    },
+    {
+        src: (0, _whatsAppImage20260522At1520211JpegDefault.default),
+        alt: "Pr\xe9paration physique et stretching"
+    },
+    {
         src: (0, _4729025186011116428682473421823822486160063NJpgDefault.default),
         alt: "S\xe9ance collective du Youth Sports Club"
     },
     {
         src: (0, _whatsAppImage20260516At174630JpegDefault.default),
         alt: "Photo de groupe des athl\xe8tes du club"
-    }, 
-];
-const trainingPrograms = [
-    {
-        title: "Gymnastique",
-        level: "D\xe9butant \xe0 avanc\xe9",
-        ages: "6-16 ans",
-        description: "Souplesse, coordination, agr\xe8s et pr\xe9paration physique progressive."
-    },
-    {
-        title: "Boxe \xe9ducative",
-        level: "Initiation & perfectionnement",
-        ages: "10 ans et +",
-        description: "Travail technique, cardio et confiance en soi dans un cadre s\xe9curis\xe9."
-    },
-    {
-        title: "Fitness & cross training",
-        level: "Tous niveaux",
-        ages: "Adolescents & adultes",
-        description: "Renforcement musculaire, mobilit\xe9 et cardio pour une forme compl\xe8te."
-    }, 
-];
-const trainingSchedule = [
-    {
-        day: "Mercredi",
-        time: "14h00 - 18h00",
-        focus: "Gymnastique & boxe"
-    },
-    {
-        day: "Samedi",
-        time: "08h00 - 12h00",
-        focus: "Gymnastique enfants & fitness adultes"
-    },
-    {
-        day: "Dimanche",
-        time: "08h30 - 11h30",
-        focus: "Renforcement & s\xe9ances priv\xe9es"
     }, 
 ];
 const resultsHighlights = [
@@ -41123,73 +41122,146 @@ const partners = [
 ];
 const JoinClubPage = ()=>{
     _s();
-    const [registrationType, setRegistrationType] = (0, _react.useState)("self"); // self | child
+    const defaultDate = new Date().toISOString().slice(0, 10);
     const [formData, setFormData] = (0, _react.useState)({
-        name: "",
+        athleteLastName: "",
+        athleteFirstName: "",
         dob: "",
+        sex: "",
+        nationality: "",
+        school: "",
+        classLevel: "",
+        address: "",
         parentName: "",
+        parentRelation: "",
         parentPhone: "",
+        parentEmail: "",
+        level: "",
+        ageCategory: "",
         discipline: "",
-        phone: "",
-        email: "",
-        objective: "",
-        objectiveDetails: ""
+        scholarship: "",
+        scholarshipType: "",
+        paymentMode: "",
+        agreementName: "",
+        agreementDate: defaultDate,
+        signature: ""
     });
+    const [isSubmitting, setIsSubmitting] = (0, _react.useState)(false);
+    const [submissionMessage, setSubmissionMessage] = (0, _react.useState)("");
     const handleInputChange = (e)=>{
-        const { id , value  } = e.target;
-        // Extract property name from id (e.g., 'f-name' -> 'name')
-        const field = id.replace("f-", "").replace("-", "P").replace("pName", "parentName").replace("pPhone", "parentPhone");
-        // Mapping manual fixes for IDs to state keys
-        const idMap = {
-            "f-name": "name",
-            "f-dob": "dob",
-            "f-parent-name": "parentName",
-            "f-parent-phone": "parentPhone",
-            "f-discipline": "discipline",
-            "f-phone": "phone",
-            "f-email": "email",
-            "f-objective": "objective",
-            "f-objective-details": "objectiveDetails"
-        };
-        setFormData((prev)=>({
+        const { name , value  } = e.target;
+        setFormData((prev)=>{
+            const next = {
                 ...prev,
-                [idMap[id] || field]: value
-            }));
+                [name]: value
+            };
+            if (name === "scholarship" && value !== "yes") next.scholarshipType = "";
+            if (name === "parentName" && !prev.agreementName) next.agreementName = value;
+            return next;
+        });
     };
-    const getSportsCategory = (dob)=>{
+    const getAgeCategory = (dob)=>{
         if (!dob) return "";
         const birthYear = new Date(dob).getFullYear();
-        const currentYear = 2026;
-        const age = currentYear - birthYear;
-        if (age < 6) return "Baby Gym";
-        if (age <= 7) return "Eveil";
-        if (age <= 9) return "Poussin";
-        if (age <= 11) return "Benjamin";
-        if (age <= 13) return "Minime";
-        if (age <= 15) return "Cadet";
-        if (age <= 17) return "Junior";
-        return "Senior";
+        const age = 2026 - birthYear;
+        if (age <= 6) return "4-6";
+        if (age <= 9) return "7-9";
+        if (age <= 11) return "10-11";
+        if (age <= 14) return "12-14";
+        if (age <= 17) return "15-17";
+        return "18+";
     };
-    const category = getSportsCategory(formData.dob);
-    const handleSubmit = (e)=>{
+    (0, _react.useEffect)(()=>{
+        const autoCategory = getAgeCategory(formData.dob);
+        if (autoCategory && !formData.ageCategory) setFormData((prev)=>({
+                ...prev,
+                ageCategory: autoCategory
+            }));
+    }, [
+        formData.dob,
+        formData.ageCategory
+    ]);
+    const formatDate = (value)=>{
+        if (!value) return "";
+        return value.split("-").reverse().join("/");
+    };
+    const handleSubmit = async (e)=>{
         e.preventDefault();
-        const { name , dob , parentName , parentPhone , discipline , phone , email , objective  } = formData;
-        // Format date from YYYY-MM-DD to DD/MM/YYYY
-        const formattedDob = dob ? dob.split("-").reverse().join("/") : "";
-        let message = `Bonjour YSC,\n\nNouvelle demande d'inscription :\n\n`;
-        message += `Nom : ${name}\n`;
-        message += `Date de naissance : ${formattedDob}\n`;
-        if (registrationType === "child") {
-            message += `Parent : ${parentName}\n`;
-            message += `Téléphone parent : ${parentPhone}\n`;
+        setIsSubmitting(true);
+        setSubmissionMessage("");
+        try {
+            const levelLabel = {
+                debutant: "D\xe9butant",
+                "1an": "1 an",
+                "2ans": "2 ans",
+                "3ansplus": "3 ans et +"
+            }[formData.level];
+            const ageLabel = {
+                "4-6": "4–6 (\xc9veil)",
+                "7-9": "7–9 (Benjamin)",
+                "10-11": "10–11 (Minime)",
+                "12-14": "12–14 (Cadet)",
+                "15-17": "15–17 (Junior)",
+                "18+": "18+ (Senior)"
+            }[formData.ageCategory];
+            const scholarshipLabel = formData.scholarship === "yes" ? "Oui" : formData.scholarship === "no" ? "Non" : "";
+            const scholarshipTypeLabel = {
+                bourse50: "Bourse 50 % sur la mensualit\xe9",
+                "entrainement-gratuit": "Entra\xeenement gratuit"
+            }[formData.scholarshipType];
+            const paymentLabel = {
+                seance: "Paiement par s\xe9ance",
+                mensuel: "Paiement mensuel",
+                forfait: "Forfait saison compl\xe8te"
+            }[formData.paymentMode];
+            const safeValue = (value)=>value ? value : "-";
+            const sexLabel = formData.sex === "M" ? "Masculin" : formData.sex === "F" ? "F\xe9minin" : "";
+            const whatsappMessage = [
+                "Bonjour Youth Sports Club,",
+                "",
+                "Nouvelle demande d'inscription 2026",
+                `Nom: ${safeValue(formData.athleteLastName)}`,
+                `Prénoms: ${safeValue(formData.athleteFirstName)}`,
+                `Date de naissance: ${safeValue(formatDate(formData.dob))}`,
+                `Sexe: ${safeValue(sexLabel)}`,
+                `Nationalité: ${safeValue(formData.nationality)}`,
+                `Établissement scolaire: ${safeValue(formData.school)}`,
+                `Classe: ${safeValue(formData.classLevel)}`,
+                `Adresse: ${safeValue(formData.address)}`,
+                "",
+                "Parent / tuteur l\xe9gal",
+                `Nom et prénoms: ${safeValue(formData.parentName)}`,
+                `Lien avec l'enfant: ${safeValue(formData.parentRelation)}`,
+                `Téléphone: ${safeValue(formData.parentPhone)}`,
+                `Email: ${safeValue(formData.parentEmail)}`,
+                "",
+                "Informations sportives",
+                `Niveau / ancienneté: ${safeValue(levelLabel)}`,
+                `Catégorie d'âge: ${safeValue(ageLabel)}`,
+                `Discipline: ${safeValue(formData.discipline)}`,
+                "",
+                "Programme YSC",
+                `Athlète boursier: ${safeValue(scholarshipLabel)}`,
+                `Catégorie de bourse: ${safeValue(scholarshipTypeLabel)}`,
+                "",
+                "Paiement",
+                `Mode choisi: ${safeValue(paymentLabel)}`,
+                "",
+                "Engagement financier",
+                `Nom et prénoms: ${safeValue(formData.agreementName || formData.parentName)}`,
+                `Date: ${safeValue(formatDate(formData.agreementDate))}`,
+                `Signature: ${safeValue(formData.signature || formData.agreementName)}`, 
+            ].join("\n");
+            const whatsappNumber = "+22891534885";
+            const whatsappDigits = whatsappNumber.replace(/\D/g, "");
+            const whatsappUrl = `https://wa.me/${whatsappDigits}?text=${encodeURIComponent(whatsappMessage)}`;
+            window.open(whatsappUrl, "_blank");
+            setSubmissionMessage("Demande envoy\xe9e sur WhatsApp.");
+        } catch (error) {
+            setSubmissionMessage("❌ Impossible d'ouvrir WhatsApp. R\xe9essayez ou contactez le club.");
+        } finally{
+            setIsSubmitting(false);
         }
-        message += `Discipline : ${discipline}\n`;
-        message += `Téléphone : ${phone}\n`;
-        message += `Email : ${email || "Non renseign\xe9"}\n`;
-        message += `Objectif : ${objective}\n\n`;
-        message += `Merci.`;
-        const whatsappUrl = `https://wa.me/22891534885?text=${encodeURIComponent(message)}`;
-        window.open(whatsappUrl, "_blank");
     };
     const scrollToForm = (e)=>{
         e.preventDefault();
@@ -41204,7 +41276,7 @@ const JoinClubPage = ()=>{
                 children: scoped
             }, void 0, false, {
                 fileName: "src/Components/Pages.jsx",
-                lineNumber: 1049,
+                lineNumber: 1119,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
@@ -41219,7 +41291,7 @@ const JoinClubPage = ()=>{
                                 className: "ysc-join-hero__img"
                             }, void 0, false, {
                                 fileName: "src/Components/Pages.jsx",
-                                lineNumber: 1054,
+                                lineNumber: 1124,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -41227,7 +41299,7 @@ const JoinClubPage = ()=>{
                                 children: " +100 membres actifs"
                             }, void 0, false, {
                                 fileName: "src/Components/Pages.jsx",
-                                lineNumber: 1060,
+                                lineNumber: 1130,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -41235,13 +41307,13 @@ const JoinClubPage = ()=>{
                                 children: " Suivi personnalis\xe9"
                             }, void 0, false, {
                                 fileName: "src/Components/Pages.jsx",
-                                lineNumber: 1061,
+                                lineNumber: 1131,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/Components/Pages.jsx",
-                        lineNumber: 1053,
+                        lineNumber: 1123,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -41251,7 +41323,7 @@ const JoinClubPage = ()=>{
                                 children: "Inscriptions"
                             }, void 0, false, {
                                 fileName: "src/Components/Pages.jsx",
-                                lineNumber: 1066,
+                                lineNumber: 1136,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
@@ -41260,20 +41332,20 @@ const JoinClubPage = ()=>{
                                     "Rejoignez le",
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                         fileName: "src/Components/Pages.jsx",
-                                        lineNumber: 1069,
+                                        lineNumber: 1139,
                                         columnNumber: 13
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("em", {
                                         children: "Youth Sports Club"
                                     }, void 0, false, {
                                         fileName: "src/Components/Pages.jsx",
-                                        lineNumber: 1070,
+                                        lineNumber: 1140,
                                         columnNumber: 13
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/Components/Pages.jsx",
-                                lineNumber: 1067,
+                                lineNumber: 1137,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -41281,7 +41353,7 @@ const JoinClubPage = ()=>{
                                 children: "Recevez un encadrement sportif d'excellence — un suivi p\xe9dagogique, s\xe9curis\xe9 et adapt\xe9 \xe0 tous les niveaux."
                             }, void 0, false, {
                                 fileName: "src/Components/Pages.jsx",
-                                lineNumber: 1072,
+                                lineNumber: 1142,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -41291,7 +41363,7 @@ const JoinClubPage = ()=>{
                                         children: "Encadrement Qualifi\xe9"
                                     }, void 0, false, {
                                         fileName: "src/Components/Pages.jsx",
-                                        lineNumber: 1079,
+                                        lineNumber: 1149,
                                         columnNumber: 13
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -41299,13 +41371,13 @@ const JoinClubPage = ()=>{
                                         children: "Licence STAPS • Dipl\xf4me FIG Niveau 1 • Certifications boxe \xe9ducative, fitness et cross-training"
                                     }, void 0, false, {
                                         fileName: "src/Components/Pages.jsx",
-                                        lineNumber: 1080,
+                                        lineNumber: 1150,
                                         columnNumber: 13
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/Components/Pages.jsx",
-                                lineNumber: 1078,
+                                lineNumber: 1148,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
@@ -41319,7 +41391,7 @@ const JoinClubPage = ()=>{
                                         text: "Programme sur mesure"
                                     }, void 0, false, {
                                         fileName: "src/Components/Pages.jsx",
-                                        lineNumber: 1088,
+                                        lineNumber: 1158,
                                         columnNumber: 13
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(FeatureRow, {
@@ -41329,7 +41401,7 @@ const JoinClubPage = ()=>{
                                         text: "Progression mesurable"
                                     }, void 0, false, {
                                         fileName: "src/Components/Pages.jsx",
-                                        lineNumber: 1092,
+                                        lineNumber: 1162,
                                         columnNumber: 13
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(FeatureRow, {
@@ -41339,25 +41411,25 @@ const JoinClubPage = ()=>{
                                         text: "Communaut\xe9 bienveillante"
                                     }, void 0, false, {
                                         fileName: "src/Components/Pages.jsx",
-                                        lineNumber: 1096,
+                                        lineNumber: 1166,
                                         columnNumber: 13
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/Components/Pages.jsx",
-                                lineNumber: 1087,
+                                lineNumber: 1157,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/Components/Pages.jsx",
-                        lineNumber: 1065,
+                        lineNumber: 1135,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/Components/Pages.jsx",
-                lineNumber: 1051,
+                lineNumber: 1121,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
@@ -41374,7 +41446,7 @@ const JoinClubPage = ()=>{
                                     children: "Inscription gratuite"
                                 }, void 0, false, {
                                     fileName: "src/Components/Pages.jsx",
-                                    lineNumber: 1105,
+                                    lineNumber: 1175,
                                     columnNumber: 13
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
@@ -41383,13 +41455,13 @@ const JoinClubPage = ()=>{
                                     children: "Rejoindre le club"
                                 }, void 0, false, {
                                     fileName: "src/Components/Pages.jsx",
-                                    lineNumber: 1106,
+                                    lineNumber: 1176,
                                     columnNumber: 13
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/Components/Pages.jsx",
-                            lineNumber: 1104,
+                            lineNumber: 1174,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -41397,307 +41469,1039 @@ const JoinClubPage = ()=>{
                             onSubmit: handleSubmit,
                             children: [
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "ysc-form-grid",
+                                    className: "ysc-form-block",
                                     children: [
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                            className: "ysc-field",
-                                            children: [
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                                    htmlFor: "f-name",
-                                                    children: registrationType === "child" ? "Nom complet de l'enfant" : "Nom complet"
-                                                }, void 0, false, {
-                                                    fileName: "src/Components/Pages.jsx",
-                                                    lineNumber: 1114,
-                                                    columnNumber: 17
-                                                }, undefined),
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                                    id: "f-name",
-                                                    type: "text",
-                                                    placeholder: "Ex : Kofi Mensah",
-                                                    value: formData.name,
-                                                    onChange: handleInputChange,
-                                                    required: true
-                                                }, void 0, false, {
-                                                    fileName: "src/Components/Pages.jsx",
-                                                    lineNumber: 1117,
-                                                    columnNumber: 17
-                                                }, undefined)
-                                            ]
-                                        }, void 0, true, {
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                            className: "ysc-form-section-title",
+                                            children: "1. Informations du gymnaste"
+                                        }, void 0, false, {
                                             fileName: "src/Components/Pages.jsx",
-                                            lineNumber: 1113,
+                                            lineNumber: 1183,
                                             columnNumber: 15
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                            className: "ysc-field",
-                                            children: [
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                                    htmlFor: "f-dob",
-                                                    children: "Date de naissance"
-                                                }, void 0, false, {
-                                                    fileName: "src/Components/Pages.jsx",
-                                                    lineNumber: 1128,
-                                                    columnNumber: 17
-                                                }, undefined),
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                                    id: "f-dob",
-                                                    type: "date",
-                                                    required: true,
-                                                    value: formData.dob,
-                                                    onChange: handleInputChange
-                                                }, void 0, false, {
-                                                    fileName: "src/Components/Pages.jsx",
-                                                    lineNumber: 1129,
-                                                    columnNumber: 17
-                                                }, undefined),
-                                                category && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                                    className: "ysc-category-label",
-                                                    children: [
-                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactFontawesome.FontAwesomeIcon), {
-                                                            icon: (0, _freeSolidSvgIcons.faUsers),
-                                                            size: "xs"
-                                                        }, void 0, false, {
-                                                            fileName: "src/Components/Pages.jsx",
-                                                            lineNumber: 1138,
-                                                            columnNumber: 21
-                                                        }, undefined),
-                                                        " Cat\xe9gorie : ",
-                                                        category
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "src/Components/Pages.jsx",
-                                                    lineNumber: 1137,
-                                                    columnNumber: 19
-                                                }, undefined)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "src/Components/Pages.jsx",
-                                            lineNumber: 1127,
-                                            columnNumber: 15
-                                        }, undefined),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                            className: "ysc-field ysc-field--full",
-                                            children: [
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                                    htmlFor: "f-discipline",
-                                                    children: "Discipline souhait\xe9e"
-                                                }, void 0, false, {
-                                                    fileName: "src/Components/Pages.jsx",
-                                                    lineNumber: 1144,
-                                                    columnNumber: 17
-                                                }, undefined),
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
-                                                    id: "f-discipline",
-                                                    value: formData.discipline,
-                                                    onChange: handleInputChange,
-                                                    required: true,
-                                                    children: [
-                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                                                            value: "",
-                                                            children: "S\xe9lectionnez une discipline"
-                                                        }, void 0, false, {
-                                                            fileName: "src/Components/Pages.jsx",
-                                                            lineNumber: 1151,
-                                                            columnNumber: 19
-                                                        }, undefined),
-                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                                                            value: "Gymnastique",
-                                                            children: "Gymnastique"
-                                                        }, void 0, false, {
-                                                            fileName: "src/Components/Pages.jsx",
-                                                            lineNumber: 1152,
-                                                            columnNumber: 19
-                                                        }, undefined),
-                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                                                            value: "Boxe",
-                                                            children: "Boxe"
-                                                        }, void 0, false, {
-                                                            fileName: "src/Components/Pages.jsx",
-                                                            lineNumber: 1153,
-                                                            columnNumber: 19
-                                                        }, undefined),
-                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                                                            value: "Fitness",
-                                                            children: "Fitness"
-                                                        }, void 0, false, {
-                                                            fileName: "src/Components/Pages.jsx",
-                                                            lineNumber: 1154,
-                                                            columnNumber: 19
-                                                        }, undefined)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "src/Components/Pages.jsx",
-                                                    lineNumber: 1145,
-                                                    columnNumber: 17
-                                                }, undefined)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "src/Components/Pages.jsx",
-                                            lineNumber: 1143,
-                                            columnNumber: 15
-                                        }, undefined),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                            className: "ysc-field",
-                                            children: [
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                                    htmlFor: "f-phone",
-                                                    children: "T\xe9l\xe9phone (WhatsApp)"
-                                                }, void 0, false, {
-                                                    fileName: "src/Components/Pages.jsx",
-                                                    lineNumber: 1159,
-                                                    columnNumber: 17
-                                                }, undefined),
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                                    id: "f-phone",
-                                                    type: "tel",
-                                                    placeholder: "+228 90 00 00 00",
-                                                    value: formData.phone,
-                                                    onChange: handleInputChange,
-                                                    required: true
-                                                }, void 0, false, {
-                                                    fileName: "src/Components/Pages.jsx",
-                                                    lineNumber: 1160,
-                                                    columnNumber: 17
-                                                }, undefined)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "src/Components/Pages.jsx",
-                                            lineNumber: 1158,
-                                            columnNumber: 15
-                                        }, undefined),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                            className: "ysc-field ysc-field--full",
-                                            children: [
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                                    children: "Vous inscrivez :"
-                                                }, void 0, false, {
-                                                    fileName: "src/Components/Pages.jsx",
-                                                    lineNumber: 1171,
-                                                    columnNumber: 17
-                                                }, undefined),
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                                    className: "ysc-radio-group",
-                                                    children: [
-                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                                            className: "ysc-radio-item",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                                                    type: "radio",
-                                                                    name: "registrationType",
-                                                                    value: "self",
-                                                                    checked: registrationType === "self",
-                                                                    onChange: (e)=>setRegistrationType(e.target.value)
-                                                                }, void 0, false, {
-                                                                    fileName: "src/Components/Pages.jsx",
-                                                                    lineNumber: 1174,
-                                                                    columnNumber: 21
-                                                                }, undefined),
-                                                                "Vous-m\xeame"
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "src/Components/Pages.jsx",
-                                                            lineNumber: 1173,
-                                                            columnNumber: 19
-                                                        }, undefined),
-                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                                            className: "ysc-radio-item",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                                                    type: "radio",
-                                                                    name: "registrationType",
-                                                                    value: "child",
-                                                                    checked: registrationType === "child",
-                                                                    onChange: (e)=>setRegistrationType(e.target.value)
-                                                                }, void 0, false, {
-                                                                    fileName: "src/Components/Pages.jsx",
-                                                                    lineNumber: 1184,
-                                                                    columnNumber: 21
-                                                                }, undefined),
-                                                                "Votre enfant"
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "src/Components/Pages.jsx",
-                                                            lineNumber: 1183,
-                                                            columnNumber: 19
-                                                        }, undefined)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "src/Components/Pages.jsx",
-                                                    lineNumber: 1172,
-                                                    columnNumber: 17
-                                                }, undefined)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "src/Components/Pages.jsx",
-                                            lineNumber: 1170,
-                                            columnNumber: 15
-                                        }, undefined),
-                                        registrationType === "child" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                                            className: "ysc-form-grid",
                                             children: [
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                                     className: "ysc-field",
                                                     children: [
                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                                            htmlFor: "f-parent-name",
-                                                            children: "Nom du parent"
+                                                            htmlFor: "athleteLastName",
+                                                            children: "Nom"
                                                         }, void 0, false, {
                                                             fileName: "src/Components/Pages.jsx",
-                                                            lineNumber: 1199,
-                                                            columnNumber: 21
+                                                            lineNumber: 1186,
+                                                            columnNumber: 19
                                                         }, undefined),
                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                                            id: "f-parent-name",
+                                                            id: "athleteLastName",
+                                                            name: "athleteLastName",
                                                             type: "text",
-                                                            placeholder: "Nom du responsable",
+                                                            value: formData.athleteLastName,
+                                                            onChange: handleInputChange,
+                                                            required: true
+                                                        }, void 0, false, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1187,
+                                                            columnNumber: 19
+                                                        }, undefined)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "src/Components/Pages.jsx",
+                                                    lineNumber: 1185,
+                                                    columnNumber: 17
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                    className: "ysc-field",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                                            htmlFor: "athleteFirstName",
+                                                            children: "Pr\xe9noms"
+                                                        }, void 0, false, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1197,
+                                                            columnNumber: 19
+                                                        }, undefined),
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                            id: "athleteFirstName",
+                                                            name: "athleteFirstName",
+                                                            type: "text",
+                                                            value: formData.athleteFirstName,
+                                                            onChange: handleInputChange,
+                                                            required: true
+                                                        }, void 0, false, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1198,
+                                                            columnNumber: 19
+                                                        }, undefined)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "src/Components/Pages.jsx",
+                                                    lineNumber: 1196,
+                                                    columnNumber: 17
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                    className: "ysc-field",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                                            htmlFor: "dob",
+                                                            children: "Date de naissance"
+                                                        }, void 0, false, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1208,
+                                                            columnNumber: 19
+                                                        }, undefined),
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                            id: "dob",
+                                                            name: "dob",
+                                                            type: "date",
+                                                            value: formData.dob,
+                                                            onChange: handleInputChange,
+                                                            required: true
+                                                        }, void 0, false, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1209,
+                                                            columnNumber: 19
+                                                        }, undefined)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "src/Components/Pages.jsx",
+                                                    lineNumber: 1207,
+                                                    columnNumber: 17
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                    className: "ysc-field",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                                            children: "Sexe"
+                                                        }, void 0, false, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1219,
+                                                            columnNumber: 19
+                                                        }, undefined),
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                            className: "ysc-radio-group",
+                                                            children: [
+                                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                                                    className: "ysc-radio-item",
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                                            type: "radio",
+                                                                            name: "sex",
+                                                                            value: "M",
+                                                                            checked: formData.sex === "M",
+                                                                            onChange: handleInputChange,
+                                                                            required: true
+                                                                        }, void 0, false, {
+                                                                            fileName: "src/Components/Pages.jsx",
+                                                                            lineNumber: 1222,
+                                                                            columnNumber: 23
+                                                                        }, undefined),
+                                                                        "M"
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "src/Components/Pages.jsx",
+                                                                    lineNumber: 1221,
+                                                                    columnNumber: 21
+                                                                }, undefined),
+                                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                                                    className: "ysc-radio-item",
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                                            type: "radio",
+                                                                            name: "sex",
+                                                                            value: "F",
+                                                                            checked: formData.sex === "F",
+                                                                            onChange: handleInputChange,
+                                                                            required: true
+                                                                        }, void 0, false, {
+                                                                            fileName: "src/Components/Pages.jsx",
+                                                                            lineNumber: 1233,
+                                                                            columnNumber: 23
+                                                                        }, undefined),
+                                                                        "F"
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "src/Components/Pages.jsx",
+                                                                    lineNumber: 1232,
+                                                                    columnNumber: 21
+                                                                }, undefined)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1220,
+                                                            columnNumber: 19
+                                                        }, undefined)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "src/Components/Pages.jsx",
+                                                    lineNumber: 1218,
+                                                    columnNumber: 17
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                    className: "ysc-field",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                                            htmlFor: "nationality",
+                                                            children: "Nationalit\xe9"
+                                                        }, void 0, false, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1246,
+                                                            columnNumber: 19
+                                                        }, undefined),
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                            id: "nationality",
+                                                            name: "nationality",
+                                                            type: "text",
+                                                            value: formData.nationality,
+                                                            onChange: handleInputChange
+                                                        }, void 0, false, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1247,
+                                                            columnNumber: 19
+                                                        }, undefined)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "src/Components/Pages.jsx",
+                                                    lineNumber: 1245,
+                                                    columnNumber: 17
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                    className: "ysc-field",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                                            htmlFor: "school",
+                                                            children: "\xc9tablissement scolaire"
+                                                        }, void 0, false, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1256,
+                                                            columnNumber: 19
+                                                        }, undefined),
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                            id: "school",
+                                                            name: "school",
+                                                            type: "text",
+                                                            value: formData.school,
+                                                            onChange: handleInputChange
+                                                        }, void 0, false, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1257,
+                                                            columnNumber: 19
+                                                        }, undefined)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "src/Components/Pages.jsx",
+                                                    lineNumber: 1255,
+                                                    columnNumber: 17
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                    className: "ysc-field",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                                            htmlFor: "classLevel",
+                                                            children: "Classe"
+                                                        }, void 0, false, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1266,
+                                                            columnNumber: 19
+                                                        }, undefined),
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                            id: "classLevel",
+                                                            name: "classLevel",
+                                                            type: "text",
+                                                            value: formData.classLevel,
+                                                            onChange: handleInputChange
+                                                        }, void 0, false, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1267,
+                                                            columnNumber: 19
+                                                        }, undefined)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "src/Components/Pages.jsx",
+                                                    lineNumber: 1265,
+                                                    columnNumber: 17
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                    className: "ysc-field",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                                            htmlFor: "address",
+                                                            children: "Adresse compl\xe8te"
+                                                        }, void 0, false, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1276,
+                                                            columnNumber: 19
+                                                        }, undefined),
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("textarea", {
+                                                            id: "address",
+                                                            name: "address",
+                                                            value: formData.address,
+                                                            onChange: handleInputChange,
+                                                            rows: 3
+                                                        }, void 0, false, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1277,
+                                                            columnNumber: 19
+                                                        }, undefined)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "src/Components/Pages.jsx",
+                                                    lineNumber: 1275,
+                                                    columnNumber: 17
+                                                }, undefined)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/Components/Pages.jsx",
+                                            lineNumber: 1184,
+                                            columnNumber: 15
+                                        }, undefined)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/Components/Pages.jsx",
+                                    lineNumber: 1182,
+                                    columnNumber: 13
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "ysc-form-block",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                            className: "ysc-form-section-title",
+                                            children: "2. Coordonn\xe9es du parent / tuteur l\xe9gal"
+                                        }, void 0, false, {
+                                            fileName: "src/Components/Pages.jsx",
+                                            lineNumber: 1289,
+                                            columnNumber: 15
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                            className: "ysc-form-grid",
+                                            children: [
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                    className: "ysc-field",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                                            htmlFor: "parentName",
+                                                            children: "Nom & Pr\xe9noms"
+                                                        }, void 0, false, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1292,
+                                                            columnNumber: 19
+                                                        }, undefined),
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                            id: "parentName",
+                                                            name: "parentName",
+                                                            type: "text",
                                                             value: formData.parentName,
                                                             onChange: handleInputChange,
                                                             required: true
                                                         }, void 0, false, {
                                                             fileName: "src/Components/Pages.jsx",
-                                                            lineNumber: 1200,
-                                                            columnNumber: 21
+                                                            lineNumber: 1293,
+                                                            columnNumber: 19
                                                         }, undefined)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "src/Components/Pages.jsx",
-                                                    lineNumber: 1198,
-                                                    columnNumber: 19
+                                                    lineNumber: 1291,
+                                                    columnNumber: 17
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                                     className: "ysc-field",
                                                     children: [
                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                                            htmlFor: "f-parent-phone",
-                                                            children: "T\xe9l\xe9phone du parent"
+                                                            htmlFor: "parentRelation",
+                                                            children: "Lien avec l'enfant"
                                                         }, void 0, false, {
                                                             fileName: "src/Components/Pages.jsx",
-                                                            lineNumber: 1210,
-                                                            columnNumber: 21
+                                                            lineNumber: 1303,
+                                                            columnNumber: 19
                                                         }, undefined),
                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                                            id: "f-parent-phone",
+                                                            id: "parentRelation",
+                                                            name: "parentRelation",
+                                                            type: "text",
+                                                            value: formData.parentRelation,
+                                                            onChange: handleInputChange
+                                                        }, void 0, false, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1304,
+                                                            columnNumber: 19
+                                                        }, undefined)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "src/Components/Pages.jsx",
+                                                    lineNumber: 1302,
+                                                    columnNumber: 17
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                    className: "ysc-field",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                                            htmlFor: "parentPhone",
+                                                            children: "T\xe9l\xe9phone (WhatsApp)"
+                                                        }, void 0, false, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1313,
+                                                            columnNumber: 19
+                                                        }, undefined),
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                            id: "parentPhone",
+                                                            name: "parentPhone",
                                                             type: "tel",
-                                                            placeholder: "+228 90 00 00 00",
                                                             value: formData.parentPhone,
                                                             onChange: handleInputChange,
                                                             required: true
                                                         }, void 0, false, {
                                                             fileName: "src/Components/Pages.jsx",
-                                                            lineNumber: 1211,
+                                                            lineNumber: 1314,
+                                                            columnNumber: 19
+                                                        }, undefined)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "src/Components/Pages.jsx",
+                                                    lineNumber: 1312,
+                                                    columnNumber: 17
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                    className: "ysc-field",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                                            htmlFor: "parentEmail",
+                                                            children: "Email"
+                                                        }, void 0, false, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1324,
+                                                            columnNumber: 19
+                                                        }, undefined),
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                            id: "parentEmail",
+                                                            name: "parentEmail",
+                                                            type: "email",
+                                                            value: formData.parentEmail,
+                                                            onChange: handleInputChange
+                                                        }, void 0, false, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1325,
+                                                            columnNumber: 19
+                                                        }, undefined)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "src/Components/Pages.jsx",
+                                                    lineNumber: 1323,
+                                                    columnNumber: 17
+                                                }, undefined)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/Components/Pages.jsx",
+                                            lineNumber: 1290,
+                                            columnNumber: 15
+                                        }, undefined)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/Components/Pages.jsx",
+                                    lineNumber: 1288,
+                                    columnNumber: 13
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "ysc-form-block",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                            className: "ysc-form-section-title",
+                                            children: "3. Informations sportives"
+                                        }, void 0, false, {
+                                            fileName: "src/Components/Pages.jsx",
+                                            lineNumber: 1337,
+                                            columnNumber: 15
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                            className: "ysc-form-grid",
+                                            children: [
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                    className: "ysc-field",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                                            children: "Niveau / anciennet\xe9"
+                                                        }, void 0, false, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1340,
+                                                            columnNumber: 19
+                                                        }, undefined),
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                            className: "ysc-radio-group",
+                                                            children: [
+                                                                {
+                                                                    value: "debutant",
+                                                                    label: "D\xe9butant"
+                                                                },
+                                                                {
+                                                                    value: "1an",
+                                                                    label: "1 an"
+                                                                },
+                                                                {
+                                                                    value: "2ans",
+                                                                    label: "2 ans"
+                                                                },
+                                                                {
+                                                                    value: "3ansplus",
+                                                                    label: "3 ans et +"
+                                                                }, 
+                                                            ].map((option)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                                                    className: "ysc-radio-item",
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                                            type: "radio",
+                                                                            name: "level",
+                                                                            value: option.value,
+                                                                            checked: formData.level === option.value,
+                                                                            onChange: handleInputChange
+                                                                        }, void 0, false, {
+                                                                            fileName: "src/Components/Pages.jsx",
+                                                                            lineNumber: 1349,
+                                                                            columnNumber: 25
+                                                                        }, undefined),
+                                                                        option.label
+                                                                    ]
+                                                                }, option.value, true, {
+                                                                    fileName: "src/Components/Pages.jsx",
+                                                                    lineNumber: 1348,
+                                                                    columnNumber: 23
+                                                                }, undefined))
+                                                        }, void 0, false, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1341,
+                                                            columnNumber: 19
+                                                        }, undefined)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "src/Components/Pages.jsx",
+                                                    lineNumber: 1339,
+                                                    columnNumber: 17
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                    className: "ysc-field",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                                            children: "Cat\xe9gorie d'\xe2ge"
+                                                        }, void 0, false, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1362,
+                                                            columnNumber: 19
+                                                        }, undefined),
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                            className: "ysc-radio-group",
+                                                            children: [
+                                                                {
+                                                                    value: "4-6",
+                                                                    label: "4–6 (\xc9veil)"
+                                                                },
+                                                                {
+                                                                    value: "7-9",
+                                                                    label: "7–9 (Benjamin)"
+                                                                },
+                                                                {
+                                                                    value: "10-11",
+                                                                    label: "10–11 (Minime)"
+                                                                },
+                                                                {
+                                                                    value: "12-14",
+                                                                    label: "12–14 (Cadet)"
+                                                                },
+                                                                {
+                                                                    value: "15-17",
+                                                                    label: "15–17 (Junior)"
+                                                                },
+                                                                {
+                                                                    value: "18+",
+                                                                    label: "18+ (Senior)"
+                                                                }, 
+                                                            ].map((option)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                                                    className: "ysc-radio-item",
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                                            type: "radio",
+                                                                            name: "ageCategory",
+                                                                            value: option.value,
+                                                                            checked: formData.ageCategory === option.value,
+                                                                            onChange: handleInputChange
+                                                                        }, void 0, false, {
+                                                                            fileName: "src/Components/Pages.jsx",
+                                                                            lineNumber: 1373,
+                                                                            columnNumber: 25
+                                                                        }, undefined),
+                                                                        option.label
+                                                                    ]
+                                                                }, option.value, true, {
+                                                                    fileName: "src/Components/Pages.jsx",
+                                                                    lineNumber: 1372,
+                                                                    columnNumber: 23
+                                                                }, undefined))
+                                                        }, void 0, false, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1363,
+                                                            columnNumber: 19
+                                                        }, undefined)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "src/Components/Pages.jsx",
+                                                    lineNumber: 1361,
+                                                    columnNumber: 17
+                                                }, undefined)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/Components/Pages.jsx",
+                                            lineNumber: 1338,
+                                            columnNumber: 15
+                                        }, undefined)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/Components/Pages.jsx",
+                                    lineNumber: 1336,
+                                    columnNumber: 13
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "ysc-form-block",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                            className: "ysc-form-section-title",
+                                            children: "4. Discipline pratiqu\xe9e"
+                                        }, void 0, false, {
+                                            fileName: "src/Components/Pages.jsx",
+                                            lineNumber: 1389,
+                                            columnNumber: 15
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                            className: "ysc-form-grid",
+                                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                className: "ysc-field",
+                                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                    className: "ysc-radio-group",
+                                                    children: [
+                                                        {
+                                                            value: "Gymnastique",
+                                                            label: "Gymnastique"
+                                                        },
+                                                        {
+                                                            value: "Boxe",
+                                                            label: "Boxe"
+                                                        }, 
+                                                    ].map((option)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                                            className: "ysc-radio-item",
+                                                            children: [
+                                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                                    type: "radio",
+                                                                    name: "discipline",
+                                                                    value: option.value,
+                                                                    checked: formData.discipline === option.value,
+                                                                    onChange: handleInputChange,
+                                                                    required: true
+                                                                }, void 0, false, {
+                                                                    fileName: "src/Components/Pages.jsx",
+                                                                    lineNumber: 1398,
+                                                                    columnNumber: 25
+                                                                }, undefined),
+                                                                option.label
+                                                            ]
+                                                        }, option.value, true, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1397,
+                                                            columnNumber: 23
+                                                        }, undefined))
+                                                }, void 0, false, {
+                                                    fileName: "src/Components/Pages.jsx",
+                                                    lineNumber: 1392,
+                                                    columnNumber: 19
+                                                }, undefined)
+                                            }, void 0, false, {
+                                                fileName: "src/Components/Pages.jsx",
+                                                lineNumber: 1391,
+                                                columnNumber: 17
+                                            }, undefined)
+                                        }, void 0, false, {
+                                            fileName: "src/Components/Pages.jsx",
+                                            lineNumber: 1390,
+                                            columnNumber: 15
+                                        }, undefined)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/Components/Pages.jsx",
+                                    lineNumber: 1388,
+                                    columnNumber: 13
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "ysc-form-block",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                            className: "ysc-form-section-title",
+                                            children: "5. Saison sportive 2026"
+                                        }, void 0, false, {
+                                            fileName: "src/Components/Pages.jsx",
+                                            lineNumber: 1415,
+                                            columnNumber: 15
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                            className: "ysc-form-hint",
+                                            children: "Du 10 janvier 2026 au 5 d\xe9cembre 2026. Dur\xe9e des s\xe9ances : 2 heures."
+                                        }, void 0, false, {
+                                            fileName: "src/Components/Pages.jsx",
+                                            lineNumber: 1416,
+                                            columnNumber: 15
+                                        }, undefined)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/Components/Pages.jsx",
+                                    lineNumber: 1414,
+                                    columnNumber: 13
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "ysc-form-block",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                            className: "ysc-form-section-title",
+                                            children: "6. Statut social – Programme YSC"
+                                        }, void 0, false, {
+                                            fileName: "src/Components/Pages.jsx",
+                                            lineNumber: 1422,
+                                            columnNumber: 15
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                            className: "ysc-form-grid",
+                                            children: [
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                    className: "ysc-field",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                                            children: "L'athl\xe8te est-il boursier ?"
+                                                        }, void 0, false, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1425,
+                                                            columnNumber: 19
+                                                        }, undefined),
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                            className: "ysc-radio-group",
+                                                            children: [
+                                                                {
+                                                                    value: "yes",
+                                                                    label: "Oui"
+                                                                },
+                                                                {
+                                                                    value: "no",
+                                                                    label: "Non"
+                                                                }, 
+                                                            ].map((option)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                                                    className: "ysc-radio-item",
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                                            type: "radio",
+                                                                            name: "scholarship",
+                                                                            value: option.value,
+                                                                            checked: formData.scholarship === option.value,
+                                                                            onChange: handleInputChange,
+                                                                            required: true
+                                                                        }, void 0, false, {
+                                                                            fileName: "src/Components/Pages.jsx",
+                                                                            lineNumber: 1432,
+                                                                            columnNumber: 25
+                                                                        }, undefined),
+                                                                        option.label
+                                                                    ]
+                                                                }, option.value, true, {
+                                                                    fileName: "src/Components/Pages.jsx",
+                                                                    lineNumber: 1431,
+                                                                    columnNumber: 23
+                                                                }, undefined))
+                                                        }, void 0, false, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1426,
+                                                            columnNumber: 19
+                                                        }, undefined)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "src/Components/Pages.jsx",
+                                                    lineNumber: 1424,
+                                                    columnNumber: 17
+                                                }, undefined),
+                                                formData.scholarship === "yes" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                    className: "ysc-field",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                                            children: "Cat\xe9gorie de bourse (d\xe9cision du club)"
+                                                        }, void 0, false, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1447,
+                                                            columnNumber: 21
+                                                        }, undefined),
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                            className: "ysc-radio-group",
+                                                            children: [
+                                                                {
+                                                                    value: "bourse50",
+                                                                    label: "Bourse 50 % sur la mensualit\xe9"
+                                                                },
+                                                                {
+                                                                    value: "entrainement-gratuit",
+                                                                    label: "Entra\xeenement gratuit"
+                                                                }, 
+                                                            ].map((option)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                                                    className: "ysc-radio-item",
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                                            type: "radio",
+                                                                            name: "scholarshipType",
+                                                                            value: option.value,
+                                                                            checked: formData.scholarshipType === option.value,
+                                                                            onChange: handleInputChange,
+                                                                            required: formData.scholarship === "yes"
+                                                                        }, void 0, false, {
+                                                                            fileName: "src/Components/Pages.jsx",
+                                                                            lineNumber: 1454,
+                                                                            columnNumber: 27
+                                                                        }, undefined),
+                                                                        option.label
+                                                                    ]
+                                                                }, option.value, true, {
+                                                                    fileName: "src/Components/Pages.jsx",
+                                                                    lineNumber: 1453,
+                                                                    columnNumber: 25
+                                                                }, undefined))
+                                                        }, void 0, false, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1448,
                                                             columnNumber: 21
                                                         }, undefined)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "src/Components/Pages.jsx",
-                                                    lineNumber: 1209,
+                                                    lineNumber: 1446,
                                                     columnNumber: 19
                                                 }, undefined)
                                             ]
-                                        }, void 0, true)
+                                        }, void 0, true, {
+                                            fileName: "src/Components/Pages.jsx",
+                                            lineNumber: 1423,
+                                            columnNumber: 15
+                                        }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/Components/Pages.jsx",
-                                    lineNumber: 1112,
+                                    lineNumber: 1421,
+                                    columnNumber: 13
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "ysc-form-block",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                            className: "ysc-form-section-title",
+                                            children: "7. Modalit\xe9s financi\xe8res"
+                                        }, void 0, false, {
+                                            fileName: "src/Components/Pages.jsx",
+                                            lineNumber: 1472,
+                                            columnNumber: 15
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                            className: "ysc-form-hint",
+                                            children: "S\xe9ance enfant : 7 000 FCFA \xb7 S\xe9ance adulte : 5 000 FCFA \xb7 Mensualit\xe9 : 20 000 FCFA \xb7 Forfait saison compl\xe8te : 180 000 FCFA \xb7 Forfait fratrie (3 enfants et +) : 15 000 FCFA / mois par enfant."
+                                        }, void 0, false, {
+                                            fileName: "src/Components/Pages.jsx",
+                                            lineNumber: 1473,
+                                            columnNumber: 15
+                                        }, undefined)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/Components/Pages.jsx",
+                                    lineNumber: 1471,
+                                    columnNumber: 13
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "ysc-form-block",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                            className: "ysc-form-section-title",
+                                            children: "8. Mode de paiement"
+                                        }, void 0, false, {
+                                            fileName: "src/Components/Pages.jsx",
+                                            lineNumber: 1481,
+                                            columnNumber: 15
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                            className: "ysc-form-hint",
+                                            children: "Choix obligatoire \xe0 l'inscription pour les non boursiers."
+                                        }, void 0, false, {
+                                            fileName: "src/Components/Pages.jsx",
+                                            lineNumber: 1482,
+                                            columnNumber: 15
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                            className: "ysc-form-grid",
+                                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                className: "ysc-field",
+                                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                    className: "ysc-radio-group",
+                                                    children: [
+                                                        {
+                                                            value: "seance",
+                                                            label: "Paiement par s\xe9ance"
+                                                        },
+                                                        {
+                                                            value: "mensuel",
+                                                            label: "Paiement mensuel"
+                                                        },
+                                                        {
+                                                            value: "forfait",
+                                                            label: "Forfait saison compl\xe8te"
+                                                        }, 
+                                                    ].map((option)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                                            className: "ysc-radio-item",
+                                                            children: [
+                                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                                    type: "radio",
+                                                                    name: "paymentMode",
+                                                                    value: option.value,
+                                                                    checked: formData.paymentMode === option.value,
+                                                                    onChange: handleInputChange,
+                                                                    required: true
+                                                                }, void 0, false, {
+                                                                    fileName: "src/Components/Pages.jsx",
+                                                                    lineNumber: 1492,
+                                                                    columnNumber: 25
+                                                                }, undefined),
+                                                                option.label
+                                                            ]
+                                                        }, option.value, true, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1491,
+                                                            columnNumber: 23
+                                                        }, undefined))
+                                                }, void 0, false, {
+                                                    fileName: "src/Components/Pages.jsx",
+                                                    lineNumber: 1485,
+                                                    columnNumber: 19
+                                                }, undefined)
+                                            }, void 0, false, {
+                                                fileName: "src/Components/Pages.jsx",
+                                                lineNumber: 1484,
+                                                columnNumber: 17
+                                            }, undefined)
+                                        }, void 0, false, {
+                                            fileName: "src/Components/Pages.jsx",
+                                            lineNumber: 1483,
+                                            columnNumber: 15
+                                        }, undefined)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/Components/Pages.jsx",
+                                    lineNumber: 1480,
+                                    columnNumber: 13
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "ysc-form-block",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                            className: "ysc-form-section-title",
+                                            children: "10. Engagement financier"
+                                        }, void 0, false, {
+                                            fileName: "src/Components/Pages.jsx",
+                                            lineNumber: 1509,
+                                            columnNumber: 15
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                            className: "ysc-form-grid",
+                                            children: [
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                    className: "ysc-field",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                                            htmlFor: "agreementName",
+                                                            children: "Nom et pr\xe9noms du parent / tuteur"
+                                                        }, void 0, false, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1512,
+                                                            columnNumber: 19
+                                                        }, undefined),
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                            id: "agreementName",
+                                                            name: "agreementName",
+                                                            type: "text",
+                                                            value: formData.agreementName,
+                                                            onChange: handleInputChange,
+                                                            required: true
+                                                        }, void 0, false, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1513,
+                                                            columnNumber: 19
+                                                        }, undefined)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "src/Components/Pages.jsx",
+                                                    lineNumber: 1511,
+                                                    columnNumber: 17
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                    className: "ysc-field",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                                            htmlFor: "agreementDate",
+                                                            children: "Date"
+                                                        }, void 0, false, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1523,
+                                                            columnNumber: 19
+                                                        }, undefined),
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                            id: "agreementDate",
+                                                            name: "agreementDate",
+                                                            type: "date",
+                                                            value: formData.agreementDate,
+                                                            onChange: handleInputChange,
+                                                            required: true
+                                                        }, void 0, false, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1524,
+                                                            columnNumber: 19
+                                                        }, undefined)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "src/Components/Pages.jsx",
+                                                    lineNumber: 1522,
+                                                    columnNumber: 17
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                    className: "ysc-field",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                                            htmlFor: "signature",
+                                                            children: "Signature (nom complet)"
+                                                        }, void 0, false, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1534,
+                                                            columnNumber: 19
+                                                        }, undefined),
+                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                            id: "signature",
+                                                            name: "signature",
+                                                            type: "text",
+                                                            value: formData.signature,
+                                                            onChange: handleInputChange
+                                                        }, void 0, false, {
+                                                            fileName: "src/Components/Pages.jsx",
+                                                            lineNumber: 1535,
+                                                            columnNumber: 19
+                                                        }, undefined)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "src/Components/Pages.jsx",
+                                                    lineNumber: 1533,
+                                                    columnNumber: 17
+                                                }, undefined)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/Components/Pages.jsx",
+                                            lineNumber: 1510,
+                                            columnNumber: 15
+                                        }, undefined)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/Components/Pages.jsx",
+                                    lineNumber: 1508,
                                     columnNumber: 13
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -41708,32 +42512,33 @@ const JoinClubPage = ()=>{
                                             required: true
                                         }, void 0, false, {
                                             fileName: "src/Components/Pages.jsx",
-                                            lineNumber: 1225,
+                                            lineNumber: 1547,
                                             columnNumber: 15
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                             className: "ysc-checkbox-text",
-                                            children: "J'accepte d'\xeatre contact\xe9 via WhatsApp."
+                                            children: "J'accepte d'\xeatre contact\xe9 via WhatsApp et j'autorise le traitement de ces donn\xe9es."
                                         }, void 0, false, {
                                             fileName: "src/Components/Pages.jsx",
-                                            lineNumber: 1226,
+                                            lineNumber: 1548,
                                             columnNumber: 15
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/Components/Pages.jsx",
-                                    lineNumber: 1224,
+                                    lineNumber: 1546,
                                     columnNumber: 13
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                                     type: "submit",
                                     className: "ysc-btn ysc-btn--primary ysc-btn--full",
+                                    disabled: isSubmitting,
                                     children: [
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                            children: "Envoyer ma demande d'inscription"
+                                            children: isSubmitting ? "Envoi de la demande..." : "Envoy\xe9 ma demande d'inscription"
                                         }, void 0, false, {
                                             fileName: "src/Components/Pages.jsx",
-                                            lineNumber: 1230,
+                                            lineNumber: 1554,
                                             columnNumber: 15
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -41742,38 +42547,38 @@ const JoinClubPage = ()=>{
                                             children: "→"
                                         }, void 0, false, {
                                             fileName: "src/Components/Pages.jsx",
-                                            lineNumber: 1231,
+                                            lineNumber: 1555,
                                             columnNumber: 15
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/Components/Pages.jsx",
-                                    lineNumber: 1229,
+                                    lineNumber: 1553,
                                     columnNumber: 13
                                 }, undefined),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                submissionMessage && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                     className: "ysc-form-note",
-                                    children: "\uD83D\uDD12 Vos donn\xe9es sont confidentielles et ne seront jamais partag\xe9es."
+                                    children: submissionMessage
                                 }, void 0, false, {
                                     fileName: "src/Components/Pages.jsx",
-                                    lineNumber: 1236,
-                                    columnNumber: 13
+                                    lineNumber: 1560,
+                                    columnNumber: 35
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/Components/Pages.jsx",
-                            lineNumber: 1111,
+                            lineNumber: 1181,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/Components/Pages.jsx",
-                    lineNumber: 1103,
+                    lineNumber: 1173,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/Components/Pages.jsx",
-                lineNumber: 1102,
+                lineNumber: 1172,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
@@ -41787,7 +42592,7 @@ const JoinClubPage = ()=>{
                                 children: "Cours priv\xe9s"
                             }, void 0, false, {
                                 fileName: "src/Components/Pages.jsx",
-                                lineNumber: 1247,
+                                lineNumber: 1569,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
@@ -41797,20 +42602,20 @@ const JoinClubPage = ()=>{
                                     "D\xe9veloppez votre",
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                         fileName: "src/Components/Pages.jsx",
-                                        lineNumber: 1250,
+                                        lineNumber: 1572,
                                         columnNumber: 13
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("em", {
                                         children: "plein potentiel"
                                     }, void 0, false, {
                                         fileName: "src/Components/Pages.jsx",
-                                        lineNumber: 1251,
+                                        lineNumber: 1573,
                                         columnNumber: 13
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/Components/Pages.jsx",
-                                lineNumber: 1248,
+                                lineNumber: 1570,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -41818,13 +42623,13 @@ const JoinClubPage = ()=>{
                                 children: "S\xe9ances individuelles adapt\xe9es \xe0 chaque objectif, niveau et rythme de vie."
                             }, void 0, false, {
                                 fileName: "src/Components/Pages.jsx",
-                                lineNumber: 1253,
+                                lineNumber: 1575,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/Components/Pages.jsx",
-                        lineNumber: 1246,
+                        lineNumber: 1568,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -41840,7 +42645,7 @@ const JoinClubPage = ()=>{
                                 playsInline: true
                             }, void 0, false, {
                                 fileName: "src/Components/Pages.jsx",
-                                lineNumber: 1260,
+                                lineNumber: 1582,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -41851,18 +42656,18 @@ const JoinClubPage = ()=>{
                                     children: "Coaching individuel \xb7 Tous niveaux \xb7 \xc0 domicile ou en ext\xe9rieur"
                                 }, void 0, false, {
                                     fileName: "src/Components/Pages.jsx",
-                                    lineNumber: 1262,
+                                    lineNumber: 1584,
                                     columnNumber: 13
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/Components/Pages.jsx",
-                                lineNumber: 1261,
+                                lineNumber: 1583,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/Components/Pages.jsx",
-                        lineNumber: 1259,
+                        lineNumber: 1581,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -41878,19 +42683,19 @@ const JoinClubPage = ()=>{
                                             className: "ti ti-target-arrow"
                                         }, void 0, false, {
                                             fileName: "src/Components/Pages.jsx",
-                                            lineNumber: 1272,
+                                            lineNumber: 1594,
                                             columnNumber: 15
                                         }, undefined)
                                     }, void 0, false, {
                                         fileName: "src/Components/Pages.jsx",
-                                        lineNumber: 1271,
+                                        lineNumber: 1593,
                                         columnNumber: 13
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                                         children: "Objectifs"
                                     }, void 0, false, {
                                         fileName: "src/Components/Pages.jsx",
-                                        lineNumber: 1274,
+                                        lineNumber: 1596,
                                         columnNumber: 13
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
@@ -41920,30 +42725,30 @@ const JoinClubPage = ()=>{
                                                             "aria-hidden": "true"
                                                         }, void 0, false, {
                                                             fileName: "src/Components/Pages.jsx",
-                                                            lineNumber: 1284,
+                                                            lineNumber: 1606,
                                                             columnNumber: 21
                                                         }, undefined)
                                                     }, void 0, false, {
                                                         fileName: "src/Components/Pages.jsx",
-                                                        lineNumber: 1283,
+                                                        lineNumber: 1605,
                                                         columnNumber: 19
                                                     }, undefined),
                                                     text
                                                 ]
                                             }, text, true, {
                                                 fileName: "src/Components/Pages.jsx",
-                                                lineNumber: 1282,
+                                                lineNumber: 1604,
                                                 columnNumber: 17
                                             }, undefined))
                                     }, void 0, false, {
                                         fileName: "src/Components/Pages.jsx",
-                                        lineNumber: 1275,
+                                        lineNumber: 1597,
                                         columnNumber: 13
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/Components/Pages.jsx",
-                                lineNumber: 1270,
+                                lineNumber: 1592,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("article", {
@@ -41956,19 +42761,19 @@ const JoinClubPage = ()=>{
                                             className: "ti ti-clipboard-list"
                                         }, void 0, false, {
                                             fileName: "src/Components/Pages.jsx",
-                                            lineNumber: 1294,
+                                            lineNumber: 1616,
                                             columnNumber: 15
                                         }, undefined)
                                     }, void 0, false, {
                                         fileName: "src/Components/Pages.jsx",
-                                        lineNumber: 1293,
+                                        lineNumber: 1615,
                                         columnNumber: 13
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                                         children: "Modalit\xe9s"
                                     }, void 0, false, {
                                         fileName: "src/Components/Pages.jsx",
-                                        lineNumber: 1296,
+                                        lineNumber: 1618,
                                         columnNumber: 13
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
@@ -41999,19 +42804,19 @@ const JoinClubPage = ()=>{
                                                                 "aria-hidden": "true"
                                                             }, void 0, false, {
                                                                 fileName: "src/Components/Pages.jsx",
-                                                                lineNumber: 1306,
+                                                                lineNumber: 1628,
                                                                 columnNumber: 21
                                                             }, undefined)
                                                         }, void 0, false, {
                                                             fileName: "src/Components/Pages.jsx",
-                                                            lineNumber: 1305,
+                                                            lineNumber: 1627,
                                                             columnNumber: 19
                                                         }, undefined),
                                                         text
                                                     ]
                                                 }, text, true, {
                                                     fileName: "src/Components/Pages.jsx",
-                                                    lineNumber: 1304,
+                                                    lineNumber: 1626,
                                                     columnNumber: 17
                                                 }, undefined)),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -42023,12 +42828,12 @@ const JoinClubPage = ()=>{
                                                             "aria-hidden": "true"
                                                         }, void 0, false, {
                                                             fileName: "src/Components/Pages.jsx",
-                                                            lineNumber: 1313,
+                                                            lineNumber: 1635,
                                                             columnNumber: 19
                                                         }, undefined)
                                                     }, void 0, false, {
                                                         fileName: "src/Components/Pages.jsx",
-                                                        lineNumber: 1312,
+                                                        lineNumber: 1634,
                                                         columnNumber: 17
                                                     }, undefined),
                                                     "Contact rapide :",
@@ -42039,31 +42844,31 @@ const JoinClubPage = ()=>{
                                                         children: "+228 91 53 48 85"
                                                     }, void 0, false, {
                                                         fileName: "src/Components/Pages.jsx",
-                                                        lineNumber: 1316,
+                                                        lineNumber: 1638,
                                                         columnNumber: 17
                                                     }, undefined)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/Components/Pages.jsx",
-                                                lineNumber: 1311,
+                                                lineNumber: 1633,
                                                 columnNumber: 15
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/Components/Pages.jsx",
-                                        lineNumber: 1297,
+                                        lineNumber: 1619,
                                         columnNumber: 13
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/Components/Pages.jsx",
-                                lineNumber: 1292,
+                                lineNumber: 1614,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/Components/Pages.jsx",
-                        lineNumber: 1269,
+                        lineNumber: 1591,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -42077,12 +42882,12 @@ const JoinClubPage = ()=>{
                                     alt: "S\xe9ance priv\xe9e en action"
                                 }, void 0, false, {
                                     fileName: "src/Components/Pages.jsx",
-                                    lineNumber: 1327,
+                                    lineNumber: 1649,
                                     columnNumber: 13
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/Components/Pages.jsx",
-                                lineNumber: 1326,
+                                lineNumber: 1648,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -42093,7 +42898,7 @@ const JoinClubPage = ()=>{
                                         alt: "Entra\xeenement individuel"
                                     }, void 0, false, {
                                         fileName: "src/Components/Pages.jsx",
-                                        lineNumber: 1330,
+                                        lineNumber: 1652,
                                         columnNumber: 13
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
@@ -42101,19 +42906,19 @@ const JoinClubPage = ()=>{
                                         alt: "Coach et athl\xe8te en s\xe9ance"
                                     }, void 0, false, {
                                         fileName: "src/Components/Pages.jsx",
-                                        lineNumber: 1331,
+                                        lineNumber: 1653,
                                         columnNumber: 13
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/Components/Pages.jsx",
-                                lineNumber: 1329,
+                                lineNumber: 1651,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/Components/Pages.jsx",
-                        lineNumber: 1325,
+                        lineNumber: 1647,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -42130,12 +42935,12 @@ const JoinClubPage = ()=>{
                                         className: "ysc-testimonial__avatar"
                                     }, void 0, false, {
                                         fileName: "src/Components/Pages.jsx",
-                                        lineNumber: 1339,
+                                        lineNumber: 1661,
                                         columnNumber: 15
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/Components/Pages.jsx",
-                                    lineNumber: 1338,
+                                    lineNumber: 1660,
                                     columnNumber: 13
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -42146,7 +42951,7 @@ const JoinClubPage = ()=>{
                                             children: "\"Merci pour tout ce que vous avez fait pour notre famille. On est tellement contents d'avoir commenc\xe9 cette aventure avec YSC depuis les premiers jours. Vous avez une passion, une vision et une expertise uniques — nous n'allons jamais vous oublier.\""
                                         }, void 0, false, {
                                             fileName: "src/Components/Pages.jsx",
-                                            lineNumber: 1346,
+                                            lineNumber: 1668,
                                             columnNumber: 15
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("figcaption", {
@@ -42154,30 +42959,30 @@ const JoinClubPage = ()=>{
                                             children: "Cora-CW, Piper-Beckett & Mosa"
                                         }, void 0, false, {
                                             fileName: "src/Components/Pages.jsx",
-                                            lineNumber: 1351,
+                                            lineNumber: 1673,
                                             columnNumber: 15
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/Components/Pages.jsx",
-                                    lineNumber: 1345,
+                                    lineNumber: 1667,
                                     columnNumber: 13
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/Components/Pages.jsx",
-                            lineNumber: 1337,
+                            lineNumber: 1659,
                             columnNumber: 11
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/Components/Pages.jsx",
-                        lineNumber: 1336,
+                        lineNumber: 1658,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/Components/Pages.jsx",
-                lineNumber: 1244,
+                lineNumber: 1566,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
@@ -42193,7 +42998,7 @@ const JoinClubPage = ()=>{
                                     children: "Engagement"
                                 }, void 0, false, {
                                     fileName: "src/Components/Pages.jsx",
-                                    lineNumber: 1364,
+                                    lineNumber: 1686,
                                     columnNumber: 13
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
@@ -42205,19 +43010,19 @@ const JoinClubPage = ()=>{
                                             children: "Le sport pour tous"
                                         }, void 0, false, {
                                             fileName: "src/Components/Pages.jsx",
-                                            lineNumber: 1367,
+                                            lineNumber: 1689,
                                             columnNumber: 15
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/Components/Pages.jsx",
-                                    lineNumber: 1365,
+                                    lineNumber: 1687,
                                     columnNumber: 13
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/Components/Pages.jsx",
-                            lineNumber: 1363,
+                            lineNumber: 1685,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -42228,7 +43033,7 @@ const JoinClubPage = ()=>{
                                     children: "Parce que le sport doit rester accessible \xe0 tous, YSC met en place un programme social pour soutenir les familles et accompagner les jeunes motiv\xe9s par la gymnastique."
                                 }, void 0, false, {
                                     fileName: "src/Components/Pages.jsx",
-                                    lineNumber: 1372,
+                                    lineNumber: 1694,
                                     columnNumber: 13
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
@@ -42242,12 +43047,12 @@ const JoinClubPage = ()=>{
                                                         icon: (0, _freeSolidSvgIcons.faHandHoldingDollar)
                                                     }, void 0, false, {
                                                         fileName: "src/Components/Pages.jsx",
-                                                        lineNumber: 1380,
+                                                        lineNumber: 1702,
                                                         columnNumber: 19
                                                     }, undefined)
                                                 }, void 0, false, {
                                                     fileName: "src/Components/Pages.jsx",
-                                                    lineNumber: 1379,
+                                                    lineNumber: 1701,
                                                     columnNumber: 17
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -42256,20 +43061,20 @@ const JoinClubPage = ()=>{
                                                             children: "Bourse de 50 %"
                                                         }, void 0, false, {
                                                             fileName: "src/Components/Pages.jsx",
-                                                            lineNumber: 1383,
+                                                            lineNumber: 1705,
                                                             columnNumber: 19
                                                         }, undefined),
                                                         " sur la mensualit\xe9"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "src/Components/Pages.jsx",
-                                                    lineNumber: 1382,
+                                                    lineNumber: 1704,
                                                     columnNumber: 17
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/Components/Pages.jsx",
-                                            lineNumber: 1378,
+                                            lineNumber: 1700,
                                             columnNumber: 15
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -42280,12 +43085,12 @@ const JoinClubPage = ()=>{
                                                         icon: (0, _freeSolidSvgIcons.faChildReaching)
                                                     }, void 0, false, {
                                                         fileName: "src/Components/Pages.jsx",
-                                                        lineNumber: 1388,
+                                                        lineNumber: 1710,
                                                         columnNumber: 19
                                                     }, undefined)
                                                 }, void 0, false, {
                                                     fileName: "src/Components/Pages.jsx",
-                                                    lineNumber: 1387,
+                                                    lineNumber: 1709,
                                                     columnNumber: 17
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -42294,20 +43099,20 @@ const JoinClubPage = ()=>{
                                                             children: "Entra\xeenement gratuit"
                                                         }, void 0, false, {
                                                             fileName: "src/Components/Pages.jsx",
-                                                            lineNumber: 1391,
+                                                            lineNumber: 1713,
                                                             columnNumber: 19
                                                         }, undefined),
                                                         " possible pour les enfants issus de familles en difficult\xe9"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "src/Components/Pages.jsx",
-                                                    lineNumber: 1390,
+                                                    lineNumber: 1712,
                                                     columnNumber: 17
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/Components/Pages.jsx",
-                                            lineNumber: 1386,
+                                            lineNumber: 1708,
                                             columnNumber: 15
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -42318,12 +43123,12 @@ const JoinClubPage = ()=>{
                                                         icon: (0, _freeSolidSvgIcons.faVanShuttle)
                                                     }, void 0, false, {
                                                         fileName: "src/Components/Pages.jsx",
-                                                        lineNumber: 1397,
+                                                        lineNumber: 1719,
                                                         columnNumber: 19
                                                     }, undefined)
                                                 }, void 0, false, {
                                                     fileName: "src/Components/Pages.jsx",
-                                                    lineNumber: 1396,
+                                                    lineNumber: 1718,
                                                     columnNumber: 17
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -42332,26 +43137,26 @@ const JoinClubPage = ()=>{
                                                             children: "Aides sp\xe9cifiques"
                                                         }, void 0, false, {
                                                             fileName: "src/Components/Pages.jsx",
-                                                            lineNumber: 1400,
+                                                            lineNumber: 1722,
                                                             columnNumber: 19
                                                         }, undefined),
                                                         " selon les besoins (transport, accompagnement)"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "src/Components/Pages.jsx",
-                                                    lineNumber: 1399,
+                                                    lineNumber: 1721,
                                                     columnNumber: 17
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/Components/Pages.jsx",
-                                            lineNumber: 1395,
+                                            lineNumber: 1717,
                                             columnNumber: 15
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/Components/Pages.jsx",
-                                    lineNumber: 1377,
+                                    lineNumber: 1699,
                                     columnNumber: 13
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -42364,12 +43169,12 @@ const JoinClubPage = ()=>{
                                                 icon: (0, _freeSolidSvgIcons.faHeartPulse)
                                             }, void 0, false, {
                                                 fileName: "src/Components/Pages.jsx",
-                                                lineNumber: 1407,
+                                                lineNumber: 1729,
                                                 columnNumber: 17
                                             }, undefined)
                                         }, void 0, false, {
                                             fileName: "src/Components/Pages.jsx",
-                                            lineNumber: 1406,
+                                            lineNumber: 1728,
                                             columnNumber: 15
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -42378,37 +43183,37 @@ const JoinClubPage = ()=>{
                                                     children: "Objectif :"
                                                 }, void 0, false, {
                                                     fileName: "src/Components/Pages.jsx",
-                                                    lineNumber: 1410,
+                                                    lineNumber: 1732,
                                                     columnNumber: 17
                                                 }, undefined),
                                                 " permettre \xe0 chaque enfant motiv\xe9 de pratiquer la gymnastique, quelles que soient les conditions sociales."
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/Components/Pages.jsx",
-                                            lineNumber: 1409,
+                                            lineNumber: 1731,
                                             columnNumber: 15
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/Components/Pages.jsx",
-                                    lineNumber: 1405,
+                                    lineNumber: 1727,
                                     columnNumber: 13
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/Components/Pages.jsx",
-                            lineNumber: 1371,
+                            lineNumber: 1693,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/Components/Pages.jsx",
-                    lineNumber: 1362,
+                    lineNumber: 1684,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/Components/Pages.jsx",
-                lineNumber: 1361,
+                lineNumber: 1683,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
@@ -42421,7 +43226,7 @@ const JoinClubPage = ()=>{
                             children: "Pr\xeat \xe0 passer au niveau sup\xe9rieur ?"
                         }, void 0, false, {
                             fileName: "src/Components/Pages.jsx",
-                            lineNumber: 1421,
+                            lineNumber: 1743,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
@@ -42433,7 +43238,7 @@ const JoinClubPage = ()=>{
                                     children: "R\xe9server une s\xe9ance priv\xe9e"
                                 }, void 0, false, {
                                     fileName: "src/Components/Pages.jsx",
-                                    lineNumber: 1423,
+                                    lineNumber: 1745,
                                     columnNumber: 13
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -42441,30 +43246,30 @@ const JoinClubPage = ()=>{
                                     children: "→"
                                 }, void 0, false, {
                                     fileName: "src/Components/Pages.jsx",
-                                    lineNumber: 1424,
+                                    lineNumber: 1746,
                                     columnNumber: 13
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/Components/Pages.jsx",
-                            lineNumber: 1422,
+                            lineNumber: 1744,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/Components/Pages.jsx",
-                    lineNumber: 1420,
+                    lineNumber: 1742,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/Components/Pages.jsx",
-                lineNumber: 1419,
+                lineNumber: 1741,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true);
 };
-_s(JoinClubPage, "vJ+1Hb1BKmjlYq4p3U4G+ICj+pM=");
+_s(JoinClubPage, "B7IfC5w3wOwK6KwGKN6B7dBQZ9c=");
 _c3 = JoinClubPage;
 const EventsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
@@ -42472,7 +43277,7 @@ const EventsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunti
                 children: scoped
             }, void 0, false, {
                 fileName: "src/Components/Pages.jsx",
-                lineNumber: 1436,
+                lineNumber: 1758,
                 columnNumber: 5
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
@@ -42482,21 +43287,21 @@ const EventsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunti
                         children: "Agenda"
                     }, void 0, false, {
                         fileName: "src/Components/Pages.jsx",
-                        lineNumber: 1439,
+                        lineNumber: 1761,
                         columnNumber: 7
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
                         children: "\xc9v\xe9nements"
                     }, void 0, false, {
                         fileName: "src/Components/Pages.jsx",
-                        lineNumber: 1440,
+                        lineNumber: 1762,
                         columnNumber: 7
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                         children: "Stages, rencontres et comp\xe9titions pour toute la communaut\xe9 Youth Sports Club."
                     }, void 0, false, {
                         fileName: "src/Components/Pages.jsx",
-                        lineNumber: 1441,
+                        lineNumber: 1763,
                         columnNumber: 7
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
@@ -42505,13 +43310,13 @@ const EventsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunti
                         className: "ysc-hero-img"
                     }, void 0, false, {
                         fileName: "src/Components/Pages.jsx",
-                        lineNumber: 1442,
+                        lineNumber: 1764,
                         columnNumber: 7
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/Components/Pages.jsx",
-                lineNumber: 1438,
+                lineNumber: 1760,
                 columnNumber: 5
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -42526,20 +43331,20 @@ const EventsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunti
                                     children: "Calendrier \xe0 venir"
                                 }, void 0, false, {
                                     fileName: "src/Components/Pages.jsx",
-                                    lineNumber: 1448,
+                                    lineNumber: 1770,
                                     columnNumber: 11
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                     children: "Les prochains temps forts pour les athl\xe8tes, familles et partenaires."
                                 }, void 0, false, {
                                     fileName: "src/Components/Pages.jsx",
-                                    lineNumber: 1449,
+                                    lineNumber: 1771,
                                     columnNumber: 11
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/Components/Pages.jsx",
-                            lineNumber: 1447,
+                            lineNumber: 1769,
                             columnNumber: 9
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -42551,7 +43356,7 @@ const EventsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunti
                                             children: event.title
                                         }, void 0, false, {
                                             fileName: "src/Components/Pages.jsx",
-                                            lineNumber: 1454,
+                                            lineNumber: 1776,
                                             columnNumber: 15
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -42560,7 +43365,7 @@ const EventsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunti
                                                     children: "Date :"
                                                 }, void 0, false, {
                                                     fileName: "src/Components/Pages.jsx",
-                                                    lineNumber: 1456,
+                                                    lineNumber: 1778,
                                                     columnNumber: 17
                                                 }, undefined),
                                                 " ",
@@ -42568,7 +43373,7 @@ const EventsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunti
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/Components/Pages.jsx",
-                                            lineNumber: 1455,
+                                            lineNumber: 1777,
                                             columnNumber: 15
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -42577,7 +43382,7 @@ const EventsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunti
                                                     children: "Lieu :"
                                                 }, void 0, false, {
                                                     fileName: "src/Components/Pages.jsx",
-                                                    lineNumber: 1459,
+                                                    lineNumber: 1781,
                                                     columnNumber: 17
                                                 }, undefined),
                                                 " ",
@@ -42585,36 +43390,36 @@ const EventsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunti
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/Components/Pages.jsx",
-                                            lineNumber: 1458,
+                                            lineNumber: 1780,
                                             columnNumber: 15
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                             children: event.description
                                         }, void 0, false, {
                                             fileName: "src/Components/Pages.jsx",
-                                            lineNumber: 1461,
+                                            lineNumber: 1783,
                                             columnNumber: 15
                                         }, undefined)
                                     ]
                                 }, event.title, true, {
                                     fileName: "src/Components/Pages.jsx",
-                                    lineNumber: 1453,
+                                    lineNumber: 1775,
                                     columnNumber: 13
                                 }, undefined))
                         }, void 0, false, {
                             fileName: "src/Components/Pages.jsx",
-                            lineNumber: 1451,
+                            lineNumber: 1773,
                             columnNumber: 9
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/Components/Pages.jsx",
-                    lineNumber: 1446,
+                    lineNumber: 1768,
                     columnNumber: 7
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/Components/Pages.jsx",
-                lineNumber: 1445,
+                lineNumber: 1767,
                 columnNumber: 5
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -42627,20 +43432,20 @@ const EventsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunti
                                 children: "Images r\xe9centes"
                             }, void 0, false, {
                                 fileName: "src/Components/Pages.jsx",
-                                lineNumber: 1470,
+                                lineNumber: 1792,
                                 columnNumber: 9
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                 children: "Des souvenirs d'entra\xeenements, d\xe9monstrations et comp\xe9titions."
                             }, void 0, false, {
                                 fileName: "src/Components/Pages.jsx",
-                                lineNumber: 1471,
+                                lineNumber: 1793,
                                 columnNumber: 9
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/Components/Pages.jsx",
-                        lineNumber: 1469,
+                        lineNumber: 1791,
                         columnNumber: 7
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -42650,18 +43455,18 @@ const EventsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunti
                                 alt: photo.alt
                             }, photo.src, false, {
                                 fileName: "src/Components/Pages.jsx",
-                                lineNumber: 1475,
+                                lineNumber: 1797,
                                 columnNumber: 11
                             }, undefined))
                     }, void 0, false, {
                         fileName: "src/Components/Pages.jsx",
-                        lineNumber: 1473,
+                        lineNumber: 1795,
                         columnNumber: 7
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/Components/Pages.jsx",
-                lineNumber: 1468,
+                lineNumber: 1790,
                 columnNumber: 5
             }, undefined)
         ]
@@ -42673,7 +43478,7 @@ const TrainingSessionsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _j
                 children: scoped
             }, void 0, false, {
                 fileName: "src/Components/Pages.jsx",
-                lineNumber: 1486,
+                lineNumber: 1808,
                 columnNumber: 5
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
@@ -42683,21 +43488,21 @@ const TrainingSessionsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _j
                         children: "Disciplines"
                     }, void 0, false, {
                         fileName: "src/Components/Pages.jsx",
-                        lineNumber: 1489,
+                        lineNumber: 1811,
                         columnNumber: 7
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
                         children: "Entra\xeenements"
                     }, void 0, false, {
                         fileName: "src/Components/Pages.jsx",
-                        lineNumber: 1490,
+                        lineNumber: 1812,
                         columnNumber: 7
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                         children: "Des s\xe9ances adapt\xe9es \xe0 chaque \xe2ge, chaque niveau et chaque objectif sportif."
                     }, void 0, false, {
                         fileName: "src/Components/Pages.jsx",
-                        lineNumber: 1491,
+                        lineNumber: 1813,
                         columnNumber: 7
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
@@ -42706,228 +43511,13 @@ const TrainingSessionsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _j
                         className: "ysc-hero-img"
                     }, void 0, false, {
                         fileName: "src/Components/Pages.jsx",
-                        lineNumber: 1492,
+                        lineNumber: 1814,
                         columnNumber: 7
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/Components/Pages.jsx",
-                lineNumber: 1488,
-                columnNumber: 5
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "ysc-page-section--alt",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    className: "ysc-page-section__inner",
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            className: "ysc-page-section__header",
-                            children: [
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                                    children: "Disciplines propos\xe9es"
-                                }, void 0, false, {
-                                    fileName: "src/Components/Pages.jsx",
-                                    lineNumber: 1498,
-                                    columnNumber: 11
-                                }, undefined),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                    children: "Un encadrement complet pour progresser en toute s\xe9curit\xe9."
-                                }, void 0, false, {
-                                    fileName: "src/Components/Pages.jsx",
-                                    lineNumber: 1499,
-                                    columnNumber: 11
-                                }, undefined)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/Components/Pages.jsx",
-                            lineNumber: 1497,
-                            columnNumber: 9
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            className: "ysc-cards-grid",
-                            children: trainingPrograms.map((program)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("article", {
-                                    className: "ysc-card",
-                                    children: [
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                                            children: program.title
-                                        }, void 0, false, {
-                                            fileName: "src/Components/Pages.jsx",
-                                            lineNumber: 1504,
-                                            columnNumber: 15
-                                        }, undefined),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                            children: [
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
-                                                    children: "Niveau :"
-                                                }, void 0, false, {
-                                                    fileName: "src/Components/Pages.jsx",
-                                                    lineNumber: 1506,
-                                                    columnNumber: 17
-                                                }, undefined),
-                                                " ",
-                                                program.level
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "src/Components/Pages.jsx",
-                                            lineNumber: 1505,
-                                            columnNumber: 15
-                                        }, undefined),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                            children: [
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
-                                                    children: "\xc2ges :"
-                                                }, void 0, false, {
-                                                    fileName: "src/Components/Pages.jsx",
-                                                    lineNumber: 1509,
-                                                    columnNumber: 17
-                                                }, undefined),
-                                                " ",
-                                                program.ages
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "src/Components/Pages.jsx",
-                                            lineNumber: 1508,
-                                            columnNumber: 15
-                                        }, undefined),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                            children: program.description
-                                        }, void 0, false, {
-                                            fileName: "src/Components/Pages.jsx",
-                                            lineNumber: 1511,
-                                            columnNumber: 15
-                                        }, undefined)
-                                    ]
-                                }, program.title, true, {
-                                    fileName: "src/Components/Pages.jsx",
-                                    lineNumber: 1503,
-                                    columnNumber: 13
-                                }, undefined))
-                        }, void 0, false, {
-                            fileName: "src/Components/Pages.jsx",
-                            lineNumber: 1501,
-                            columnNumber: 9
-                        }, undefined)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/Components/Pages.jsx",
-                    lineNumber: 1496,
-                    columnNumber: 7
-                }, undefined)
-            }, void 0, false, {
-                fileName: "src/Components/Pages.jsx",
-                lineNumber: 1495,
-                columnNumber: 5
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "ysc-page-section",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "ysc-page-section__header",
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                                children: "Horaires & organisation"
-                            }, void 0, false, {
-                                fileName: "src/Components/Pages.jsx",
-                                lineNumber: 1520,
-                                columnNumber: 9
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                children: "Des cr\xe9neaux r\xe9guliers et des s\xe9ances priv\xe9es sur demande."
-                            }, void 0, false, {
-                                fileName: "src/Components/Pages.jsx",
-                                lineNumber: 1521,
-                                columnNumber: 9
-                            }, undefined)
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/Components/Pages.jsx",
-                        lineNumber: 1519,
-                        columnNumber: 7
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "ysc-cards-grid ysc-cards-grid--two",
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("article", {
-                                className: "ysc-card",
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                                        children: "Planning hebdomadaire"
-                                    }, void 0, false, {
-                                        fileName: "src/Components/Pages.jsx",
-                                        lineNumber: 1525,
-                                        columnNumber: 11
-                                    }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
-                                        children: trainingSchedule.map((slot)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                                                children: [
-                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
-                                                        children: slot.day
-                                                    }, void 0, false, {
-                                                        fileName: "src/Components/Pages.jsx",
-                                                        lineNumber: 1529,
-                                                        columnNumber: 17
-                                                    }, undefined),
-                                                    " — ",
-                                                    slot.time,
-                                                    " : ",
-                                                    slot.focus
-                                                ]
-                                            }, slot.day, true, {
-                                                fileName: "src/Components/Pages.jsx",
-                                                lineNumber: 1528,
-                                                columnNumber: 15
-                                            }, undefined))
-                                    }, void 0, false, {
-                                        fileName: "src/Components/Pages.jsx",
-                                        lineNumber: 1526,
-                                        columnNumber: 11
-                                    }, undefined)
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/Components/Pages.jsx",
-                                lineNumber: 1524,
-                                columnNumber: 9
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("article", {
-                                className: "ysc-card",
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                                        children: "Encadrement"
-                                    }, void 0, false, {
-                                        fileName: "src/Components/Pages.jsx",
-                                        lineNumber: 1535,
-                                        columnNumber: 11
-                                    }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                        children: "Chaque s\xe9ance inclut un \xe9chauffement structur\xe9, un travail technique et une phase de r\xe9cup\xe9ration. Les groupes sont limit\xe9s pour assurer un suivi personnalis\xe9."
-                                    }, void 0, false, {
-                                        fileName: "src/Components/Pages.jsx",
-                                        lineNumber: 1536,
-                                        columnNumber: 11
-                                    }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                        children: "Les s\xe9ances priv\xe9es sont possibles sur rendez-vous pour des objectifs sp\xe9cifiques ou une reprise progressive."
-                                    }, void 0, false, {
-                                        fileName: "src/Components/Pages.jsx",
-                                        lineNumber: 1540,
-                                        columnNumber: 11
-                                    }, undefined)
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/Components/Pages.jsx",
-                                lineNumber: 1534,
-                                columnNumber: 9
-                            }, undefined)
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/Components/Pages.jsx",
-                        lineNumber: 1523,
-                        columnNumber: 7
-                    }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/Components/Pages.jsx",
-                lineNumber: 1518,
+                lineNumber: 1810,
                 columnNumber: 5
             }, undefined)
         ]
@@ -42939,7 +43529,7 @@ const ResultsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunt
                 children: scoped
             }, void 0, false, {
                 fileName: "src/Components/Pages.jsx",
-                lineNumber: 1554,
+                lineNumber: 1824,
                 columnNumber: 5
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
@@ -42949,21 +43539,21 @@ const ResultsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunt
                         children: "Palmar\xe8s"
                     }, void 0, false, {
                         fileName: "src/Components/Pages.jsx",
-                        lineNumber: 1557,
+                        lineNumber: 1827,
                         columnNumber: 7
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
                         children: "R\xe9sultats & palmar\xe8s"
                     }, void 0, false, {
                         fileName: "src/Components/Pages.jsx",
-                        lineNumber: 1558,
+                        lineNumber: 1828,
                         columnNumber: 7
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                         children: "Une progression constante port\xe9e par la rigueur et l'esprit d'\xe9quipe."
                     }, void 0, false, {
                         fileName: "src/Components/Pages.jsx",
-                        lineNumber: 1559,
+                        lineNumber: 1829,
                         columnNumber: 7
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
@@ -42972,13 +43562,13 @@ const ResultsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunt
                         className: "ysc-hero-img"
                     }, void 0, false, {
                         fileName: "src/Components/Pages.jsx",
-                        lineNumber: 1560,
+                        lineNumber: 1830,
                         columnNumber: 7
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/Components/Pages.jsx",
-                lineNumber: 1556,
+                lineNumber: 1826,
                 columnNumber: 5
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -42993,20 +43583,20 @@ const ResultsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunt
                                     children: "Moments cl\xe9s"
                                 }, void 0, false, {
                                     fileName: "src/Components/Pages.jsx",
-                                    lineNumber: 1566,
+                                    lineNumber: 1836,
                                     columnNumber: 11
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                     children: "Quelques rep\xe8res r\xe9cents qui illustrent la dynamique du club."
                                 }, void 0, false, {
                                     fileName: "src/Components/Pages.jsx",
-                                    lineNumber: 1567,
+                                    lineNumber: 1837,
                                     columnNumber: 11
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/Components/Pages.jsx",
-                            lineNumber: 1565,
+                            lineNumber: 1835,
                             columnNumber: 9
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -43018,36 +43608,36 @@ const ResultsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunt
                                             children: result.title
                                         }, void 0, false, {
                                             fileName: "src/Components/Pages.jsx",
-                                            lineNumber: 1572,
+                                            lineNumber: 1842,
                                             columnNumber: 15
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                             children: result.detail
                                         }, void 0, false, {
                                             fileName: "src/Components/Pages.jsx",
-                                            lineNumber: 1573,
+                                            lineNumber: 1843,
                                             columnNumber: 15
                                         }, undefined)
                                     ]
                                 }, result.title, true, {
                                     fileName: "src/Components/Pages.jsx",
-                                    lineNumber: 1571,
+                                    lineNumber: 1841,
                                     columnNumber: 13
                                 }, undefined))
                         }, void 0, false, {
                             fileName: "src/Components/Pages.jsx",
-                            lineNumber: 1569,
+                            lineNumber: 1839,
                             columnNumber: 9
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/Components/Pages.jsx",
-                    lineNumber: 1564,
+                    lineNumber: 1834,
                     columnNumber: 7
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/Components/Pages.jsx",
-                lineNumber: 1563,
+                lineNumber: 1833,
                 columnNumber: 5
             }, undefined)
         ]
@@ -43059,7 +43649,7 @@ const PartnersPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRun
                 children: scoped
             }, void 0, false, {
                 fileName: "src/Components/Pages.jsx",
-                lineNumber: 1586,
+                lineNumber: 1856,
                 columnNumber: 5
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
@@ -43069,21 +43659,21 @@ const PartnersPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRun
                         children: "R\xe9seau"
                     }, void 0, false, {
                         fileName: "src/Components/Pages.jsx",
-                        lineNumber: 1589,
+                        lineNumber: 1859,
                         columnNumber: 7
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
                         children: "Partenaires"
                     }, void 0, false, {
                         fileName: "src/Components/Pages.jsx",
-                        lineNumber: 1590,
+                        lineNumber: 1860,
                         columnNumber: 7
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                         children: "Ils soutiennent le Youth Sports Club et partagent notre vision \xe9ducative."
                     }, void 0, false, {
                         fileName: "src/Components/Pages.jsx",
-                        lineNumber: 1591,
+                        lineNumber: 1861,
                         columnNumber: 7
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
@@ -43092,13 +43682,13 @@ const PartnersPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRun
                         className: "ysc-hero-img"
                     }, void 0, false, {
                         fileName: "src/Components/Pages.jsx",
-                        lineNumber: 1592,
+                        lineNumber: 1862,
                         columnNumber: 7
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/Components/Pages.jsx",
-                lineNumber: 1588,
+                lineNumber: 1858,
                 columnNumber: 5
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -43113,20 +43703,20 @@ const PartnersPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRun
                                     children: "Nos collaborations"
                                 }, void 0, false, {
                                     fileName: "src/Components/Pages.jsx",
-                                    lineNumber: 1598,
+                                    lineNumber: 1868,
                                     columnNumber: 11
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                     children: "Un r\xe9seau local engag\xe9 pour la jeunesse et le d\xe9veloppement sportif."
                                 }, void 0, false, {
                                     fileName: "src/Components/Pages.jsx",
-                                    lineNumber: 1599,
+                                    lineNumber: 1869,
                                     columnNumber: 11
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/Components/Pages.jsx",
-                            lineNumber: 1597,
+                            lineNumber: 1867,
                             columnNumber: 9
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -43138,36 +43728,36 @@ const PartnersPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRun
                                             children: partner.title
                                         }, void 0, false, {
                                             fileName: "src/Components/Pages.jsx",
-                                            lineNumber: 1604,
+                                            lineNumber: 1874,
                                             columnNumber: 15
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                             children: partner.detail
                                         }, void 0, false, {
                                             fileName: "src/Components/Pages.jsx",
-                                            lineNumber: 1605,
+                                            lineNumber: 1875,
                                             columnNumber: 15
                                         }, undefined)
                                     ]
                                 }, partner.title, true, {
                                     fileName: "src/Components/Pages.jsx",
-                                    lineNumber: 1603,
+                                    lineNumber: 1873,
                                     columnNumber: 13
                                 }, undefined))
                         }, void 0, false, {
                             fileName: "src/Components/Pages.jsx",
-                            lineNumber: 1601,
+                            lineNumber: 1871,
                             columnNumber: 9
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/Components/Pages.jsx",
-                    lineNumber: 1596,
+                    lineNumber: 1866,
                     columnNumber: 7
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/Components/Pages.jsx",
-                lineNumber: 1595,
+                lineNumber: 1865,
                 columnNumber: 5
             }, undefined)
         ]
@@ -43188,19 +43778,7 @@ $RefreshReg$(_c7, "PartnersPage");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../images/472902518_601111642868247_3421823822486160063_n.jpg":"hqBdt","../images/Screenshot 2026-05-17 124137.png":"2RheE","../images/WhatsApp Image 2026-05-16 at 17.46.30.jpeg":"cSFGD","../images/WhatsApp Image 2026-05-16 at 17.46.33.jpeg":"8YJjq","@fortawesome/free-solid-svg-icons":"5lkdy","@fortawesome/react-fontawesome":"euo3c","react":"21dqq","../images/chamipon.jpeg":"1Lh7H","url:../images/cours-prive.mp4":"4qeMD"}],"hqBdt":[function(require,module,exports) {
-module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "472902518_601111642868247_3421823822486160063_n.a02e5563.jpg" + "?" + Date.now();
-
-},{"./helpers/bundle-url":"lgJ39"}],"2RheE":[function(require,module,exports) {
-module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "Screenshot 2026-05-17 124137.73372fa3.png" + "?" + Date.now();
-
-},{"./helpers/bundle-url":"lgJ39"}],"cSFGD":[function(require,module,exports) {
-module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "WhatsApp Image 2026-05-16 at 17.46.30.fac61aa5.jpeg" + "?" + Date.now();
-
-},{"./helpers/bundle-url":"lgJ39"}],"8YJjq":[function(require,module,exports) {
-module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "WhatsApp Image 2026-05-16 at 17.46.33.6fd7a0ba.jpeg" + "?" + Date.now();
-
-},{"./helpers/bundle-url":"lgJ39"}],"5lkdy":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","@fortawesome/free-solid-svg-icons":"5lkdy","@fortawesome/react-fontawesome":"euo3c","react":"21dqq","url:../images/cours-prive.mp4":"4qeMD","../images/472902518_601111642868247_3421823822486160063_n.jpg":"hqBdt","../images/chamipon.jpeg":"1Lh7H","../images/Screenshot 2026-05-17 124137.png":"2RheE","../images/WhatsApp Image 2026-05-16 at 17.46.30.jpeg":"cSFGD","../images/WhatsApp Image 2026-05-16 at 17.46.33.jpeg":"8YJjq","../images/WhatsApp Image 2026-05-22 at 15.06.55.jpeg":"iSwtE","../images/WhatsApp Image 2026-05-22 at 15.07.50.jpeg":"enWWv","../images/WhatsApp Image 2026-05-22 at 15.20.21 (1).jpeg":"iFUdj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"5lkdy":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "fas", ()=>icons);
@@ -70080,12 +70658,24 @@ module.exports = require("./cjs/react-jsx-runtime.development.js");
     exports.jsxs = jsxs;
 })();
 
-},{"react":"21dqq"}],"1Lh7H":[function(require,module,exports) {
-module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "chamipon.d725babc.jpeg" + "?" + Date.now();
-
-},{"./helpers/bundle-url":"lgJ39"}],"4qeMD":[function(require,module,exports) {
+},{"react":"21dqq"}],"4qeMD":[function(require,module,exports) {
 module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "cours-prive.2b4aa077.mp4" + "?" + Date.now();
 
-},{"./helpers/bundle-url":"lgJ39"}],"lW6qc":[function() {},{}]},["1xC6H","ShInH","8lqZg"], "8lqZg", "parcelRequire7d37")
+},{"./helpers/bundle-url":"lgJ39"}],"hqBdt":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "472902518_601111642868247_3421823822486160063_n.a02e5563.jpg" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"1Lh7H":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "chamipon.d725babc.jpeg" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"2RheE":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "Screenshot 2026-05-17 124137.73372fa3.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"cSFGD":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "WhatsApp Image 2026-05-16 at 17.46.30.fac61aa5.jpeg" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"8YJjq":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "WhatsApp Image 2026-05-16 at 17.46.33.6fd7a0ba.jpeg" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"lW6qc":[function() {},{}]},["1xC6H","ShInH","8lqZg"], "8lqZg", "parcelRequiredb2d")
 
 //# sourceMappingURL=index.975ef6c8.js.map
