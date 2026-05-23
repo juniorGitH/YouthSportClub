@@ -6,13 +6,12 @@ import heroVideoOne from "url:../images/WhatsApp Video 2026-05-16 at 13.55.02.mp
 import heroVideoTwo from "url:../images/WhatsApp Video 2026-05-16 at 13.56.37.mp4";
 import heroVideoThree from "url:../images/WhatsApp Video 2026-05-16 at 14.02.58.mp4";
 
-/* ── données statiques ── */
 const disciplines = [
   {
     num: "01",
     title: "Gymnastique",
     desc: "Notre discipline phare. Souplesse, coordination et maîtrise corporelle. Coachs certifiés FIG.",
-    to: "/entrainements",
+    to: "/entrainements#gymnastique",
     image: gymDisciplineImage,
     imageAlt: "Groupe d'enfants en entraînement de gymnastique au sol",
   },
@@ -20,7 +19,7 @@ const disciplines = [
     num: "02",
     title: "Boxe",
     desc: "Condition physique, discipline et maîtrise de soi. Encadrée par des spécialistes en sports de combat.",
-    to: "/entrainements",
+    to: "/entrainements#boxe",
     image: boxeDisciplineImage,
     imageAlt: "Entraînement de boxe avec sac de frappe",
   },
@@ -28,7 +27,7 @@ const disciplines = [
     num: "03",
     title: "Fitness & Cross Training",
     desc: "Remise en forme et renforcement musculaire. Accessible à tous les niveaux, adultes et jeunes.",
-    to: "/entrainements",
+    to: "/entrainements#fitness",
     image: fitnessDisciplineImage,
     imageAlt: "Séance de fitness et cross training",
   },
@@ -55,13 +54,45 @@ const socialTags = [
   "Réduction fratrie (3 enfants+)",
 ];
 
+const palmares = [
+  {
+    emoji: "🥇",
+    title: "Champion de zone",
+    discipline: "Gymnastique",
+    detail: "Moins de 12 ans · 2025",
+    color: "#2f6fb2",
+    bg: "#eaf2fc",
+  },
+  {
+    emoji: "🥈",
+    title: "Vice-champion national",
+    discipline: "Fitness",
+    detail: "Moins de 12 ans · 2024",
+    color: "#3b6d11",
+    bg: "#eaf3de",
+  },
+  {
+    emoji: "🥇",
+    title: "2 médailles d'or",
+    discipline: "Boxe éducative",
+    detail: "Championnat de zone · 2024",
+    color: "#a32d2d",
+    bg: "#fff0f0",
+  },
+  {
+    emoji: "🥉",
+    title: "3e place nationale",
+    discipline: "Fitness",
+    detail: "Moins de 12 ans · 2024",
+    color: "#854f0b",
+    bg: "#faeeda",
+  },
+];
+
 const heroVideos = [heroVideoOne, heroVideoTwo, heroVideoThree];
 
-/* ══════════════════════════════════════
-   Styles scoped — n'écrasent pas index.css
-   ══════════════════════════════════════ */
 const scoped = `
-  /* Hero */
+  /* ── Hero ── */
   .ysc-hero {
     position: relative;
     min-height: calc(100vh + 65px);
@@ -91,10 +122,8 @@ const scoped = `
     transform: scale(1.07);
   }
   @keyframes yscHeroVideoFade {
-    0%,
-    29% { opacity: 1; }
-    33%,
-    100% { opacity: 0; }
+    0%, 29% { opacity: 1; }
+    33%, 100% { opacity: 0; }
   }
   .ysc-hero-overlay {
     position: absolute;
@@ -154,7 +183,38 @@ const scoped = `
     margin: 0 auto 1.25rem;
     line-height: 1.65;
   }
-  /* Discipline cards */
+  .ysc-hero-stats {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 1.75rem 0 2rem;
+  }
+  .ysc-hero-stat {
+    text-align: center;
+  }
+  .ysc-hero-stat-num {
+    display: block;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1;
+  }
+  .ysc-hero-stat-label {
+    display: block;
+    font-size: 0.72rem;
+    color: #b7d3f5;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 4px;
+  }
+  .ysc-hero-stat-sep {
+    width: 1px;
+    background: rgba(183,211,245,0.3);
+    align-self: stretch;
+  }
+
+  /* ── Discipline cards ── */
   .ysc-disc-card {
     background: #fff;
     border-radius: 14px;
@@ -179,11 +239,6 @@ const scoped = `
     color: #dfeafb;
     line-height: 1;
     user-select: none;
-  }
-  .ysc-disc-icon {
-    font-size: 2rem;
-    display: block;
-    margin-bottom: 0.75rem;
   }
   .ysc-disc-card h3 {
     font-size: 1.1rem;
@@ -216,7 +271,36 @@ const scoped = `
   }
   .ysc-disc-link:hover { text-decoration: underline; }
 
-  /* Infos table */
+  /* ── Palmarès ── */
+  .ysc-palmares-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  .ysc-palmares-card {
+    border-radius: 14px;
+    padding: 1.25rem 1.1rem;
+    border: 1px solid #d7e5f6;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    background: #fff;
+    transition: transform 0.2s;
+  }
+  .ysc-palmares-card:hover { transform: translateY(-2px); }
+  .ysc-palmares-emoji { font-size: 2rem; line-height: 1; }
+  .ysc-palmares-title { font-size: 0.95rem; font-weight: 700; color: #1f4f8a; }
+  .ysc-palmares-disc {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 999px;
+    align-self: flex-start;
+  }
+  .ysc-palmares-detail { font-size: 0.78rem; color: #4a6b90; }
+
+  /* ── Infos table ── */
   .ysc-card-title {
     font-size: 0.95rem;
     font-weight: 700;
@@ -245,18 +329,8 @@ const scoped = `
     font-weight: 700;
     color: #2f6fb2;
   }
-  .ysc-tarif-link {
-    display: inline-block;
-    margin-top: 1rem;
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: #2f6fb2;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-  .ysc-tarif-link:hover { text-decoration: underline; }
 
-  /* Social */
+  /* ── Social ── */
   .ysc-social-inner {
     display: flex;
     gap: 2rem;
@@ -309,7 +383,32 @@ const scoped = `
     margin-top: 4px;
   }
 
-  /* CTA */
+  /* ── Prochain événement banner ── */
+  .ysc-next-event {
+    background: linear-gradient(110deg, #eaf2fc 0%, #f3f8ff 100%);
+    border: 1px solid #c9dcf2;
+    border-radius: 14px;
+    padding: 1.4rem 1.75rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .ysc-next-event-badge {
+    background: #2f6fb2;
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .ysc-next-event-info { flex: 1; min-width: 180px; }
+  .ysc-next-event-title { font-size: 0.98rem; font-weight: 700; color: #1f4f8a; margin-bottom: 0.2rem; }
+  .ysc-next-event-meta { font-size: 0.82rem; color: #4a6b90; }
+
+  /* ── CTA ── */
   .ysc-cta {
     background: linear-gradient(120deg, #07152d, #102a50 60%, #113766);
     border-radius: 16px;
@@ -353,19 +452,18 @@ const scoped = `
     background: transparent;
     border: 1px solid rgba(255,255,255,0.35);
     color: #fff;
+    text-decoration: none;
   }
   .btn-outline-white:hover { background: rgba(255,255,255,0.08); }
 
-  /* Responsive */
+  /* ── Responsive ── */
   @media (max-width: 768px) {
     .ysc-hero {
       min-height: 100vh;
       margin-top: -65px;
       padding: calc(5.5rem + 65px) 0.85rem 2.5rem;
     }
-    .ysc-hero-videos {
-      display: block;
-    }
+    .ysc-hero-videos { display: block; }
     .ysc-hero-video-slot {
       position: absolute;
       inset: 0;
@@ -375,30 +473,19 @@ const scoped = `
     .ysc-hero-video-slot:nth-child(1) { animation-delay: 0s; }
     .ysc-hero-video-slot:nth-child(2) { animation-delay: 6s; }
     .ysc-hero-video-slot:nth-child(3) { animation-delay: 12s; }
-    .ysc-hero-eyebrow {
-      letter-spacing: 0.08rem;
-      font-size: 0.76rem;
-    }
+    .ysc-hero-eyebrow { letter-spacing: 0.08rem; font-size: 0.76rem; }
+    .ysc-hero-stats { gap: 1rem; }
+    .ysc-hero-stat-sep { display: none; }
     .ysc-social-inner { flex-direction: column; gap: 1rem; }
     .ysc-social-stat { width: 100%; }
     .ysc-cta { border-radius: 12px; padding: 2.5rem 1rem; }
+    .ysc-next-event { gap: 1rem; }
   }
   @media (max-width: 640px) {
-    .ysc-info-table tr {
-      display: block;
-      padding: 0.45rem 0;
-    }
-    .ysc-info-table td {
-      display: block;
-      padding: 0.15rem 0.2rem;
-    }
-    .ysc-info-table td:first-child {
-      width: 100%;
-    }
-    .ysc-info-table td:last-child {
-      text-align: left;
-      padding-top: 0;
-    }
+    .ysc-info-table tr { display: block; padding: 0.45rem 0; }
+    .ysc-info-table td { display: block; padding: 0.15rem 0.2rem; }
+    .ysc-info-table td:first-child { width: 100%; }
+    .ysc-info-table td:last-child { text-align: left; padding-top: 0; }
   }
   @media (max-width: 520px) {
     .ysc-hero-inner h1 { font-size: clamp(2rem, 10vw, 3rem); }
@@ -443,8 +530,32 @@ const Home = () => {
             Association sportive de référence nationale, spécialisée dans la formation et
             l&apos;encadrement des jeunes à travers la gymnastique, la boxe et le fitness.
           </p>
+
+          {/* Stats hero */}
+          <div className="ysc-hero-stats" aria-label="Chiffres clés">
+            <div className="ysc-hero-stat">
+              <span className="ysc-hero-stat-num">3+</span>
+              <span className="ysc-hero-stat-label">Années d'expérience</span>
+            </div>
+            <div className="ysc-hero-stat-sep" aria-hidden="true" />
+            <div className="ysc-hero-stat">
+              <span className="ysc-hero-stat-num">3</span>
+              <span className="ysc-hero-stat-label">Disciplines</span>
+            </div>
+            <div className="ysc-hero-stat-sep" aria-hidden="true" />
+            <div className="ysc-hero-stat">
+              <span className="ysc-hero-stat-num">🥇</span>
+              <span className="ysc-hero-stat-label">Champions nationaux</span>
+            </div>
+            <div className="ysc-hero-stat-sep" aria-hidden="true" />
+            <div className="ysc-hero-stat">
+              <span className="ysc-hero-stat-num">100%</span>
+              <span className="ysc-hero-stat-label">Inclusif</span>
+            </div>
+          </div>
+
           <div className="hero-actions">
-            <Link className="btn btn-primary" to="/rejoindre">
+            <Link className="btn btn-primary" to="/rejoindre#registration-form">
               S&apos;inscrire maintenant
             </Link>
             <Link className="btn btn-outline" to="/a-propos">
@@ -454,21 +565,43 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ══ DISCIPLINES ══ */}
+      {/* ══ PROCHAIN ÉVÉNEMENT ══ */}
       <section className="section">
+        <div className="wide">
+          <div className="ysc-next-event">
+            <span className="ysc-next-event-badge">Prochain événement</span>
+            <div className="ysc-next-event-info">
+              <p className="ysc-next-event-title">
+                Stage de perfectionnement – Gymnastique
+              </p>
+              <p className="ysc-next-event-meta">
+                📅 15 – 20 juin 2026 &nbsp;·&nbsp; 📍 Stade de Kégué, Lomé
+              </p>
+            </div>
+            <Link
+              className="btn btn-primary"
+              to="/evenements"
+              style={{ flexShrink: 0, fontSize: "0.85rem", padding: "0.6rem 1.2rem" }}
+            >
+              Voir l&apos;agenda →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ══ DISCIPLINES ══ */}
+      <section className="section section-alt">
         <div className="section-header">
           <h2>Nos disciplines</h2>
           <p>
-            Trois activités complémentaires pour tous les profils et tous les niveaux, encadrées par
-            des professionnels qualifiés.
+            Trois activités complémentaires pour tous les profils et tous les niveaux, encadrées
+            par des professionnels qualifiés.
           </p>
         </div>
         <div className="grid three-columns">
           {disciplines.map((d) => (
             <article className="ysc-disc-card" key={d.num}>
-              <span className="ysc-disc-num" aria-hidden="true">
-                {d.num}
-              </span>
+              <span className="ysc-disc-num" aria-hidden="true">{d.num}</span>
               {d.image && (
                 <img
                   className="ysc-disc-image"
@@ -484,6 +617,37 @@ const Home = () => {
               </Link>
             </article>
           ))}
+        </div>
+      </section>
+
+      {/* ══ PALMARÈS ══ */}
+      <section className="section">
+        <div className="section-header">
+          <h2>Notre palmarès</h2>
+          <p>
+            Le Youth Sports Club forme des champions. Quelques titres obtenus en compétitions
+            zonales et nationales.
+          </p>
+        </div>
+        <div className="ysc-palmares-grid">
+          {palmares.map((p) => (
+            <div className="ysc-palmares-card" key={p.title + p.discipline}>
+              <span className="ysc-palmares-emoji">{p.emoji}</span>
+              <p className="ysc-palmares-title">{p.title}</p>
+              <span
+                className="ysc-palmares-disc"
+                style={{ background: p.bg, color: p.color }}
+              >
+                {p.discipline}
+              </span>
+              <p className="ysc-palmares-detail">{p.detail}</p>
+            </div>
+          ))}
+        </div>
+        <div style={{ textAlign: "center", marginTop: "1.75rem" }}>
+          <Link className="btn btn-outline" to="/evenements">
+            Voir tous les événements &amp; palmarès →
+          </Link>
         </div>
       </section>
 
@@ -545,9 +709,7 @@ const Home = () => {
                 </p>
                 <div className="ysc-tags">
                   {socialTags.map((t) => (
-                    <span className="ysc-tag" key={t}>
-                      {t}
-                    </span>
+                    <span className="ysc-tag" key={t}>{t}</span>
                   ))}
                 </div>
               </div>
@@ -561,13 +723,13 @@ const Home = () => {
       </section>
 
       {/* ══ CTA FINAL ══ */}
-      <section className="section">
+      <section className="section section-alt">
         <div className="wide">
           <div className="ysc-cta">
             <h2>Prêt à rejoindre le club ?</h2>
             <p>Tous niveaux acceptés · Encadrement professionnel · Stade de Kégué, Lomé</p>
             <div className="ysc-cta-actions">
-              <Link className="btn btn-primary" to="/rejoindre">
+              <Link className="btn btn-primary" to="/rejoindre#registration-form">
                 S&apos;inscrire maintenant
               </Link>
               <Link className="btn-outline-white" to="/entrainements">

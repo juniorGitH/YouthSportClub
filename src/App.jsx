@@ -6,13 +6,11 @@ import About from "./Components/About";
 import Footer from "./Components/Footer";
 import ConditionsGeneralesUtilisation from "./Components/ConditionsGeneralesUtilisation";
 import PolitiqueProtectionDonneesPersonnelles from "./Components/PolitiqueProtectionDonneesPersonnelles";
-import {
-  EventsPage,
-  TrainingSessionsPage,
-  JoinClubPage,
-  PartnersPage,
-  ResultsPage,
-} from "./Components/Pages";
+import { EventsPage } from "./Components/EventsPage";
+import { JoinClubPage } from "./Components/JoinClubPage";
+import { PartnersPage } from "./Components/PartnersPage";
+import { ResultsPage } from "./Components/ResultsPage";
+import { TrainingSessionsPage } from "./Components/TrainingSessionsPage";
 import "./styles.css";
 
 const Layout = ({ children }) => (
