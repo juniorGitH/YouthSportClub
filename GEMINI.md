@@ -1,17 +1,18 @@
-# Club Athéon - Project Instructions
+# Youth Sports Club (YSC) - Project Instructions
 
-This project is a React-based website for **Club Athéon**, a sports association in Paris (16ème arrondissement). It serves as an informational platform for members, potential adherents, and partners.
+This project is a React-based website for **Youth Sports Club (YSC)**, a sports association based in Lomé, Togo. It serves as an informational platform and an online registration portal for members.
 
 ## Project Overview
 
-- **Purpose:** Informational website for a sports club showcasing activities, registration info, and events.
+- **Purpose:** Informational website and registration platform for YSC, showcasing disciplines (Gymnastics, Boxing, Fitness), events, and results.
 - **Technologies:**
   - **Framework:** React 18
   - **Routing:** React Router DOM 6
   - **Bundler:** Parcel 2
+  - **PDF Generation:** pdf-lib
   - **Deployment:** GitHub Pages (via `gh-pages`)
-  - **Styling:** Vanilla CSS (`src/styles.css`)
-  - **Linting/Formatting:** ESLint, Prettier
+  - **Styling:** Vanilla CSS (`src/styles.css` and scoped styles in components)
+  - **Location:** Stade de Kégué, Lomé, Togo
 
 ## Building and Running
 
@@ -20,44 +21,42 @@ To start the development server:
 ```bash
 npm start
 ```
-This runs `parcel src/index.html` and typically opens the app on `http://localhost:1234`.
+This runs `parcel src/index.html`.
 
 ### Production Build
-To create a production build:
+To create a production build for GitHub Pages:
 ```bash
-npm run build
+npm run build-gh
 ```
-The output will be in the `dist/` directory.
+The output will be in the `dist/` directory, including `404.html` and `CNAME` for the custom domain `youthsportsclubtogo.com`.
 
 ### Deployment
 To deploy to GitHub Pages:
 ```bash
 npm run deploy
 ```
-*Note: This runs the `predeploy` script which builds the project and prepares specific files like `404.html` and `CNAME`.*
 
 ## Project Structure
 
 - `src/`: Core source code.
-  - `index.js`: Application entry point. Renders `App` into `#app`.
-  - `App.jsx`: Main application component, defines the routing structure using `react-router-dom`.
-  - `Components/`: Contains all React components (Header, Footer, Home, etc.).
-  - `images/`: Static assets like logos and sport-related images.
-  - `utils/`: Helper functions (e.g., date formatting, local storage management).
-  - `styles.css`: Global styles for the entire application.
-- `translations/`: Contains README translations for the template.
-- `dist/`: Generated build files (ignored by git).
+  - `index.js`: Application entry point.
+  - `App.jsx`: Main application component and routing.
+  - `Home.jsx`: Landing page.
+  - `Components/`:
+    - `Pages.jsx`: Contains the Join Club (Registration), Events, Training, Results, and Partners pages.
+    - `About.jsx`: Information about the club's history and mission.
+  - `images/`: Static assets (logos, sport photos, registration PDF template).
+  - `styles.css`: Global styles.
+- `translations/`: Documentation translations.
+
+## Key Features
+
+- **Online Registration:** Users can fill out a form in `JoinClubPage` which generates a pre-filled PDF (`pdf-lib`) for the user to download and send via WhatsApp/Email.
+- **Responsive Design:** Optimized for mobile and desktop.
+- **Social Integration:** WhatsApp links for direct contact and registration submission.
 
 ## Development Conventions
 
-- **Components:** Use functional components with hooks.
-- **Routing:** New routes should be added to `src/App.jsx`. Use the `Layout` wrapper for pages requiring a header and footer.
-- **Assets:** Place new images in `src/images/` and import them into components.
-- **Styling:** Adhere to the styles defined in `src/styles.css`. Prefer adding to this file or creating modular CSS if the project grows significantly.
-- **Data:** Authentication logic is intended to be handled by a backend API (as noted in `src/utils/initializeData.js`), though some state is managed via `localStorage`.
-
-## Key Files
-
-- `package.json`: Contains project metadata, dependencies, and scripts.
-- `src/App.jsx`: The central hub for navigation and page layout.
-- `src/styles.css`: The primary source of truth for the site's visual design.
+- **Components:** Functional components with hooks.
+- **PDF Generation:** The registration form logic is located in `src/Components/Pages.jsx`. It uses a PDF template located in `src/images/`.
+- **Assets:** New images should be added to `src/images/`. Import them using `url:` prefix if needed for Parcel (especially for non-JS assets like PDFs).

@@ -9,13 +9,16 @@ import {
   faVanShuttle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import videoSrc from "url:../images/cours-prive.mp4";
 import galleryA from "../images/472902518_601111642868247_3421823822486160063_n.jpg";
 import championImg from "../images/chamipon.jpeg";
 import galleryLarge from "../images/Screenshot 2026-05-17 124137.png";
 import galleryB from "../images/WhatsApp Image 2026-05-16 at 17.46.30.jpeg";
 import testimonialImg from "../images/WhatsApp Image 2026-05-16 at 17.46.33.jpeg";
+import galleryC from "../images/WhatsApp Image 2026-05-22 at 15.06.55.jpeg";
+import galleryD from "../images/WhatsApp Image 2026-05-22 at 15.07.50.jpeg";
+import galleryE from "../images/WhatsApp Image 2026-05-22 at 15.20.21 (1).jpeg";
 
 // ─── Sub-components ─────────────────────────────────────────────────────────
 
@@ -213,6 +216,23 @@ const scoped = `
     box-shadow: var(--ysc-shadow);
   }
 
+  .ysc-form-block {
+    margin-bottom: 2rem;
+  }
+
+  .ysc-form-section-title {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--ysc-primary-dark);
+    margin-bottom: 0.75rem;
+  }
+
+  .ysc-form-hint {
+    font-size: 0.85rem;
+    color: var(--ysc-text-light);
+    margin-bottom: 1rem;
+  }
+
   .ysc-form-grid {
     display: flex;
     flex-direction: column;
@@ -290,8 +310,9 @@ const scoped = `
 
   .ysc-radio-group {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
     margin-top: 0.5rem;
+    flex-wrap: wrap;
   }
 
   .ysc-radio-item {
@@ -881,6 +902,18 @@ const eventsGallery = [
     alt: "Démonstration de gymnastique du Youth Sports Club",
   },
   {
+    src: galleryC,
+    alt: "Entraînement de gymnastique récent",
+  },
+  {
+    src: galleryD,
+    alt: "Séance de boxe éducative",
+  },
+  {
+    src: galleryE,
+    alt: "Préparation physique et stretching",
+  },
+  {
     src: galleryA,
     alt: "Séance collective du Youth Sports Club",
   },
@@ -888,33 +921,6 @@ const eventsGallery = [
     src: galleryB,
     alt: "Photo de groupe des athlètes du club",
   },
-];
-
-const trainingPrograms = [
-  {
-    title: "Gymnastique",
-    level: "Débutant à avancé",
-    ages: "6-16 ans",
-    description: "Souplesse, coordination, agrès et préparation physique progressive.",
-  },
-  {
-    title: "Boxe éducative",
-    level: "Initiation & perfectionnement",
-    ages: "10 ans et +",
-    description: "Travail technique, cardio et confiance en soi dans un cadre sécurisé.",
-  },
-  {
-    title: "Fitness & cross training",
-    level: "Tous niveaux",
-    ages: "Adolescents & adultes",
-    description: "Renforcement musculaire, mobilité et cardio pour une forme complète.",
-  },
-];
-
-const trainingSchedule = [
-  { day: "Mercredi", time: "14h00 - 18h00", focus: "Gymnastique & boxe" },
-  { day: "Samedi", time: "08h00 - 12h00", focus: "Gymnastique enfants & fitness adultes" },
-  { day: "Dimanche", time: "08h30 - 11h30", focus: "Renforcement & séances privées" },
 ];
 
 const resultsHighlights = [
@@ -950,90 +956,154 @@ const partners = [
 // ─── Join Club Page ─────────────────────────────────────────────────────────
 
 export const JoinClubPage = () => {
-  const [registrationType, setRegistrationType] = useState("self"); // self | child
+  const defaultDate = new Date().toISOString().slice(0, 10);
   const [formData, setFormData] = useState({
-    name: "",
+    athleteLastName: "",
+    athleteFirstName: "",
     dob: "",
+    sex: "",
+    nationality: "",
+    school: "",
+    classLevel: "",
+    address: "",
     parentName: "",
+    parentRelation: "",
     parentPhone: "",
+    parentEmail: "",
+    level: "",
+    ageCategory: "",
     discipline: "",
-    phone: "",
-    email: "",
-    objective: "",
-    objectiveDetails: "",
+    scholarship: "",
+    scholarshipType: "",
+    paymentMode: "",
+    agreementName: "",
+    agreementDate: defaultDate,
+    signature: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submissionMessage, setSubmissionMessage] = useState("");
 
   const handleInputChange = (e) => {
-    const { id, value } = e.target;
-    // Extract property name from id (e.g., 'f-name' -> 'name')
-    const field = id
-      .replace("f-", "")
-      .replace("-", "P")
-      .replace("pName", "parentName")
-      .replace("pPhone", "parentPhone");
-
-    // Mapping manual fixes for IDs to state keys
-    const idMap = {
-      "f-name": "name",
-      "f-dob": "dob",
-      "f-parent-name": "parentName",
-      "f-parent-phone": "parentPhone",
-      "f-discipline": "discipline",
-      "f-phone": "phone",
-      "f-email": "email",
-      "f-objective": "objective",
-      "f-objective-details": "objectiveDetails",
-    };
-
-    setFormData((prev) => ({
-      ...prev,
-      [idMap[id] || field]: value,
-    }));
+    const { name, value } = e.target;
+    setFormData((prev) => {
+      const next = { ...prev, [name]: value };
+      if (name === "scholarship" && value !== "yes") {
+        next.scholarshipType = "";
+      }
+      if (name === "parentName" && !prev.agreementName) {
+        next.agreementName = value;
+      }
+      return next;
+    });
   };
 
-  const getSportsCategory = (dob) => {
+  const getAgeCategory = (dob) => {
     if (!dob) return "";
     const birthYear = new Date(dob).getFullYear();
-    const currentYear = 2026;
-    const age = currentYear - birthYear;
-
-    if (age < 6) return "Baby Gym";
-    if (age <= 7) return "Eveil";
-    if (age <= 9) return "Poussin";
-    if (age <= 11) return "Benjamin";
-    if (age <= 13) return "Minime";
-    if (age <= 15) return "Cadet";
-    if (age <= 17) return "Junior";
-    return "Senior";
+    const age = 2026 - birthYear;
+    if (age <= 6) return "4-6";
+    if (age <= 9) return "7-9";
+    if (age <= 11) return "10-11";
+    if (age <= 14) return "12-14";
+    if (age <= 17) return "15-17";
+    return "18+";
   };
 
-  const category = getSportsCategory(formData.dob);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const { name, dob, parentName, parentPhone, discipline, phone, email, objective } = formData;
-
-    // Format date from YYYY-MM-DD to DD/MM/YYYY
-    const formattedDob = dob ? dob.split("-").reverse().join("/") : "";
-
-    let message = `Bonjour YSC,\n\nNouvelle demande d'inscription :\n\n`;
-    message += `Nom : ${name}\n`;
-    message += `Date de naissance : ${formattedDob}\n`;
-
-    if (registrationType === "child") {
-      message += `Parent : ${parentName}\n`;
-      message += `Téléphone parent : ${parentPhone}\n`;
+  useEffect(() => {
+    const autoCategory = getAgeCategory(formData.dob);
+    if (autoCategory && !formData.ageCategory) {
+      setFormData((prev) => ({ ...prev, ageCategory: autoCategory }));
     }
+  }, [formData.dob, formData.ageCategory]);
 
-    message += `Discipline : ${discipline}\n`;
-    message += `Téléphone : ${phone}\n`;
-    message += `Email : ${email || "Non renseigné"}\n`;
-    message += `Objectif : ${objective}\n\n`;
-    message += `Merci.`;
+  const formatDate = (value) => {
+    if (!value) return "";
+    return value.split("-").reverse().join("/");
+  };
 
-    const whatsappUrl = `https://wa.me/22891534885?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, "_blank");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmissionMessage("");
+
+    try {
+      const levelLabel = {
+        debutant: "Débutant",
+        "1an": "1 an",
+        "2ans": "2 ans",
+        "3ansplus": "3 ans et +",
+      }[formData.level];
+      const ageLabel = {
+        "4-6": "4–6 (Éveil)",
+        "7-9": "7–9 (Benjamin)",
+        "10-11": "10–11 (Minime)",
+        "12-14": "12–14 (Cadet)",
+        "15-17": "15–17 (Junior)",
+        "18+": "18+ (Senior)",
+      }[formData.ageCategory];
+      const scholarshipLabel =
+        formData.scholarship === "yes" ? "Oui" : formData.scholarship === "no" ? "Non" : "";
+      const scholarshipTypeLabel = {
+        bourse50: "Bourse 50 % sur la mensualité",
+        "entrainement-gratuit": "Entraînement gratuit",
+      }[formData.scholarshipType];
+      const paymentLabel = {
+        seance: "Paiement par séance",
+        mensuel: "Paiement mensuel",
+        forfait: "Forfait saison complète",
+      }[formData.paymentMode];
+
+      const safeValue = (value) => (value ? value : "-");
+      const sexLabel =
+        formData.sex === "M" ? "Masculin" : formData.sex === "F" ? "Féminin" : "";
+      const whatsappMessage = [
+        "Bonjour Youth Sports Club,",
+        "",
+        "Nouvelle demande d'inscription 2026",
+        `Nom: ${safeValue(formData.athleteLastName)}`,
+        `Prénoms: ${safeValue(formData.athleteFirstName)}`,
+        `Date de naissance: ${safeValue(formatDate(formData.dob))}`,
+        `Sexe: ${safeValue(sexLabel)}`,
+        `Nationalité: ${safeValue(formData.nationality)}`,
+        `Établissement scolaire: ${safeValue(formData.school)}`,
+        `Classe: ${safeValue(formData.classLevel)}`,
+        `Adresse: ${safeValue(formData.address)}`,
+        "",
+        "Parent / tuteur légal",
+        `Nom et prénoms: ${safeValue(formData.parentName)}`,
+        `Lien avec l'enfant: ${safeValue(formData.parentRelation)}`,
+        `Téléphone: ${safeValue(formData.parentPhone)}`,
+        `Email: ${safeValue(formData.parentEmail)}`,
+        "",
+        "Informations sportives",
+        `Niveau / ancienneté: ${safeValue(levelLabel)}`,
+        `Catégorie d'âge: ${safeValue(ageLabel)}`,
+        `Discipline: ${safeValue(formData.discipline)}`,
+        "",
+        "Programme YSC",
+        `Athlète boursier: ${safeValue(scholarshipLabel)}`,
+        `Catégorie de bourse: ${safeValue(scholarshipTypeLabel)}`,
+        "",
+        "Paiement",
+        `Mode choisi: ${safeValue(paymentLabel)}`,
+        "",
+        "Engagement financier",
+        `Nom et prénoms: ${safeValue(formData.agreementName || formData.parentName)}`,
+        `Date: ${safeValue(formatDate(formData.agreementDate))}`,
+        `Signature: ${safeValue(formData.signature || formData.agreementName)}`,
+      ].join("\n");
+
+      const whatsappNumber = "+22891534885";
+      const whatsappDigits = whatsappNumber.replace(/\D/g, "");
+      const whatsappUrl = `https://wa.me/${whatsappDigits}?text=${encodeURIComponent(whatsappMessage)}`;
+
+      window.open(whatsappUrl, "_blank");
+      setSubmissionMessage("Demande envoyée sur WhatsApp.");
+    } catch (error) {
+      setSubmissionMessage("❌ Impossible d'ouvrir WhatsApp. Réessayez ou contactez le club.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const scrollToForm = (e) => {
@@ -1109,133 +1179,385 @@ export const JoinClubPage = () => {
           </div>
 
           <form className="ysc-form" onSubmit={handleSubmit}>
-            <div className="ysc-form-grid">
-              <div className="ysc-field">
-                <label htmlFor="f-name">
-                  {registrationType === "child" ? "Nom complet de l'enfant" : "Nom complet"}
-                </label>
-                <input
-                  id="f-name"
-                  type="text"
-                  placeholder="Ex : Kofi Mensah"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-
-              <div className="ysc-field">
-                <label htmlFor="f-dob">Date de naissance</label>
-                <input
-                  id="f-dob"
-                  type="date"
-                  required
-                  value={formData.dob}
-                  onChange={handleInputChange}
-                />
-                {category && (
-                  <span className="ysc-category-label">
-                    <FontAwesomeIcon icon={faUsers} size="xs" /> Catégorie : {category}
-                  </span>
-                )}
-              </div>
-
-              <div className="ysc-field ysc-field--full">
-                <label htmlFor="f-discipline">Discipline souhaitée</label>
-                <select
-                  id="f-discipline"
-                  value={formData.discipline}
-                  onChange={handleInputChange}
-                  required
-                >
-                  <option value="">Sélectionnez une discipline</option>
-                  <option value="Gymnastique">Gymnastique</option>
-                  <option value="Boxe">Boxe</option>
-                  <option value="Fitness">Fitness</option>
-                </select>
-              </div>
-
-              <div className="ysc-field">
-                <label htmlFor="f-phone">Téléphone (WhatsApp)</label>
-                <input
-                  id="f-phone"
-                  type="tel"
-                  placeholder="+228 90 00 00 00"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-
-              <div className="ysc-field ysc-field--full">
-                <label>Vous inscrivez :</label>
-                <div className="ysc-radio-group">
-                  <label className="ysc-radio-item">
-                    <input
-                      type="radio"
-                      name="registrationType"
-                      value="self"
-                      checked={registrationType === "self"}
-                      onChange={(e) => setRegistrationType(e.target.value)}
-                    />
-                    Vous-même
-                  </label>
-                  <label className="ysc-radio-item">
-                    <input
-                      type="radio"
-                      name="registrationType"
-                      value="child"
-                      checked={registrationType === "child"}
-                      onChange={(e) => setRegistrationType(e.target.value)}
-                    />
-                    Votre enfant
-                  </label>
+            <div className="ysc-form-block">
+              <h3 className="ysc-form-section-title">1. Informations du gymnaste</h3>
+              <div className="ysc-form-grid">
+                <div className="ysc-field">
+                  <label htmlFor="athleteLastName">Nom</label>
+                  <input
+                    id="athleteLastName"
+                    name="athleteLastName"
+                    type="text"
+                    value={formData.athleteLastName}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+                <div className="ysc-field">
+                  <label htmlFor="athleteFirstName">Prénoms</label>
+                  <input
+                    id="athleteFirstName"
+                    name="athleteFirstName"
+                    type="text"
+                    value={formData.athleteFirstName}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+                <div className="ysc-field">
+                  <label htmlFor="dob">Date de naissance</label>
+                  <input
+                    id="dob"
+                    name="dob"
+                    type="date"
+                    value={formData.dob}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+                <div className="ysc-field">
+                  <label>Sexe</label>
+                  <div className="ysc-radio-group">
+                    <label className="ysc-radio-item">
+                      <input
+                        type="radio"
+                        name="sex"
+                        value="M"
+                        checked={formData.sex === "M"}
+                        onChange={handleInputChange}
+                        required
+                      />
+                      M
+                    </label>
+                    <label className="ysc-radio-item">
+                      <input
+                        type="radio"
+                        name="sex"
+                        value="F"
+                        checked={formData.sex === "F"}
+                        onChange={handleInputChange}
+                        required
+                      />
+                      F
+                    </label>
+                  </div>
+                </div>
+                <div className="ysc-field">
+                  <label htmlFor="nationality">Nationalité</label>
+                  <input
+                    id="nationality"
+                    name="nationality"
+                    type="text"
+                    value={formData.nationality}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className="ysc-field">
+                  <label htmlFor="school">Établissement scolaire</label>
+                  <input
+                    id="school"
+                    name="school"
+                    type="text"
+                    value={formData.school}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className="ysc-field">
+                  <label htmlFor="classLevel">Classe</label>
+                  <input
+                    id="classLevel"
+                    name="classLevel"
+                    type="text"
+                    value={formData.classLevel}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className="ysc-field">
+                  <label htmlFor="address">Adresse complète</label>
+                  <textarea
+                    id="address"
+                    name="address"
+                    value={formData.address}
+                    onChange={handleInputChange}
+                    rows={3}
+                  />
                 </div>
               </div>
+            </div>
 
-              {registrationType === "child" && (
-                <>
-                  <div className="ysc-field">
-                    <label htmlFor="f-parent-name">Nom du parent</label>
-                    <input
-                      id="f-parent-name"
-                      type="text"
-                      placeholder="Nom du responsable"
-                      value={formData.parentName}
-                      onChange={handleInputChange}
-                      required
-                    />
+            <div className="ysc-form-block">
+              <h3 className="ysc-form-section-title">2. Coordonnées du parent / tuteur légal</h3>
+              <div className="ysc-form-grid">
+                <div className="ysc-field">
+                  <label htmlFor="parentName">Nom &amp; Prénoms</label>
+                  <input
+                    id="parentName"
+                    name="parentName"
+                    type="text"
+                    value={formData.parentName}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+                <div className="ysc-field">
+                  <label htmlFor="parentRelation">Lien avec l'enfant</label>
+                  <input
+                    id="parentRelation"
+                    name="parentRelation"
+                    type="text"
+                    value={formData.parentRelation}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className="ysc-field">
+                  <label htmlFor="parentPhone">Téléphone (WhatsApp)</label>
+                  <input
+                    id="parentPhone"
+                    name="parentPhone"
+                    type="tel"
+                    value={formData.parentPhone}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+                <div className="ysc-field">
+                  <label htmlFor="parentEmail">Email</label>
+                  <input
+                    id="parentEmail"
+                    name="parentEmail"
+                    type="email"
+                    value={formData.parentEmail}
+                    onChange={handleInputChange}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="ysc-form-block">
+              <h3 className="ysc-form-section-title">3. Informations sportives</h3>
+              <div className="ysc-form-grid">
+                <div className="ysc-field">
+                  <label>Niveau / ancienneté</label>
+                  <div className="ysc-radio-group">
+                    {[
+                      { value: "debutant", label: "Débutant" },
+                      { value: "1an", label: "1 an" },
+                      { value: "2ans", label: "2 ans" },
+                      { value: "3ansplus", label: "3 ans et +" },
+                    ].map((option) => (
+                      <label className="ysc-radio-item" key={option.value}>
+                        <input
+                          type="radio"
+                          name="level"
+                          value={option.value}
+                          checked={formData.level === option.value}
+                          onChange={handleInputChange}
+                        />
+                        {option.label}
+                      </label>
+                    ))}
                   </div>
-                  <div className="ysc-field">
-                    <label htmlFor="f-parent-phone">Téléphone du parent</label>
-                    <input
-                      id="f-parent-phone"
-                      type="tel"
-                      placeholder="+228 90 00 00 00"
-                      value={formData.parentPhone}
-                      onChange={handleInputChange}
-                      required
-                    />
+                </div>
+                <div className="ysc-field">
+                  <label>Catégorie d'âge</label>
+                  <div className="ysc-radio-group">
+                    {[
+                      { value: "4-6", label: "4–6 (Éveil)" },
+                      { value: "7-9", label: "7–9 (Benjamin)" },
+                      { value: "10-11", label: "10–11 (Minime)" },
+                      { value: "12-14", label: "12–14 (Cadet)" },
+                      { value: "15-17", label: "15–17 (Junior)" },
+                      { value: "18+", label: "18+ (Senior)" },
+                    ].map((option) => (
+                      <label className="ysc-radio-item" key={option.value}>
+                        <input
+                          type="radio"
+                          name="ageCategory"
+                          value={option.value}
+                          checked={formData.ageCategory === option.value}
+                          onChange={handleInputChange}
+                        />
+                        {option.label}
+                      </label>
+                    ))}
                   </div>
-                </>
-              )}
+                </div>
+              </div>
+            </div>
+
+            <div className="ysc-form-block">
+              <h3 className="ysc-form-section-title">4. Discipline pratiquée</h3>
+              <div className="ysc-form-grid">
+                <div className="ysc-field">
+                  <div className="ysc-radio-group">
+                    {[
+                      { value: "Gymnastique", label: "Gymnastique" },
+                      { value: "Boxe", label: "Boxe" },
+                    ].map((option) => (
+                      <label className="ysc-radio-item" key={option.value}>
+                        <input
+                          type="radio"
+                          name="discipline"
+                          value={option.value}
+                          checked={formData.discipline === option.value}
+                          onChange={handleInputChange}
+                          required
+                        />
+                        {option.label}
+                      </label>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="ysc-form-block">
+              <h3 className="ysc-form-section-title">5. Saison sportive 2026</h3>
+              <p className="ysc-form-hint">
+                Du 10 janvier 2026 au 5 décembre 2026. Durée des séances : 2 heures.
+              </p>
+            </div>
+
+            <div className="ysc-form-block">
+              <h3 className="ysc-form-section-title">6. Statut social – Programme YSC</h3>
+              <div className="ysc-form-grid">
+                <div className="ysc-field">
+                  <label>L'athlète est-il boursier ?</label>
+                  <div className="ysc-radio-group">
+                    {[
+                      { value: "yes", label: "Oui" },
+                      { value: "no", label: "Non" },
+                    ].map((option) => (
+                      <label className="ysc-radio-item" key={option.value}>
+                        <input
+                          type="radio"
+                          name="scholarship"
+                          value={option.value}
+                          checked={formData.scholarship === option.value}
+                          onChange={handleInputChange}
+                          required
+                        />
+                        {option.label}
+                      </label>
+                    ))}
+                  </div>
+                </div>
+                {formData.scholarship === "yes" && (
+                  <div className="ysc-field">
+                    <label>Catégorie de bourse (décision du club)</label>
+                    <div className="ysc-radio-group">
+                      {[
+                        { value: "bourse50", label: "Bourse 50 % sur la mensualité" },
+                        { value: "entrainement-gratuit", label: "Entraînement gratuit" },
+                      ].map((option) => (
+                        <label className="ysc-radio-item" key={option.value}>
+                          <input
+                            type="radio"
+                            name="scholarshipType"
+                            value={option.value}
+                            checked={formData.scholarshipType === option.value}
+                            onChange={handleInputChange}
+                            required={formData.scholarship === "yes"}
+                          />
+                          {option.label}
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div className="ysc-form-block">
+              <h3 className="ysc-form-section-title">7. Modalités financières</h3>
+              <p className="ysc-form-hint">
+                Séance enfant : 7 000 FCFA · Séance adulte : 5 000 FCFA · Mensualité : 20 000 FCFA ·
+                Forfait saison complète : 180 000 FCFA · Forfait fratrie (3 enfants et +) : 15 000
+                FCFA / mois par enfant.
+              </p>
+            </div>
+
+            <div className="ysc-form-block">
+              <h3 className="ysc-form-section-title">8. Mode de paiement</h3>
+              <p className="ysc-form-hint">Choix obligatoire à l'inscription pour les non boursiers.</p>
+              <div className="ysc-form-grid">
+                <div className="ysc-field">
+                  <div className="ysc-radio-group">
+                    {[
+                      { value: "seance", label: "Paiement par séance" },
+                      { value: "mensuel", label: "Paiement mensuel" },
+                      { value: "forfait", label: "Forfait saison complète" },
+                    ].map((option) => (
+                      <label className="ysc-radio-item" key={option.value}>
+                        <input
+                          type="radio"
+                          name="paymentMode"
+                          value={option.value}
+                          checked={formData.paymentMode === option.value}
+                          onChange={handleInputChange}
+                          required
+                        />
+                        {option.label}
+                      </label>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="ysc-form-block">
+              <h3 className="ysc-form-section-title">10. Engagement financier</h3>
+              <div className="ysc-form-grid">
+                <div className="ysc-field">
+                  <label htmlFor="agreementName">Nom et prénoms du parent / tuteur</label>
+                  <input
+                    id="agreementName"
+                    name="agreementName"
+                    type="text"
+                    value={formData.agreementName}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+                <div className="ysc-field">
+                  <label htmlFor="agreementDate">Date</label>
+                  <input
+                    id="agreementDate"
+                    name="agreementDate"
+                    type="date"
+                    value={formData.agreementDate}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+                <div className="ysc-field">
+                  <label htmlFor="signature">Signature (nom complet)</label>
+                  <input
+                    id="signature"
+                    name="signature"
+                    type="text"
+                    value={formData.signature}
+                    onChange={handleInputChange}
+                  />
+                </div>
+              </div>
             </div>
 
             <label className="ysc-checkbox-field">
               <input type="checkbox" required />
-              <span className="ysc-checkbox-text">J'accepte d'être contacté via WhatsApp.</span>
+              <span className="ysc-checkbox-text">
+                J'accepte d'être contacté via WhatsApp et j'autorise le traitement de ces données.
+              </span>
             </label>
 
-            <button type="submit" className="ysc-btn ysc-btn--primary ysc-btn--full">
-              <span>Envoyer ma demande d'inscription</span>
+            <button type="submit" className="ysc-btn ysc-btn--primary ysc-btn--full" disabled={isSubmitting}>
+              <span>{isSubmitting ? "Envoi de la demande..." : "Envoyé ma demande d'inscription"}</span>
               <span className="ysc-btn__arrow" aria-hidden="true">
                 →
               </span>
             </button>
 
-            <p className="ysc-form-note">
-              🔒 Vos données sont confidentielles et ne seront jamais partagées.
-            </p>
+            {submissionMessage && <p className="ysc-form-note">{submissionMessage}</p>}
           </form>
         </div>
       </section>
@@ -1492,58 +1814,6 @@ export const TrainingSessionsPage = () => (
       <img src={galleryA} alt="Séance d'entraînement encadrée" className="ysc-hero-img" />
     </section>
 
-    <div className="ysc-page-section--alt">
-      <div className="ysc-page-section__inner">
-        <div className="ysc-page-section__header">
-          <h2>Disciplines proposées</h2>
-          <p>Un encadrement complet pour progresser en toute sécurité.</p>
-        </div>
-        <div className="ysc-cards-grid">
-          {trainingPrograms.map((program) => (
-            <article className="ysc-card" key={program.title}>
-              <h3>{program.title}</h3>
-              <p>
-                <strong>Niveau :</strong> {program.level}
-              </p>
-              <p>
-                <strong>Âges :</strong> {program.ages}
-              </p>
-              <p>{program.description}</p>
-            </article>
-          ))}
-        </div>
-      </div>
-    </div>
-
-    <div className="ysc-page-section">
-      <div className="ysc-page-section__header">
-        <h2>Horaires &amp; organisation</h2>
-        <p>Des créneaux réguliers et des séances privées sur demande.</p>
-      </div>
-      <div className="ysc-cards-grid ysc-cards-grid--two">
-        <article className="ysc-card">
-          <h3>Planning hebdomadaire</h3>
-          <ul>
-            {trainingSchedule.map((slot) => (
-              <li key={slot.day}>
-                <strong>{slot.day}</strong> — {slot.time} : {slot.focus}
-              </li>
-            ))}
-          </ul>
-        </article>
-        <article className="ysc-card">
-          <h3>Encadrement</h3>
-          <p>
-            Chaque séance inclut un échauffement structuré, un travail technique et une phase de
-            récupération. Les groupes sont limités pour assurer un suivi personnalisé.
-          </p>
-          <p>
-            Les séances privées sont possibles sur rendez-vous pour des objectifs spécifiques ou une
-            reprise progressive.
-          </p>
-        </article>
-      </div>
-    </div>
   </>
 );
 
