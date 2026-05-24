@@ -8,106 +8,141 @@ import { scoped, SectionLabel } from "./Pages";
 
 const pastEvents = [
   {
-    title: "Championnat de zone – Gymnastique",
-    date: "Mars 2025",
-    location: "Stade de Kégué, Lomé",
+    title: "Championnat de zone – Gymnastics",
+    date: "2023",
+    location: "Togo",
     category: "Compétition",
-    result: "🥇 1re place catégorie moins de 12 ans",
+    result: "🥇 Plusieurs podiums",
     description:
-      "Nos jeunes gymnastes ont brillé lors du championnat de zone, décrochant la première place dans la catégorie moins de 12 ans face aux clubs de la région.",
+      "Nos gymnastes ont brillé lors du championnat de zone 2023, avec notamment CISSE Maya (1re) et Cheuvreuil Ayana (2e) en tête des classements.",
   },
   {
-    title: "Championnat national – Fitness",
-    date: "Novembre 2024",
-    location: "Palais des Sports, Lomé",
+    title: "Championnat national – Gymnastique",
+    date: "2023",
+    location: "Togo",
     category: "Compétition",
-    result: "🥈 2e place et 🥉 3e place",
+    result: "🥇 Multiples médailles",
     description:
-      "Deux de nos athlètes fitness ont brillé sur la scène nationale, rapportant médaille d'argent et de bronze dans la tranche moins de 12 ans.",
+      "Le YSC a dominé le championnat national 2023 dans plusieurs catégories : podiums en fitness, boxe éducative et gymnastique aérobic.",
   },
   {
-    title: "Championnat de zone – Boxe éducative",
-    date: "Juin 2024",
-    location: "Dojo Youth Sports Club",
+    title: "Championnat d'Afrique – Gymnastique Aérobic",
+    date: "2024",
+    location: "Égypte",
     category: "Compétition",
-    result: "🥇 2 médailles d'or",
+    result: "🥉 Médaille de bronze",
     description:
-      "Deux boxeurs du club ont dominé leur catégorie lors du championnat de zone, confirmant la qualité de l'encadrement technique du YSC.",
-  },
-  {
-    title: "Journée portes ouvertes – Édition 2024",
-    date: "Août 2024",
-    location: "Youth Sports Club",
-    category: "Événement club",
-    result: "150+ familles accueillies",
-    description:
-      "Une journée festive ouverte à toute la communauté : démonstrations, essais gratuits et inscriptions sur place dans une ambiance conviviale.",
+      "PANASSI Emmanuel a décroché la médaille de bronze au championnat d'Afrique de gymnastique aérobic 2024 en Égypte, portant haut les couleurs du Togo et du YSC.",
   },
 ];
 
 const upcomingEvents = [
   {
-    title: "Stage de perfectionnement – Gymnastique",
-    date: "15 – 20 juin 2026",
-    location: "Stade de Kégué, Lomé",
-    category: "Stage",
-    description:
-      "Travail technique intensif, souplesse et préparation aux compétitions avec un encadrement renforcé. Ouvert aux benjamins, minimes et cadets.",
-  },
-  {
-    title: "Championnat national – Moins de 12 ans",
-    date: "Juillet 2026",
-    location: "Palais des Sports, Lomé",
+    title: "Compétition de zone – Kara",
+    date: "18 – 20 juin 2026",
+    location: "Kara, Togo",
     category: "Compétition",
     description:
-      "Le YSC engage ses meilleurs éléments en gymnastique, fitness et boxe éducative pour le championnat national moins de 12 ans.",
+      "Première étape du circuit de zone 2026. Le YSC engage ses athlètes en gymnastique, fitness et boxe éducative. Compétition organisée par la Fédération nationale.",
   },
   {
-    title: "Tournoi amical de boxe éducative",
-    date: "05 juillet 2026",
-    location: "Dojo Youth Sports Club",
-    category: "Tournoi",
+    title: "Compétition de zone – Atakpamé",
+    date: "22 – 24 juin 2026",
+    location: "Atakpamé, Togo",
+    category: "Compétition",
     description:
-      "Rencontres encadrées inter-clubs pour développer discipline, respect et maîtrise de soi dans un cadre bienveillant.",
+      "Deuxième étape du circuit de zone 2026, organisée par la Fédération. Le club présentera ses meilleurs éléments dans toutes les disciplines.",
   },
   {
-    title: "Journée portes ouvertes",
-    date: "24 août 2026",
-    location: "Youth Sports Club",
-    category: "Événement club",
+    title: "Compétition – Lomé",
+    date: "04 juillet 2026",
+    location: "Lomé, Togo",
+    category: "Compétition",
     description:
-      "Essais gratuits, démonstrations et inscriptions sur place pour toutes les familles. Venez découvrir le club et rencontrer nos coachs.",
+      "Troisième rendez-vous du circuit, organisé par la Fédération à Lomé. Une occasion supplémentaire pour nos athlètes de se qualifier pour les championnats nationaux.",
   },
 ];
 
-const champions = [
+const laureats = [
   {
-    name: "Koffi A.",
-    discipline: "Gymnastique",
-    achievement: "Champion de zone – Moins de 12 ans",
-    year: "2025",
     photo: galleryA,
+    title: "Championnat d'Afrique 2024 – Égypte",
+    discipline: "Gymnastique Aérobic",
+    results: [
+      { rank: "🥉 Bronze", name: "PANASSI Emmanuel" },
+    ],
+    note: "Médaillé de bronze au championnat d'Afrique de gymnastique aérobic 2024 en Égypte.",
   },
   {
-    name: "Afi M.",
-    discipline: "Fitness",
-    achievement: "Vice-championne nationale – Moins de 12 ans",
-    year: "2024",
     photo: galleryC,
+    title: "Championnat National 2023",
+    discipline: "Gymnastatique / Fitness",
+    results: [
+      { rank: "🥇 1er", name: "PANASSI Emmanuel" },
+      { rank: "🥈 2e", name: "ATOKLO Guillaume" },
+      { rank: "🥉 3e", name: "ADADO Lucrèce" },
+    ],
+    note: null,
   },
   {
-    name: "Edem T.",
-    discipline: "Boxe éducative",
-    achievement: "Champion de zone – Catégorie junior",
-    year: "2024",
     photo: galleryD,
+    title: "Championnat de Zone 2023",
+    discipline: "Fitness",
+    results: [
+      { rank: "🥇 1re", name: "CISSE Maya" },
+      { rank: "🥈 2e", name: "Cheuvreuil Ayana" },
+    ],
+    note: null,
   },
   {
-    name: "Sena K.",
-    discipline: "Fitness",
-    achievement: "3e place nationale – Moins de 12 ans",
-    year: "2024",
     photo: galleryE,
+    title: "Championnat National 2023",
+    discipline: "Fitness – Catégorie A",
+    results: [
+      { rank: "🥇 1re", name: "Cheuvreuil Ayana" },
+      { rank: "🥈 2e", name: "CISSE Maya" },
+    ],
+    note: null,
+  },
+  {
+    photo: galleryB,
+    title: "Championnat National 2023",
+    discipline: "Fitness – Catégorie B",
+    results: [
+      { rank: "🥇 1er", name: "ABBI Mabel" },
+      { rank: "🥈 2e", name: "DAGBO Félicité" },
+      { rank: "🥉 3e", name: "ESSODEBOU Zakiya" },
+    ],
+    note: null,
+  },
+  {
+    photo: galleryA,
+    title: "Compétition – Catégorie Junior",
+    discipline: "Boxe éducative",
+    results: [
+      { rank: "🥇 1re", name: "RAHIMI Kiana" },
+    ],
+    note: null,
+  },
+  {
+    photo: galleryC,
+    title: "Compétition – Catégorie Cadet",
+    discipline: "Gymnastatique",
+    results: [
+      { rank: "🥇 1re", name: "BOUKPETI Lena" },
+    ],
+    note: null,
+  },
+  {
+    photo: galleryD,
+    title: "Compétition – Podium Collectif",
+    discipline: "Fitness",
+    results: [
+      { rank: "🥇 1re", name: "BARNABO Félicité" },
+      { rank: "🥈 2e", name: "RAHIMI Leyli" },
+      { rank: "🥉 3e", name: "BROQUET Emilie" },
+    ],
+    note: null,
   },
 ];
 
@@ -121,16 +156,23 @@ const eventsGallery = [
 ];
 
 const categoryColors = {
-  "Compétition": { bg: "#fff0f0", color: "#a32d2d", border: "#f7c1c1" },
-  "Stage":        { bg: "#eaf2fc", color: "#185fa5", border: "#b5d4f4" },
-  "Tournoi":      { bg: "#faeeda", color: "#854f0b", border: "#fac775" },
+  "Compétition":    { bg: "#fff0f0", color: "#a32d2d", border: "#f7c1c1" },
+  "Stage":          { bg: "#eaf2fc", color: "#185fa5", border: "#b5d4f4" },
+  "Tournoi":        { bg: "#faeeda", color: "#854f0b", border: "#fac775" },
   "Événement club": { bg: "#eaf3de", color: "#3b6d11", border: "#c0dd97" },
 };
 
 const disciplineColors = {
-  "Gymnastique":    { bg: "#eaf2fc", color: "#185fa5" },
-  "Fitness":        { bg: "#eaf3de", color: "#3b6d11" },
-  "Boxe éducative": { bg: "#fff0f0", color: "#a32d2d" },
+  "Gymnastatique":        { bg: "#eaf2fc", color: "#185fa5" },
+  "Gymnastique Aérobic":  { bg: "#eaf2fc", color: "#185fa5" },
+  "Fitness":              { bg: "#eaf3de", color: "#3b6d11" },
+  "Boxe éducative":       { bg: "#fff0f0", color: "#a32d2d" },
+};
+
+const rankColors = {
+  "🥇": "#b8860b",
+  "🥈": "#607d8b",
+  "🥉": "#8b4513",
 };
 
 const extra = `
@@ -188,33 +230,38 @@ const extra = `
   .ysc-upcoming-location { font-size: 0.8rem; color: #4a6b90; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 5px; }
   .ysc-upcoming-desc { font-size: 0.85rem; color: #355274; line-height: 1.6; flex: 1; }
 
-  /* Champions */
-  .ysc-champions-grid {
+  /* Lauréats */
+  .ysc-laureats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 1.5rem;
   }
-  .ysc-champion-card {
+  .ysc-laureat-card {
     background: #fff;
     border-radius: 16px;
     border: 1px solid #d7e5f6;
     overflow: hidden;
     box-shadow: 0 6px 20px rgba(13,45,84,0.09);
     transition: transform 0.2s, box-shadow 0.2s;
+    display: flex; flex-direction: column;
   }
-  .ysc-champion-card:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(13,45,84,0.16); }
-  .ysc-champion-photo-wrap { position: relative; width: 100%; aspect-ratio: 4/3; overflow: hidden; }
-  .ysc-champion-photo { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .ysc-champion-year {
-    position: absolute; top: 10px; right: 10px;
-    background: #2f6fb2; color: #fff;
-    font-size: 0.72rem; font-weight: 700;
-    padding: 3px 9px; border-radius: 999px;
+  .ysc-laureat-card:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(13,45,84,0.16); }
+  .ysc-laureat-photo-wrap { position: relative; width: 100%; aspect-ratio: 4/3; overflow: hidden; }
+  .ysc-laureat-photo { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ysc-laureat-disc-badge {
+    position: absolute; top: 10px; left: 10px;
+    font-size: 0.68rem; font-weight: 700;
+    padding: 3px 10px; border-radius: 999px;
+    backdrop-filter: blur(4px);
   }
-  .ysc-champion-body { padding: 1rem 1.1rem 1.2rem; }
-  .ysc-champion-name { font-size: 1rem; font-weight: 700; color: #1f4f8a; margin-bottom: 0.2rem; }
-  .ysc-champion-disc { font-size: 0.78rem; font-weight: 600; margin-bottom: 0.5rem; display: inline-block; padding: 2px 10px; border-radius: 999px; }
-  .ysc-champion-achievement { font-size: 0.82rem; color: #355274; line-height: 1.5; }
+  .ysc-laureat-body { padding: 1.1rem 1.2rem 1.3rem; flex: 1; }
+  .ysc-laureat-competition { font-size: 0.75rem; font-weight: 700; color: #2f6fb2; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.35rem; }
+  .ysc-laureat-title { font-size: 0.97rem; font-weight: 800; color: #1f4f8a; margin-bottom: 0.7rem; line-height: 1.35; }
+  .ysc-laureat-results { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 0.6rem; }
+  .ysc-laureat-result-row { display: flex; align-items: center; gap: 0.5rem; }
+  .ysc-laureat-rank { font-size: 0.85rem; min-width: 28px; }
+  .ysc-laureat-name { font-size: 0.88rem; font-weight: 600; color: #1f4f8a; }
+  .ysc-laureat-note { font-size: 0.8rem; color: #4a6b90; line-height: 1.5; border-top: 1px solid #e8f0fa; padding-top: 0.6rem; margin-top: 0.4rem; font-style: italic; }
 
   /* Gallery */
   .ysc-ev-gallery {
@@ -252,6 +299,7 @@ const extra = `
     .ysc-ev-gallery img:first-child { grid-column: 1 / -1; }
     .ysc-timeline-item { grid-template-columns: 1fr; }
     .ysc-timeline-dot { display: none; }
+    .ysc-laureats-grid { grid-template-columns: 1fr; }
   }
 `;
 
@@ -277,7 +325,9 @@ export const EventsPage = () => (
         <div className="ysc-ev-header">
           <SectionLabel>Prochains rendez-vous</SectionLabel>
           <h2>Calendrier à venir</h2>
-          <p>Les prochains temps forts pour les athlètes, familles et partenaires du club.</p>
+          <p>
+            Compétitions de zone organisées par la Fédération nationale auxquelles le YSC prendra part.
+          </p>
         </div>
         <div className="ysc-upcoming-grid">
           {upcomingEvents.map((event) => {
@@ -345,38 +395,45 @@ export const EventsPage = () => (
       </div>
     </section>
 
-    {/* ── Champions ── */}
+    {/* ── Lauréats ── */}
     <section className="ysc-ev-section">
       <div className="ysc-ev-inner">
         <div className="ysc-ev-header">
           <SectionLabel>Palmarès</SectionLabel>
-          <h2>Nos athlètes champions</h2>
+          <h2>Nos lauréats</h2>
           <p>
-            Ils représentent le Youth Sports Club en compétition et portent haut les couleurs du club.
+            Les athlètes du Youth Sports Club qui ont brillé en compétition régionale, nationale et africaine.
           </p>
         </div>
-        <div className="ysc-champions-grid">
-          {champions.map((c) => {
-            const disc = disciplineColors[c.discipline] || disciplineColors["Fitness"];
+        <div className="ysc-laureats-grid">
+          {laureats.map((l, i) => {
+            const disc = disciplineColors[l.discipline] || { bg: "#eaf3de", color: "#3b6d11" };
             return (
-              <div className="ysc-champion-card" key={c.name}>
-                <div className="ysc-champion-photo-wrap">
+              <div className="ysc-laureat-card" key={i}>
+                <div className="ysc-laureat-photo-wrap">
                   <img
-                    className="ysc-champion-photo"
-                    src={c.photo}
-                    alt={`${c.name} – ${c.discipline}`}
+                    className="ysc-laureat-photo"
+                    src={l.photo}
+                    alt={l.title}
                   />
-                  <span className="ysc-champion-year">{c.year}</span>
-                </div>
-                <div className="ysc-champion-body">
-                  <p className="ysc-champion-name">{c.name}</p>
                   <span
-                    className="ysc-champion-disc"
-                    style={{ background: disc.bg, color: disc.color }}
+                    className="ysc-laureat-disc-badge"
+                    style={{ background: disc.bg + "ee", color: disc.color }}
                   >
-                    {c.discipline}
+                    {l.discipline}
                   </span>
-                  <p className="ysc-champion-achievement">🏅 {c.achievement}</p>
+                </div>
+                <div className="ysc-laureat-body">
+                  <p className="ysc-laureat-competition">{l.title}</p>
+                  <div className="ysc-laureat-results">
+                    {l.results.map((r, j) => (
+                      <div className="ysc-laureat-result-row" key={j}>
+                        <span className="ysc-laureat-rank">{r.rank.split(" ")[0]}</span>
+                        <span className="ysc-laureat-name">{r.rank.split(" ").slice(1).join(" ")} {r.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                  {l.note && <p className="ysc-laureat-note">{l.note}</p>}
                 </div>
               </div>
             );
@@ -385,21 +442,7 @@ export const EventsPage = () => (
       </div>
     </section>
 
-    {/* ── Galerie photos ── */}
-    <section className="ysc-ev-section--alt">
-      <div className="ysc-ev-inner">
-        <div className="ysc-ev-header">
-          <SectionLabel>Galerie</SectionLabel>
-          <h2>Images récentes</h2>
-          <p>Entraînements, démonstrations et moments de compétition.</p>
-        </div>
-        <div className="ysc-ev-gallery">
-          {eventsGallery.map((photo) => (
-            <img key={photo.src} src={photo.src} alt={photo.alt} loading="lazy" />
-          ))}
-        </div>
-      </div>
-    </section>
+  
 
     {/* ── CTA final ── */}
     <section className="ysc-ev-section">

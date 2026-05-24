@@ -34,9 +34,9 @@ const disciplines = [
 ];
 
 const horaires = [
-  { who: "12 ans et plus", time: "08h – 10h" },
-  { who: "11 ans et moins", time: "10h – 12h" },
-  { who: "Adultes", time: "10h30 – 11h30" },
+  { who: "12 ans et plus", time: "Samedi 08h – 10h" },
+  { who: "11 ans et moins", time: "Samedi 10h – 12h" },
+  { who: "Adultes", time: "Samedi 10h30 – 11h30" },
 ];
 
 const tarifs = [
@@ -655,7 +655,7 @@ const Home = () => {
       <section className="section section-alt">
         <div className="section-header">
           <h2>Informations pratiques</h2>
-          <p>Retrouvez-nous au Stade de Kégué, Lomé. Tous niveaux acceptés.</p>
+          <p>Retrouvez-nous au Stade de Kégué, Lomé. Entraînements le samedi. Tous niveaux acceptés..</p>
         </div>
         <div className="grid two-columns">
           <div className="card">
