@@ -419,6 +419,7 @@ ul {
     min-width: 220px;
     max-width: min(92vw, 320px);
     max-height: calc(100vh - 90px);
+    z-index: 1001;
     background: #fff;
     border-radius: 10px;
     flex-direction: column;
@@ -435,6 +436,17 @@ ul {
 
   .site-nav.open {
     display: flex;
+  }
+
+  .menu-overlay {
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    background: #0000004d;
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
   }
 
   .site-header.transparent .site-nav.open a {

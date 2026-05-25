@@ -34699,6 +34699,14 @@ const Header = ()=>{
                 lineNumber: 39,
                 columnNumber: 7
             }, undefined),
+            isMenuOpen && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "menu-overlay",
+                onClick: ()=>setIsMenuOpen(false)
+            }, void 0, false, {
+                fileName: "src/Components/Header.jsx",
+                lineNumber: 47,
+                columnNumber: 22
+            }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("nav", {
                 className: `site-nav ${isMenuOpen ? "open" : ""}`,
                 children: navItems.map((item)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.NavLink), {
@@ -34708,12 +34716,12 @@ const Header = ()=>{
                         children: item.label
                     }, item.to, false, {
                         fileName: "src/Components/Header.jsx",
-                        lineNumber: 49,
+                        lineNumber: 51,
                         columnNumber: 11
                     }, undefined))
             }, void 0, false, {
                 fileName: "src/Components/Header.jsx",
-                lineNumber: 47,
+                lineNumber: 49,
                 columnNumber: 7
             }, undefined)
         ]
@@ -40550,6 +40558,10 @@ var _whatsAppImage20260522At1520211Jpeg = require("../images/WhatsApp Image 2026
 var _whatsAppImage20260522At1520211JpegDefault = parcelHelpers.interopDefault(_whatsAppImage20260522At1520211Jpeg);
 var _whatsAppImage20260517At1259322Jpeg = require("../images/WhatsApp Image 2026-05-17 at 12.59.32 (2).jpeg");
 var _whatsAppImage20260517At1259322JpegDefault = parcelHelpers.interopDefault(_whatsAppImage20260517At1259322Jpeg);
+var _whatsAppImage20260516At132256Jpeg = require("../images/WhatsApp Image 2026-05-16 at 13.22.56.jpeg");
+var _whatsAppImage20260516At132256JpegDefault = parcelHelpers.interopDefault(_whatsAppImage20260516At132256Jpeg);
+var _whatsAppImage20260516At1327551Jpeg = require("../images/WhatsApp Image 2026-05-16 at 13.27.55 (1).jpeg");
+var _whatsAppImage20260516At1327551JpegDefault = parcelHelpers.interopDefault(_whatsAppImage20260516At1327551Jpeg);
 var _pages = require("./Pages");
 const pastEvents = [
     {
@@ -40577,29 +40589,44 @@ const pastEvents = [
         description: "PANASSI Emmanuel a d\xe9croch\xe9 la m\xe9daille de bronze au championnat d'Afrique de gymnastique a\xe9robic 2024 en \xc9gypte, portant haut les couleurs du Togo et du YSC."
     }, 
 ];
-const upcomingEvent = {
-    title: "Circuit de comp\xe9tition de zone 2026",
-    photo: (0, _whatsAppImage20260517At1259322JpegDefault.default),
-    category: "Comp\xe9tition",
-    description: "Organis\xe9 par la F\xe9d\xe9ration nationale, ce circuit se d\xe9roulera en trois \xe9tapes auxquelles le YSC prendra part avec ses athl\xe8tes en gymnastique, fitness et boxe \xe9ducative.",
-    etapes: [
-        {
-            label: "\xc9tape 1 – Kara",
-            date: "18 – 20 juin 2026",
-            location: "Kara"
-        },
-        {
-            label: "\xc9tape 2 – Atakpam\xe9",
-            date: "22 – 24 juin 2026",
-            location: "Atakpam\xe9"
-        },
-        {
-            label: "\xc9tape 3 – Lom\xe9",
-            date: "04 juillet 2026",
-            location: "Lom\xe9"
-        }, 
-    ]
-};
+const upcomingEvents = [
+    {
+        title: "Circuit de comp\xe9tition de zone 2026",
+        photo: (0, _whatsAppImage20260517At1259322JpegDefault.default),
+        category: "Comp\xe9tition",
+        description: "Organis\xe9 par la F\xe9d\xe9ration nationale, ce circuit se d\xe9roulera en trois \xe9tapes auxquelles le YSC prendra part avec ses athl\xe8tes en gymnastique, fitness et boxe \xe9ducative.",
+        etapes: [
+            {
+                label: "\xc9tape 1 – Kara",
+                date: "18 – 20 juin 2026",
+                location: "Kara"
+            },
+            {
+                label: "\xc9tape 2 – Atakpam\xe9",
+                date: "22 – 24 juin 2026",
+                location: "Atakpam\xe9"
+            },
+            {
+                label: "\xc9tape 3 – Lom\xe9",
+                date: "04 juillet 2026",
+                location: "Lom\xe9"
+            }, 
+        ]
+    },
+    {
+        title: "Troph\xe9e des petits champions",
+        photo: (0, _whatsAppImage20260516At132256JpegDefault.default),
+        category: "\xc9v\xe9nement club",
+        description: "Un \xe9v\xe9nement sp\xe9cial d\xe9di\xe9 \xe0 nos jeunes talents pour cl\xf4turer l'ann\xe9e en beaut\xe9 et c\xe9l\xe9brer leurs progr\xe8s.",
+        etapes: [
+            {
+                label: "Grande Finale",
+                date: "06 d\xe9cembre 2026",
+                location: "Lom\xe9"
+            }, 
+        ]
+    }, 
+];
 const laureats = [
     {
         photo: (0, _4729025186011116428682473421823822486160063NJpgDefault.default),
@@ -40734,6 +40761,10 @@ const eventsGallery = [
     {
         src: (0, _screenshot20260517124137PngDefault.default),
         alt: "D\xe9monstration de gymnastique du Youth Sports Club"
+    },
+    {
+        src: (0, _whatsAppImage20260516At1327551JpegDefault.default),
+        alt: "\xc9v\xe9nement du Youth Sports Club"
     },
     {
         src: (0, _whatsAppImage20260522At150655JpegDefault.default),
@@ -40903,6 +40934,12 @@ const extra = `
     grid-column: 1 / -1; aspect-ratio: 16/7;
   }
 
+  .ysc-upcoming-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
   /* CTA */
   .ysc-ev-cta {
     background: linear-gradient(120deg, #07152d, #102a50 60%, #113766);
@@ -40934,14 +40971,14 @@ const EventsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunti
                 children: (0, _pages.scoped)
             }, void 0, false, {
                 fileName: "src/Components/EventsPage.jsx",
-                lineNumber: 295,
+                lineNumber: 316,
                 columnNumber: 5
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("style", {
                 children: extra
             }, void 0, false, {
                 fileName: "src/Components/EventsPage.jsx",
-                lineNumber: 296,
+                lineNumber: 317,
                 columnNumber: 5
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
@@ -40956,171 +40993,178 @@ const EventsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunti
                                     children: "Prochains rendez-vous"
                                 }, void 0, false, {
                                     fileName: "src/Components/EventsPage.jsx",
-                                    lineNumber: 305,
+                                    lineNumber: 326,
                                     columnNumber: 11
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                                     children: "Calendrier \xe0 venir"
                                 }, void 0, false, {
                                     fileName: "src/Components/EventsPage.jsx",
-                                    lineNumber: 306,
+                                    lineNumber: 327,
                                     columnNumber: 11
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                     children: "Comp\xe9titions de zone organis\xe9es par la F\xe9d\xe9ration nationale auxquelles le YSC prendra part."
                                 }, void 0, false, {
                                     fileName: "src/Components/EventsPage.jsx",
-                                    lineNumber: 307,
+                                    lineNumber: 328,
                                     columnNumber: 11
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/Components/EventsPage.jsx",
-                            lineNumber: 304,
+                            lineNumber: 325,
                             columnNumber: 9
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            className: "ysc-circuit-card",
-                            children: [
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "ysc-circuit-photo-wrap",
+                            className: "ysc-upcoming-list",
+                            children: upcomingEvents.map((event, idx)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "ysc-circuit-card",
                                     children: [
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                                            src: upcomingEvent.photo,
-                                            alt: upcomingEvent.title,
-                                            className: "ysc-circuit-photo"
-                                        }, void 0, false, {
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                            className: "ysc-circuit-photo-wrap",
+                                            children: [
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                                                    src: event.photo,
+                                                    alt: event.title,
+                                                    className: "ysc-circuit-photo"
+                                                }, void 0, false, {
+                                                    fileName: "src/Components/EventsPage.jsx",
+                                                    lineNumber: 336,
+                                                    columnNumber: 17
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                    className: "ysc-badge ysc-circuit-badge",
+                                                    style: {
+                                                        background: (categoryColors[event.category] || categoryColors["\xc9v\xe9nement club"]).bg,
+                                                        color: (categoryColors[event.category] || categoryColors["\xc9v\xe9nement club"]).color,
+                                                        borderColor: (categoryColors[event.category] || categoryColors["\xc9v\xe9nement club"]).border
+                                                    },
+                                                    children: event.category
+                                                }, void 0, false, {
+                                                    fileName: "src/Components/EventsPage.jsx",
+                                                    lineNumber: 337,
+                                                    columnNumber: 17
+                                                }, undefined)
+                                            ]
+                                        }, void 0, true, {
                                             fileName: "src/Components/EventsPage.jsx",
-                                            lineNumber: 313,
-                                            columnNumber: 13
-                                        }, undefined),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                            className: "ysc-badge ysc-circuit-badge",
-                                            style: {
-                                                background: categoryColors["Comp\xe9tition"].bg,
-                                                color: categoryColors["Comp\xe9tition"].color,
-                                                borderColor: categoryColors["Comp\xe9tition"].border
-                                            },
-                                            children: upcomingEvent.category
-                                        }, void 0, false, {
-                                            fileName: "src/Components/EventsPage.jsx",
-                                            lineNumber: 314,
-                                            columnNumber: 13
-                                        }, undefined)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "src/Components/EventsPage.jsx",
-                                    lineNumber: 312,
-                                    columnNumber: 11
-                                }, undefined),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "ysc-circuit-body",
-                                    children: [
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                                            className: "ysc-circuit-title",
-                                            children: upcomingEvent.title
-                                        }, void 0, false, {
-                                            fileName: "src/Components/EventsPage.jsx",
-                                            lineNumber: 326,
-                                            columnNumber: 13
-                                        }, undefined),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                            className: "ysc-circuit-desc",
-                                            children: upcomingEvent.description
-                                        }, void 0, false, {
-                                            fileName: "src/Components/EventsPage.jsx",
-                                            lineNumber: 327,
-                                            columnNumber: 13
+                                            lineNumber: 335,
+                                            columnNumber: 15
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                            className: "ysc-circuit-etapes",
-                                            children: upcomingEvent.etapes.map((e)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                                    className: "ysc-circuit-etape",
-                                                    children: [
-                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                                            className: "ysc-circuit-etape-dot"
-                                                        }, void 0, false, {
-                                                            fileName: "src/Components/EventsPage.jsx",
-                                                            lineNumber: 331,
-                                                            columnNumber: 19
-                                                        }, undefined),
-                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                            className: "ysc-circuit-body",
+                                            children: [
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                                    className: "ysc-circuit-title",
+                                                    children: event.title
+                                                }, void 0, false, {
+                                                    fileName: "src/Components/EventsPage.jsx",
+                                                    lineNumber: 349,
+                                                    columnNumber: 17
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                                    className: "ysc-circuit-desc",
+                                                    children: event.description
+                                                }, void 0, false, {
+                                                    fileName: "src/Components/EventsPage.jsx",
+                                                    lineNumber: 350,
+                                                    columnNumber: 17
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                    className: "ysc-circuit-etapes",
+                                                    children: event.etapes.map((e)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                            className: "ysc-circuit-etape",
                                                             children: [
-                                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                                                    className: "ysc-circuit-etape-label",
-                                                                    children: e.label
+                                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                                    className: "ysc-circuit-etape-dot"
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/EventsPage.jsx",
-                                                                    lineNumber: 333,
-                                                                    columnNumber: 21
+                                                                    lineNumber: 354,
+                                                                    columnNumber: 23
                                                                 }, undefined),
-                                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                                                    className: "ysc-circuit-etape-meta",
+                                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                                                     children: [
-                                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                                                            children: [
-                                                                                "\uD83D\uDCC5 ",
-                                                                                e.date
-                                                                            ]
-                                                                        }, void 0, true, {
+                                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                                                            className: "ysc-circuit-etape-label",
+                                                                            children: e.label
+                                                                        }, void 0, false, {
                                                                             fileName: "src/Components/EventsPage.jsx",
-                                                                            lineNumber: 335,
-                                                                            columnNumber: 23
+                                                                            lineNumber: 356,
+                                                                            columnNumber: 25
                                                                         }, undefined),
-                                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                                                            className: "ysc-circuit-etape-meta",
                                                                             children: [
-                                                                                "\uD83D\uDCCD ",
-                                                                                e.location
+                                                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                                                    children: [
+                                                                                        "\uD83D\uDCC5 ",
+                                                                                        e.date
+                                                                                    ]
+                                                                                }, void 0, true, {
+                                                                                    fileName: "src/Components/EventsPage.jsx",
+                                                                                    lineNumber: 358,
+                                                                                    columnNumber: 27
+                                                                                }, undefined),
+                                                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                                                    children: [
+                                                                                        "\uD83D\uDCCD ",
+                                                                                        e.location
+                                                                                    ]
+                                                                                }, void 0, true, {
+                                                                                    fileName: "src/Components/EventsPage.jsx",
+                                                                                    lineNumber: 359,
+                                                                                    columnNumber: 27
+                                                                                }, undefined)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "src/Components/EventsPage.jsx",
-                                                                            lineNumber: 336,
-                                                                            columnNumber: 23
+                                                                            lineNumber: 357,
+                                                                            columnNumber: 25
                                                                         }, undefined)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "src/Components/EventsPage.jsx",
-                                                                    lineNumber: 334,
-                                                                    columnNumber: 21
+                                                                    lineNumber: 355,
+                                                                    columnNumber: 23
                                                                 }, undefined)
                                                             ]
-                                                        }, void 0, true, {
+                                                        }, e.label, true, {
                                                             fileName: "src/Components/EventsPage.jsx",
-                                                            lineNumber: 332,
-                                                            columnNumber: 19
-                                                        }, undefined)
-                                                    ]
-                                                }, e.label, true, {
+                                                            lineNumber: 353,
+                                                            columnNumber: 21
+                                                        }, undefined))
+                                                }, void 0, false, {
                                                     fileName: "src/Components/EventsPage.jsx",
-                                                    lineNumber: 330,
+                                                    lineNumber: 351,
                                                     columnNumber: 17
-                                                }, undefined))
-                                        }, void 0, false, {
+                                                }, undefined)
+                                            ]
+                                        }, void 0, true, {
                                             fileName: "src/Components/EventsPage.jsx",
-                                            lineNumber: 328,
-                                            columnNumber: 13
+                                            lineNumber: 348,
+                                            columnNumber: 15
                                         }, undefined)
                                     ]
-                                }, void 0, true, {
+                                }, idx, true, {
                                     fileName: "src/Components/EventsPage.jsx",
-                                    lineNumber: 325,
-                                    columnNumber: 11
-                                }, undefined)
-                            ]
-                        }, void 0, true, {
+                                    lineNumber: 334,
+                                    columnNumber: 13
+                                }, undefined))
+                        }, void 0, false, {
                             fileName: "src/Components/EventsPage.jsx",
-                            lineNumber: 311,
+                            lineNumber: 332,
                             columnNumber: 9
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/Components/EventsPage.jsx",
-                    lineNumber: 303,
+                    lineNumber: 324,
                     columnNumber: 7
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/Components/EventsPage.jsx",
-                lineNumber: 302,
+                lineNumber: 323,
                 columnNumber: 5
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
@@ -41135,27 +41179,27 @@ const EventsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunti
                                     children: "Historique"
                                 }, void 0, false, {
                                     fileName: "src/Components/EventsPage.jsx",
-                                    lineNumber: 351,
+                                    lineNumber: 376,
                                     columnNumber: 11
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                                     children: "\xc9v\xe9nements pass\xe9s"
                                 }, void 0, false, {
                                     fileName: "src/Components/EventsPage.jsx",
-                                    lineNumber: 352,
+                                    lineNumber: 377,
                                     columnNumber: 11
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                     children: "Retour sur les comp\xe9titions et moments forts v\xe9cus par le club."
                                 }, void 0, false, {
                                     fileName: "src/Components/EventsPage.jsx",
-                                    lineNumber: 353,
+                                    lineNumber: 378,
                                     columnNumber: 11
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/Components/EventsPage.jsx",
-                            lineNumber: 350,
+                            lineNumber: 375,
                             columnNumber: 9
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -41169,7 +41213,7 @@ const EventsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunti
                                             className: "ysc-timeline-dot"
                                         }, void 0, false, {
                                             fileName: "src/Components/EventsPage.jsx",
-                                            lineNumber: 360,
+                                            lineNumber: 385,
                                             columnNumber: 17
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -41187,7 +41231,7 @@ const EventsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunti
                                                             children: event.category
                                                         }, void 0, false, {
                                                             fileName: "src/Components/EventsPage.jsx",
-                                                            lineNumber: 363,
+                                                            lineNumber: 388,
                                                             columnNumber: 21
                                                         }, undefined),
                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -41198,7 +41242,7 @@ const EventsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunti
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "src/Components/EventsPage.jsx",
-                                                            lineNumber: 369,
+                                                            lineNumber: 394,
                                                             columnNumber: 21
                                                         }, undefined),
                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -41209,13 +41253,13 @@ const EventsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunti
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "src/Components/EventsPage.jsx",
-                                                            lineNumber: 370,
+                                                            lineNumber: 395,
                                                             columnNumber: 21
                                                         }, undefined)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "src/Components/EventsPage.jsx",
-                                                    lineNumber: 362,
+                                                    lineNumber: 387,
                                                     columnNumber: 19
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -41223,7 +41267,7 @@ const EventsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunti
                                                     children: event.title
                                                 }, void 0, false, {
                                                     fileName: "src/Components/EventsPage.jsx",
-                                                    lineNumber: 372,
+                                                    lineNumber: 397,
                                                     columnNumber: 19
                                                 }, undefined),
                                                 event.result && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -41231,7 +41275,7 @@ const EventsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunti
                                                     children: event.result
                                                 }, void 0, false, {
                                                     fileName: "src/Components/EventsPage.jsx",
-                                                    lineNumber: 374,
+                                                    lineNumber: 399,
                                                     columnNumber: 21
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -41239,36 +41283,36 @@ const EventsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunti
                                                     children: event.description
                                                 }, void 0, false, {
                                                     fileName: "src/Components/EventsPage.jsx",
-                                                    lineNumber: 376,
+                                                    lineNumber: 401,
                                                     columnNumber: 19
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/Components/EventsPage.jsx",
-                                            lineNumber: 361,
+                                            lineNumber: 386,
                                             columnNumber: 17
                                         }, undefined)
                                     ]
                                 }, event.title, true, {
                                     fileName: "src/Components/EventsPage.jsx",
-                                    lineNumber: 359,
+                                    lineNumber: 384,
                                     columnNumber: 15
                                 }, undefined);
                             })
                         }, void 0, false, {
                             fileName: "src/Components/EventsPage.jsx",
-                            lineNumber: 355,
+                            lineNumber: 380,
                             columnNumber: 9
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/Components/EventsPage.jsx",
-                    lineNumber: 349,
+                    lineNumber: 374,
                     columnNumber: 7
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/Components/EventsPage.jsx",
-                lineNumber: 348,
+                lineNumber: 373,
                 columnNumber: 5
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
@@ -41283,27 +41327,27 @@ const EventsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunti
                                     children: "Palmar\xe8s"
                                 }, void 0, false, {
                                     fileName: "src/Components/EventsPage.jsx",
-                                    lineNumber: 389,
+                                    lineNumber: 414,
                                     columnNumber: 11
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                                     children: "Nos laur\xe9ats"
                                 }, void 0, false, {
                                     fileName: "src/Components/EventsPage.jsx",
-                                    lineNumber: 390,
+                                    lineNumber: 415,
                                     columnNumber: 11
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                     children: "Les athl\xe8tes du Youth Sports Club qui ont brill\xe9 en comp\xe9tition r\xe9gionale, nationale et africaine."
                                 }, void 0, false, {
                                     fileName: "src/Components/EventsPage.jsx",
-                                    lineNumber: 391,
+                                    lineNumber: 416,
                                     columnNumber: 11
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/Components/EventsPage.jsx",
-                            lineNumber: 388,
+                            lineNumber: 413,
                             columnNumber: 9
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -41325,7 +41369,7 @@ const EventsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunti
                                                     alt: l.title
                                                 }, void 0, false, {
                                                     fileName: "src/Components/EventsPage.jsx",
-                                                    lineNumber: 401,
+                                                    lineNumber: 426,
                                                     columnNumber: 19
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -41337,13 +41381,13 @@ const EventsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunti
                                                     children: l.discipline
                                                 }, void 0, false, {
                                                     fileName: "src/Components/EventsPage.jsx",
-                                                    lineNumber: 406,
+                                                    lineNumber: 431,
                                                     columnNumber: 19
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/Components/EventsPage.jsx",
-                                            lineNumber: 400,
+                                            lineNumber: 425,
                                             columnNumber: 17
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -41354,7 +41398,7 @@ const EventsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunti
                                                     children: l.title
                                                 }, void 0, false, {
                                                     fileName: "src/Components/EventsPage.jsx",
-                                                    lineNumber: 414,
+                                                    lineNumber: 439,
                                                     columnNumber: 19
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -41367,7 +41411,7 @@ const EventsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunti
                                                                     children: r.rank.split(" ")[0]
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/EventsPage.jsx",
-                                                                    lineNumber: 418,
+                                                                    lineNumber: 443,
                                                                     columnNumber: 25
                                                                 }, undefined),
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -41379,18 +41423,18 @@ const EventsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunti
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "src/Components/EventsPage.jsx",
-                                                                    lineNumber: 419,
+                                                                    lineNumber: 444,
                                                                     columnNumber: 25
                                                                 }, undefined)
                                                             ]
                                                         }, j, true, {
                                                             fileName: "src/Components/EventsPage.jsx",
-                                                            lineNumber: 417,
+                                                            lineNumber: 442,
                                                             columnNumber: 23
                                                         }, undefined))
                                                 }, void 0, false, {
                                                     fileName: "src/Components/EventsPage.jsx",
-                                                    lineNumber: 415,
+                                                    lineNumber: 440,
                                                     columnNumber: 19
                                                 }, undefined),
                                                 l.note && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -41398,98 +41442,36 @@ const EventsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunti
                                                     children: l.note
                                                 }, void 0, false, {
                                                     fileName: "src/Components/EventsPage.jsx",
-                                                    lineNumber: 423,
+                                                    lineNumber: 448,
                                                     columnNumber: 30
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/Components/EventsPage.jsx",
-                                            lineNumber: 413,
+                                            lineNumber: 438,
                                             columnNumber: 17
                                         }, undefined)
                                     ]
                                 }, i, true, {
                                     fileName: "src/Components/EventsPage.jsx",
-                                    lineNumber: 399,
+                                    lineNumber: 424,
                                     columnNumber: 15
                                 }, undefined);
                             })
                         }, void 0, false, {
                             fileName: "src/Components/EventsPage.jsx",
-                            lineNumber: 395,
+                            lineNumber: 420,
                             columnNumber: 9
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/Components/EventsPage.jsx",
-                    lineNumber: 387,
+                    lineNumber: 412,
                     columnNumber: 7
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/Components/EventsPage.jsx",
-                lineNumber: 386,
-                columnNumber: 5
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
-                className: "ysc-ev-section--alt",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    className: "ysc-ev-inner",
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            className: "ysc-ev-header",
-                            children: [
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _pages.SectionLabel), {
-                                    children: "Galerie"
-                                }, void 0, false, {
-                                    fileName: "src/Components/EventsPage.jsx",
-                                    lineNumber: 436,
-                                    columnNumber: 11
-                                }, undefined),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                                    children: "Images r\xe9centes"
-                                }, void 0, false, {
-                                    fileName: "src/Components/EventsPage.jsx",
-                                    lineNumber: 437,
-                                    columnNumber: 11
-                                }, undefined),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                    children: "Entra\xeenements, d\xe9monstrations et moments de comp\xe9tition."
-                                }, void 0, false, {
-                                    fileName: "src/Components/EventsPage.jsx",
-                                    lineNumber: 438,
-                                    columnNumber: 11
-                                }, undefined)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/Components/EventsPage.jsx",
-                            lineNumber: 435,
-                            columnNumber: 9
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            className: "ysc-ev-gallery",
-                            children: eventsGallery.map((photo)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                                    src: photo.src,
-                                    alt: photo.alt,
-                                    loading: "lazy"
-                                }, photo.src, false, {
-                                    fileName: "src/Components/EventsPage.jsx",
-                                    lineNumber: 442,
-                                    columnNumber: 13
-                                }, undefined))
-                        }, void 0, false, {
-                            fileName: "src/Components/EventsPage.jsx",
-                            lineNumber: 440,
-                            columnNumber: 9
-                        }, undefined)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/Components/EventsPage.jsx",
-                    lineNumber: 434,
-                    columnNumber: 7
-                }, undefined)
-            }, void 0, false, {
-                fileName: "src/Components/EventsPage.jsx",
-                lineNumber: 433,
+                lineNumber: 411,
                 columnNumber: 5
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
@@ -41503,14 +41485,14 @@ const EventsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunti
                                 children: "Rejoignez un club de champions"
                             }, void 0, false, {
                                 fileName: "src/Components/EventsPage.jsx",
-                                lineNumber: 452,
+                                lineNumber: 463,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                 children: "Inscription ouverte toute l'ann\xe9e \xb7 Encadrement professionnel \xb7 Stade de K\xe9gu\xe9, Lom\xe9"
                             }, void 0, false, {
                                 fileName: "src/Components/EventsPage.jsx",
-                                lineNumber: 453,
+                                lineNumber: 464,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -41522,7 +41504,7 @@ const EventsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunti
                                         children: "S'inscrire maintenant"
                                     }, void 0, false, {
                                         fileName: "src/Components/EventsPage.jsx",
-                                        lineNumber: 457,
+                                        lineNumber: 468,
                                         columnNumber: 13
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
@@ -41531,29 +41513,29 @@ const EventsPage = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRunti
                                         children: "+228 91 53 48 85"
                                     }, void 0, false, {
                                         fileName: "src/Components/EventsPage.jsx",
-                                        lineNumber: 460,
+                                        lineNumber: 471,
                                         columnNumber: 13
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/Components/EventsPage.jsx",
-                                lineNumber: 456,
+                                lineNumber: 467,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/Components/EventsPage.jsx",
-                        lineNumber: 451,
+                        lineNumber: 462,
                         columnNumber: 9
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/Components/EventsPage.jsx",
-                    lineNumber: 450,
+                    lineNumber: 461,
                     columnNumber: 7
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/Components/EventsPage.jsx",
-                lineNumber: 449,
+                lineNumber: 460,
                 columnNumber: 5
             }, undefined)
         ]
@@ -41567,7 +41549,7 @@ $RefreshReg$(_c, "EventsPage");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","../images/472902518_601111642868247_3421823822486160063_n.jpg":"hqBdt","../images/WhatsApp Image 2026-05-16 at 17.46.30.jpeg":"cSFGD","../images/WhatsApp Image 2026-05-22 at 15.06.55.jpeg":"iSwtE","../images/WhatsApp Image 2026-05-22 at 15.07.50.jpeg":"enWWv","../images/WhatsApp Image 2026-05-22 at 15.20.21 (1).jpeg":"iFUdj","./Pages":"RtURo","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../images/WhatsApp Image 2026-05-17 at 12.59.32 (2).jpeg":"lTRBl","../images/Screenshot 2026-05-17 124137.png":"2RheE"}],"hqBdt":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","../images/472902518_601111642868247_3421823822486160063_n.jpg":"hqBdt","../images/WhatsApp Image 2026-05-16 at 17.46.30.jpeg":"cSFGD","../images/WhatsApp Image 2026-05-22 at 15.06.55.jpeg":"iSwtE","../images/WhatsApp Image 2026-05-22 at 15.07.50.jpeg":"enWWv","../images/WhatsApp Image 2026-05-22 at 15.20.21 (1).jpeg":"iFUdj","./Pages":"RtURo","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../images/WhatsApp Image 2026-05-17 at 12.59.32 (2).jpeg":"lTRBl","../images/Screenshot 2026-05-17 124137.png":"2RheE","../images/WhatsApp Image 2026-05-16 at 13.22.56.jpeg":"9HlXI","../images/WhatsApp Image 2026-05-16 at 13.27.55 (1).jpeg":"2qL6j"}],"hqBdt":[function(require,module,exports) {
 module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "472902518_601111642868247_3421823822486160063_n.a02e5563.jpg" + "?" + Date.now();
 
 },{"./helpers/bundle-url":"lgJ39"}],"cSFGD":[function(require,module,exports) {
@@ -42482,6 +42464,12 @@ module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "WhatsA
 
 },{"./helpers/bundle-url":"lgJ39"}],"2RheE":[function(require,module,exports) {
 module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "Screenshot 2026-05-17 124137.73372fa3.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"9HlXI":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "WhatsApp Image 2026-05-16 at 13.22.56.2bf9b449.jpeg" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"2qL6j":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "WhatsApp Image 2026-05-16 at 13.27.55 (1).c0f938fc.jpeg" + "?" + Date.now();
 
 },{"./helpers/bundle-url":"lgJ39"}],"gcCLb":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$522c = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
