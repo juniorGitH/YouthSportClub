@@ -36064,6 +36064,7 @@ const Home = ()=>{
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                 className: "card",
+                                id: "tarifs",
                                 children: [
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                         className: "ysc-card-title",
@@ -37530,7 +37531,7 @@ const About = ()=>{
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
                                         className: "btn-outline-white",
-                                        to: "/rejoindre",
+                                        to: "/rejoindre#tarifs",
                                         children: "Voir les tarifs"
                                     }, void 0, false, {
                                         fileName: "src/Components/About.jsx",
@@ -43857,6 +43858,7 @@ const JoinClubPage = ()=>{
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                             className: "ysc-form-block",
+                                            id: "tarifs",
                                             children: [
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                                                     className: "ysc-form-section-title",
