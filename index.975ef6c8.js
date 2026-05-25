@@ -42552,12 +42552,8 @@ var _whatsAppImage20260516At174633Jpeg = require("../images/WhatsApp Image 2026-
 var _whatsAppImage20260516At174633JpegDefault = parcelHelpers.interopDefault(_whatsAppImage20260516At174633Jpeg);
 var _pages = require("./Pages");
 var _s = $RefreshSig$();
-// ─── CSS supplémentaire spécifique à ce fichier ────────────────────────────
-// (les styles de base viennent de Pages.jsx via <style>{scoped}</style>)
 const extraScoped = `
-  .ysc-form-section__inner {
-    max-width: 1100px;
-  }
+  .ysc-form-section__inner { max-width: 1100px; }
 
   .ysc-form-split {
     display: grid;
@@ -42566,13 +42562,11 @@ const extraScoped = `
     align-items: start;
   }
 
-  /* ── Formulaire multi-blocs ── */
   .ysc-form-block {
     margin-bottom: 2.5rem;
     padding-bottom: 2.5rem;
     border-bottom: 1px solid #e8f0fb;
   }
-
   .ysc-form-block:last-of-type {
     border-bottom: none;
     margin-bottom: 0;
@@ -42588,14 +42582,12 @@ const extraScoped = `
     align-items: center;
     gap: 0.5rem;
   }
-
   .ysc-form-section-title::before {
     content: attr(data-num);
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 26px;
-    height: 26px;
+    width: 26px; height: 26px;
     background: var(--ysc-primary);
     color: #fff;
     border-radius: 50%;
@@ -42615,25 +42607,19 @@ const extraScoped = `
     margin: 0;
   }
 
-  /* ── Grille formulaire 2 colonnes ── */
   .ysc-form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.25rem;
   }
+  .ysc-form-grid .ysc-field--full { grid-column: 1 / -1; }
 
-  .ysc-form-grid .ysc-field--full {
-    grid-column: 1 / -1;
-  }
-
-  /* ── Radio group amélioré (wrap pour listes longues) ── */
   .ysc-radio-group {
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem 1.5rem;
     margin-top: 0.5rem;
   }
-
   .ysc-radio-item {
     display: flex;
     align-items: center;
@@ -42642,46 +42628,35 @@ const extraScoped = `
     font-size: 0.93rem;
     color: var(--ysc-text);
   }
-
   .ysc-radio-item input[type="radio"] {
     accent-color: var(--ysc-primary);
-    width: 16px;
-    height: 16px;
+    width: 16px; height: 16px;
     cursor: pointer;
   }
 
-  /* ── Checkbox ── */
   .ysc-checkbox-field {
     display: flex;
     align-items: flex-start;
     gap: 0.75rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     margin-top: 1.5rem;
     cursor: pointer;
   }
-
   .ysc-checkbox-field input[type="checkbox"] {
     accent-color: var(--ysc-primary);
-    width: 18px;
-    height: 18px;
+    width: 18px; height: 18px;
     margin-top: 2px;
     flex-shrink: 0;
     cursor: pointer;
   }
-
   .ysc-checkbox-text {
     font-size: 0.9rem;
     color: var(--ysc-text);
     line-height: 1.5;
   }
 
-  /* ── Submit ── */
   .ysc-btn--full { width: 100%; }
-
-  .ysc-submit-area {
-    margin-top: 2rem;
-  }
-
+  .ysc-submit-area { margin-top: 2rem; }
   .ysc-form-note {
     text-align: center;
     font-size: 0.82rem;
@@ -42689,26 +42664,54 @@ const extraScoped = `
     margin-top: 1rem;
   }
 
-  /* ── Témoignage ── */
-  .ysc-testimonial-wrapper--form {
-    margin: 0;
+  /* ── Validation ── */
+  .ysc-field-error {
+    font-size: 0.78rem;
+    color: #c0392b;
+    margin-top: 0.3rem;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .ysc-field-error::before { content: '⚠'; font-size: 0.75rem; }
+
+  .ysc-input--error {
+    border-color: #e74c3c !important;
+    background: #fff8f8 !important;
+  }
+  .ysc-radio-group--error {
+    border: 1.5px dashed #e74c3c;
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+    background: #fff8f8;
+  }
+  .ysc-error-banner {
+    background: #fff0f0;
+    border: 1px solid #f5c6cb;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    color: #c0392b;
+    font-size: 0.88rem;
+    font-weight: 600;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    line-height: 1.5;
   }
 
+  /* ── Témoignage ── */
+  .ysc-testimonial-wrapper--form { margin: 0; }
   .ysc-testimonial--form {
     flex-direction: column;
     text-align: center;
     padding: 2.25rem;
   }
-
   .ysc-testimonial--form .ysc-testimonial__avatar-wrap {
-    width: 96px;
-    height: 96px;
+    width: 96px; height: 96px;
     margin: 0 auto 1.25rem;
   }
-
-  .ysc-testimonial--form .ysc-testimonial__quote {
-    font-size: 1.1rem;
-  }
+  .ysc-testimonial--form .ysc-testimonial__quote { font-size: 1.1rem; }
 
   /* ── Programme social ── */
   .ysc-social-objective {
@@ -42720,14 +42723,12 @@ const extraScoped = `
     border-radius: 12px;
     border: 1px dashed #ef7d22;
   }
-
   .ysc-social-obj-icon {
     font-size: 1.4rem;
     color: #ef7d22;
     flex-shrink: 0;
     padding-top: 3px;
   }
-
   .ysc-social-objective p {
     font-size: 0.95rem;
     color: #6c4622;
@@ -42736,21 +42737,16 @@ const extraScoped = `
   }
 
   /* ── CTA final ── */
-  .ysc-final-cta {
-    padding: 5rem 1rem;
-    background: var(--ysc-white);
-  }
-
+  .ysc-final-cta { padding: 5rem 1rem; background: var(--ysc-white); }
   .ysc-final-cta__inner {
     text-align: center;
-    border: 1px solid rgba(47, 111, 178, 0.15);
-    box-shadow: 0 18px 45px rgba(47, 111, 178, 0.08);
+    border: 1px solid rgba(47,111,178,0.15);
+    box-shadow: 0 18px 45px rgba(47,111,178,0.08);
     padding: 4rem 2rem;
     border-radius: var(--ysc-radius);
     max-width: 1100px;
     margin: 0 auto;
   }
-
   .ysc-final-cta__text {
     font-size: 1.5rem;
     font-weight: 700;
@@ -42760,18 +42756,11 @@ const extraScoped = `
 
   /* ── Responsive ── */
   @media (max-width: 900px) {
-    .ysc-form-split {
-      grid-template-columns: 1fr;
-    }
+    .ysc-form-split { grid-template-columns: 1fr; }
   }
-
   @media (max-width: 700px) {
-    .ysc-form-grid {
-      grid-template-columns: 1fr;
-    }
-    .ysc-form-grid .ysc-field--full {
-      grid-column: 1;
-    }
+    .ysc-form-grid { grid-template-columns: 1fr; }
+    .ysc-form-grid .ysc-field--full { grid-column: 1; }
   }
 `;
 // ─── Helpers ───────────────────────────────────────────────────────────────
@@ -42787,6 +42776,26 @@ const getAgeCategory = (dob)=>{
 };
 const formatDate = (value)=>value ? value.split("-").reverse().join("/") : "";
 const safeVal = (v)=>v ? v : "-";
+// ─── Validation ────────────────────────────────────────────────────────────
+const validate = (formData, agreed)=>{
+    const errors = {};
+    if (!formData.athleteLastName.trim()) errors.athleteLastName = "Le nom est obligatoire.";
+    if (!formData.athleteFirstName.trim()) errors.athleteFirstName = "Les pr\xe9noms sont obligatoires.";
+    if (!formData.dob) errors.dob = "La date de naissance est obligatoire.";
+    if (!formData.sex) errors.sex = "Veuillez s\xe9lectionner le sexe.";
+    if (!formData.parentName.trim()) errors.parentName = "Le nom du parent/tuteur est obligatoire.";
+    if (!formData.parentPhone.trim()) errors.parentPhone = "Le num\xe9ro de t\xe9l\xe9phone est obligatoire.";
+    if (!formData.level) errors.level = "Veuillez indiquer le niveau.";
+    if (!formData.ageCategory) errors.ageCategory = "Veuillez s\xe9lectionner une cat\xe9gorie d'\xe2ge.";
+    if (!formData.discipline) errors.discipline = "Veuillez choisir une discipline.";
+    if (!formData.scholarship) errors.scholarship = "Veuillez indiquer le statut boursier.";
+    if (formData.scholarship === "yes" && !formData.scholarshipType) errors.scholarshipType = "Veuillez choisir le type de bourse.";
+    if (!formData.paymentMode) errors.paymentMode = "Veuillez choisir un mode de paiement.";
+    if (!formData.agreementName.trim()) errors.agreementName = "Le nom du signataire est obligatoire.";
+    if (!formData.agreementDate) errors.agreementDate = "La date est obligatoire.";
+    if (!agreed) errors.agreed = "Vous devez accepter les conditions pour continuer.";
+    return errors;
+};
 const JoinClubPage = ()=>{
     _s();
     const defaultDate = new Date().toISOString().slice(0, 10);
@@ -42814,9 +42823,11 @@ const JoinClubPage = ()=>{
         agreementDate: defaultDate,
         signature: ""
     });
+    const [agreed, setAgreed] = (0, _react.useState)(false);
+    const [errors, setErrors] = (0, _react.useState)({});
+    const [submitted, setSubmitted] = (0, _react.useState)(false);
     const [isSubmitting, setIsSubmitting] = (0, _react.useState)(false);
     const [submissionMessage, setSubmissionMessage] = (0, _react.useState)("");
-    // ── Sync age category when dob changes ──
     (0, _react.useEffect)(()=>{
         const autoCategory = getAgeCategory(formData.dob);
         if (autoCategory) setFormData((prev)=>({
@@ -42826,7 +42837,6 @@ const JoinClubPage = ()=>{
     }, [
         formData.dob
     ]);
-    // ── Scroll to form from URL hash ──
     (0, _react.useEffect)(()=>{
         if (location.hash === "#registration-form") document.getElementById("registration-form")?.scrollIntoView({
             behavior: "smooth"
@@ -42845,9 +42855,39 @@ const JoinClubPage = ()=>{
             if (name === "parentName" && !prev.agreementName) next.agreementName = value;
             return next;
         });
+        if (errors[name]) setErrors((prev)=>{
+            const e = {
+                ...prev
+            };
+            delete e[name];
+            return e;
+        });
+    };
+    const handleAgreeChange = (e)=>{
+        setAgreed(e.target.checked);
+        if (errors.agreed) setErrors((prev)=>{
+            const e = {
+                ...prev
+            };
+            delete e.agreed;
+            return e;
+        });
     };
     const handleSubmit = async (e)=>{
         e.preventDefault();
+        setSubmitted(true);
+        const validationErrors = validate(formData, agreed);
+        setErrors(validationErrors);
+        // ← BLOQUE l'envoi si des champs sont manquants
+        if (Object.keys(validationErrors).length > 0) {
+            const firstErrorKey = Object.keys(validationErrors)[0];
+            const el = document.getElementById(firstErrorKey) || document.querySelector(`[name="${firstErrorKey}"]`) || document.getElementById("registration-form");
+            el?.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+            return; // ← STOP : on n'envoie pas
+        }
         setIsSubmitting(true);
         setSubmissionMessage("");
         try {
@@ -42929,50 +42969,69 @@ const JoinClubPage = ()=>{
             behavior: "smooth"
         });
     };
-    // ── Radio field helper ──
-    const RadioGroup = ({ name , options , required =false  })=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            className: "ysc-radio-group",
-            children: options.map(({ value , label  })=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                    className: "ysc-radio-item",
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                            type: "radio",
-                            name: name,
-                            value: value,
-                            checked: formData[name] === value,
-                            onChange: handleInputChange,
-                            required: required
-                        }, void 0, false, {
-                            fileName: "src/Components/JoinClubPage.jsx",
-                            lineNumber: 419,
-                            columnNumber: 11
-                        }, undefined),
-                        label
-                    ]
-                }, value, true, {
-                    fileName: "src/Components/JoinClubPage.jsx",
-                    lineNumber: 418,
-                    columnNumber: 9
-                }, undefined))
+    // ── Composants helpers ──
+    const FieldError = ({ field  })=>errors[field] ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+            className: "ysc-field-error",
+            children: errors[field]
         }, void 0, false, {
             fileName: "src/Components/JoinClubPage.jsx",
-            lineNumber: 416,
-            columnNumber: 5
-        }, undefined);
+            lineNumber: 477,
+            columnNumber: 21
+        }, undefined) : null;
+    const RadioGroup = ({ name , options  })=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: `ysc-radio-group${errors[name] ? " ysc-radio-group--error" : ""}`,
+                    children: options.map(({ value , label  })=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                            className: "ysc-radio-item",
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                    type: "radio",
+                                    name: name,
+                                    value: value,
+                                    checked: formData[name] === value,
+                                    onChange: handleInputChange
+                                }, void 0, false, {
+                                    fileName: "src/Components/JoinClubPage.jsx",
+                                    lineNumber: 484,
+                                    columnNumber: 13
+                                }, undefined),
+                                label
+                            ]
+                        }, value, true, {
+                            fileName: "src/Components/JoinClubPage.jsx",
+                            lineNumber: 483,
+                            columnNumber: 11
+                        }, undefined))
+                }, void 0, false, {
+                    fileName: "src/Components/JoinClubPage.jsx",
+                    lineNumber: 481,
+                    columnNumber: 7
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(FieldError, {
+                    field: name
+                }, void 0, false, {
+                    fileName: "src/Components/JoinClubPage.jsx",
+                    lineNumber: 495,
+                    columnNumber: 7
+                }, undefined)
+            ]
+        }, void 0, true);
+    const inputClass = (field)=>errors[field] ? "ysc-input--error" : "";
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("style", {
                 children: (0, _pages.scoped)
             }, void 0, false, {
                 fileName: "src/Components/JoinClubPage.jsx",
-                lineNumber: 436,
+                lineNumber: 503,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("style", {
                 children: extraScoped
             }, void 0, false, {
                 fileName: "src/Components/JoinClubPage.jsx",
-                lineNumber: 437,
+                lineNumber: 504,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
@@ -42987,7 +43046,7 @@ const JoinClubPage = ()=>{
                                 className: "ysc-join-hero__img"
                             }, void 0, false, {
                                 fileName: "src/Components/JoinClubPage.jsx",
-                                lineNumber: 442,
+                                lineNumber: 509,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -42995,7 +43054,7 @@ const JoinClubPage = ()=>{
                                 children: "+100 membres actifs"
                             }, void 0, false, {
                                 fileName: "src/Components/JoinClubPage.jsx",
-                                lineNumber: 447,
+                                lineNumber: 514,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -43003,13 +43062,13 @@ const JoinClubPage = ()=>{
                                 children: "Suivi personnalis\xe9"
                             }, void 0, false, {
                                 fileName: "src/Components/JoinClubPage.jsx",
-                                lineNumber: 448,
+                                lineNumber: 515,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/Components/JoinClubPage.jsx",
-                        lineNumber: 441,
+                        lineNumber: 508,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -43019,7 +43078,7 @@ const JoinClubPage = ()=>{
                                 children: "Inscriptions"
                             }, void 0, false, {
                                 fileName: "src/Components/JoinClubPage.jsx",
-                                lineNumber: 452,
+                                lineNumber: 519,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
@@ -43028,20 +43087,20 @@ const JoinClubPage = ()=>{
                                     "Rejoignez le",
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                         fileName: "src/Components/JoinClubPage.jsx",
-                                        lineNumber: 454,
+                                        lineNumber: 521,
                                         columnNumber: 25
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("em", {
                                         children: "Youth Sports Club"
                                     }, void 0, false, {
                                         fileName: "src/Components/JoinClubPage.jsx",
-                                        lineNumber: 455,
+                                        lineNumber: 522,
                                         columnNumber: 13
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/Components/JoinClubPage.jsx",
-                                lineNumber: 453,
+                                lineNumber: 520,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -43049,7 +43108,7 @@ const JoinClubPage = ()=>{
                                 children: "Recevez un encadrement sportif d'excellence — un suivi p\xe9dagogique, s\xe9curis\xe9 et adapt\xe9 \xe0 tous les niveaux."
                             }, void 0, false, {
                                 fileName: "src/Components/JoinClubPage.jsx",
-                                lineNumber: 457,
+                                lineNumber: 524,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -43059,7 +43118,7 @@ const JoinClubPage = ()=>{
                                         children: "Encadrement Qualifi\xe9"
                                     }, void 0, false, {
                                         fileName: "src/Components/JoinClubPage.jsx",
-                                        lineNumber: 463,
+                                        lineNumber: 529,
                                         columnNumber: 13
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -43067,13 +43126,13 @@ const JoinClubPage = ()=>{
                                         children: "Licence STAPS \xb7 Dipl\xf4me FIG Niveau 1 \xb7 Certifications boxe \xe9ducative, fitness et cross-training"
                                     }, void 0, false, {
                                         fileName: "src/Components/JoinClubPage.jsx",
-                                        lineNumber: 464,
+                                        lineNumber: 530,
                                         columnNumber: 13
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/Components/JoinClubPage.jsx",
-                                lineNumber: 462,
+                                lineNumber: 528,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
@@ -43087,7 +43146,7 @@ const JoinClubPage = ()=>{
                                         text: "Programme sur mesure"
                                     }, void 0, false, {
                                         fileName: "src/Components/JoinClubPage.jsx",
-                                        lineNumber: 471,
+                                        lineNumber: 536,
                                         columnNumber: 13
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _pages.FeatureRow), {
@@ -43097,7 +43156,7 @@ const JoinClubPage = ()=>{
                                         text: "Progression mesurable"
                                     }, void 0, false, {
                                         fileName: "src/Components/JoinClubPage.jsx",
-                                        lineNumber: 472,
+                                        lineNumber: 537,
                                         columnNumber: 13
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _pages.FeatureRow), {
@@ -43107,25 +43166,25 @@ const JoinClubPage = ()=>{
                                         text: "Communaut\xe9 bienveillante"
                                     }, void 0, false, {
                                         fileName: "src/Components/JoinClubPage.jsx",
-                                        lineNumber: 473,
+                                        lineNumber: 538,
                                         columnNumber: 13
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/Components/JoinClubPage.jsx",
-                                lineNumber: 470,
+                                lineNumber: 535,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/Components/JoinClubPage.jsx",
-                        lineNumber: 451,
+                        lineNumber: 518,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/Components/JoinClubPage.jsx",
-                lineNumber: 440,
+                lineNumber: 507,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
@@ -43142,7 +43201,7 @@ const JoinClubPage = ()=>{
                                     children: "Inscription gratuite"
                                 }, void 0, false, {
                                     fileName: "src/Components/JoinClubPage.jsx",
-                                    lineNumber: 483,
+                                    lineNumber: 547,
                                     columnNumber: 13
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
@@ -43151,13 +43210,13 @@ const JoinClubPage = ()=>{
                                     children: "Rejoindre le club"
                                 }, void 0, false, {
                                     fileName: "src/Components/JoinClubPage.jsx",
-                                    lineNumber: 484,
+                                    lineNumber: 548,
                                     columnNumber: 13
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/Components/JoinClubPage.jsx",
-                            lineNumber: 482,
+                            lineNumber: 546,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -43168,6 +43227,15 @@ const JoinClubPage = ()=>{
                                     onSubmit: handleSubmit,
                                     noValidate: true,
                                     children: [
+                                        submitted && Object.keys(errors).length > 0 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                            className: "ysc-error-banner",
+                                            role: "alert",
+                                            children: "⚠️ Veuillez remplir tous les champs obligatoires (*) avant d'envoyer."
+                                        }, void 0, false, {
+                                            fileName: "src/Components/JoinClubPage.jsx",
+                                            lineNumber: 556,
+                                            columnNumber: 17
+                                        }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                             className: "ysc-form-block",
                                             children: [
@@ -43177,8 +43245,8 @@ const JoinClubPage = ()=>{
                                                     children: "Informations du gymnaste"
                                                 }, void 0, false, {
                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                    lineNumber: 492,
-                                                    columnNumber: 15
+                                                    lineNumber: 563,
+                                                    columnNumber: 17
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                                     className: "ysc-form-grid",
@@ -43188,11 +43256,11 @@ const JoinClubPage = ()=>{
                                                             children: [
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                                                     htmlFor: "athleteLastName",
-                                                                    children: "Nom"
+                                                                    children: "Nom *"
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 495,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 566,
+                                                                    columnNumber: 21
                                                                 }, undefined),
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                                                                     id: "athleteLastName",
@@ -43200,28 +43268,35 @@ const JoinClubPage = ()=>{
                                                                     type: "text",
                                                                     value: formData.athleteLastName,
                                                                     onChange: handleInputChange,
-                                                                    required: true
+                                                                    className: inputClass("athleteLastName")
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 496,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 567,
+                                                                    columnNumber: 21
+                                                                }, undefined),
+                                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(FieldError, {
+                                                                    field: "athleteLastName"
+                                                                }, void 0, false, {
+                                                                    fileName: "src/Components/JoinClubPage.jsx",
+                                                                    lineNumber: 572,
+                                                                    columnNumber: 21
                                                                 }, undefined)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "src/Components/JoinClubPage.jsx",
-                                                            lineNumber: 494,
-                                                            columnNumber: 17
+                                                            lineNumber: 565,
+                                                            columnNumber: 19
                                                         }, undefined),
                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                                             className: "ysc-field",
                                                             children: [
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                                                     htmlFor: "athleteFirstName",
-                                                                    children: "Pr\xe9noms"
+                                                                    children: "Pr\xe9noms *"
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 503,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 576,
+                                                                    columnNumber: 21
                                                                 }, undefined),
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                                                                     id: "athleteFirstName",
@@ -43229,28 +43304,35 @@ const JoinClubPage = ()=>{
                                                                     type: "text",
                                                                     value: formData.athleteFirstName,
                                                                     onChange: handleInputChange,
-                                                                    required: true
+                                                                    className: inputClass("athleteFirstName")
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 504,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 577,
+                                                                    columnNumber: 21
+                                                                }, undefined),
+                                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(FieldError, {
+                                                                    field: "athleteFirstName"
+                                                                }, void 0, false, {
+                                                                    fileName: "src/Components/JoinClubPage.jsx",
+                                                                    lineNumber: 582,
+                                                                    columnNumber: 21
                                                                 }, undefined)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "src/Components/JoinClubPage.jsx",
-                                                            lineNumber: 502,
-                                                            columnNumber: 17
+                                                            lineNumber: 575,
+                                                            columnNumber: 19
                                                         }, undefined),
                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                                             className: "ysc-field",
                                                             children: [
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                                                     htmlFor: "dob",
-                                                                    children: "Date de naissance"
+                                                                    children: "Date de naissance *"
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 511,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 586,
+                                                                    columnNumber: 21
                                                                 }, undefined),
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                                                                     id: "dob",
@@ -43258,31 +43340,37 @@ const JoinClubPage = ()=>{
                                                                     type: "date",
                                                                     value: formData.dob,
                                                                     onChange: handleInputChange,
-                                                                    required: true
+                                                                    className: inputClass("dob")
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 512,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 587,
+                                                                    columnNumber: 21
+                                                                }, undefined),
+                                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(FieldError, {
+                                                                    field: "dob"
+                                                                }, void 0, false, {
+                                                                    fileName: "src/Components/JoinClubPage.jsx",
+                                                                    lineNumber: 592,
+                                                                    columnNumber: 21
                                                                 }, undefined)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "src/Components/JoinClubPage.jsx",
-                                                            lineNumber: 510,
-                                                            columnNumber: 17
+                                                            lineNumber: 585,
+                                                            columnNumber: 19
                                                         }, undefined),
                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                                             className: "ysc-field",
                                                             children: [
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                                                    children: "Sexe"
+                                                                    children: "Sexe *"
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 519,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 596,
+                                                                    columnNumber: 21
                                                                 }, undefined),
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RadioGroup, {
                                                                     name: "sex",
-                                                                    required: true,
                                                                     options: [
                                                                         {
                                                                             value: "M",
@@ -43295,14 +43383,14 @@ const JoinClubPage = ()=>{
                                                                     ]
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 520,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 597,
+                                                                    columnNumber: 21
                                                                 }, undefined)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "src/Components/JoinClubPage.jsx",
-                                                            lineNumber: 518,
-                                                            columnNumber: 17
+                                                            lineNumber: 595,
+                                                            columnNumber: 19
                                                         }, undefined),
                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                                             className: "ysc-field",
@@ -43312,8 +43400,8 @@ const JoinClubPage = ()=>{
                                                                     children: "Nationalit\xe9"
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 531,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 607,
+                                                                    columnNumber: 21
                                                                 }, undefined),
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                                                                     id: "nationality",
@@ -43323,14 +43411,14 @@ const JoinClubPage = ()=>{
                                                                     onChange: handleInputChange
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 532,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 608,
+                                                                    columnNumber: 21
                                                                 }, undefined)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "src/Components/JoinClubPage.jsx",
-                                                            lineNumber: 530,
-                                                            columnNumber: 17
+                                                            lineNumber: 606,
+                                                            columnNumber: 19
                                                         }, undefined),
                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                                             className: "ysc-field",
@@ -43340,8 +43428,8 @@ const JoinClubPage = ()=>{
                                                                     children: "\xc9tablissement scolaire"
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 539,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 615,
+                                                                    columnNumber: 21
                                                                 }, undefined),
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                                                                     id: "school",
@@ -43351,14 +43439,14 @@ const JoinClubPage = ()=>{
                                                                     onChange: handleInputChange
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 540,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 616,
+                                                                    columnNumber: 21
                                                                 }, undefined)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "src/Components/JoinClubPage.jsx",
-                                                            lineNumber: 538,
-                                                            columnNumber: 17
+                                                            lineNumber: 614,
+                                                            columnNumber: 19
                                                         }, undefined),
                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                                             className: "ysc-field",
@@ -43368,8 +43456,8 @@ const JoinClubPage = ()=>{
                                                                     children: "Classe"
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 547,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 623,
+                                                                    columnNumber: 21
                                                                 }, undefined),
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                                                                     id: "classLevel",
@@ -43379,14 +43467,14 @@ const JoinClubPage = ()=>{
                                                                     onChange: handleInputChange
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 548,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 624,
+                                                                    columnNumber: 21
                                                                 }, undefined)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "src/Components/JoinClubPage.jsx",
-                                                            lineNumber: 546,
-                                                            columnNumber: 17
+                                                            lineNumber: 622,
+                                                            columnNumber: 19
                                                         }, undefined),
                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                                             className: "ysc-field ysc-field--full",
@@ -43396,8 +43484,8 @@ const JoinClubPage = ()=>{
                                                                     children: "Adresse compl\xe8te"
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 555,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 631,
+                                                                    columnNumber: 21
                                                                 }, undefined),
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("textarea", {
                                                                     id: "address",
@@ -43407,26 +43495,26 @@ const JoinClubPage = ()=>{
                                                                     onChange: handleInputChange
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 556,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 632,
+                                                                    columnNumber: 21
                                                                 }, undefined)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "src/Components/JoinClubPage.jsx",
-                                                            lineNumber: 554,
-                                                            columnNumber: 17
+                                                            lineNumber: 630,
+                                                            columnNumber: 19
                                                         }, undefined)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                    lineNumber: 493,
-                                                    columnNumber: 15
+                                                    lineNumber: 564,
+                                                    columnNumber: 17
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/Components/JoinClubPage.jsx",
-                                            lineNumber: 491,
-                                            columnNumber: 13
+                                            lineNumber: 562,
+                                            columnNumber: 15
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                             className: "ysc-form-block",
@@ -43437,8 +43525,8 @@ const JoinClubPage = ()=>{
                                                     children: "Parent / tuteur l\xe9gal"
                                                 }, void 0, false, {
                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                    lineNumber: 566,
-                                                    columnNumber: 15
+                                                    lineNumber: 642,
+                                                    columnNumber: 17
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                                     className: "ysc-form-grid",
@@ -43448,11 +43536,11 @@ const JoinClubPage = ()=>{
                                                             children: [
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                                                     htmlFor: "parentName",
-                                                                    children: "Nom & Pr\xe9noms"
+                                                                    children: "Nom & Pr\xe9noms *"
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 569,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 645,
+                                                                    columnNumber: 21
                                                                 }, undefined),
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                                                                     id: "parentName",
@@ -43460,17 +43548,24 @@ const JoinClubPage = ()=>{
                                                                     type: "text",
                                                                     value: formData.parentName,
                                                                     onChange: handleInputChange,
-                                                                    required: true
+                                                                    className: inputClass("parentName")
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 570,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 646,
+                                                                    columnNumber: 21
+                                                                }, undefined),
+                                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(FieldError, {
+                                                                    field: "parentName"
+                                                                }, void 0, false, {
+                                                                    fileName: "src/Components/JoinClubPage.jsx",
+                                                                    lineNumber: 651,
+                                                                    columnNumber: 21
                                                                 }, undefined)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "src/Components/JoinClubPage.jsx",
-                                                            lineNumber: 568,
-                                                            columnNumber: 17
+                                                            lineNumber: 644,
+                                                            columnNumber: 19
                                                         }, undefined),
                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                                             className: "ysc-field",
@@ -43480,8 +43575,8 @@ const JoinClubPage = ()=>{
                                                                     children: "Lien avec l'enfant"
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 577,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 655,
+                                                                    columnNumber: 21
                                                                 }, undefined),
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                                                                     id: "parentRelation",
@@ -43492,25 +43587,25 @@ const JoinClubPage = ()=>{
                                                                     onChange: handleInputChange
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 578,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 656,
+                                                                    columnNumber: 21
                                                                 }, undefined)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "src/Components/JoinClubPage.jsx",
-                                                            lineNumber: 576,
-                                                            columnNumber: 17
+                                                            lineNumber: 654,
+                                                            columnNumber: 19
                                                         }, undefined),
                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                                             className: "ysc-field",
                                                             children: [
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                                                     htmlFor: "parentPhone",
-                                                                    children: "T\xe9l\xe9phone (WhatsApp)"
+                                                                    children: "T\xe9l\xe9phone (WhatsApp) *"
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 586,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 664,
+                                                                    columnNumber: 21
                                                                 }, undefined),
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                                                                     id: "parentPhone",
@@ -43519,17 +43614,24 @@ const JoinClubPage = ()=>{
                                                                     placeholder: "+228 90 00 00 00",
                                                                     value: formData.parentPhone,
                                                                     onChange: handleInputChange,
-                                                                    required: true
+                                                                    className: inputClass("parentPhone")
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 587,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 665,
+                                                                    columnNumber: 21
+                                                                }, undefined),
+                                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(FieldError, {
+                                                                    field: "parentPhone"
+                                                                }, void 0, false, {
+                                                                    fileName: "src/Components/JoinClubPage.jsx",
+                                                                    lineNumber: 671,
+                                                                    columnNumber: 21
                                                                 }, undefined)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "src/Components/JoinClubPage.jsx",
-                                                            lineNumber: 585,
-                                                            columnNumber: 17
+                                                            lineNumber: 663,
+                                                            columnNumber: 19
                                                         }, undefined),
                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                                             className: "ysc-field",
@@ -43539,8 +43641,8 @@ const JoinClubPage = ()=>{
                                                                     children: "Email"
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 595,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 675,
+                                                                    columnNumber: 21
                                                                 }, undefined),
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                                                                     id: "parentEmail",
@@ -43550,26 +43652,26 @@ const JoinClubPage = ()=>{
                                                                     onChange: handleInputChange
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 596,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 676,
+                                                                    columnNumber: 21
                                                                 }, undefined)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "src/Components/JoinClubPage.jsx",
-                                                            lineNumber: 594,
-                                                            columnNumber: 17
+                                                            lineNumber: 674,
+                                                            columnNumber: 19
                                                         }, undefined)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                    lineNumber: 567,
-                                                    columnNumber: 15
+                                                    lineNumber: 643,
+                                                    columnNumber: 17
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/Components/JoinClubPage.jsx",
-                                            lineNumber: 565,
-                                            columnNumber: 13
+                                            lineNumber: 641,
+                                            columnNumber: 15
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                             className: "ysc-form-block",
@@ -43580,8 +43682,8 @@ const JoinClubPage = ()=>{
                                                     children: "Informations sportives"
                                                 }, void 0, false, {
                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                    lineNumber: 606,
-                                                    columnNumber: 15
+                                                    lineNumber: 686,
+                                                    columnNumber: 17
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                                     className: "ysc-form-grid",
@@ -43590,11 +43692,11 @@ const JoinClubPage = ()=>{
                                                             className: "ysc-field",
                                                             children: [
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                                                    children: "Niveau / anciennet\xe9"
+                                                                    children: "Niveau / anciennet\xe9 *"
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 609,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 689,
+                                                                    columnNumber: 21
                                                                 }, undefined),
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RadioGroup, {
                                                                     name: "level",
@@ -43618,24 +43720,24 @@ const JoinClubPage = ()=>{
                                                                     ]
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 610,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 690,
+                                                                    columnNumber: 21
                                                                 }, undefined)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "src/Components/JoinClubPage.jsx",
-                                                            lineNumber: 608,
-                                                            columnNumber: 17
+                                                            lineNumber: 688,
+                                                            columnNumber: 19
                                                         }, undefined),
                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                                             className: "ysc-field",
                                                             children: [
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                                                    children: "Cat\xe9gorie d'\xe2ge"
+                                                                    children: "Cat\xe9gorie d'\xe2ge *"
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 622,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 702,
+                                                                    columnNumber: 21
                                                                 }, undefined),
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RadioGroup, {
                                                                     name: "ageCategory",
@@ -43667,26 +43769,26 @@ const JoinClubPage = ()=>{
                                                                     ]
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 623,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 703,
+                                                                    columnNumber: 21
                                                                 }, undefined)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "src/Components/JoinClubPage.jsx",
-                                                            lineNumber: 621,
-                                                            columnNumber: 17
+                                                            lineNumber: 701,
+                                                            columnNumber: 19
                                                         }, undefined)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                    lineNumber: 607,
-                                                    columnNumber: 15
+                                                    lineNumber: 687,
+                                                    columnNumber: 17
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/Components/JoinClubPage.jsx",
-                                            lineNumber: 605,
-                                            columnNumber: 13
+                                            lineNumber: 685,
+                                            columnNumber: 15
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                             className: "ysc-form-block",
@@ -43694,17 +43796,16 @@ const JoinClubPage = ()=>{
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                                                     className: "ysc-form-section-title",
                                                     "data-num": "4",
-                                                    children: "Discipline pratiqu\xe9e"
+                                                    children: "Discipline pratiqu\xe9e *"
                                                 }, void 0, false, {
                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                    lineNumber: 640,
-                                                    columnNumber: 15
+                                                    lineNumber: 720,
+                                                    columnNumber: 17
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                                     className: "ysc-field",
                                                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RadioGroup, {
                                                         name: "discipline",
-                                                        required: true,
                                                         options: [
                                                             {
                                                                 value: "Gymnastique",
@@ -43721,19 +43822,19 @@ const JoinClubPage = ()=>{
                                                         ]
                                                     }, void 0, false, {
                                                         fileName: "src/Components/JoinClubPage.jsx",
-                                                        lineNumber: 642,
-                                                        columnNumber: 17
+                                                        lineNumber: 722,
+                                                        columnNumber: 19
                                                     }, undefined)
                                                 }, void 0, false, {
                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                    lineNumber: 641,
-                                                    columnNumber: 15
+                                                    lineNumber: 721,
+                                                    columnNumber: 17
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/Components/JoinClubPage.jsx",
-                                            lineNumber: 639,
-                                            columnNumber: 13
+                                            lineNumber: 719,
+                                            columnNumber: 15
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                             className: "ysc-form-block",
@@ -43744,22 +43845,22 @@ const JoinClubPage = ()=>{
                                                     children: "Saison sportive 2026"
                                                 }, void 0, false, {
                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                    lineNumber: 656,
-                                                    columnNumber: 15
+                                                    lineNumber: 735,
+                                                    columnNumber: 17
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                                     className: "ysc-form-hint",
                                                     children: "Du 10 janvier 2026 au 5 d\xe9cembre 2026. Dur\xe9e des s\xe9ances : 2 heures."
                                                 }, void 0, false, {
                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                    lineNumber: 657,
-                                                    columnNumber: 15
+                                                    lineNumber: 736,
+                                                    columnNumber: 17
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/Components/JoinClubPage.jsx",
-                                            lineNumber: 655,
-                                            columnNumber: 13
+                                            lineNumber: 734,
+                                            columnNumber: 15
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                             className: "ysc-form-block",
@@ -43770,8 +43871,8 @@ const JoinClubPage = ()=>{
                                                     children: "Statut social – Programme YSC"
                                                 }, void 0, false, {
                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                    lineNumber: 664,
-                                                    columnNumber: 15
+                                                    lineNumber: 743,
+                                                    columnNumber: 17
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                                     className: "ysc-form-grid",
@@ -43780,15 +43881,14 @@ const JoinClubPage = ()=>{
                                                             className: "ysc-field",
                                                             children: [
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                                                    children: "L'athl\xe8te est-il boursier ?"
+                                                                    children: "L'athl\xe8te est-il boursier ? *"
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 667,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 746,
+                                                                    columnNumber: 21
                                                                 }, undefined),
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RadioGroup, {
                                                                     name: "scholarship",
-                                                                    required: true,
                                                                     options: [
                                                                         {
                                                                             value: "yes",
@@ -43801,28 +43901,27 @@ const JoinClubPage = ()=>{
                                                                     ]
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 668,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 747,
+                                                                    columnNumber: 21
                                                                 }, undefined)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "src/Components/JoinClubPage.jsx",
-                                                            lineNumber: 666,
-                                                            columnNumber: 17
+                                                            lineNumber: 745,
+                                                            columnNumber: 19
                                                         }, undefined),
                                                         formData.scholarship === "yes" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                                             className: "ysc-field",
                                                             children: [
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                                                    children: "Cat\xe9gorie de bourse (d\xe9cision du club)"
+                                                                    children: "Cat\xe9gorie de bourse (d\xe9cision du club) *"
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 680,
-                                                                    columnNumber: 21
+                                                                    lineNumber: 758,
+                                                                    columnNumber: 23
                                                                 }, undefined),
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RadioGroup, {
                                                                     name: "scholarshipType",
-                                                                    required: true,
                                                                     options: [
                                                                         {
                                                                             value: "bourse50",
@@ -43835,26 +43934,26 @@ const JoinClubPage = ()=>{
                                                                     ]
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 681,
-                                                                    columnNumber: 21
+                                                                    lineNumber: 759,
+                                                                    columnNumber: 23
                                                                 }, undefined)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "src/Components/JoinClubPage.jsx",
-                                                            lineNumber: 679,
-                                                            columnNumber: 19
+                                                            lineNumber: 757,
+                                                            columnNumber: 21
                                                         }, undefined)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                    lineNumber: 665,
-                                                    columnNumber: 15
+                                                    lineNumber: 744,
+                                                    columnNumber: 17
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/Components/JoinClubPage.jsx",
-                                            lineNumber: 663,
-                                            columnNumber: 13
+                                            lineNumber: 742,
+                                            columnNumber: 15
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                             className: "ysc-form-block",
@@ -43866,22 +43965,22 @@ const JoinClubPage = ()=>{
                                                     children: "Modalit\xe9s financi\xe8res"
                                                 }, void 0, false, {
                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                    lineNumber: 696,
-                                                    columnNumber: 15
+                                                    lineNumber: 773,
+                                                    columnNumber: 17
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                                     className: "ysc-form-hint",
                                                     children: "S\xe9ance enfant : 7 000 FCFA \xb7 S\xe9ance adulte : 5 000 FCFA \xb7 Mensualit\xe9 : 20 000 FCFA \xb7 Forfait saison compl\xe8te : 180 000 FCFA \xb7 Forfait fratrie (3 enfants et +) : 15 000 FCFA / mois par enfant."
                                                 }, void 0, false, {
                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                    lineNumber: 697,
-                                                    columnNumber: 15
+                                                    lineNumber: 774,
+                                                    columnNumber: 17
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/Components/JoinClubPage.jsx",
-                                            lineNumber: 695,
-                                            columnNumber: 13
+                                            lineNumber: 772,
+                                            columnNumber: 15
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                             className: "ysc-form-block",
@@ -43889,11 +43988,11 @@ const JoinClubPage = ()=>{
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                                                     className: "ysc-form-section-title",
                                                     "data-num": "8",
-                                                    children: "Mode de paiement"
+                                                    children: "Mode de paiement *"
                                                 }, void 0, false, {
                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                    lineNumber: 706,
-                                                    columnNumber: 15
+                                                    lineNumber: 783,
+                                                    columnNumber: 17
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                                     className: "ysc-form-hint",
@@ -43903,14 +44002,13 @@ const JoinClubPage = ()=>{
                                                     children: "Choix obligatoire \xe0 l'inscription pour les non-boursiers."
                                                 }, void 0, false, {
                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                    lineNumber: 707,
-                                                    columnNumber: 15
+                                                    lineNumber: 784,
+                                                    columnNumber: 17
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                                     className: "ysc-field",
                                                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RadioGroup, {
                                                         name: "paymentMode",
-                                                        required: true,
                                                         options: [
                                                             {
                                                                 value: "seance",
@@ -43927,19 +44025,19 @@ const JoinClubPage = ()=>{
                                                         ]
                                                     }, void 0, false, {
                                                         fileName: "src/Components/JoinClubPage.jsx",
-                                                        lineNumber: 711,
-                                                        columnNumber: 17
+                                                        lineNumber: 788,
+                                                        columnNumber: 19
                                                     }, undefined)
                                                 }, void 0, false, {
                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                    lineNumber: 710,
-                                                    columnNumber: 15
+                                                    lineNumber: 787,
+                                                    columnNumber: 17
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/Components/JoinClubPage.jsx",
-                                            lineNumber: 705,
-                                            columnNumber: 13
+                                            lineNumber: 782,
+                                            columnNumber: 15
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                             className: "ysc-form-block",
@@ -43950,8 +44048,8 @@ const JoinClubPage = ()=>{
                                                     children: "Engagement financier"
                                                 }, void 0, false, {
                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                    lineNumber: 725,
-                                                    columnNumber: 15
+                                                    lineNumber: 801,
+                                                    columnNumber: 17
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                                     className: "ysc-form-grid",
@@ -43961,11 +44059,11 @@ const JoinClubPage = ()=>{
                                                             children: [
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                                                     htmlFor: "agreementName",
-                                                                    children: "Nom et pr\xe9noms du parent / tuteur"
+                                                                    children: "Nom et pr\xe9noms du parent / tuteur *"
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 728,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 804,
+                                                                    columnNumber: 21
                                                                 }, undefined),
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                                                                     id: "agreementName",
@@ -43973,28 +44071,35 @@ const JoinClubPage = ()=>{
                                                                     type: "text",
                                                                     value: formData.agreementName,
                                                                     onChange: handleInputChange,
-                                                                    required: true
+                                                                    className: inputClass("agreementName")
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 729,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 805,
+                                                                    columnNumber: 21
+                                                                }, undefined),
+                                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(FieldError, {
+                                                                    field: "agreementName"
+                                                                }, void 0, false, {
+                                                                    fileName: "src/Components/JoinClubPage.jsx",
+                                                                    lineNumber: 810,
+                                                                    columnNumber: 21
                                                                 }, undefined)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "src/Components/JoinClubPage.jsx",
-                                                            lineNumber: 727,
-                                                            columnNumber: 17
+                                                            lineNumber: 803,
+                                                            columnNumber: 19
                                                         }, undefined),
                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                                             className: "ysc-field",
                                                             children: [
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                                                     htmlFor: "agreementDate",
-                                                                    children: "Date"
+                                                                    children: "Date *"
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 736,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 814,
+                                                                    columnNumber: 21
                                                                 }, undefined),
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                                                                     id: "agreementDate",
@@ -44002,17 +44107,24 @@ const JoinClubPage = ()=>{
                                                                     type: "date",
                                                                     value: formData.agreementDate,
                                                                     onChange: handleInputChange,
-                                                                    required: true
+                                                                    className: inputClass("agreementDate")
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 737,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 815,
+                                                                    columnNumber: 21
+                                                                }, undefined),
+                                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(FieldError, {
+                                                                    field: "agreementDate"
+                                                                }, void 0, false, {
+                                                                    fileName: "src/Components/JoinClubPage.jsx",
+                                                                    lineNumber: 820,
+                                                                    columnNumber: 21
                                                                 }, undefined)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "src/Components/JoinClubPage.jsx",
-                                                            lineNumber: 735,
-                                                            columnNumber: 17
+                                                            lineNumber: 813,
+                                                            columnNumber: 19
                                                         }, undefined),
                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                                             className: "ysc-field ysc-field--full",
@@ -44022,8 +44134,8 @@ const JoinClubPage = ()=>{
                                                                     children: "Signature (nom complet)"
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 744,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 824,
+                                                                    columnNumber: 21
                                                                 }, undefined),
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                                                                     id: "signature",
@@ -44033,51 +44145,64 @@ const JoinClubPage = ()=>{
                                                                     onChange: handleInputChange
                                                                 }, void 0, false, {
                                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                                    lineNumber: 745,
-                                                                    columnNumber: 19
+                                                                    lineNumber: 825,
+                                                                    columnNumber: 21
                                                                 }, undefined)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "src/Components/JoinClubPage.jsx",
-                                                            lineNumber: 743,
-                                                            columnNumber: 17
+                                                            lineNumber: 823,
+                                                            columnNumber: 19
                                                         }, undefined)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                    lineNumber: 726,
-                                                    columnNumber: 15
+                                                    lineNumber: 802,
+                                                    columnNumber: 17
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/Components/JoinClubPage.jsx",
-                                            lineNumber: 724,
-                                            columnNumber: 13
+                                            lineNumber: 800,
+                                            columnNumber: 15
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                             className: "ysc-checkbox-field",
                                             children: [
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                                                     type: "checkbox",
-                                                    required: true
+                                                    checked: agreed,
+                                                    onChange: handleAgreeChange
                                                 }, void 0, false, {
                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                    lineNumber: 755,
-                                                    columnNumber: 15
+                                                    lineNumber: 835,
+                                                    columnNumber: 17
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                                     className: "ysc-checkbox-text",
                                                     children: "J'accepte d'\xeatre contact\xe9 via WhatsApp et j'autorise le traitement de ces donn\xe9es."
                                                 }, void 0, false, {
                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                    lineNumber: 756,
-                                                    columnNumber: 15
+                                                    lineNumber: 840,
+                                                    columnNumber: 17
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/Components/JoinClubPage.jsx",
-                                            lineNumber: 754,
-                                            columnNumber: 13
+                                            lineNumber: 834,
+                                            columnNumber: 15
+                                        }, undefined),
+                                        errors.agreed && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                            className: "ysc-field-error",
+                                            style: {
+                                                marginTop: "-0.5rem",
+                                                marginBottom: "1rem"
+                                            },
+                                            children: errors.agreed
+                                        }, void 0, false, {
+                                            fileName: "src/Components/JoinClubPage.jsx",
+                                            lineNumber: 845,
+                                            columnNumber: 17
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                             className: "ysc-submit-area",
@@ -44091,49 +44216,49 @@ const JoinClubPage = ()=>{
                                                             children: isSubmitting ? "Envoi en cours…" : "Envoyer ma demande d'inscription"
                                                         }, void 0, false, {
                                                             fileName: "src/Components/JoinClubPage.jsx",
-                                                            lineNumber: 767,
-                                                            columnNumber: 17
+                                                            lineNumber: 857,
+                                                            columnNumber: 19
                                                         }, undefined),
                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                                             "aria-hidden": "true",
                                                             children: "→"
                                                         }, void 0, false, {
                                                             fileName: "src/Components/JoinClubPage.jsx",
-                                                            lineNumber: 770,
-                                                            columnNumber: 17
+                                                            lineNumber: 860,
+                                                            columnNumber: 19
                                                         }, undefined)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                    lineNumber: 762,
-                                                    columnNumber: 15
+                                                    lineNumber: 852,
+                                                    columnNumber: 17
                                                 }, undefined),
                                                 submissionMessage && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                                     className: "ysc-form-note",
                                                     children: submissionMessage
                                                 }, void 0, false, {
                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                    lineNumber: 774,
-                                                    columnNumber: 17
+                                                    lineNumber: 864,
+                                                    columnNumber: 19
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                                     className: "ysc-form-note",
                                                     children: "\uD83D\uDD12 Vos donn\xe9es sont confidentielles et ne seront jamais partag\xe9es."
                                                 }, void 0, false, {
                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                    lineNumber: 777,
-                                                    columnNumber: 15
+                                                    lineNumber: 867,
+                                                    columnNumber: 17
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/Components/JoinClubPage.jsx",
-                                            lineNumber: 761,
-                                            columnNumber: 13
+                                            lineNumber: 851,
+                                            columnNumber: 15
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/Components/JoinClubPage.jsx",
-                                    lineNumber: 488,
+                                    lineNumber: 552,
                                     columnNumber: 13
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -44150,12 +44275,12 @@ const JoinClubPage = ()=>{
                                                     className: "ysc-testimonial__avatar"
                                                 }, void 0, false, {
                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                    lineNumber: 787,
+                                                    lineNumber: 878,
                                                     columnNumber: 19
                                                 }, undefined)
                                             }, void 0, false, {
                                                 fileName: "src/Components/JoinClubPage.jsx",
-                                                lineNumber: 786,
+                                                lineNumber: 877,
                                                 columnNumber: 17
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -44166,7 +44291,7 @@ const JoinClubPage = ()=>{
                                                         children: "★★★★★"
                                                     }, void 0, false, {
                                                         fileName: "src/Components/JoinClubPage.jsx",
-                                                        lineNumber: 794,
+                                                        lineNumber: 885,
                                                         columnNumber: 19
                                                     }, undefined),
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("blockquote", {
@@ -44174,7 +44299,7 @@ const JoinClubPage = ()=>{
                                                         children: "\"Merci pour tout ce que vous avez fait pour notre famille. On est tellement contents d'avoir commenc\xe9 cette aventure avec YSC depuis les premiers jours. Vous avez une passion, une vision et une expertise uniques — nous n'allons jamais vous oublier.\""
                                                     }, void 0, false, {
                                                         fileName: "src/Components/JoinClubPage.jsx",
-                                                        lineNumber: 795,
+                                                        lineNumber: 886,
                                                         columnNumber: 19
                                                     }, undefined),
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("figcaption", {
@@ -44182,41 +44307,41 @@ const JoinClubPage = ()=>{
                                                         children: "Cora-CW, Piper-Beckett & Mosa"
                                                     }, void 0, false, {
                                                         fileName: "src/Components/JoinClubPage.jsx",
-                                                        lineNumber: 800,
+                                                        lineNumber: 891,
                                                         columnNumber: 19
                                                     }, undefined)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/Components/JoinClubPage.jsx",
-                                                lineNumber: 793,
+                                                lineNumber: 884,
                                                 columnNumber: 17
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/Components/JoinClubPage.jsx",
-                                        lineNumber: 785,
+                                        lineNumber: 876,
                                         columnNumber: 15
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/Components/JoinClubPage.jsx",
-                                    lineNumber: 784,
+                                    lineNumber: 875,
                                     columnNumber: 13
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/Components/JoinClubPage.jsx",
-                            lineNumber: 487,
+                            lineNumber: 551,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/Components/JoinClubPage.jsx",
-                    lineNumber: 480,
+                    lineNumber: 545,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/Components/JoinClubPage.jsx",
-                lineNumber: 479,
+                lineNumber: 544,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
@@ -44230,7 +44355,7 @@ const JoinClubPage = ()=>{
                                 children: "Cours priv\xe9s"
                             }, void 0, false, {
                                 fileName: "src/Components/JoinClubPage.jsx",
-                                lineNumber: 813,
+                                lineNumber: 904,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
@@ -44240,20 +44365,20 @@ const JoinClubPage = ()=>{
                                     "D\xe9veloppez votre",
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                         fileName: "src/Components/JoinClubPage.jsx",
-                                        lineNumber: 815,
+                                        lineNumber: 906,
                                         columnNumber: 29
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("em", {
                                         children: "plein potentiel"
                                     }, void 0, false, {
                                         fileName: "src/Components/JoinClubPage.jsx",
-                                        lineNumber: 816,
+                                        lineNumber: 907,
                                         columnNumber: 13
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/Components/JoinClubPage.jsx",
-                                lineNumber: 814,
+                                lineNumber: 905,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -44261,13 +44386,13 @@ const JoinClubPage = ()=>{
                                 children: "S\xe9ances individuelles adapt\xe9es \xe0 chaque objectif, niveau et rythme de vie."
                             }, void 0, false, {
                                 fileName: "src/Components/JoinClubPage.jsx",
-                                lineNumber: 818,
+                                lineNumber: 909,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/Components/JoinClubPage.jsx",
-                        lineNumber: 812,
+                        lineNumber: 903,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -44283,7 +44408,7 @@ const JoinClubPage = ()=>{
                                 playsInline: true
                             }, void 0, false, {
                                 fileName: "src/Components/JoinClubPage.jsx",
-                                lineNumber: 824,
+                                lineNumber: 915,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -44294,18 +44419,18 @@ const JoinClubPage = ()=>{
                                     children: "Coaching individuel \xb7 Tous niveaux \xb7 \xc0 domicile ou en ext\xe9rieur"
                                 }, void 0, false, {
                                     fileName: "src/Components/JoinClubPage.jsx",
-                                    lineNumber: 826,
+                                    lineNumber: 917,
                                     columnNumber: 13
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/Components/JoinClubPage.jsx",
-                                lineNumber: 825,
+                                lineNumber: 916,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/Components/JoinClubPage.jsx",
-                        lineNumber: 823,
+                        lineNumber: 914,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -44321,19 +44446,19 @@ const JoinClubPage = ()=>{
                                             className: "ti ti-target-arrow"
                                         }, void 0, false, {
                                             fileName: "src/Components/JoinClubPage.jsx",
-                                            lineNumber: 835,
+                                            lineNumber: 926,
                                             columnNumber: 15
                                         }, undefined)
                                     }, void 0, false, {
                                         fileName: "src/Components/JoinClubPage.jsx",
-                                        lineNumber: 834,
+                                        lineNumber: 925,
                                         columnNumber: 13
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                                         children: "Objectifs"
                                     }, void 0, false, {
                                         fileName: "src/Components/JoinClubPage.jsx",
-                                        lineNumber: 837,
+                                        lineNumber: 928,
                                         columnNumber: 13
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
@@ -44363,30 +44488,30 @@ const JoinClubPage = ()=>{
                                                             "aria-hidden": "true"
                                                         }, void 0, false, {
                                                             fileName: "src/Components/JoinClubPage.jsx",
-                                                            lineNumber: 847,
+                                                            lineNumber: 938,
                                                             columnNumber: 21
                                                         }, undefined)
                                                     }, void 0, false, {
                                                         fileName: "src/Components/JoinClubPage.jsx",
-                                                        lineNumber: 846,
+                                                        lineNumber: 937,
                                                         columnNumber: 19
                                                     }, undefined),
                                                     text
                                                 ]
                                             }, text, true, {
                                                 fileName: "src/Components/JoinClubPage.jsx",
-                                                lineNumber: 845,
+                                                lineNumber: 936,
                                                 columnNumber: 17
                                             }, undefined))
                                     }, void 0, false, {
                                         fileName: "src/Components/JoinClubPage.jsx",
-                                        lineNumber: 838,
+                                        lineNumber: 929,
                                         columnNumber: 13
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/Components/JoinClubPage.jsx",
-                                lineNumber: 833,
+                                lineNumber: 924,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("article", {
@@ -44399,19 +44524,19 @@ const JoinClubPage = ()=>{
                                             className: "ti ti-clipboard-list"
                                         }, void 0, false, {
                                             fileName: "src/Components/JoinClubPage.jsx",
-                                            lineNumber: 857,
+                                            lineNumber: 948,
                                             columnNumber: 15
                                         }, undefined)
                                     }, void 0, false, {
                                         fileName: "src/Components/JoinClubPage.jsx",
-                                        lineNumber: 856,
+                                        lineNumber: 947,
                                         columnNumber: 13
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                                         children: "Modalit\xe9s"
                                     }, void 0, false, {
                                         fileName: "src/Components/JoinClubPage.jsx",
-                                        lineNumber: 859,
+                                        lineNumber: 950,
                                         columnNumber: 13
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
@@ -44442,19 +44567,19 @@ const JoinClubPage = ()=>{
                                                                 "aria-hidden": "true"
                                                             }, void 0, false, {
                                                                 fileName: "src/Components/JoinClubPage.jsx",
-                                                                lineNumber: 869,
+                                                                lineNumber: 960,
                                                                 columnNumber: 21
                                                             }, undefined)
                                                         }, void 0, false, {
                                                             fileName: "src/Components/JoinClubPage.jsx",
-                                                            lineNumber: 868,
+                                                            lineNumber: 959,
                                                             columnNumber: 19
                                                         }, undefined),
                                                         text
                                                     ]
                                                 }, text, true, {
                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                    lineNumber: 867,
+                                                    lineNumber: 958,
                                                     columnNumber: 17
                                                 }, undefined)),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -44466,12 +44591,12 @@ const JoinClubPage = ()=>{
                                                             "aria-hidden": "true"
                                                         }, void 0, false, {
                                                             fileName: "src/Components/JoinClubPage.jsx",
-                                                            lineNumber: 876,
+                                                            lineNumber: 967,
                                                             columnNumber: 19
                                                         }, undefined)
                                                     }, void 0, false, {
                                                         fileName: "src/Components/JoinClubPage.jsx",
-                                                        lineNumber: 875,
+                                                        lineNumber: 966,
                                                         columnNumber: 17
                                                     }, undefined),
                                                     "Contact rapide :",
@@ -44482,31 +44607,31 @@ const JoinClubPage = ()=>{
                                                         children: "+228 91 53 48 85"
                                                     }, void 0, false, {
                                                         fileName: "src/Components/JoinClubPage.jsx",
-                                                        lineNumber: 879,
+                                                        lineNumber: 970,
                                                         columnNumber: 17
                                                     }, undefined)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/Components/JoinClubPage.jsx",
-                                                lineNumber: 874,
+                                                lineNumber: 965,
                                                 columnNumber: 15
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/Components/JoinClubPage.jsx",
-                                        lineNumber: 860,
+                                        lineNumber: 951,
                                         columnNumber: 13
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/Components/JoinClubPage.jsx",
-                                lineNumber: 855,
+                                lineNumber: 946,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/Components/JoinClubPage.jsx",
-                        lineNumber: 832,
+                        lineNumber: 923,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -44520,12 +44645,12 @@ const JoinClubPage = ()=>{
                                     alt: "S\xe9ance priv\xe9e en action"
                                 }, void 0, false, {
                                     fileName: "src/Components/JoinClubPage.jsx",
-                                    lineNumber: 887,
+                                    lineNumber: 978,
                                     columnNumber: 13
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/Components/JoinClubPage.jsx",
-                                lineNumber: 886,
+                                lineNumber: 977,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -44536,7 +44661,7 @@ const JoinClubPage = ()=>{
                                         alt: "Entra\xeenement individuel"
                                     }, void 0, false, {
                                         fileName: "src/Components/JoinClubPage.jsx",
-                                        lineNumber: 890,
+                                        lineNumber: 981,
                                         columnNumber: 13
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
@@ -44544,19 +44669,19 @@ const JoinClubPage = ()=>{
                                         alt: "Coach et athl\xe8te en s\xe9ance"
                                     }, void 0, false, {
                                         fileName: "src/Components/JoinClubPage.jsx",
-                                        lineNumber: 891,
+                                        lineNumber: 982,
                                         columnNumber: 13
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/Components/JoinClubPage.jsx",
-                                lineNumber: 889,
+                                lineNumber: 980,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/Components/JoinClubPage.jsx",
-                        lineNumber: 885,
+                        lineNumber: 976,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -44573,12 +44698,12 @@ const JoinClubPage = ()=>{
                                         className: "ysc-testimonial__avatar"
                                     }, void 0, false, {
                                         fileName: "src/Components/JoinClubPage.jsx",
-                                        lineNumber: 898,
+                                        lineNumber: 989,
                                         columnNumber: 15
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/Components/JoinClubPage.jsx",
-                                    lineNumber: 897,
+                                    lineNumber: 988,
                                     columnNumber: 13
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -44589,7 +44714,7 @@ const JoinClubPage = ()=>{
                                             children: "★★★★★"
                                         }, void 0, false, {
                                             fileName: "src/Components/JoinClubPage.jsx",
-                                            lineNumber: 905,
+                                            lineNumber: 996,
                                             columnNumber: 15
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("blockquote", {
@@ -44597,7 +44722,7 @@ const JoinClubPage = ()=>{
                                             children: "\"Merci pour tout ce que vous avez fait pour notre famille. On est tellement contents d'avoir commenc\xe9 cette aventure avec YSC depuis les premiers jours. Vous avez une passion, une vision et une expertise uniques — nous n'allons jamais vous oublier.\""
                                         }, void 0, false, {
                                             fileName: "src/Components/JoinClubPage.jsx",
-                                            lineNumber: 906,
+                                            lineNumber: 997,
                                             columnNumber: 15
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("figcaption", {
@@ -44605,30 +44730,30 @@ const JoinClubPage = ()=>{
                                             children: "Cora-CW, Piper-Beckett & Mosa"
                                         }, void 0, false, {
                                             fileName: "src/Components/JoinClubPage.jsx",
-                                            lineNumber: 911,
+                                            lineNumber: 1002,
                                             columnNumber: 15
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/Components/JoinClubPage.jsx",
-                                    lineNumber: 904,
+                                    lineNumber: 995,
                                     columnNumber: 13
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/Components/JoinClubPage.jsx",
-                            lineNumber: 896,
+                            lineNumber: 987,
                             columnNumber: 11
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/Components/JoinClubPage.jsx",
-                        lineNumber: 895,
+                        lineNumber: 986,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/Components/JoinClubPage.jsx",
-                lineNumber: 811,
+                lineNumber: 902,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
@@ -44644,7 +44769,7 @@ const JoinClubPage = ()=>{
                                     children: "Engagement"
                                 }, void 0, false, {
                                     fileName: "src/Components/JoinClubPage.jsx",
-                                    lineNumber: 923,
+                                    lineNumber: 1014,
                                     columnNumber: 13
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
@@ -44656,19 +44781,19 @@ const JoinClubPage = ()=>{
                                             children: "Le sport pour tous"
                                         }, void 0, false, {
                                             fileName: "src/Components/JoinClubPage.jsx",
-                                            lineNumber: 926,
+                                            lineNumber: 1017,
                                             columnNumber: 15
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/Components/JoinClubPage.jsx",
-                                    lineNumber: 924,
+                                    lineNumber: 1015,
                                     columnNumber: 13
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/Components/JoinClubPage.jsx",
-                            lineNumber: 922,
+                            lineNumber: 1013,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -44679,7 +44804,7 @@ const JoinClubPage = ()=>{
                                     children: "Parce que le sport doit rester accessible \xe0 tous, YSC met en place un programme social pour soutenir les familles et accompagner les jeunes motiv\xe9s par la gymnastique."
                                 }, void 0, false, {
                                     fileName: "src/Components/JoinClubPage.jsx",
-                                    lineNumber: 931,
+                                    lineNumber: 1022,
                                     columnNumber: 13
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
@@ -44693,12 +44818,12 @@ const JoinClubPage = ()=>{
                                                         icon: (0, _freeSolidSvgIcons.faHandHoldingDollar)
                                                     }, void 0, false, {
                                                         fileName: "src/Components/JoinClubPage.jsx",
-                                                        lineNumber: 939,
+                                                        lineNumber: 1030,
                                                         columnNumber: 19
                                                     }, undefined)
                                                 }, void 0, false, {
                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                    lineNumber: 938,
+                                                    lineNumber: 1029,
                                                     columnNumber: 17
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -44707,20 +44832,20 @@ const JoinClubPage = ()=>{
                                                             children: "Bourse de 50 %"
                                                         }, void 0, false, {
                                                             fileName: "src/Components/JoinClubPage.jsx",
-                                                            lineNumber: 941,
+                                                            lineNumber: 1032,
                                                             columnNumber: 23
                                                         }, undefined),
                                                         " sur la mensualit\xe9"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                    lineNumber: 941,
+                                                    lineNumber: 1032,
                                                     columnNumber: 17
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/Components/JoinClubPage.jsx",
-                                            lineNumber: 937,
+                                            lineNumber: 1028,
                                             columnNumber: 15
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -44731,12 +44856,12 @@ const JoinClubPage = ()=>{
                                                         icon: (0, _freeSolidSvgIcons.faChildReaching)
                                                     }, void 0, false, {
                                                         fileName: "src/Components/JoinClubPage.jsx",
-                                                        lineNumber: 945,
+                                                        lineNumber: 1036,
                                                         columnNumber: 19
                                                     }, undefined)
                                                 }, void 0, false, {
                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                    lineNumber: 944,
+                                                    lineNumber: 1035,
                                                     columnNumber: 17
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -44745,20 +44870,20 @@ const JoinClubPage = ()=>{
                                                             children: "Entra\xeenement gratuit"
                                                         }, void 0, false, {
                                                             fileName: "src/Components/JoinClubPage.jsx",
-                                                            lineNumber: 948,
+                                                            lineNumber: 1039,
                                                             columnNumber: 19
                                                         }, undefined),
                                                         " possible pour les enfants issus de familles en difficult\xe9"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                    lineNumber: 947,
+                                                    lineNumber: 1038,
                                                     columnNumber: 17
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/Components/JoinClubPage.jsx",
-                                            lineNumber: 943,
+                                            lineNumber: 1034,
                                             columnNumber: 15
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -44769,12 +44894,12 @@ const JoinClubPage = ()=>{
                                                         icon: (0, _freeSolidSvgIcons.faVanShuttle)
                                                     }, void 0, false, {
                                                         fileName: "src/Components/JoinClubPage.jsx",
-                                                        lineNumber: 954,
+                                                        lineNumber: 1045,
                                                         columnNumber: 19
                                                     }, undefined)
                                                 }, void 0, false, {
                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                    lineNumber: 953,
+                                                    lineNumber: 1044,
                                                     columnNumber: 17
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -44783,26 +44908,26 @@ const JoinClubPage = ()=>{
                                                             children: "Aides sp\xe9cifiques"
                                                         }, void 0, false, {
                                                             fileName: "src/Components/JoinClubPage.jsx",
-                                                            lineNumber: 957,
+                                                            lineNumber: 1048,
                                                             columnNumber: 19
                                                         }, undefined),
                                                         " selon les besoins (transport, accompagnement)"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                    lineNumber: 956,
+                                                    lineNumber: 1047,
                                                     columnNumber: 17
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/Components/JoinClubPage.jsx",
-                                            lineNumber: 952,
+                                            lineNumber: 1043,
                                             columnNumber: 15
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/Components/JoinClubPage.jsx",
-                                    lineNumber: 936,
+                                    lineNumber: 1027,
                                     columnNumber: 13
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -44815,12 +44940,12 @@ const JoinClubPage = ()=>{
                                                 icon: (0, _freeSolidSvgIcons.faHeartPulse)
                                             }, void 0, false, {
                                                 fileName: "src/Components/JoinClubPage.jsx",
-                                                lineNumber: 964,
+                                                lineNumber: 1055,
                                                 columnNumber: 17
                                             }, undefined)
                                         }, void 0, false, {
                                             fileName: "src/Components/JoinClubPage.jsx",
-                                            lineNumber: 963,
+                                            lineNumber: 1054,
                                             columnNumber: 15
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -44829,37 +44954,37 @@ const JoinClubPage = ()=>{
                                                     children: "Objectif :"
                                                 }, void 0, false, {
                                                     fileName: "src/Components/JoinClubPage.jsx",
-                                                    lineNumber: 967,
+                                                    lineNumber: 1058,
                                                     columnNumber: 17
                                                 }, undefined),
                                                 " permettre \xe0 chaque enfant motiv\xe9 de pratiquer la gymnastique, quelles que soient les conditions sociales."
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/Components/JoinClubPage.jsx",
-                                            lineNumber: 966,
+                                            lineNumber: 1057,
                                             columnNumber: 15
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/Components/JoinClubPage.jsx",
-                                    lineNumber: 962,
+                                    lineNumber: 1053,
                                     columnNumber: 13
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/Components/JoinClubPage.jsx",
-                            lineNumber: 930,
+                            lineNumber: 1021,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/Components/JoinClubPage.jsx",
-                    lineNumber: 921,
+                    lineNumber: 1012,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/Components/JoinClubPage.jsx",
-                lineNumber: 920,
+                lineNumber: 1011,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
@@ -44872,7 +44997,7 @@ const JoinClubPage = ()=>{
                             children: "Pr\xeat \xe0 passer au niveau sup\xe9rieur ?"
                         }, void 0, false, {
                             fileName: "src/Components/JoinClubPage.jsx",
-                            lineNumber: 978,
+                            lineNumber: 1069,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
@@ -44884,7 +45009,7 @@ const JoinClubPage = ()=>{
                                     children: "R\xe9server une s\xe9ance priv\xe9e"
                                 }, void 0, false, {
                                     fileName: "src/Components/JoinClubPage.jsx",
-                                    lineNumber: 980,
+                                    lineNumber: 1071,
                                     columnNumber: 13
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -44892,30 +45017,30 @@ const JoinClubPage = ()=>{
                                     children: "→"
                                 }, void 0, false, {
                                     fileName: "src/Components/JoinClubPage.jsx",
-                                    lineNumber: 981,
+                                    lineNumber: 1072,
                                     columnNumber: 13
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/Components/JoinClubPage.jsx",
-                            lineNumber: 979,
+                            lineNumber: 1070,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/Components/JoinClubPage.jsx",
-                    lineNumber: 977,
+                    lineNumber: 1068,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/Components/JoinClubPage.jsx",
-                lineNumber: 976,
+                lineNumber: 1067,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true);
 };
-_s(JoinClubPage, "u7XiL92JZp9L8+70S9WQCyhZ3MI=", false, function() {
+_s(JoinClubPage, "vEjDbfqK1L3UWQgZjpy5t2st/og=", false, function() {
     return [
         (0, _reactRouterDom.useLocation)
     ];
