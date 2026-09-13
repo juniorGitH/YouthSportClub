@@ -1,6 +1,4 @@
 // ─── Imports ────────────────────────────────────────────────────────────────
-import galleryLarge from "../images/Screenshot 2026-05-17 124137.png";
-import galleryB from "../images/WhatsApp Image 2026-05-16 at 17.46.30.jpeg";
 import videoBoxe from "url:../images/video-boxe.mp4";
 import videoFitness from "url:../images/video-fitness.mp4";
 import videoGym from "url:../images/video-gym.mp4";
@@ -29,8 +27,6 @@ const disciplines = [
     ],
     videoSrc: videoGym,
     videoLabel: "Séance de Gymnastique – Youth Sports Club",
-    photos: [galleryLarge, galleryB],
-    photosAlt: ["Démonstration au sol", "Exercices aux agrès"],
   },
   {
     id: "boxe",
@@ -52,8 +48,6 @@ const disciplines = [
     ],
     videoSrc: videoBoxe,
     videoLabel: "Séance de Boxe éducative – Youth Sports Club",
-    photos: [galleryB, galleryLarge],
-    photosAlt: ["Travail technique au sac", "Rencontre encadrée"],
   },
   {
     id: "fitness",
@@ -75,8 +69,6 @@ const disciplines = [
     ],
     videoSrc: videoFitness,
     videoLabel: "Séance de Fitness – Youth Sports Club",
-    photos: [galleryLarge, galleryB],
-    photosAlt: ["Circuit training en groupe", "Séance de renforcement"],
   },
 ];
 
@@ -465,7 +457,6 @@ export const TrainingSessionsPage = () => (
         Trois disciplines, un seul objectif : révéler le meilleur de chaque athlète dans un cadre
         sécurisé et bienveillant. Entraînements le <strong>samedi uniquement</strong> au Stade de Kégué, Lomé.
       </p>
-      <img src={galleryLarge} alt="Séance d'entraînement encadrée au Youth Sports Club" className="ysc-hero-img" />
     </section>
 
     {/* ── Une section par discipline ── */}
