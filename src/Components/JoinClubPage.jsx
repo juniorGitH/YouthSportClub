@@ -484,9 +484,21 @@ export const JoinClubPage = () => {
           </div>
 
           <div className="ysc-form-split">
+            <div className="ysc-submit-area">
+              <a
+                className="ysc-btn ysc-btn--primary ysc-btn--full"
+                href="https://wa.me/22899670186"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span>Envoyer ma demande d'inscription</span>
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          {/* ── Ancien formulaire d'inscription supprimé ── */}
+          {false && (
+            <>
             <form className="ysc-form" onSubmit={handleSubmit} noValidate>
-
-            {/* ── Bloc 1 : Gymnaste ── */}
             <div className="ysc-form-block">
               <h3 className="ysc-form-section-title" data-num="1">Informations du gymnaste</h3>
               <div className="ysc-form-grid">
@@ -557,7 +569,7 @@ export const JoinClubPage = () => {
                     value={formData.address} onChange={handleInputChange}
                   />
                 </div>
-              </div>
+            </div>
             </div>
 
             {/* ── Bloc 2 : Parent / tuteur ── */}
@@ -802,6 +814,8 @@ export const JoinClubPage = () => {
                 </div>
               </figure>
             </div>
+            </>
+          )}
           </div>
         </div>
       </section>
