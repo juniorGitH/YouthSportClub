@@ -357,7 +357,16 @@ export const JoinClubPage = () => {
         </div>
 
         <div className="ysc-video-hero" aria-label="Vidéo de présentation des cours privés">
-          <video className="ysc-video-hero__vid" src={videoSrc} autoPlay muted loop playsInline />
+          <video
+            className="ysc-video-hero__vid"
+            src={videoSrc}
+            autoPlay
+            muted
+            loop
+            playsInline
+            controls
+            preload="auto"
+          />
           <div className="ysc-video-hero__overlay" aria-hidden="true">
             <p className="ysc-video-hero__tagline">
               Un accompagnement individuel, à domicile ou en extérieur, quel que soit le niveau.
