@@ -1,8 +1,3 @@
-import galleryLarge from "../images/Screenshot 2026-05-17 124137.png";
-import galleryB from "../images/WhatsApp Image 2026-05-16 at 17.46.30.jpeg";
-import galleryC from "../images/WhatsApp Image 2026-05-22 at 15.06.55.jpeg";
-import galleryD from "../images/WhatsApp Image 2026-05-22 at 15.07.50.jpeg";
-import galleryE from "../images/WhatsApp Image 2026-05-22 at 15.20.21 (1).jpeg";
 import { scoped, SectionLabel } from "./Pages";
 
 const pastEvents = [
@@ -64,7 +59,6 @@ const upcomingEvents = [
 
 const laureats = [
   {
-    photo: galleryLarge,
     title: "Championnat d'Afrique 2024 – Égypte",
     discipline: "Gymnastique Aérobic",
     results: [
@@ -73,7 +67,6 @@ const laureats = [
     note: "Médaillé de bronze au championnat d'Afrique de gymnastique aérobic 2024 en Égypte.",
   },
   {
-    photo: galleryC,
     title: "Championnat National 2023",
     discipline: "Gymnastatique / Fitness",
     results: [
@@ -84,7 +77,6 @@ const laureats = [
     note: null,
   },
   {
-    photo: galleryD,
     title: "Championnat de Zone 2023",
     discipline: "Fitness",
     results: [
@@ -94,7 +86,6 @@ const laureats = [
     note: null,
   },
   {
-    photo: galleryE,
     title: "Championnat National 2023",
     discipline: "Fitness – Catégorie A",
     results: [
@@ -104,7 +95,6 @@ const laureats = [
     note: null,
   },
   {
-    photo: galleryB,
     title: "Championnat National 2023",
     discipline: "Fitness – Catégorie B",
     results: [
@@ -115,7 +105,6 @@ const laureats = [
     note: null,
   },
   {
-    photo: galleryLarge,
     title: "Compétition – Catégorie Junior",
     discipline: "Boxe éducative",
     results: [
@@ -124,7 +113,6 @@ const laureats = [
     note: null,
   },
   {
-    photo: galleryC,
     title: "Compétition – Catégorie Cadet",
     discipline: "Gymnastatique",
     results: [
@@ -133,7 +121,6 @@ const laureats = [
     note: null,
   },
   {
-    photo: galleryD,
     title: "Compétition – Podium Collectif",
     discipline: "Fitness",
     results: [
@@ -143,15 +130,6 @@ const laureats = [
     ],
     note: null,
   },
-];
-
-const eventsGallery = [
-  { src: galleryLarge, alt: "Démonstration de gymnastique du Youth Sports Club" },
-  { src: galleryC, alt: "Entraînement de gymnastique récent" },
-  { src: galleryD, alt: "Séance de boxe éducative" },
-  { src: galleryE, alt: "Préparation physique et stretching" },
-  { src: galleryLarge, alt: "Séance collective du Youth Sports Club" },
-  { src: galleryB, alt: "Photo de groupe des athlètes du club" },
 ];
 
 const categoryColors = {
@@ -315,7 +293,6 @@ export const EventsPage = () => (
         Compétitions, stages et tournois — retrouvez toute l'actualité sportive du Youth Sports Club,
         passée et à venir.
       </p>
-      <img src={galleryLarge} alt="Événement sportif du Youth Sports Club" className="ysc-hero-img" />
     </section>
 
     {/* ── Événements à venir ── */}
@@ -409,20 +386,13 @@ export const EventsPage = () => (
             const disc = disciplineColors[l.discipline] || { bg: "#eaf3de", color: "#3b6d11" };
             return (
               <div className="ysc-laureat-card" key={i}>
-                <div className="ysc-laureat-photo-wrap">
-                  <img
-                    className="ysc-laureat-photo"
-                    src={l.photo}
-                    alt={l.title}
-                  />
+                <div className="ysc-laureat-body">
                   <span
                     className="ysc-laureat-disc-badge"
                     style={{ background: disc.bg + "ee", color: disc.color }}
                   >
                     {l.discipline}
                   </span>
-                </div>
-                <div className="ysc-laureat-body">
                   <p className="ysc-laureat-competition">{l.title}</p>
                   <div className="ysc-laureat-results">
                     {l.results.map((r, j) => (
