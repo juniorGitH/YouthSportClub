@@ -395,7 +395,7 @@ export const JoinClubPage = () => {
         `Signature : ${safeVal(formData.signature || formData.agreementName)}`,
       ];
 
-      const url = `https://wa.me/22891534885?text=${encodeURIComponent(lines.join("\n"))}`;
+      const url = `https://wa.me/22899670186?text=${encodeURIComponent(lines.join("\n"))}`;
       window.open(url, "_blank");
       setSubmissionMessage("✅ Demande envoyée sur WhatsApp.");
     } catch {
@@ -875,6 +875,8 @@ export const JoinClubPage = () => {
                   <i className="ti ti-phone" aria-hidden="true"></i>
                 </span>
                 Contact rapide :{" "}
+                <a href="tel:+22899670186" className="ysc-tel-link">+228 99 67 01 86</a>
+                {" / "}
                 <a href="tel:+22891534885" className="ysc-tel-link">+228 91 53 48 85</a>
               </li>
             </ul>

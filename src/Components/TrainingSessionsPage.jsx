@@ -565,8 +565,8 @@ export const TrainingSessionsPage = () => (
             <span>S'inscrire maintenant</span>
             <span aria-hidden="true">→</span>
           </a>
-          <a href="tel:+22891534885" className="ysc-btn ysc-btn--outline">
-            <span>+228 91 53 48 85</span>
+          <a href="tel:+22899670186" className="ysc-btn ysc-btn--outline">
+            <span>+228 99 67 01 86 / +228 91 53 48 85</span>
           </a>
         </div>
       </div>

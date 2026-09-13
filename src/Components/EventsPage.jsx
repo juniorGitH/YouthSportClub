@@ -425,8 +425,8 @@ export const EventsPage = () => (
             <a className="btn btn-primary" href="/rejoindre#registration-form">
               S'inscrire maintenant
             </a>
-            <a className="btn-outline-white" href="tel:+22891534885">
-              +228 91 53 48 85
+            <a className="btn-outline-white" href="tel:+22899670186">
+              +228 99 67 01 86 / +228 91 53 48 85
             </a>
           </div>
         </div>
