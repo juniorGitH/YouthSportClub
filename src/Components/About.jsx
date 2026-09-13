@@ -76,8 +76,9 @@ const timeline = [
   { year: "2022", event: "Lancement du programme de bourses sportives" },
   { year: "2022", event: "Premières séances d'entraînement de gymnastique à l'école" },
   { year: "2022", event: "Premier titre de meilleur club aux compétitions nationales" },
-  { year: "2023", event: "Poursuite des séances dans le jardin du cabinet de kinésithérapie Kneao en début d'année" },
   { year: "2022", event: "Première médaille au championnat d'Afrique junior de gymnastique aérobic" },
+  { year: "2023", event: "Poursuite des séances dans le jardin du cabinet de kinésithérapie Kneao en début d'année" },
+  { year: "2023", event: "Poursuite des séances au stade de Kégué à la mi-année" },
   { year: "2024", event: "Ouverture des disciplines Boxe et Fitness" },
   { year: "2024", event: "Mise en place de l'axe Excellence et détection de talents" },
 ];
