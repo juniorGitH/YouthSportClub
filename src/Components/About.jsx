@@ -81,6 +81,7 @@ const timeline = [
   { year: "2024", event: "Ouverture des disciplines Boxe et Fitness" },
   { year: "", event: "Mise en place de l'axe Excellence et détection de talents" },
   { year: "", event: "Première médaille au championnat d'Afrique junior de gymnastique aérobic" },
+  { year: "2025", event: "Meilleur club de " },
 ];
 
 const scoped = `
