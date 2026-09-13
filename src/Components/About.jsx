@@ -73,14 +73,14 @@ const social = [
 
 const timeline = [
   { year: "2022", event: "Création du Youth Sports Club à Lomé" },
-  { year: "2022", event: "Lancement du programme de bourses sportives" },
-  { year: "2022", event: "Premières séances d'entraînement de gymnastique à l'école" },
-  { year: "2022", event: "Premier titre de meilleur club aux compétitions nationales" },
+  { year: "", event: "Lancement du programme de bourses sportives" },
+  { year: "", event: "Premières séances d'entraînement de gymnastique à l'école" },
+  { year: "", event: "Premier titre de meilleur club aux compétitions nationales" },
   { year: "2023", event: "Poursuite des séances dans le jardin du cabinet de kinésithérapie Kneao en début d'année" },
-  { year: "2023", event: "Poursuite des séances au stade de Kégué à la mi-année" },
+  { year: "", event: "Poursuite des séances au stade de Kégué à la mi-année" },
   { year: "2024", event: "Ouverture des disciplines Boxe et Fitness" },
-  { year: "2024", event: "Mise en place de l'axe Excellence et détection de talents" },
-  { year: "2024", event: "Première médaille au championnat d'Afrique junior de gymnastique aérobic" },
+  { year: "", event: "Mise en place de l'axe Excellence et détection de talents" },
+  { year: "", event: "Première médaille au championnat d'Afrique junior de gymnastique aérobic" },
 ];
 
 const scoped = `
