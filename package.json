@@ -5,8 +5,8 @@
   "homepage": "https://youthsportsclubtogo.com",
   "scripts": {
     "start": "parcel src/index.html",
-    "build": "parcel build src/index.html && powershell -Command \"Copy-Item -Path sitemap.xml -Destination dist/sitemap.xml\" && powershell -Command \"Copy-Item -Path robots.txt -Destination dist/robots.txt\" && powershell -Command \"Copy-Item -Path src/images/logo-2.png -Destination dist/logo-2.png\"",
-    "build-gh": "parcel build src/index.html --public-url \"/\" && powershell -Command \"Copy-Item -Path sitemap.xml -Destination dist/sitemap.xml\" && powershell -Command \"Copy-Item -Path robots.txt -Destination dist/robots.txt\" && powershell -Command \"Copy-Item -Path src/images/logo-2.png -Destination dist/logo-2.png\" && powershell -Command \"Copy-Item -Path dist/index.html -Destination dist/404.html\" && powershell -Command \"Set-Content -Path dist/CNAME -Value 'youthsportsclubtogo.com'\"",
+    "build": "parcel build src/index.html && node -e \"const fs=require('fs'); for (const file of ['sitemap.xml','robots.txt','src/images/logo-2.png']) fs.copyFileSync(file, 'dist/' + file.split('/').pop())\"",
+    "build-gh": "parcel build src/index.html --public-url \"/\" && node -e \"const fs=require('fs'); for (const file of ['sitemap.xml','robots.txt','src/images/logo-2.png']) fs.copyFileSync(file, 'dist/' + file.split('/').pop()); fs.copyFileSync('dist/index.html','dist/404.html'); fs.writeFileSync('dist/CNAME','youthsportsclubtogo.com\\n')\"",
     "predeploy": "npm run build-gh",
     "deploy": "gh-pages -d dist"
   },

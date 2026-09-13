@@ -1,4 +1,3 @@
-import galleryA from "../images/472902518_601111642868247_3421823822486160063_n.jpg";
 import galleryLarge from "../images/Screenshot 2026-05-17 124137.png";
 import galleryB from "../images/WhatsApp Image 2026-05-16 at 17.46.30.jpeg";
 import galleryC from "../images/WhatsApp Image 2026-05-22 at 15.06.55.jpeg";
@@ -65,7 +64,7 @@ const upcomingEvents = [
 
 const laureats = [
   {
-    photo: galleryA,
+    photo: galleryLarge,
     title: "Championnat d'Afrique 2024 – Égypte",
     discipline: "Gymnastique Aérobic",
     results: [
@@ -116,7 +115,7 @@ const laureats = [
     note: null,
   },
   {
-    photo: galleryA,
+    photo: galleryLarge,
     title: "Compétition – Catégorie Junior",
     discipline: "Boxe éducative",
     results: [
@@ -151,7 +150,7 @@ const eventsGallery = [
   { src: galleryC, alt: "Entraînement de gymnastique récent" },
   { src: galleryD, alt: "Séance de boxe éducative" },
   { src: galleryE, alt: "Préparation physique et stretching" },
-  { src: galleryA, alt: "Séance collective du Youth Sports Club" },
+  { src: galleryLarge, alt: "Séance collective du Youth Sports Club" },
   { src: galleryB, alt: "Photo de groupe des athlètes du club" },
 ];
 

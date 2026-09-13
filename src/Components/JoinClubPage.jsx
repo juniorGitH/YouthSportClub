@@ -11,7 +11,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import videoSrc from "url:../images/cours-prive.mp4";
-import galleryA from "../images/472902518_601111642868247_3421823822486160063_n.jpg";
 import championImg from "../images/chamipon.jpeg";
 import galleryLarge from "../images/Screenshot 2026-05-17 124137.png";
 import galleryB from "../images/WhatsApp Image 2026-05-16 at 17.46.30.jpeg";
@@ -887,7 +886,7 @@ export const JoinClubPage = () => {
             <img src={galleryLarge} alt="Séance privée en action" />
           </div>
           <div className="ysc-gallery__stack">
-            <img src={galleryA} alt="Entraînement individuel" />
+            <img src={galleryLarge} alt="Entraînement individuel" />
             <img src={galleryB} alt="Coach et athlète en séance" />
           </div>
         </div>
