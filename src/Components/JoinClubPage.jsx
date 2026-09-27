@@ -5,12 +5,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect } from "react";
+import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import videoSrc from "url:../images/cours-prive.mp4";
 import championImg from "../images/chamipon.jpeg";
 import galleryLarge from "../images/Screenshot 2026-05-17 124137.png";
 import galleryB from "../images/WhatsApp Image 2026-05-16 at 17.46.30.jpeg";
 import testimonialImg from "../images/WhatsApp Image 2026-05-16 at 17.46.33.jpeg";
+import { api } from "../api";
 import { FeatureRow, scoped } from "./Pages";
 
 // ─── CSS supplémentaire spécifique à ce fichier ────────────────────────────
@@ -245,6 +247,32 @@ const whatsappUrl = `https://wa.me/${CLUB_WHATSAPP}?text=${encodeURIComponent(PR
 
 export const JoinClubPage = () => {
   const location = useLocation();
+  const [heroContent, setHeroContent] = useState({});
+  const [managedBlocks, setManagedBlocks] = useState({});
+
+  useEffect(() => {
+    api.getContent("rejoindre").then((items) => {
+      const nextBlocks = {};
+      items.filter((item) => item.key.startsWith("block:")).forEach((item) => {
+        try { nextBlocks[item.key.slice(6)] = JSON.parse(item.value); } catch { /* Ignore malformed legacy content. */ }
+      });
+      setManagedBlocks(nextBlocks);
+      setHeroContent(nextBlocks.hero || {});
+    }).catch(() => {});
+  }, []);
+
+  const block = (key, fallback) => managedBlocks[key] || fallback;
+  const privateContent = block("private", { title: "Progressez à votre rythme, avec un coach", text: "Séances individuelles pensées pour l'objectif, le niveau et l'emploi du temps de chaque athlète.\n\nUn accompagnement individuel, à domicile ou en extérieur, quel que soit le niveau." });
+  const benefits = block("benefits", { title: "Ce que ça change", text: "Progression technique accélérée\nProgramme adapté à l'âge et au niveau\nPréparation physique et mentale ciblée\nConfiance en soi renforcée séance après séance" });
+  const practice = block("practice", { title: "En pratique", text: "Lieu\nÀ domicile ou en extérieur, selon vos préférences\n\nEncadrement\nCoachs certifiés, toutes disciplines\n\nHoraires\nFlexibles, week-end inclus\n\nContact\n+228 99 67 01 86 · +228 91 53 48 85" });
+  const gallery = block("gallery", { title: "Séance privée en action", text: "Coach et athlète en séance" });
+  const testimonial = block("testimonial", { title: "Cora-CW, Piper-Beckett et Mosa", text: "\"Merci pour tout ce que vous avez fait pour notre famille. On est tellement contents d'avoir commencé cette aventure avec YSC depuis les premiers jours. Vous avez une passion, une vision et une expertise uniques — nous n'allons jamais vous oublier.\"", author: "Cora-CW, Piper-Beckett & Mosa" });
+  const social = block("social", { title: "Programme social YSC\nLe sport pour tous", text: "Parce que le sport doit rester accessible à tous, YSC met en place un programme social pour soutenir les familles et accompagner les jeunes motivés par la gymnastique.\n\nBourse de 50 % sur la mensualité\nEntraînement gratuit possible pour les enfants issus de familles en difficulté\nAides spécifiques selon les besoins : transport, accompagnement\n\nObjectif : permettre à chaque enfant motivé de pratiquer la gymnastique, quelles que soient les conditions sociales." });
+  const socialTitle = social.title.split(/\r?\n/);
+  const socialParagraphs = social.text.split(/\n\s*\n/).map((paragraph) => paragraph.trim()).filter(Boolean);
+  const socialIntroduction = socialParagraphs[0] || "";
+  const socialPoints = socialParagraphs.slice(1, -1).flatMap((paragraph) => paragraph.split(/\r?\n/).filter(Boolean));
+  const socialObjective = socialParagraphs.length > 1 ? socialParagraphs[socialParagraphs.length - 1] : "";
 
   // ── Scroll to registration section from URL hash ──
   useEffect(() => {
@@ -267,7 +295,7 @@ export const JoinClubPage = () => {
       <section className="ysc-join-hero">
         <div className="ysc-join-hero__image-col">
           <img
-            src={championImg}
+            src={heroContent.image || championImg}
             alt="Champions du Youth Sports Club"
             className="ysc-join-hero__img"
           />
@@ -278,12 +306,11 @@ export const JoinClubPage = () => {
 
         <div className="ysc-join-hero__content-col">
           <h1 className="ysc-join-hero__title">
-            Rejoignez le<br />
-            <em>Youth Sports Club</em>
+            {(heroContent.title || "Rejoignez le Youth Sports Club").split(/\s+/, 2)[0]}<br />
+            <em>{(heroContent.title || "Rejoignez le Youth Sports Club").split(/\s+/).slice(1).join(" ")}</em>
           </h1>
           <p className="ysc-join-hero__desc">
-            Un encadrement sportif d'excellence, avec un suivi pédagogique adapté à tous les
-            niveaux, du premier cours à la compétition.
+            {heroContent.text || "Un encadrement sportif d'excellence, avec un suivi pédagogique adapté à tous les niveaux."}
           </p>
 
           <p className="ysc-credential">
@@ -347,13 +374,9 @@ export const JoinClubPage = () => {
       <section className="ysc-private" aria-labelledby="private-heading">
         <div className="ysc-private__intro">
           <h2 id="private-heading" className="ysc-private__title">
-            Progressez à votre<br />
-            <em>rythme, avec un coach</em>
+            {privateContent.title}
           </h2>
-          <p className="ysc-private__subtitle">
-            Séances individuelles pensées pour l'objectif, le niveau et l'emploi du temps de
-            chaque athlète.
-          </p>
+          {privateContent.text.split(/\n\s*\n/).map((paragraph, index) => <p className="ysc-private__subtitle" key={index}>{paragraph}</p>)}
         </div>
 
         <div className="ysc-video-hero" aria-label="Vidéo de présentation des cours privés">
@@ -368,74 +391,48 @@ export const JoinClubPage = () => {
             preload="auto"
           />
           <div className="ysc-video-hero__overlay" aria-hidden="true">
-            <p className="ysc-video-hero__tagline">
-              Un accompagnement individuel, à domicile ou en extérieur, quel que soit le niveau.
-            </p>
+            <p className="ysc-video-hero__tagline">{privateContent.text.split(/\n\s*\n/)[1] || ""}</p>
           </div>
         </div>
 
         <div className="ysc-private__cards">
           <div>
-            <h3>Ce que ça change</h3>
+            <h3>{benefits.title}</h3>
             <ul className="ysc-plain-list">
-              <li>Progression technique accélérée</li>
-              <li>Programme adapté à l'âge et au niveau</li>
-              <li>Préparation physique et mentale ciblée</li>
-              <li>Confiance en soi renforcée séance après séance</li>
+              {benefits.text.split(/\r?\n/).filter(Boolean).map((item) => <li key={item}>{item}</li>)}
             </ul>
           </div>
 
           <div>
-            <h3>En pratique</h3>
+            <h3>{practice.title}</h3>
             <dl className="ysc-info-rows">
-              <div className="ysc-info-row">
-                <dt>Lieu</dt>
-                <dd>À domicile ou en extérieur, selon vos préférences</dd>
-              </div>
-              <div className="ysc-info-row">
-                <dt>Encadrement</dt>
-                <dd>Coachs certifiés, toutes disciplines</dd>
-              </div>
-              <div className="ysc-info-row">
-                <dt>Horaires</dt>
-                <dd>Flexibles, week-end inclus</dd>
-              </div>
-              <div className="ysc-info-row">
-                <dt>Contact</dt>
-                <dd>
-                  <a href="tel:+22899670186">+228 99 67 01 86</a>
-                  {" · "}
-                  <a href="tel:+22891534885">+228 91 53 48 85</a>
-                </dd>
-              </div>
+              {practice.text.split(/\n\s*\n/).map((row) => {
+                const [label, ...details] = row.split(/\r?\n/);
+                return <div className="ysc-info-row" key={label}><dt>{label}</dt><dd>{details.join(" ")}</dd></div>;
+              })}
             </dl>
           </div>
         </div>
 
-        <div className="ysc-gallery" aria-label="Galerie photos des cours privés">
+        <div className="ysc-gallery" aria-label={gallery.title || "Galerie photos des cours privés"}>
           <div className="ysc-gallery__large">
-            <img src={galleryLarge} alt="Séance privée en action" />
+            <img src={gallery.image || galleryLarge} alt={gallery.title} />
           </div>
           <div className="ysc-gallery__stack">
-            <img src={galleryB} alt="Coach et athlète en séance" />
+            <img src={gallery.image2 || galleryB} alt={gallery.text || "Coach et athlète en séance"} />
           </div>
         </div>
 
         <figure className="ysc-pullquote">
           <img
-            src={testimonialImg}
-            alt="Cora-CW, Piper-Beckett et Mosa"
+            src={testimonial.image || testimonialImg}
+            alt={testimonial.title}
             className="ysc-pullquote__photo"
           />
           <div>
-            <blockquote className="ysc-pullquote__text">
-              "Merci pour tout ce que vous avez fait pour notre famille. On est tellement
-              contents d'avoir commencé cette aventure avec YSC depuis les premiers jours. Vous
-              avez une passion, une vision et une expertise uniques — nous n'allons jamais vous
-              oublier."
-            </blockquote>
+            <blockquote className="ysc-pullquote__text">{testimonial.text}</blockquote>
             <figcaption className="ysc-pullquote__author">
-              Cora-CW, Piper-Beckett &amp; Mosa
+              {testimonial.author || "Cora-CW, Piper-Beckett & Mosa"}
             </figcaption>
           </div>
         </figure>
@@ -445,35 +442,18 @@ export const JoinClubPage = () => {
       <section className="ysc-social-section" aria-labelledby="social-heading">
         <div className="ysc-social-section__inner">
           <h2 id="social-heading" className="ysc-social-heading">
-            Programme social YSC
-            <span>Le sport pour tous</span>
+            {socialTitle[0]}
+            <span>{socialTitle.slice(1).join(" ")}</span>
           </h2>
 
           <div className="ysc-social-content">
-            <p className="ysc-social-intro">
-              Parce que le sport doit rester accessible à tous, YSC met en place un programme
-              social pour soutenir les familles et accompagner les jeunes motivés par la
-              gymnastique.
-            </p>
+            <p className="ysc-social-intro">{socialIntroduction}</p>
 
             <ul className="ysc-social-points">
-              <li><strong>Bourse de 50 %</strong> sur la mensualité</li>
-              <li>
-                <strong>Entraînement gratuit</strong> possible pour les enfants issus de familles
-                en difficulté
-              </li>
-              <li>
-                <strong>Aides spécifiques</strong> selon les besoins : transport,
-                accompagnement
-              </li>
+              {socialPoints.map((point) => <li key={point}>{point}</li>)}
             </ul>
 
-            <div className="ysc-callout">
-              <p>
-                Objectif : permettre à chaque enfant motivé de pratiquer la gymnastique, quelles
-                que soient les conditions sociales.
-              </p>
-            </div>
+            {socialObjective && <div className="ysc-callout"><p>{socialObjective}</p></div>}
           </div>
         </div>
       </section>

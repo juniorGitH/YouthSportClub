@@ -1,8 +1,11 @@
 // ─── Imports ────────────────────────────────────────────────────────────────
+import { useEffect, useState } from "react";
 import videoBoxe from "url:../images/video-boxe.mp4";
 import videoFitness from "url:../images/video-fitness.mp4";
 import videoGym from "url:../images/video-gym.mp4";
 import { scoped, SectionLabel } from "./Pages";
+import { ManagedContent } from "./ManagedContent";
+import { api } from "../api";
 
 // ─── Données ─────────────────────────────────────────────────────────────────
 
@@ -444,7 +447,38 @@ const VideoOrPlaceholder = ({ videoSrc, videoLabel }) => (
 
 // ─── Training Sessions Page ─────────────────────────────────────────────────
 
-export const TrainingSessionsPage = () => (
+export const TrainingSessionsPage = () => {
+  const [managedDisciplines, setManagedDisciplines] = useState({});
+
+  useEffect(() => {
+    api.getContent("entrainements").then((items) => {
+      const blocks = {};
+      items.filter((item) => item.key.startsWith("block:")).forEach((item) => {
+        try {
+          blocks[item.key.slice(6)] = JSON.parse(item.value);
+        } catch {
+          // Ignore malformed optional content and keep the default section.
+        }
+      });
+      setManagedDisciplines(blocks);
+    }).catch(() => {});
+  }, []);
+
+  const displayedDisciplines = disciplines.map((discipline) => {
+    const managed = managedDisciplines[discipline.id];
+    if (!managed) return discipline;
+    const lines = (managed.text || "").split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
+    return {
+      ...discipline,
+      label: managed.title || discipline.label,
+      tagline: lines[0] || discipline.tagline,
+      description: lines.slice(1, 2)[0] || discipline.description,
+      details: lines.slice(2).map((text) => ({ icon: "ti-check", text })),
+      managedImage: managed.image,
+    };
+  });
+
+  return (
   <>
     <style>{scoped}</style>
     <style>{extra}</style>
@@ -453,6 +487,7 @@ export const TrainingSessionsPage = () => (
     <section className="ysc-page-hero">
       <SectionLabel>Disciplines</SectionLabel>
       <h1>Entraînements</h1>
+      <ManagedContent page="entrainements" fallbackTitle="Nos disciplines et entraînements" fallbackDescription="Découvrez nos disciplines, nos horaires et nos programmes adaptés à tous les niveaux." />
       <p>
         Trois disciplines, un seul objectif : révéler le meilleur de chaque athlète dans un cadre
         sécurisé et bienveillant. Entraînements le <strong>samedi uniquement</strong> au Stade de Kégué, Lomé.
@@ -460,7 +495,7 @@ export const TrainingSessionsPage = () => (
     </section>
 
     {/* ── Une section par discipline ── */}
-    {disciplines.map((disc) => (
+    {displayedDisciplines.map((disc) => (
       <section
         key={disc.id}
         id={disc.id}
@@ -485,6 +520,7 @@ export const TrainingSessionsPage = () => (
             {/* Colonne gauche */}
             <div>
               <p className="ysc-disc__desc">{disc.description}</p>
+              {disc.managedImage && <img className="ysc-managed-discipline-image" src={disc.managedImage} alt={disc.label} />}
               <ul className="ysc-disc__details">
                 {disc.details.map(({ icon, text }) => (
                   <li key={text} className="ysc-disc__detail">
@@ -572,4 +608,5 @@ export const TrainingSessionsPage = () => (
       </div>
     </section>
   </>
-);
+  );
+};

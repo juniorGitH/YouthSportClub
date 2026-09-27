@@ -11,6 +11,9 @@ import { JoinClubPage } from "./Components/JoinClubPage";
 import { PartnersPage } from "./Components/PartnersPage";
 import { ResultsPage } from "./Components/ResultsPage";
 import { TrainingSessionsPage } from "./Components/TrainingSessionsPage";
+import LoginPage from "./Components/LoginPage";
+import AdminPage from "./Components/AdminPage";
+import { api } from "./api";
 import "./styles.css";
 
 const Layout = ({ children }) => (
@@ -29,6 +32,11 @@ const ScrollToTop = () => {
   }, [location.pathname]);
 
   return null;
+};
+
+const AdminRoute = () => {
+  const auth = api.getAuth();
+  return auth?.user?.role === "Admin" ? <AdminPage /> : <Navigate to="/connexion" replace />;
 };
 
 const App = () => (
@@ -111,6 +119,15 @@ const App = () => (
           </Layout>
         }
       />
+      <Route
+        path="/connexion"
+        element={
+          <Layout>
+            <LoginPage />
+          </Layout>
+        }
+      />
+      <Route path="/admin" element={<AdminRoute />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   </Router>

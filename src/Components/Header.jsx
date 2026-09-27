@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import { api } from "../api";
 // Renamed asset to remove spaces/parentheses for compatibility
 import logoClub from "../images/logo-2.png";
 
@@ -15,6 +16,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAtTop, setIsAtTop] = useState(true);
   const location = useLocation();
+  const [auth, setAuth] = useState(() => api.getAuth());
 
   useEffect(() => {
     const onScroll = () => setIsAtTop(window.scrollY < 20);
@@ -26,6 +28,12 @@ const Header = () => {
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location.pathname]);
+
+  const logout = () => {
+    api.logout();
+    setAuth(null);
+    setIsMenuOpen(false);
+  };
 
   const isTransparent = location.pathname === "/" && isAtTop;
 
@@ -55,6 +63,15 @@ const Header = () => {
             {item.label}
           </NavLink>
         ))}
+        {auth ? (
+          <button type="button" className="nav-auth nav-auth--logout" onClick={logout}>
+            Déconnexion
+          </button>
+        ) : (
+          <NavLink to="/connexion" className="nav-auth" onClick={() => setIsMenuOpen(false)}>
+            Connexion
+          </NavLink>
+        )}
       </nav>
     </header>
   );

@@ -1,4 +1,7 @@
 import React from "react";
+import { useEffect, useState } from "react";
+import { api } from "../api";
+import { ManagedContent } from "./ManagedContent";
 import { Link } from "react-router-dom";
 import historyTeamImage from "../images/WhatsApp Image 2026-05-16 at 16.18.39.jpeg";
 import figCertifiedImage from "../images/WhatsApp Image 2026-05-16 at 16.12.14 (1).jpeg";
@@ -64,11 +67,11 @@ const coaches = [
 ];
 
 const social = [
-  { label: "Bourses partielles",            desc: "Réduction significative des frais d'adhésion pour les familles à revenus modestes." },
-  { label: "Bourses totales",               desc: "Prise en charge complète pour les jeunes talents identifiés sans ressources suffisantes." },
-  { label: "Détection des talents",         desc: "Programme actif de repérage des jeunes prometteurs dans les quartiers de Lomé." },
-  { label: "Accompagnement personnalisé",   desc: "Suivi humain et pédagogique au-delà du cadre sportif pour chaque enfant accompagné." },
-  { label: "Réduction fratrie",          desc: "Tarifs préférentiels à partir de 3 enfants d'une même famille inscrits au club." },
+  { label: "Bourses partielles", desc: "Réduction significative des frais d'adhésion pour les familles à revenus modestes." },
+  { label: "Bourses totales", desc: "Prise en charge complète pour les jeunes talents identifiés sans ressources suffisantes." },
+  { label: "Détection des talents", desc: "Programme actif de repérage des jeunes prometteurs dans les quartiers de Lomé." },
+  { label: "Accompagnement personnalisé", desc: "Suivi humain et pédagogique au-delà du cadre sportif pour chaque enfant accompagné." },
+  { label: "Réduction fratrie", desc: "Tarifs préférentiels à partir de 3 enfants d'une même famille inscrits au club." },
 ];
 
 const timeline = [
@@ -510,6 +513,24 @@ const scoped = `
 `;
 
 const About = () => {
+  const [managedBlocks, setManagedBlocks] = useState({});
+  useEffect(() => {
+    api.getContent("a-propos").then((items) => {
+      const blocks = Object.fromEntries(
+        items
+          .filter((item) => item.key.startsWith("block:"))
+          .map((item) => {
+            try { return [item.key.slice(6), JSON.parse(item.value)]; }
+            catch { return [item.key.slice(6), {}]; }
+          })
+      );
+      if (Object.keys(blocks).length) setManagedBlocks(blocks);
+    }).catch(() => { });
+  }, []);
+
+  // Helper: use backend image URL if set, otherwise fall back to static import
+  const img = (key, fallback) => managedBlocks[key]?.image || fallback;
+
   return (
     <>
       <style>{scoped}</style>
@@ -517,7 +538,7 @@ const About = () => {
       {/* ══ PRÉSENTATION ══ */}
       <section className="section">
         <div className="section-header">
-          <h2>Qui sommes-nous ?</h2>
+          <ManagedContent page="a-propos" fallbackTitle="Qui sommes-nous ?" fallbackDescription="Découvrez l'histoire, les valeurs et la mission du Youth Sports Club." />
           <p>
             Le Youth Sports Club (YSC) est une association sportive basée à
             Lomé, fondée en 2022. Depuis sa création, le club s&apos;est
@@ -536,7 +557,7 @@ const About = () => {
           </p>
           <div className="about-team-image-wrap">
             <img
-              src={historyTeamImage}
+              src={img("intro", historyTeamImage)}
               alt="Équipe du Youth Sports Club"
               className="about-team-image"
               loading="lazy"
@@ -614,34 +635,37 @@ const About = () => {
           </p>
         </div>
         <div className="grid two-columns">
-          {coaches.map((c) => (
-            <div className="about-coach-card" key={c.title}>
-              {c.images ? (
-                <div className="about-coach-gallery">
-                  {c.images.map((image) => (
-                    <img
-                      key={image.src}
-                      src={image.src}
-                      alt={image.alt || c.title}
-                      className="about-coach-gallery-image"
-                      loading="lazy"
-                    />
-                  ))}
-                </div>
-              ) : (
-                c.image && (
-                  <img
-                    src={c.image}
-                    alt={c.imageAlt || c.title}
-                    className="about-coach-image"
-                    loading="lazy"
-                  />
-                )
-              )}
-              <h3>{c.title}</h3>
-              <p>{c.detail}</p>
+          {/* Certifiés FIG */}
+          <div className="about-coach-card">
+            <img src={img("coaches-fig", figCertifiedImage)} alt="Coachs certifiés FIG" className="about-coach-image" loading="lazy" />
+            <h3>{managedBlocks["coaches-fig"]?.title || "Certifiés FIG"}</h3>
+            <p>{managedBlocks["coaches-fig"]?.text || "Fédération Internationale de Gymnastique"}</p>
+          </div>
+          {/* Diplômés STAPS */}
+          <div className="about-coach-card">
+            <div className="about-coach-gallery">
+              <img src={img("coaches-staps-1", stapsImageOne)} alt="Diplômés STAPS – photo 1" className="about-coach-gallery-image" loading="lazy" />
+              <img src={img("coaches-staps-2", stapsImageTwo)} alt="Diplômés STAPS – photo 2" className="about-coach-gallery-image" loading="lazy" />
             </div>
-          ))}
+            <h3>{managedBlocks["coaches-staps-1"]?.title || "Diplômés STAPS"}</h3>
+            <p>{managedBlocks["coaches-staps-1"]?.text || "Sciences et Techniques des Activités Physiques et Sportives"}</p>
+          </div>
+          {/* Sports de combat */}
+          <div className="about-coach-card">
+            <div className="about-coach-gallery">
+              <img src={img("coaches-combat-1", combatImageOne)} alt="Sports de combat – photo 1" className="about-coach-gallery-image" loading="lazy" />
+              <img src={img("coaches-combat-2", combatImageTwo)} alt="Sports de combat – photo 2" className="about-coach-gallery-image" loading="lazy" />
+              <img src={img("coaches-combat-3", combatImageThree)} alt="Sports de combat – photo 3" className="about-coach-gallery-image" loading="lazy" />
+            </div>
+            <h3>{managedBlocks["coaches-combat-1"]?.title || "Sports de combat"}</h3>
+            <p>{managedBlocks["coaches-combat-1"]?.text || "Spécialistes en boxe et préparation physique"}</p>
+          </div>
+          {/* Préparation physique */}
+          <div className="about-coach-card">
+            <img src={img("coaches-prep", prepImage)} alt="Préparation physique" className="about-coach-image" loading="lazy" />
+            <h3>{managedBlocks["coaches-prep"]?.title || "Préparation physique"}</h3>
+            <p>{managedBlocks["coaches-prep"]?.text || "Coaches en renforcement musculaire et fitness"}</p>
+          </div>
         </div>
       </section>
 

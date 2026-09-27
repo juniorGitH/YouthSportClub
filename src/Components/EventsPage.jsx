@@ -1,4 +1,7 @@
+import { useEffect, useState } from "react";
 import { scoped, SectionLabel } from "./Pages";
+import { api } from "../api";
+import { ManagedContent } from "./ManagedContent";
 
 const pastEvents = [
   {
@@ -280,7 +283,21 @@ const extra = `
   }
 `;
 
-export const EventsPage = () => (
+export const EventsPage = () => {
+  const [remoteEvents, setRemoteEvents] = useState(null);
+  useEffect(() => {
+    api.getEvents().then(setRemoteEvents).catch(() => {});
+  }, []);
+  const displayedUpcoming = remoteEvents
+    ? [...remoteEvents].sort((a, b) => new Date(b.date) - new Date(a.date)).map((event) => ({
+        ...event,
+        date: new Date(event.date).toLocaleDateString("fr-FR", {
+          day: "2-digit", month: "long", year: "numeric",
+        }),
+      }))
+    : upcomingEvents;
+
+  return (
   <>
     <style>{scoped}</style>
     <style>{extra}</style>
@@ -300,13 +317,10 @@ export const EventsPage = () => (
       <div className="ysc-ev-inner">
         <div className="ysc-ev-header">
           <SectionLabel>Prochains rendez-vous</SectionLabel>
-          <h2>Calendrier à venir</h2>
-          <p>
-            Compétitions de zone organisées par la Fédération nationale auxquelles le YSC prendra part.
-          </p>
+          <ManagedContent page="evenements" fallbackTitle="Tous les événements" fallbackDescription="Retrouvez les événements du club, du plus récent au plus ancien." />
         </div>
         <div className="ysc-upcoming-grid">
-          {upcomingEvents.map((event) => {
+          {displayedUpcoming.map((event) => {
             const cat = categoryColors[event.category] || categoryColors["Événement club"];
             return (
               <article className="ysc-upcoming-card" key={event.title}>
@@ -433,4 +447,5 @@ export const EventsPage = () => (
       </div>
     </section>
   </>
-);
+  );
+};

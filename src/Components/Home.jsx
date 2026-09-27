@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { api } from "../api";
+import { ManagedContent } from "./ManagedContent";
 import fitnessDisciplineImage from "url:../images/474394443_609527335360011_3887746446676892278_n.jpg";
 import gymDisciplineImage from "url:../images/480777236_636877472624997_71086379626942907_n.jpg";
 import boxeDisciplineImage from "url:../images/home-boxe.png";
@@ -499,6 +502,58 @@ const scoped = `
 `;
 
 const Home = () => {
+  const [featuredEvent, setFeaturedEvent] = useState(null);
+  const [mb, setMb] = useState({});
+  useEffect(() => {
+    api.getEvents().then((items) => setFeaturedEvent(items.find((item) => item.featured) || items[0] || null)).catch(() => {});
+    api.getContent("accueil").then((items) => {
+      const blocks = {};
+      items.filter((item) => item.key.startsWith("block:")).forEach((item) => {
+        try { blocks[item.key.slice(6)] = JSON.parse(item.value); } catch { /* ignore */ }
+      });
+      if (Object.keys(blocks).length) setMb(blocks);
+    }).catch(() => {});
+  }, []);
+
+  // Helpers
+  const b = (key) => mb[key] || {};
+  const hero = b("hero");
+  const discGym = b("disc-gym");
+  const discBoxe = b("disc-boxe");
+  const discFitness = b("disc-fitness");
+  const socialBlock = b("social");
+  const ctaBlock = b("cta");
+
+  // Disciplines with backend override
+  const displayedDisciplines = [
+    { ...disciplines[0], title: discGym.title || disciplines[0].title, desc: discGym.text || disciplines[0].desc, image: discGym.image || disciplines[0].image },
+    { ...disciplines[1], title: discBoxe.title || disciplines[1].title, desc: discBoxe.text || disciplines[1].desc, image: discBoxe.image || disciplines[1].image },
+    { ...disciplines[2], title: discFitness.title || disciplines[2].title, desc: discFitness.text || disciplines[2].desc, image: discFitness.image || disciplines[2].image },
+  ];
+
+  // Palmares with backend override
+  const displayedPalmares = palmares.map((p, i) => {
+    const managed = b(`palmares-${i + 1}`);
+    return managed.title ? { ...p, title: managed.title, detail: managed.text || p.detail, discipline: managed.discipline || p.discipline, emoji: managed.emoji || p.emoji } : p;
+  });
+
+  // Horaires with backend override
+  const horaireBlock = b("horaires");
+  const displayedHoraires = horaireBlock.text
+    ? horaireBlock.text.split("\n").filter(Boolean).map((line) => { const [who, time] = line.split("|"); return { who: who.trim(), time: (time || "").trim() }; })
+    : horaires;
+
+  // Tarifs with backend override
+  const tarifBlock = b("tarifs");
+  const displayedTarifs = tarifBlock.text
+    ? tarifBlock.text.split("\n").filter(Boolean).map((line) => { const [label, value] = line.split("|"); return { label: label.trim(), value: (value || "").trim() }; })
+    : tarifs;
+
+  // Social tags with backend override
+  const displayedSocialTags = socialBlock.tags
+    ? socialBlock.tags.split(",").map((t) => t.trim()).filter(Boolean)
+    : socialTags;
+
   return (
     <>
       <style>{scoped}</style>
@@ -522,35 +577,34 @@ const Home = () => {
         </div>
         <div className="ysc-hero-overlay" />
         <div className="ysc-hero-inner">
-          <p className="ysc-hero-eyebrow">Lomé, Togo · Fondé en 2022</p>
+          <p className="ysc-hero-eyebrow">{hero.eyebrow || "Lomé, Togo · Fondé en 2022"}</p>
           <h1>
             YOUTH <em className="ysc-hero-accent">SPORTS</em> CLUB
           </h1>
           <p className="ysc-hero-sub">
-            Association sportive de référence nationale, spécialisée dans la formation et
-            l&apos;encadrement des jeunes à travers la gymnastique, la boxe et le fitness.
+            {hero.text || "Association sportive de référence nationale, spécialisée dans la formation et l\u0027encadrement des jeunes à travers la gymnastique, la boxe et le fitness."}
           </p>
 
           {/* Stats hero */}
           <div className="ysc-hero-stats" aria-label="Chiffres clés">
             <div className="ysc-hero-stat">
-              <span className="ysc-hero-stat-num">3+</span>
-              <span className="ysc-hero-stat-label">Années d'expérience</span>
+              <span className="ysc-hero-stat-num">{hero.stat1 || "3+"}</span>
+              <span className="ysc-hero-stat-label">{hero.stat1Label || "Années d'expérience"}</span>
             </div>
             <div className="ysc-hero-stat-sep" aria-hidden="true" />
             <div className="ysc-hero-stat">
-              <span className="ysc-hero-stat-num">3</span>
-              <span className="ysc-hero-stat-label">Disciplines</span>
+              <span className="ysc-hero-stat-num">{hero.stat2 || "3"}</span>
+              <span className="ysc-hero-stat-label">{hero.stat2Label || "Disciplines"}</span>
             </div>
             <div className="ysc-hero-stat-sep" aria-hidden="true" />
             <div className="ysc-hero-stat">
-              <span className="ysc-hero-stat-num">🥇</span>
-              <span className="ysc-hero-stat-label">Champions nationaux</span>
+              <span className="ysc-hero-stat-num">{hero.stat3 || "🥇"}</span>
+              <span className="ysc-hero-stat-label">{hero.stat3Label || "Champions nationaux"}</span>
             </div>
             <div className="ysc-hero-stat-sep" aria-hidden="true" />
             <div className="ysc-hero-stat">
-              <span className="ysc-hero-stat-num">100%</span>
-              <span className="ysc-hero-stat-label">Inclusif</span>
+              <span className="ysc-hero-stat-num">{hero.stat4 || "100%"}</span>
+              <span className="ysc-hero-stat-label">{hero.stat4Label || "Inclusif"}</span>
             </div>
           </div>
 
@@ -572,10 +626,10 @@ const Home = () => {
             <span className="ysc-next-event-badge">Prochain événement</span>
             <div className="ysc-next-event-info">
               <p className="ysc-next-event-title">
-                Stage de perfectionnement – Gymnastique
+                {featuredEvent?.title || "Stage de perfectionnement – Gymnastique"}
               </p>
               <p className="ysc-next-event-meta">
-                📅 15 – 20 juin 2026 &nbsp;·&nbsp; 📍 Stade de Kégué, Lomé
+                📅 {featuredEvent ? new Date(featuredEvent.date).toLocaleDateString("fr-FR") : "15 – 20 juin 2026"} &nbsp;·&nbsp; 📍 {featuredEvent?.location || "Stade de Kégué, Lomé"}
               </p>
             </div>
             <Link
@@ -592,14 +646,10 @@ const Home = () => {
       {/* ══ DISCIPLINES ══ */}
       <section className="section section-alt">
         <div className="section-header">
-          <h2>Nos disciplines</h2>
-          <p>
-            Trois activités complémentaires pour tous les profils et tous les niveaux, encadrées
-            par des professionnels qualifiés.
-          </p>
+          <ManagedContent page="disciplines" fallbackTitle="Nos disciplines" fallbackDescription="Trois activités complémentaires pour tous les profils et tous les niveaux, encadrées par des professionnels qualifiés." />
         </div>
         <div className="grid three-columns">
-          {disciplines.map((d) => (
+          {displayedDisciplines.map((d) => (
             <article className="ysc-disc-card" key={d.num}>
               <span className="ysc-disc-num" aria-hidden="true">{d.num}</span>
               {d.image && (
@@ -623,14 +673,10 @@ const Home = () => {
       {/* ══ PALMARÈS ══ */}
       <section className="section">
         <div className="section-header">
-          <h2>Notre palmarès</h2>
-          <p>
-            Le Youth Sports Club forme des champions. Quelques titres obtenus en compétitions
-            zonales et nationales.
-          </p>
+          <ManagedContent page="palmares" fallbackTitle="Notre palmarès" fallbackDescription="Le Youth Sports Club forme des champions. Quelques titres obtenus en compétitions zonales et nationales." />
         </div>
         <div className="ysc-palmares-grid">
-          {palmares.map((p) => (
+          {displayedPalmares.map((p) => (
             <div className="ysc-palmares-card" key={p.title + p.discipline}>
               <span className="ysc-palmares-emoji">{p.emoji}</span>
               <p className="ysc-palmares-title">{p.title}</p>
@@ -654,32 +700,27 @@ const Home = () => {
       {/* ══ INFOS PRATIQUES ══ */}
       <section className="section section-alt">
         <div className="section-header">
-          <h2>Informations pratiques</h2>
-          <p>Retrouvez-nous au Stade de Kégué, Lomé. Entraînements le samedi. Tous niveaux acceptés..</p>
+          <ManagedContent page="informations-pratiques" fallbackTitle="Informations pratiques" fallbackDescription="Retrouvez-nous au Stade de Kégué, Lomé. Entraînements le samedi. Tous niveaux acceptés." />
         </div>
         <div className="grid two-columns">
           <div className="card">
-            <p className="ysc-card-title">Horaires d&apos;entraînement</p>
+            <p className="ysc-card-title">{horaireBlock.title || "Horaires d\u0027entraînement"}</p>
             <table className="ysc-info-table">
               <tbody>
-                {horaires.map((h) => (
+                {displayedHoraires.map((h) => (
                   <tr key={h.who}>
                     <td>{h.who}</td>
                     <td>{h.time}</td>
                   </tr>
                 ))}
-                <tr>
-                  <td>Lieu</td>
-                  <td>Stade de Kégué</td>
-                </tr>
               </tbody>
             </table>
           </div>
           <div className="card">
-            <p className="ysc-card-title">Tarifs</p>
+            <p className="ysc-card-title">{tarifBlock.title || "Tarifs"}</p>
             <table className="ysc-info-table">
               <tbody>
-                {tarifs.map((t) => (
+                {displayedTarifs.map((t) => (
                   <tr key={t.label}>
                     <td>{t.label}</td>
                     <td>{t.value}</td>
@@ -694,21 +735,18 @@ const Home = () => {
       {/* ══ ENGAGEMENT SOCIAL ══ */}
       <section className="section">
         <div className="section-header">
-          <h2>Engagement social</h2>
+          <ManagedContent page="engagement-social" fallbackTitle="Engagement social" fallbackDescription="Le YSC s'engage activement pour l'inclusion et l'accessibilité du sport." />
         </div>
         <div className="wide">
           <div className="card">
             <div className="ysc-social-inner">
               <div className="ysc-social-text">
-                <h3>L&apos;accès au sport pour tous</h3>
+                <h3>{socialBlock.title || "L\u0027accès au sport pour tous"}</h3>
                 <p>
-                  Le YSC s&apos;engage activement pour l&apos;inclusion et l&apos;accessibilité du
-                  sport. Des dispositifs concrets accompagnent les jeunes issus de milieux modestes
-                  dans leur parcours sportif et de vie : bourses, réductions familiales et suivi
-                  personnalisé.
+                  {socialBlock.text || "Le YSC s\u0027engage activement pour l\u0027inclusion et l\u0027accessibilité du sport. Des dispositifs concrets accompagnent les jeunes issus de milieux modestes dans leur parcours sportif et de vie : bourses, réductions familiales et suivi personnalisé."}
                 </p>
                 <div className="ysc-tags">
-                  {socialTags.map((t) => (
+                  {displayedSocialTags.map((t) => (
                     <span className="ysc-tag" key={t}>{t}</span>
                   ))}
                 </div>
@@ -726,8 +764,8 @@ const Home = () => {
       <section className="section section-alt">
         <div className="wide">
           <div className="ysc-cta">
-            <h2>Prêt à rejoindre le club ?</h2>
-            <p>Tous niveaux acceptés · Encadrement professionnel · Stade de Kégué, Lomé</p>
+            <h2>{ctaBlock.title || "Prêt à rejoindre le club ?"}</h2>
+            <p>{ctaBlock.text || "Tous niveaux acceptés · Encadrement professionnel · Stade de Kégué, Lomé"}</p>
             <div className="ysc-cta-actions">
               <Link className="btn btn-primary" to="/rejoindre#registration-form">
                 S&apos;inscrire maintenant
