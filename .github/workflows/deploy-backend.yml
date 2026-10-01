@@ -1,65 +1,47 @@
 name: Build and deploy .NET backend to Azure Web App
 
+# Déploiement manuel (le tenant étudiant bloque souvent la création de SP pour AZURE_CREDENTIALS).
+# Alternative locale : az acr build + az webapp restart (voir scripts/deploy-azure.ps1).
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'backend/**'
-      - '.github/workflows/deploy-backend.yml'
   workflow_dispatch:
 
 env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}-api
-  AZURE_WEBAPP_NAME: youthsportsclub-api # Nom de la Web App Azure
+  AZURE_WEBAPP_NAME: youthsportsclub-api
+  AZURE_RESOURCE_GROUP: rg-youthsportsclub
+  ACR_NAME: ysctogoacr
+  IMAGE_NAME: ysc-api
 
 jobs:
-  build-and-push:
+  build-and-deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: write
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Log in to the Container registry
-        uses: docker/login-action@v3
+      - name: Azure Login
+        uses: azure/login@v2
         with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          tags: |
-            type=sha,format=long
+      - name: Build image in ACR and restart Web App
+        run: |
+          az acr build \
+            -r "${{ env.ACR_NAME }}" \
+            -g "${{ env.AZURE_RESOURCE_GROUP }}" \
+            -t "${{ env.IMAGE_NAME }}:${{ github.sha }}" \
+            -t "${{ env.IMAGE_NAME }}:latest" \
+            -f backend/Ysc.Api/Dockerfile \
+            backend/Ysc.Api
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v5
-        with:
-          context: ./backend/Ysc.Api
-          push: true
-          tags: ${{ steps.meta.outputs.tags }},${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
-          labels: ${{ steps.meta.outputs.labels }}
+          az webapp config container set \
+            -g "${{ env.AZURE_RESOURCE_GROUP }}" \
+            -n "${{ env.AZURE_WEBAPP_NAME }}" \
+            --container-image-name "${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:latest" \
+            --container-registry-url "https://${{ env.ACR_NAME }}.azurecr.io"
 
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build-and-push
-    environment:
-      name: 'production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-
-    steps:
-      - name: Deploy to Azure Web App
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v3
-        with:
-          app-name: ${{ env.AZURE_WEBAPP_NAME }}
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          images: '${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest'
+          az webapp restart \
+            -g "${{ env.AZURE_RESOURCE_GROUP }}" \
+            -n "${{ env.AZURE_WEBAPP_NAME }}"

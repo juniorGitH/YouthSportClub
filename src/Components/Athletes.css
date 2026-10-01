@@ -1,0 +1,66 @@
+/* Page « Athlètes & histoires ».
+   Ajustez les 3 variables ci-dessous pour les accorder aux couleurs de votre site. */
+.athletes-page {
+  --ath-accent: #1d4ed8;
+  --ath-ink: #14213d;
+  --ath-muted: #5b6478;
+  --ath-surface: #ffffff;
+  --ath-border: #e3e7ef;
+
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 48px 20px 80px;
+  color: var(--ath-ink);
+}
+
+.athletes-hero { text-align: center; max-width: 720px; margin: 0 auto 32px; }
+.athletes-eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: .8rem; font-weight: 700; color: var(--ath-accent); margin: 0 0 8px; }
+.athletes-hero h1 { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.1; margin: 0 0 14px; }
+.athletes-hero p { color: var(--ath-muted); font-size: 1.05rem; line-height: 1.6; margin: 0 0 8px; }
+
+.athletes-filters { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+.athletes-filters button {
+  border: 1px solid var(--ath-border); background: var(--ath-surface); color: var(--ath-ink);
+  padding: 8px 18px; border-radius: 999px; font: inherit; font-weight: 600; cursor: pointer;
+}
+.athletes-filters button.active { background: var(--ath-accent); border-color: var(--ath-accent); color: #fff; }
+
+.athletes-empty { text-align: center; color: var(--ath-muted); padding: 40px 0; }
+
+.athletes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; align-items: start; }
+
+.athlete-card {
+  display: flex; flex-direction: column; overflow: hidden;
+  background: var(--ath-surface); border: 1px solid var(--ath-border); border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(20, 33, 61, .06);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.athlete-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(20, 33, 61, .1); }
+
+.athlete-card-media { position: relative; aspect-ratio: 4 / 3; background: linear-gradient(135deg, #dbe4ff, #eef2ff); }
+.athlete-card-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.athlete-card-initials { position: absolute; inset: 0; display: grid; place-items: center; font-size: 3rem; font-weight: 800; color: var(--ath-accent); opacity: .7; }
+.athlete-card-tag {
+  position: absolute; top: 12px; left: 12px; background: var(--ath-accent); color: #fff;
+  font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 999px;
+}
+.athlete-card--story .athlete-card-tag { background: #b45309; }
+
+.athlete-card-body { padding: 18px 20px 20px; }
+.athlete-card-body h3 { margin: 0 0 4px; font-size: 1.2rem; }
+.athlete-card-subtitle { margin: 0 0 10px; color: var(--ath-muted); font-size: .92rem; }
+.athlete-card-highlight { margin: 0 0 12px; padding: 8px 12px; background: #eef2ff; border-radius: 10px; font-weight: 600; font-size: .9rem; }
+.athlete-card-date { margin: 0 0 10px; color: var(--ath-muted); font-size: .85rem; }
+
+.athlete-card-text p { margin: 0 0 10px; line-height: 1.6; }
+.athlete-card-text.is-clamped p { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+
+.athlete-card-toggle { background: none; border: 0; padding: 0; color: var(--ath-accent); font: inherit; font-weight: 700; cursor: pointer; }
+.athlete-card-toggle:hover { text-decoration: underline; }
+
+@media (prefers-color-scheme: dark) {
+  .athletes-page { --ath-ink: #f1f4fb; --ath-muted: #a6afc4; --ath-surface: #171d2c; --ath-border: #2a3348; }
+  .athlete-card-highlight { background: #232c45; }
+  .athlete-card-media { background: linear-gradient(135deg, #1f2a4d, #171d2c); }
+}

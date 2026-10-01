@@ -9,6 +9,7 @@ const navItems = [
   { to: "/rejoindre", label: "Rejoindre" },
   { to: "/evenements", label: "Événements" },
   { to: "/entrainements", label: "Entraînements" },
+  { to: "/athletes", label: "Athlètes" },
   { to: "/a-propos", label: "À propos" },
 ];
 
@@ -63,6 +64,11 @@ const Header = () => {
             {item.label}
           </NavLink>
         ))}
+        {auth?.user?.role === "Admin" && (
+          <NavLink to="/admin" className="nav-auth" onClick={() => setIsMenuOpen(false)}>
+            Admin
+          </NavLink>
+        )}
         {auth ? (
           <button type="button" className="nav-auth nav-auth--logout" onClick={logout}>
             Déconnexion

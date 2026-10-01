@@ -14,11 +14,12 @@ public sealed class JwtTokenService(IConfiguration configuration)
         var credentials = new SigningCredentials(
             new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key)),
             SecurityAlgorithms.HmacSha256);
+        // Noms courts pour coller à MapInboundClaims = false + RoleClaimType = "role"
         var claims = new[]
         {
             new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-            new Claim(ClaimTypes.Email, user.Email),
-            new Claim(ClaimTypes.Role, user.Role)
+            new Claim(JwtRegisteredClaimNames.Email, user.Email),
+            new Claim("role", user.Role),
         };
         var token = new JwtSecurityToken(claims: claims, expires: DateTime.UtcNow.AddHours(8),
             signingCredentials: credentials);

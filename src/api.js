@@ -1,14 +1,58 @@
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5030/api";
+const MEDIA_BASE = API_URL.endsWith("/api") ? API_URL.slice(0, -4) : API_URL;
+
+const readError = async (response, fallback) => {
+  try {
+    const data = await response.json();
+    if (data?.message) return data.message;
+    if (typeof data?.title === "string") return data.title;
+  } catch {
+    /* réponse non JSON */
+  }
+  if (response.status === 401 || response.status === 403) {
+    return "Session expirée ou accès refusé. Reconnectez-vous à l’administration.";
+  }
+  return fallback;
+};
+
+const request = async (path, options = {}, fallbackError = "Une erreur est survenue.") => {
+  let response;
+  try {
+    response = await fetch(`${API_URL}${path}`, options);
+  } catch {
+    throw new Error("Impossible de joindre le serveur. Vérifiez que l’API est démarrée (port 5030).");
+  }
+  if (!response.ok) throw new Error(await readError(response, fallbackError));
+  if (response.status === 204) return null;
+  return response.json();
+};
+
+/** Corrige les URLs média (relatives, absolues, ou doublées par erreur). */
+export const resolveMediaUrl = (url = "") => {
+  if (!url || typeof url !== "string") return "";
+  let value = url.trim();
+  if (!value) return "";
+
+  // Cas observé : http://localhost:5030http://localhost:5030/uploads/...
+  while (/^https?:\/\/[^/]+https?:\/\//i.test(value)) {
+    value = value.replace(/^https?:\/\/[^/]+/i, "");
+  }
+
+  const uploadsMatch = value.match(/\/uploads\/[^\s?#]+/);
+  if (uploadsMatch) return `${MEDIA_BASE}${uploadsMatch[0]}`;
+
+  if (/^https?:\/\//i.test(value)) return value;
+  if (value.startsWith("/")) return `${MEDIA_BASE}${value}`;
+  return value;
+};
 
 export const api = {
   async login(email, password) {
-    const response = await fetch(`${API_URL}/auth/login`, {
+    const data = await request("/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
-    });
-    const data = await response.json();
-    if (!response.ok) throw new Error(data.message || "Connexion impossible.");
+    }, "Connexion impossible.");
     localStorage.setItem("ysc_auth", JSON.stringify(data));
     return data;
   },
@@ -26,65 +70,58 @@ export const api = {
     const auth = this.getAuth();
     return auth?.token ? { Authorization: `Bearer ${auth.token}` } : {};
   },
-  async getEvents() {
-    const response = await fetch(`${API_URL}/events`);
-    if (!response.ok) throw new Error("Événements indisponibles.");
-    return response.json();
+  getEvents() {
+    return request("/events", {}, "Événements indisponibles.");
   },
-  async createEvent(event) {
-    const response = await fetch(`${API_URL}/events`, {
+  createEvent(event) {
+    return request("/events", {
       method: "POST",
       headers: { "Content-Type": "application/json", ...this.authHeaders() },
       body: JSON.stringify(event),
-    });
-    if (!response.ok) throw new Error("Impossible de créer l'événement.");
-    return response.json();
+    }, "Impossible de créer l'événement.");
   },
-  async updateEvent(id, event) {
-    const response = await fetch(`${API_URL}/events/${id}`, {
+  updateEvent(id, event) {
+    return request(`/events/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json", ...this.authHeaders() },
       body: JSON.stringify({ ...event, id }),
-    });
-    if (!response.ok) throw new Error("Impossible de modifier l'événement.");
-    return response.json();
+    }, "Impossible de modifier l'événement.");
   },
-  async deleteEvent(id) {
-    const response = await fetch(`${API_URL}/events/${id}`, {
+  deleteEvent(id) {
+    return request(`/events/${id}`, {
       method: "DELETE",
       headers: this.authHeaders(),
-    });
-    if (!response.ok) throw new Error("Impossible de supprimer l'événement.");
+    }, "Impossible de supprimer l'événement.");
   },
-  async getContent(page) {
-    const response = await fetch(`${API_URL}/content/${encodeURIComponent(page)}`);
-    if (!response.ok) throw new Error("Contenu indisponible.");
-    return response.json();
+  getContent(page) {
+    return request(`/content/${encodeURIComponent(page)}`, {}, "Contenu indisponible.");
   },
-  async saveContent(page, key, value) {
-    const response = await fetch(`${API_URL}/content`, {
+  saveContent(page, key, value) {
+    return request("/content", {
       method: "PUT",
       headers: { "Content-Type": "application/json", ...this.authHeaders() },
       body: JSON.stringify({ page, key, value }),
-    });
-    if (!response.ok) throw new Error("Impossible d'enregistrer le contenu.");
-    return response.json();
+    }, "Impossible d'enregistrer le contenu.");
   },
-  async deleteContent(page, key) {
-    const response = await fetch(`${API_URL}/content/${encodeURIComponent(page)}/${encodeURIComponent(key)}`, {
-      method: "DELETE", headers: this.authHeaders(),
-    });
-    if (!response.ok) throw new Error("Impossible de supprimer ce contenu.");
+  deleteContent(page, key) {
+    const params = new URLSearchParams({ key });
+    return request(`/content/${encodeURIComponent(page)}?${params}`, {
+      method: "DELETE",
+      headers: this.authHeaders(),
+    }, "Impossible de supprimer ce contenu.");
   },
   async uploadPhoto(file) {
+    if (!file) throw new Error("Aucun fichier sélectionné.");
     const body = new FormData();
-    body.append("file", file);
-    const response = await fetch(`${API_URL}/media/photos`, {
-      method: "POST", headers: this.authHeaders(), body,
-    });
-    if (!response.ok) throw new Error("Impossible d'importer la photo.");
-    const data = await response.json();
-    const baseUrl = API_URL.endsWith("/api") ? API_URL.slice(0, -4) : API_URL;
-    return `${baseUrl}${data.url}`;
+    const filename = file.name || `photo-${Date.now()}.jpg`;
+    body.append("file", file, filename);
+    const data = await request("/media/photos", {
+      method: "POST",
+      headers: this.authHeaders(),
+      body,
+    }, "Impossible d'importer la photo.");
+    // Toujours reconstruire depuis le chemin relatif pour éviter les URLs doublées
+    const relative = data.path || data.url || "";
+    return resolveMediaUrl(relative);
   },
 };

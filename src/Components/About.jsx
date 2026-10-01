@@ -1,8 +1,6 @@
 import React from "react";
-import { useEffect, useState } from "react";
-import { api } from "../api";
-import { ManagedContent } from "./ManagedContent";
 import { Link } from "react-router-dom";
+import { linesOf, paragraphsOf, pipeRows, usePageBlocks } from "./usePageContent";
 import historyTeamImage from "../images/WhatsApp Image 2026-05-16 at 16.18.39.jpeg";
 import figCertifiedImage from "../images/WhatsApp Image 2026-05-16 at 16.12.14 (1).jpeg";
 import stapsImageOne from "../images/WhatsApp Image 2026-05-19 at 11.58.31.jpeg";
@@ -12,80 +10,17 @@ import combatImageTwo from "../images/WhatsApp Image 2026-05-22 at 15.06.55.jpeg
 import combatImageThree from "../images/WhatsApp Image 2026-05-22 at 15.07.50.jpeg";
 import prepImage from "../images/WhatsApp Image 2026-05-22 at 15.20.21 (1).jpeg";
 
-/* ── données ── */
-const palmares = [
-  { label: "Trophées de meilleur club", detail: "Classé 1er club de gymnastique au Togo depuis sa création" },
-  { label: "Médailles individuelles", detail: "Nombreuses distinctions décernées à nos athlètes en compétition" },
-  { label: "Culture d'excellence", detail: "Encadrement rigoureux axé sur la performance et la régularité" },
-];
-
-const axes = [
-  {
-    num: "01",
-    title: "Axe Sport & Bien-être",
-    desc: "Accueillir des jeunes de tous niveaux et leur faire découvrir les bienfaits du sport sur leur corps et leur mental.",
-    disciplines: ["Gymnastique", "Boxe", "Fitness & Cross Training"],
-  },
-  {
-    num: "02",
-    title: "Axe Excellence",
-    desc: "Détecter les talents et les préparer aux compétitions régionales, nationales et internationales.",
-    disciplines: ["Préparation compétitive", "Suivi individualisé", "Stages et regroupements"],
-  },
-];
-
-const coaches = [
-  {
-    title: "Certifiés FIG",
-    detail: "Fédération Internationale de Gymnastique",
-    image: figCertifiedImage,
-    imageAlt: "Coachs certifiés FIG avec attestations de participation",
-  },
-  {
-    title: "Diplômés STAPS",
-    detail: "Sciences et Techniques des Activités Physiques et Sportives",
-    images: [
-      { src: stapsImageOne, alt: "Diplômés STAPS - remise de diplôme" },
-      { src: stapsImageTwo, alt: "Diplômés STAPS - présentation du diplôme" },
-    ],
-  },
-  {
-    title: "Sports de combat",
-    detail: "Spécialistes en boxe et préparation physique",
-    images: [
-      { src: combatImageOne, alt: "Athlète de sports de combat en compétition" },
-      { src: combatImageTwo, alt: "Champion en sports de combat avec ceinture" },
-      { src: combatImageThree, alt: "Podium et récompenses en sports de combat" },
-    ],
-  },
-  {
-    title: "Préparation physique",
-    detail: "Coaches en renforcement musculaire et fitness",
-    image: prepImage,
-    imageAlt: "Coach en préparation physique et renforcement musculaire",
-  },
-];
-
-const social = [
-  { label: "Bourses partielles", desc: "Réduction significative des frais d'adhésion pour les familles à revenus modestes." },
-  { label: "Bourses totales", desc: "Prise en charge complète pour les jeunes talents identifiés sans ressources suffisantes." },
-  { label: "Détection des talents", desc: "Programme actif de repérage des jeunes prometteurs dans les quartiers de Lomé." },
-  { label: "Accompagnement personnalisé", desc: "Suivi humain et pédagogique au-delà du cadre sportif pour chaque enfant accompagné." },
-  { label: "Réduction fratrie", desc: "Tarifs préférentiels à partir de 3 enfants d'une même famille inscrits au club." },
-];
-
-const timeline = [
-  { year: "2022", event: "Création du Youth Sports Club à Lomé" },
-  { year: "", event: "Lancement du programme de bourses sportives" },
-  { year: "", event: "Premières séances d'entraînement de gymnastique à l'école" },
-  { year: "", event: "Premier titre de meilleur club aux compétitions nationales" },
-  { year: "2023", event: "Poursuite des séances dans le jardin du cabinet de kinésithérapie Kneao en début d'année" },
-  { year: "", event: "Poursuite des séances au stade de Kégué à la mi-année" },
-  { year: "2024", event: "Ouverture des disciplines Boxe et Fitness" },
-  { year: "", event: "Mise en place de l'axe Excellence et détection de talents" },
-  { year: "", event: "Première médaille au championnat d'Afrique junior de gymnastique aérobic" },
-  { year: "2025", event: "Meilleur club de " },
-];
+/* images de secours pour les coachs */
+const coachFallbacks = {
+  "coaches-fig": figCertifiedImage,
+  "coaches-staps-1": stapsImageOne,
+  "coaches-staps-2": stapsImageTwo,
+  "coaches-combat-1": combatImageOne,
+  "coaches-combat-2": combatImageTwo,
+  "coaches-combat-3": combatImageThree,
+  "coaches-prep": prepImage,
+  intro: historyTeamImage,
+};
 
 const scoped = `
   /* ── Hero About ── */
@@ -513,23 +448,52 @@ const scoped = `
 `;
 
 const About = () => {
-  const [managedBlocks, setManagedBlocks] = useState({});
-  useEffect(() => {
-    api.getContent("a-propos").then((items) => {
-      const blocks = Object.fromEntries(
-        items
-          .filter((item) => item.key.startsWith("block:"))
-          .map((item) => {
-            try { return [item.key.slice(6), JSON.parse(item.value)]; }
-            catch { return [item.key.slice(6), {}]; }
-          })
-      );
-      if (Object.keys(blocks).length) setManagedBlocks(blocks);
-    }).catch(() => { });
-  }, []);
+  const { block } = usePageBlocks("a-propos");
+  const img = (key) => block(key).image || coachFallbacks[key];
 
-  // Helper: use backend image URL if set, otherwise fall back to static import
-  const img = (key, fallback) => managedBlocks[key]?.image || fallback;
+  const intro = block("intro");
+  const introParts = paragraphsOf(intro.text);
+  const performance = block("performance");
+  const performanceLines = linesOf(performance.text);
+  const performanceIntro = performanceLines[0] || "";
+  const palmares = pipeRows(performanceLines.slice(1).join("\n")).map((row) => ({
+    label: row.label,
+    detail: row.value,
+  }));
+
+  const history = block("history");
+  const historyLines = linesOf(history.text);
+  const historyIntro = historyLines[0]?.includes("|") ? "" : historyLines[0] || "";
+  const timeline = pipeRows(historyLines.filter((line) => line.includes("|")).join("\n") || historyLines.slice(historyIntro ? 1 : 0).join("\n"))
+    .map((row) => ({ year: row.label, event: row.value }));
+
+  const axesBlock = block("axes");
+  const axesLines = linesOf(axesBlock.text);
+  const axesIntro = axesLines[0]?.includes("|") ? "" : axesLines[0] || "";
+  const axes = (axesIntro ? axesLines.slice(1) : axesLines).map((line, index) => {
+    const parts = line.split("|").map((part) => part.trim());
+    return {
+      num: String(index + 1).padStart(2, "0"),
+      title: parts[0] || "",
+      desc: parts[1] || "",
+      disciplines: (parts[2] || "").split(",").map((item) => item.trim()).filter(Boolean),
+    };
+  });
+
+  const coachesIntro = block("coaches-intro");
+  const socialBlock = block("social");
+  const socialLines = linesOf(socialBlock.text);
+  const socialIntro = socialLines[0]?.includes("|") ? "" : socialLines[0] || "";
+  const social = pipeRows((socialIntro ? socialLines.slice(1) : socialLines).join("\n")).map((row) => ({
+    label: row.label,
+    desc: row.value,
+  }));
+
+  const contact = block("contact");
+  const contactLines = linesOf(contact.text);
+  const contactIntro = contactLines[0]?.includes("|") ? "" : contactLines[0] || "";
+  const contactRows = pipeRows((contactIntro ? contactLines.slice(1) : contactLines).join("\n"));
+  const cta = block("cta");
 
   return (
     <>
@@ -538,26 +502,14 @@ const About = () => {
       {/* ══ PRÉSENTATION ══ */}
       <section className="section">
         <div className="section-header">
-          <ManagedContent page="a-propos" fallbackTitle="Qui sommes-nous ?" fallbackDescription="Découvrez l'histoire, les valeurs et la mission du Youth Sports Club." />
-          <p>
-            Le Youth Sports Club (YSC) est une association sportive basée à
-            Lomé, fondée en 2022. Depuis sa création, le club s&apos;est
-            imposé comme une référence nationale, notamment en gymnastique, en
-            se classant régulièrement parmi les meilleurs clubs lors des
-            compétitions et en remportant de nombreux trophées.
-          </p>
+          <h2>{intro.title}</h2>
+          {introParts[0] && <p>{introParts[0]}</p>}
         </div>
         <div className="about-intro-layout">
-          <p className="about-intro-text">
-            Au-delà de la performance sportive, le Youth Sports Club s&apos;inscrit dans une
-            démarche sociale visant à favoriser l&apos;accès au sport pour tous, notamment à
-            travers des dispositifs de bourses et d&apos;accompagnement des jeunes issus de milieux
-            modestes. Le club considère le sport comme un puissant outil d&apos;éducation,
-            d&apos;inclusion et de transformation sociale.
-          </p>
+          <p className="about-intro-text">{introParts[1] || introParts[0] || ""}</p>
           <div className="about-team-image-wrap">
             <img
-              src={img("intro", historyTeamImage)}
+              src={img("intro")}
               alt="Équipe du Youth Sports Club"
               className="about-team-image"
               loading="lazy"
@@ -569,11 +521,8 @@ const About = () => {
       {/* ══ PALMARÈS ══ */}
       <section className="section section-alt">
         <div className="section-header">
-          <h2>Un club performant</h2>
-          <p>
-            Depuis sa création, le YSC se classe régulièrement parmi les
-            meilleurs clubs lors des compétitions nationales.
-          </p>
+          <h2>{performance.title}</h2>
+          <p>{performanceIntro}</p>
         </div>
         <div className="grid three-columns">
           {palmares.map((p) => (
@@ -590,12 +539,12 @@ const About = () => {
       {/* ══ TIMELINE ══ */}
       <section className="section">
         <div className="section-header">
-          <h2>Notre histoire</h2>
-          <p>Les grandes étapes du Youth Sports Club depuis sa fondation.</p>
+          <h2>{history.title}</h2>
+          <p>{historyIntro || "Les grandes étapes du Youth Sports Club depuis sa fondation."}</p>
         </div>
         <div className="about-timeline">
           {timeline.map((t, i) => (
-            <div className="about-tl-item" key={i}>
+            <div className="about-tl-item" key={`${t.year}-${i}`}>
               <div className="about-tl-year">{t.year}</div>
               <div className="about-tl-event">{t.event}</div>
             </div>
@@ -606,8 +555,8 @@ const About = () => {
       {/* ══ AXES ══ */}
       <section className="section">
         <div className="section-header">
-          <h2>Nos axes de développement</h2>
-          <p>Le club s&apos;organise autour de deux axes complémentaires pour couvrir tous les profils.</p>
+          <h2>{axesBlock.title}</h2>
+          <p>{axesIntro}</p>
         </div>
         <div className="grid two-columns about-coach-grid">
           {axes.map((a) => (
@@ -628,43 +577,36 @@ const About = () => {
       {/* ══ ENCADREMENT ══ */}
       <section className="section section-alt">
         <div className="section-header">
-          <h2>Un encadrement qualifié</h2>
-          <p>
-            Chaque séance est animée par des professionnels certifiés et
-            adaptée à l&apos;âge et au niveau des participants.
-          </p>
+          <h2>{coachesIntro.title}</h2>
+          <p>{coachesIntro.text}</p>
         </div>
         <div className="grid two-columns">
-          {/* Certifiés FIG */}
           <div className="about-coach-card">
-            <img src={img("coaches-fig", figCertifiedImage)} alt="Coachs certifiés FIG" className="about-coach-image" loading="lazy" />
-            <h3>{managedBlocks["coaches-fig"]?.title || "Certifiés FIG"}</h3>
-            <p>{managedBlocks["coaches-fig"]?.text || "Fédération Internationale de Gymnastique"}</p>
+            <img src={img("coaches-fig")} alt="Coachs certifiés FIG" className="about-coach-image" loading="lazy" />
+            <h3>{block("coaches-fig").title}</h3>
+            <p>{block("coaches-fig").text}</p>
           </div>
-          {/* Diplômés STAPS */}
           <div className="about-coach-card">
             <div className="about-coach-gallery">
-              <img src={img("coaches-staps-1", stapsImageOne)} alt="Diplômés STAPS – photo 1" className="about-coach-gallery-image" loading="lazy" />
-              <img src={img("coaches-staps-2", stapsImageTwo)} alt="Diplômés STAPS – photo 2" className="about-coach-gallery-image" loading="lazy" />
+              <img src={img("coaches-staps-1")} alt="Diplômés STAPS – photo 1" className="about-coach-gallery-image" loading="lazy" />
+              <img src={img("coaches-staps-2")} alt="Diplômés STAPS – photo 2" className="about-coach-gallery-image" loading="lazy" />
             </div>
-            <h3>{managedBlocks["coaches-staps-1"]?.title || "Diplômés STAPS"}</h3>
-            <p>{managedBlocks["coaches-staps-1"]?.text || "Sciences et Techniques des Activités Physiques et Sportives"}</p>
+            <h3>{block("coaches-staps-1").title}</h3>
+            <p>{block("coaches-staps-1").text}</p>
           </div>
-          {/* Sports de combat */}
           <div className="about-coach-card">
             <div className="about-coach-gallery">
-              <img src={img("coaches-combat-1", combatImageOne)} alt="Sports de combat – photo 1" className="about-coach-gallery-image" loading="lazy" />
-              <img src={img("coaches-combat-2", combatImageTwo)} alt="Sports de combat – photo 2" className="about-coach-gallery-image" loading="lazy" />
-              <img src={img("coaches-combat-3", combatImageThree)} alt="Sports de combat – photo 3" className="about-coach-gallery-image" loading="lazy" />
+              <img src={img("coaches-combat-1")} alt="Sports de combat – photo 1" className="about-coach-gallery-image" loading="lazy" />
+              <img src={img("coaches-combat-2")} alt="Sports de combat – photo 2" className="about-coach-gallery-image" loading="lazy" />
+              <img src={img("coaches-combat-3")} alt="Sports de combat – photo 3" className="about-coach-gallery-image" loading="lazy" />
             </div>
-            <h3>{managedBlocks["coaches-combat-1"]?.title || "Sports de combat"}</h3>
-            <p>{managedBlocks["coaches-combat-1"]?.text || "Spécialistes en boxe et préparation physique"}</p>
+            <h3>{block("coaches-combat-1").title}</h3>
+            <p>{block("coaches-combat-1").text}</p>
           </div>
-          {/* Préparation physique */}
           <div className="about-coach-card">
-            <img src={img("coaches-prep", prepImage)} alt="Préparation physique" className="about-coach-image" loading="lazy" />
-            <h3>{managedBlocks["coaches-prep"]?.title || "Préparation physique"}</h3>
-            <p>{managedBlocks["coaches-prep"]?.text || "Coaches en renforcement musculaire et fitness"}</p>
+            <img src={img("coaches-prep")} alt="Préparation physique" className="about-coach-image" loading="lazy" />
+            <h3>{block("coaches-prep").title}</h3>
+            <p>{block("coaches-prep").text}</p>
           </div>
         </div>
       </section>
@@ -672,12 +614,8 @@ const About = () => {
       {/* ══ ENGAGEMENT SOCIAL ══ */}
       <section className="section">
         <div className="section-header">
-          <h2>Engagement social</h2>
-          <p>
-            Le YSC s&apos;engage activement pour l&apos;inclusion et
-            l&apos;accessibilité du sport. Des dispositifs concrets
-            accompagnent les jeunes issus de milieux modestes.
-          </p>
+          <h2>{socialBlock.title}</h2>
+          <p>{socialIntro}</p>
         </div>
         <div className="grid two-columns">
           {social.map((s) => (
@@ -694,30 +632,37 @@ const About = () => {
       {/* ══ CONTACT ══ */}
       <section className="section section-alt">
         <div className="section-header">
-          <h2>Nous contacter</h2>
-          <p>Une question, un renseignement ? Notre équipe vous répond rapidement.</p>
+          <h2>{contact.title}</h2>
+          <p>{contactIntro}</p>
         </div>
         <div className="about-contact-grid">
-          <div className="about-contact-card">
-            <h3>Adresse</h3>
-            <p>Stade de Kégué<br />Lomé, Togo</p>
-          </div>
-          <div className="about-contact-card">
-            <h3>Téléphone</h3>
-            <p>
-              <a href="tel:+22899670186">+228 99 67 01 86</a>
-              {" / "}
-              <a href="tel:+22891534885">+228 91 53 48 85</a>
-            </p>
-          </div>
-          <div className="about-contact-card">
-            <h3>Email</h3>
-            <p>
-              <a href="mailto:youthsportsclub.togo@gmail.com">
-                youthsportsclub.togo@gmail.com
-              </a>
-            </p>
-          </div>
+          {contactRows.map((row) => {
+            const isPhone = /téléphone|telephone/i.test(row.label);
+            const isEmail = /email|mail/i.test(row.label);
+            return (
+              <div className="about-contact-card" key={row.label}>
+                <h3>{row.label}</h3>
+                <p>
+                  {isPhone
+                    ? row.value.split("/").map((part, index, all) => {
+                        const phone = part.trim();
+                        const digits = phone.replace(/[^\d+]/g, "");
+                        return (
+                          <span key={phone}>
+                            <a href={`tel:${digits}`}>{phone}</a>
+                            {index < all.length - 1 ? " / " : ""}
+                          </span>
+                        );
+                      })
+                    : isEmail
+                      ? <a href={`mailto:${row.value}`}>{row.value}</a>
+                      : row.value.split(",").map((part, index) => (
+                          <span key={part}>{index > 0 ? <br /> : null}{part.trim()}</span>
+                        ))}
+                </p>
+              </div>
+            );
+          })}
         </div>
       </section>
 
@@ -725,11 +670,8 @@ const About = () => {
       <section className="section">
         <div className="wide">
           <div className="about-cta">
-            <h2>Rejoignez le Youth Sports Club</h2>
-            <p>
-              Tous niveaux acceptés · Encadrement professionnel · Stade de
-              Kégué, Lomé
-            </p>
+            <h2>{cta.title}</h2>
+            <p>{cta.text}</p>
             <div className="about-cta-actions">
               <Link className="btn btn-primary" to="/rejoindre">
                 S&apos;inscrire maintenant

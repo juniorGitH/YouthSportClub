@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { api } from "../api";
-import { ManagedContent } from "./ManagedContent";
+import { linesOf, pipeRows, usePageBlocks } from "./usePageContent";
 import fitnessDisciplineImage from "url:../images/474394443_609527335360011_3887746446676892278_n.jpg";
 import gymDisciplineImage from "url:../images/480777236_636877472624997_71086379626942907_n.jpg";
 import boxeDisciplineImage from "url:../images/home-boxe.png";
@@ -9,87 +9,17 @@ import heroVideoOne from "url:../images/WhatsApp Video 2026-05-16 at 13.55.02.mp
 import heroVideoTwo from "url:../images/WhatsApp Video 2026-05-16 at 13.56.37.mp4";
 import heroVideoThree from "url:../images/WhatsApp Video 2026-05-16 at 14.02.58.mp4";
 
-const disciplines = [
-  {
-    num: "01",
-    title: "Gymnastique",
-    desc: "Notre discipline phare. Souplesse, coordination et maîtrise corporelle. Coachs certifiés FIG.",
-    to: "/entrainements#gymnastique",
-    image: gymDisciplineImage,
-    imageAlt: "Groupe d'enfants en entraînement de gymnastique au sol",
-  },
-  {
-    num: "02",
-    title: "Boxe",
-    desc: "Condition physique, discipline et maîtrise de soi. Encadrée par des spécialistes en sports de combat.",
-    to: "/entrainements#boxe",
-    image: boxeDisciplineImage,
-    imageAlt: "Entraînement de boxe avec sac de frappe",
-  },
-  {
-    num: "03",
-    title: "Fitness & Cross Training",
-    desc: "Remise en forme et renforcement musculaire. Accessible à tous les niveaux, adultes et jeunes.",
-    to: "/entrainements#fitness",
-    image: fitnessDisciplineImage,
-    imageAlt: "Séance de fitness et cross training",
-  },
+const disciplineMeta = [
+  { num: "01", key: "disc-gym", to: "/entrainements#gymnastique", image: gymDisciplineImage, imageAlt: "Groupe d'enfants en entraînement de gymnastique au sol" },
+  { num: "02", key: "disc-boxe", to: "/entrainements#boxe", image: boxeDisciplineImage, imageAlt: "Entraînement de boxe avec sac de frappe" },
+  { num: "03", key: "disc-fitness", to: "/entrainements#fitness", image: fitnessDisciplineImage, imageAlt: "Séance de fitness et cross training" },
 ];
 
-const horaires = [
-  { who: "12 ans et plus", time: "Samedi 08h – 10h" },
-  { who: "11 ans et moins", time: "Samedi 10h – 12h" },
-  { who: "Adultes", time: "Samedi 10h30 – 11h30" },
-];
-
-const tarifs = [
-  { label: "Inscription", value: "5 000 FCFA" },
-  { label: "Mensualité enfant", value: "20 000 FCFA" },
-  { label: "Mensualité adulte", value: "15 000 FCFA" },
-  { label: "Réduction fratrie", value: "3 enfants et +" },
-];
-
-const socialTags = [
-  "Bourses partielles",
-  "Bourses totales",
-  "Détection des talents",
-  "Accompagnement personnalisé",
-  "Réduction fratrie (3 enfants+)",
-];
-
-const palmares = [
-  {
-    emoji: "🥇",
-    title: "Champion de zone",
-    discipline: "Gymnastique",
-    detail: "Moins de 12 ans · 2025",
-    color: "#2f6fb2",
-    bg: "#eaf2fc",
-  },
-  {
-    emoji: "🥈",
-    title: "Vice-champion national",
-    discipline: "Fitness",
-    detail: "Moins de 12 ans · 2024",
-    color: "#3b6d11",
-    bg: "#eaf3de",
-  },
-  {
-    emoji: "🥇",
-    title: "2 médailles d'or",
-    discipline: "Boxe éducative",
-    detail: "Championnat de zone · 2024",
-    color: "#a32d2d",
-    bg: "#fff0f0",
-  },
-  {
-    emoji: "🥉",
-    title: "3e place nationale",
-    discipline: "Fitness",
-    detail: "Moins de 12 ans · 2024",
-    color: "#854f0b",
-    bg: "#faeeda",
-  },
+const palmaresStyles = [
+  { color: "#2f6fb2", bg: "#eaf2fc", emoji: "🥇" },
+  { color: "#3b6d11", bg: "#eaf3de", emoji: "🥈" },
+  { color: "#a32d2d", bg: "#fff0f0", emoji: "🥇" },
+  { color: "#854f0b", bg: "#faeeda", emoji: "🥉" },
 ];
 
 const heroVideos = [heroVideoOne, heroVideoTwo, heroVideoThree];
@@ -503,56 +433,57 @@ const scoped = `
 
 const Home = () => {
   const [featuredEvent, setFeaturedEvent] = useState(null);
-  const [mb, setMb] = useState({});
+  const { block } = usePageBlocks("accueil");
+
   useEffect(() => {
-    api.getEvents().then((items) => setFeaturedEvent(items.find((item) => item.featured) || items[0] || null)).catch(() => {});
-    api.getContent("accueil").then((items) => {
-      const blocks = {};
-      items.filter((item) => item.key.startsWith("block:")).forEach((item) => {
-        try { blocks[item.key.slice(6)] = JSON.parse(item.value); } catch { /* ignore */ }
-      });
-      if (Object.keys(blocks).length) setMb(blocks);
-    }).catch(() => {});
+    api.getEvents()
+      .then((items) => setFeaturedEvent(items.find((item) => item.featured) || items[0] || null))
+      .catch(() => {});
   }, []);
 
-  // Helpers
-  const b = (key) => mb[key] || {};
-  const hero = b("hero");
-  const discGym = b("disc-gym");
-  const discBoxe = b("disc-boxe");
-  const discFitness = b("disc-fitness");
-  const socialBlock = b("social");
-  const ctaBlock = b("cta");
+  const hero = block("hero");
+  const heroLines = linesOf(hero.text);
+  const heroEyebrow = heroLines[0] || "Lomé, Togo · Fondé en 2022";
+  const heroSub = heroLines[1] || "Association sportive de référence nationale, spécialisée dans la formation et l'encadrement des jeunes à travers la gymnastique, la boxe et le fitness.";
+  const heroStats = (heroLines.length > 2 ? pipeRows(heroLines.slice(2).join("\n")) : pipeRows("3+ | Années d'expérience\n3 | Disciplines\n🥇 | Champions nationaux\n100% | Inclusif"))
+    .slice(0, 4);
 
-  // Disciplines with backend override
-  const displayedDisciplines = [
-    { ...disciplines[0], title: discGym.title || disciplines[0].title, desc: discGym.text || disciplines[0].desc, image: discGym.image || disciplines[0].image },
-    { ...disciplines[1], title: discBoxe.title || disciplines[1].title, desc: discBoxe.text || disciplines[1].desc, image: discBoxe.image || disciplines[1].image },
-    { ...disciplines[2], title: discFitness.title || disciplines[2].title, desc: discFitness.text || disciplines[2].desc, image: discFitness.image || disciplines[2].image },
-  ];
-
-  // Palmares with backend override
-  const displayedPalmares = palmares.map((p, i) => {
-    const managed = b(`palmares-${i + 1}`);
-    return managed.title ? { ...p, title: managed.title, detail: managed.text || p.detail, discipline: managed.discipline || p.discipline, emoji: managed.emoji || p.emoji } : p;
+  const discIntro = block("disc-intro");
+  const displayedDisciplines = disciplineMeta.map((meta) => {
+    const managed = block(meta.key);
+    return {
+      ...meta,
+      title: managed.title,
+      desc: managed.text,
+      image: managed.image || meta.image,
+    };
   });
 
-  // Horaires with backend override
-  const horaireBlock = b("horaires");
-  const displayedHoraires = horaireBlock.text
-    ? horaireBlock.text.split("\n").filter(Boolean).map((line) => { const [who, time] = line.split("|"); return { who: who.trim(), time: (time || "").trim() }; })
-    : horaires;
+  const palmaresIntro = block("palmares-intro");
+  const palmaresIntroLines = linesOf(palmaresIntro.text);
+  const displayedPalmares = palmaresStyles.map((style, index) => {
+    const managed = block(`palmares-${index + 1}`);
+    const detailLines = linesOf(managed.text);
+    return {
+      ...style,
+      title: managed.title,
+      discipline: detailLines[0] || "",
+      detail: detailLines.slice(1).join(" · ") || detailLines[0] || "",
+      emoji: style.emoji,
+    };
+  });
 
-  // Tarifs with backend override
-  const tarifBlock = b("tarifs");
-  const displayedTarifs = tarifBlock.text
-    ? tarifBlock.text.split("\n").filter(Boolean).map((line) => { const [label, value] = line.split("|"); return { label: label.trim(), value: (value || "").trim() }; })
-    : tarifs;
+  const infos = block("infos");
+  const horaireBlock = block("horaires");
+  const displayedHoraires = pipeRows(horaireBlock.text).map((row) => ({ who: row.label, time: row.value }));
+  const tarifBlock = block("tarifs");
+  const displayedTarifs = pipeRows(tarifBlock.text).map((row) => ({ label: row.label, value: row.value }));
 
-  // Social tags with backend override
-  const displayedSocialTags = socialBlock.tags
-    ? socialBlock.tags.split(",").map((t) => t.trim()).filter(Boolean)
-    : socialTags;
+  const socialBlock = block("social");
+  const socialLines = linesOf(socialBlock.text);
+  const socialBody = socialLines[0] || "";
+  const displayedSocialTags = socialLines.slice(1);
+  const ctaBlock = block("cta");
 
   return (
     <>
@@ -577,35 +508,25 @@ const Home = () => {
         </div>
         <div className="ysc-hero-overlay" />
         <div className="ysc-hero-inner">
-          <p className="ysc-hero-eyebrow">{hero.eyebrow || "Lomé, Togo · Fondé en 2022"}</p>
+          <p className="ysc-hero-eyebrow">{heroEyebrow}</p>
           <h1>
-            YOUTH <em className="ysc-hero-accent">SPORTS</em> CLUB
+            {(hero.title || "YOUTH SPORTS CLUB").includes("SPORTS")
+              ? <>{(hero.title || "YOUTH SPORTS CLUB").split("SPORTS")[0]}<em className="ysc-hero-accent">SPORTS</em>{(hero.title || "YOUTH SPORTS CLUB").split("SPORTS")[1]}</>
+              : (hero.title || "YOUTH SPORTS CLUB")}
           </h1>
-          <p className="ysc-hero-sub">
-            {hero.text || "Association sportive de référence nationale, spécialisée dans la formation et l\u0027encadrement des jeunes à travers la gymnastique, la boxe et le fitness."}
-          </p>
+          <p className="ysc-hero-sub">{heroSub}</p>
 
           {/* Stats hero */}
           <div className="ysc-hero-stats" aria-label="Chiffres clés">
-            <div className="ysc-hero-stat">
-              <span className="ysc-hero-stat-num">{hero.stat1 || "3+"}</span>
-              <span className="ysc-hero-stat-label">{hero.stat1Label || "Années d'expérience"}</span>
-            </div>
-            <div className="ysc-hero-stat-sep" aria-hidden="true" />
-            <div className="ysc-hero-stat">
-              <span className="ysc-hero-stat-num">{hero.stat2 || "3"}</span>
-              <span className="ysc-hero-stat-label">{hero.stat2Label || "Disciplines"}</span>
-            </div>
-            <div className="ysc-hero-stat-sep" aria-hidden="true" />
-            <div className="ysc-hero-stat">
-              <span className="ysc-hero-stat-num">{hero.stat3 || "🥇"}</span>
-              <span className="ysc-hero-stat-label">{hero.stat3Label || "Champions nationaux"}</span>
-            </div>
-            <div className="ysc-hero-stat-sep" aria-hidden="true" />
-            <div className="ysc-hero-stat">
-              <span className="ysc-hero-stat-num">{hero.stat4 || "100%"}</span>
-              <span className="ysc-hero-stat-label">{hero.stat4Label || "Inclusif"}</span>
-            </div>
+            {heroStats.map((stat, index) => (
+              <Fragment key={`${stat.label}-${index}`}>
+                {index > 0 && <div className="ysc-hero-stat-sep" aria-hidden="true" />}
+                <div className="ysc-hero-stat">
+                  <span className="ysc-hero-stat-num">{stat.label}</span>
+                  <span className="ysc-hero-stat-label">{stat.value}</span>
+                </div>
+              </Fragment>
+            ))}
           </div>
 
           <div className="hero-actions">
@@ -646,7 +567,8 @@ const Home = () => {
       {/* ══ DISCIPLINES ══ */}
       <section className="section section-alt">
         <div className="section-header">
-          <ManagedContent page="disciplines" fallbackTitle="Nos disciplines" fallbackDescription="Trois activités complémentaires pour tous les profils et tous les niveaux, encadrées par des professionnels qualifiés." />
+          <h2>{discIntro.title}</h2>
+          <p>{discIntro.text}</p>
         </div>
         <div className="grid three-columns">
           {displayedDisciplines.map((d) => (
@@ -673,7 +595,9 @@ const Home = () => {
       {/* ══ PALMARÈS ══ */}
       <section className="section">
         <div className="section-header">
-          <ManagedContent page="palmares" fallbackTitle="Notre palmarès" fallbackDescription="Le Youth Sports Club forme des champions. Quelques titres obtenus en compétitions zonales et nationales." />
+          <h2>{palmaresIntro.title}</h2>
+          <p>{palmaresIntroLines[0]}</p>
+          {palmaresIntroLines[1] && <p>{palmaresIntroLines.slice(1).join(" · ")}</p>}
         </div>
         <div className="ysc-palmares-grid">
           {displayedPalmares.map((p) => (
@@ -700,11 +624,12 @@ const Home = () => {
       {/* ══ INFOS PRATIQUES ══ */}
       <section className="section section-alt">
         <div className="section-header">
-          <ManagedContent page="informations-pratiques" fallbackTitle="Informations pratiques" fallbackDescription="Retrouvez-nous au Stade de Kégué, Lomé. Entraînements le samedi. Tous niveaux acceptés." />
+          <h2>{infos.title}</h2>
+          <p>{infos.text}</p>
         </div>
         <div className="grid two-columns">
           <div className="card">
-            <p className="ysc-card-title">{horaireBlock.title || "Horaires d\u0027entraînement"}</p>
+            <p className="ysc-card-title">{horaireBlock.title}</p>
             <table className="ysc-info-table">
               <tbody>
                 {displayedHoraires.map((h) => (
@@ -717,7 +642,7 @@ const Home = () => {
             </table>
           </div>
           <div className="card">
-            <p className="ysc-card-title">{tarifBlock.title || "Tarifs"}</p>
+            <p className="ysc-card-title">{tarifBlock.title}</p>
             <table className="ysc-info-table">
               <tbody>
                 {displayedTarifs.map((t) => (
@@ -734,17 +659,12 @@ const Home = () => {
 
       {/* ══ ENGAGEMENT SOCIAL ══ */}
       <section className="section">
-        <div className="section-header">
-          <ManagedContent page="engagement-social" fallbackTitle="Engagement social" fallbackDescription="Le YSC s'engage activement pour l'inclusion et l'accessibilité du sport." />
-        </div>
         <div className="wide">
           <div className="card">
             <div className="ysc-social-inner">
               <div className="ysc-social-text">
-                <h3>{socialBlock.title || "L\u0027accès au sport pour tous"}</h3>
-                <p>
-                  {socialBlock.text || "Le YSC s\u0027engage activement pour l\u0027inclusion et l\u0027accessibilité du sport. Des dispositifs concrets accompagnent les jeunes issus de milieux modestes dans leur parcours sportif et de vie : bourses, réductions familiales et suivi personnalisé."}
-                </p>
+                <h3>{socialBlock.title}</h3>
+                <p>{socialBody}</p>
                 <div className="ysc-tags">
                   {displayedSocialTags.map((t) => (
                     <span className="ysc-tag" key={t}>{t}</span>
@@ -764,8 +684,8 @@ const Home = () => {
       <section className="section section-alt">
         <div className="wide">
           <div className="ysc-cta">
-            <h2>{ctaBlock.title || "Prêt à rejoindre le club ?"}</h2>
-            <p>{ctaBlock.text || "Tous niveaux acceptés · Encadrement professionnel · Stade de Kégué, Lomé"}</p>
+            <h2>{ctaBlock.title}</h2>
+            <p>{ctaBlock.text}</p>
             <div className="ysc-cta-actions">
               <Link className="btn btn-primary" to="/rejoindre#registration-form">
                 S&apos;inscrire maintenant

@@ -1,90 +1,40 @@
 // ─── Imports ────────────────────────────────────────────────────────────────
-import { useEffect, useState } from "react";
+import { linesOf, usePageBlocks } from "./usePageContent";
 import videoBoxe from "url:../images/video-boxe.mp4";
 import videoFitness from "url:../images/video-fitness.mp4";
 import videoGym from "url:../images/video-gym.mp4";
 import { scoped, SectionLabel } from "./Pages";
-import { ManagedContent } from "./ManagedContent";
-import { api } from "../api";
 
-// ─── Données ─────────────────────────────────────────────────────────────────
+// ─── Données structurelles (vidéos / couleurs) ───────────────────────────────
 
-const disciplines = [
+const disciplineMeta = [
   {
     id: "gymnastique",
-    label: "Gymnastique",
     accentColor: "#2f6fb2",
     accentBg: "#eaf2fc",
     emoji: "🤸",
-    tagline: "Souplesse, coordination et dépassement de soi",
-    description:
-      "La gymnastique au YSC forme les enfants et adultes à travers des exercices au sol, aux agrès et en acrobaties. Le programme progressif renforce la motricité, l'équilibre et la confiance en soi tout en respectant le rythme de chaque athlète.",
-    details: [
-      { icon: "ti-users", text: "11 ans et moins : 10h – 12h" },
-      { icon: "ti-users", text: "12 ans et plus : 08h – 10h" },
-      { icon: "ti-users", text: "Adultes : 10h30 – 11h30" },
-      { icon: "ti-calendar", text: "Samedi uniquement" },
-      { icon: "ti-map-pin", text: "Stade de Kégué, Lomé" },
-      { icon: "ti-certificate", text: "Encadrant certifié FIG" },
-      { icon: "ti-trophy", text: "Préparation aux compétitions nationales" },
-    ],
     videoSrc: videoGym,
     videoLabel: "Séance de Gymnastique – Youth Sports Club",
   },
   {
     id: "boxe",
-    label: "Boxe éducative",
     accentColor: "#c0392b",
     accentBg: "#fdecea",
     emoji: "🥊",
-    tagline: "Discipline, respect et maîtrise de soi",
-    description:
-      "La boxe éducative du YSC n'est pas un sport de combat : c'est avant tout un outil pédagogique. À travers les gestes techniques, le travail au sac, les déplacements et les rencontres encadrées, les jeunes développent concentration, gestion du stress et esprit sportif.",
-    details: [
-      { icon: "ti-users", text: "11 ans et moins : 10h – 12h" },
-      { icon: "ti-users", text: "12 ans et plus : 08h – 10h" },
-      { icon: "ti-users", text: "Adultes : 10h30 – 11h30" },
-      { icon: "ti-calendar", text: "Samedi uniquement" },
-      { icon: "ti-map-pin", text: "Stade de Kégué, Lomé" },
-      { icon: "ti-certificate", text: "Encadrant certifié boxe éducative" },
-      { icon: "ti-heart", text: "Approche non-violente et éducative" },
-    ],
     videoSrc: videoBoxe,
     videoLabel: "Séance de Boxe éducative – Youth Sports Club",
   },
   {
     id: "fitness",
-    label: "Fitness & Cross-training",
     accentColor: "#27ae60",
     accentBg: "#eafaf1",
     emoji: "💪",
-    tagline: "Force, mobility et forme complète",
-    description:
-      "Le programme fitness du YSC est conçu pour tous les âges souhaitant améliorer leur condition physique globale. Renforcement musculaire, travail cardiovasculaire, mobilité et coordination sont au programme — adapté à chaque niveau, du débutant au sportif régulier.",
-    details: [
-      { icon: "ti-users", text: "11 ans et moins : 10h – 12h" },
-      { icon: "ti-users", text: "12 ans et plus : 08h – 10h" },
-      { icon: "ti-users", text: "Adultes : 10h30 – 11h30" },
-      { icon: "ti-calendar", text: "Samedi uniquement" },
-      { icon: "ti-map-pin", text: "Stade de Kégué, Lomé" },
-      { icon: "ti-certificate", text: "Encadrant certifié fitness & cross-training" },
-      { icon: "ti-flame", text: "Cardio, renforcement et mobilité" },
-    ],
     videoSrc: videoFitness,
     videoLabel: "Séance de Fitness – Youth Sports Club",
   },
 ];
 
-const schedule = [
-  {
-    day: "Samedi",
-    slots: [
-      { time: "08h00 – 10h00", who: "12 ans et plus", disciplines: ["Gymnastique", "Boxe éducative", "Fitness"] },
-      { time: "10h00 – 12h00", who: "11 ans et moins", disciplines: ["Gymnastique", "Boxe éducative", "Fitness"] },
-      { time: "10h30 – 11h30", who: "Adultes",          disciplines: ["Gymnastique", "Boxe éducative", "Fitness"] },
-    ],
-  },
-];
+const detailIcons = ["ti-users", "ti-users", "ti-users", "ti-calendar", "ti-map-pin", "ti-certificate", "ti-trophy"];
 
 // ─── CSS propre à ce fichier ────────────────────────────────────────────────
 
@@ -448,32 +398,36 @@ const VideoOrPlaceholder = ({ videoSrc, videoLabel }) => (
 // ─── Training Sessions Page ─────────────────────────────────────────────────
 
 export const TrainingSessionsPage = () => {
-  const [managedDisciplines, setManagedDisciplines] = useState({});
+  const { block } = usePageBlocks("entrainements");
+  const intro = block("intro");
+  const scheduleBlock = block("schedule");
+  const scheduleLines = linesOf(scheduleBlock.text);
+  const scheduleIntro = scheduleLines[0]?.includes("|") ? "" : scheduleLines[0] || "";
+  const scheduleSub = scheduleLines[1]?.includes("|") ? scheduleIntro : scheduleLines[1] || scheduleIntro;
+  const scheduleSlots = linesOf(scheduleBlock.text)
+    .filter((line) => line.includes("|"))
+    .map((line) => {
+      const parts = line.split("|").map((part) => part.trim());
+      return {
+        who: parts[0] || "",
+        time: parts[1] || "",
+        disciplines: (parts[2] || "").split(",").map((item) => item.trim()).filter(Boolean),
+      };
+    });
+  const cta = block("cta");
 
-  useEffect(() => {
-    api.getContent("entrainements").then((items) => {
-      const blocks = {};
-      items.filter((item) => item.key.startsWith("block:")).forEach((item) => {
-        try {
-          blocks[item.key.slice(6)] = JSON.parse(item.value);
-        } catch {
-          // Ignore malformed optional content and keep the default section.
-        }
-      });
-      setManagedDisciplines(blocks);
-    }).catch(() => {});
-  }, []);
-
-  const displayedDisciplines = disciplines.map((discipline) => {
-    const managed = managedDisciplines[discipline.id];
-    if (!managed) return discipline;
-    const lines = (managed.text || "").split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
+  const displayedDisciplines = disciplineMeta.map((meta) => {
+    const managed = block(meta.id);
+    const contentLines = linesOf(managed.text);
     return {
-      ...discipline,
-      label: managed.title || discipline.label,
-      tagline: lines[0] || discipline.tagline,
-      description: lines.slice(1, 2)[0] || discipline.description,
-      details: lines.slice(2).map((text) => ({ icon: "ti-check", text })),
+      ...meta,
+      label: managed.title,
+      tagline: contentLines[0] || "",
+      description: contentLines[1] || "",
+      details: contentLines.slice(2).map((text, index) => ({
+        icon: detailIcons[index] || "ti-check",
+        text,
+      })),
       managedImage: managed.image,
     };
   });
@@ -483,18 +437,12 @@ export const TrainingSessionsPage = () => {
     <style>{scoped}</style>
     <style>{extra}</style>
 
-    {/* ── Hero ── */}
     <section className="ysc-page-hero">
       <SectionLabel>Disciplines</SectionLabel>
-      <h1>Entraînements</h1>
-      <ManagedContent page="entrainements" fallbackTitle="Nos disciplines et entraînements" fallbackDescription="Découvrez nos disciplines, nos horaires et nos programmes adaptés à tous les niveaux." />
-      <p>
-        Trois disciplines, un seul objectif : révéler le meilleur de chaque athlète dans un cadre
-        sécurisé et bienveillant. Entraînements le <strong>samedi uniquement</strong> au Stade de Kégué, Lomé.
-      </p>
+      <h1>{intro.title}</h1>
+      <p>{intro.text}</p>
     </section>
 
-    {/* ── Une section par discipline ── */}
     {displayedDisciplines.map((disc) => (
       <section
         key={disc.id}
@@ -503,21 +451,15 @@ export const TrainingSessionsPage = () => {
         aria-labelledby={`disc-title-${disc.id}`}
       >
         <div className="ysc-disc__inner">
-
-          {/* En-tête discipline */}
           <div className="ysc-disc__header">
             <span className="ysc-disc__emoji" aria-hidden="true">{disc.emoji}</span>
             <div className="ysc-disc__title-wrap">
-              <h2 id={`disc-title-${disc.id}`} className="ysc-disc__title">
-                {disc.label}
-              </h2>
+              <h2 id={`disc-title-${disc.id}`} className="ysc-disc__title">{disc.label}</h2>
               <p className="ysc-disc__tagline">{disc.tagline}</p>
             </div>
           </div>
 
-          {/* Split : infos à gauche, vidéo à droite */}
           <div className="ysc-disc__split">
-            {/* Colonne gauche */}
             <div>
               <p className="ysc-disc__desc">{disc.description}</p>
               {disc.managedImage && <img className="ysc-managed-discipline-image" src={disc.managedImage} alt={disc.label} />}
@@ -537,25 +479,17 @@ export const TrainingSessionsPage = () => {
               </ul>
             </div>
 
-            {/* Colonne droite : vidéo */}
-            <VideoOrPlaceholder
-              videoSrc={disc.videoSrc}
-              videoLabel={disc.videoLabel}
-            />
+            <VideoOrPlaceholder videoSrc={disc.videoSrc} videoLabel={disc.videoLabel} />
           </div>
-
         </div>
       </section>
     ))}
 
-    {/* ── Planning hebdomadaire ── */}
     <section className="ysc-schedule" aria-labelledby="schedule-title">
       <div className="ysc-schedule__inner">
         <SectionLabel>Planning</SectionLabel>
-        <h2 id="schedule-title" className="ysc-schedule__title">Horaires hebdomadaires</h2>
-        <p className="ysc-schedule__sub">
-          Toutes les disciplines — Samedi au Stade de Kégué · Séances privées disponibles sur rendez-vous
-        </p>
+        <h2 id="schedule-title" className="ysc-schedule__title">{scheduleBlock.title}</h2>
+        <p className="ysc-schedule__sub">{scheduleSub}</p>
 
         <div className="ysc-schedule__day-label">📅 Samedi — Toutes disciplines</div>
 
@@ -568,7 +502,7 @@ export const TrainingSessionsPage = () => {
             </tr>
           </thead>
           <tbody>
-            {schedule[0].slots.map((slot) => (
+            {scheduleSlots.map((slot) => (
               <tr key={slot.who}>
                 <td className="ysc-schedule__who">{slot.who}</td>
                 <td>{slot.time}</td>
@@ -586,19 +520,13 @@ export const TrainingSessionsPage = () => {
       </div>
     </section>
 
-    {/* ── CTA ── */}
     <section className="ysc-train-cta" aria-labelledby="train-cta-title">
       <div className="ysc-train-cta__inner">
-        <h2 id="train-cta-title" className="ysc-train-cta__title">
-          Prêt à rejoindre une discipline ?
-        </h2>
-        <p className="ysc-train-cta__sub">
-          Nos coachs vous accueillent chaque samedi et vous
-          orientent vers le programme adapté à votre profil.
-        </p>
+        <h2 id="train-cta-title" className="ysc-train-cta__title">{cta.title}</h2>
+        <p className="ysc-train-cta__sub">{cta.text}</p>
         <div className="ysc-train-cta__actions">
-          <a href="/join#registration-form" className="ysc-btn ysc-btn--primary">
-            <span>S'inscrire maintenant</span>
+          <a href="/rejoindre#registration-form" className="ysc-btn ysc-btn--primary">
+            <span>S&apos;inscrire maintenant</span>
             <span aria-hidden="true">→</span>
           </a>
           <a href="tel:+22899670186" className="ysc-btn ysc-btn--outline">

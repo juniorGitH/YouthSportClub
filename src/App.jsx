@@ -13,6 +13,7 @@ import { ResultsPage } from "./Components/ResultsPage";
 import { TrainingSessionsPage } from "./Components/TrainingSessionsPage";
 import LoginPage from "./Components/LoginPage";
 import AdminPage from "./Components/AdminPage";
+import AthletesPage from "./Components/AthletesPage";
 import { api } from "./api";
 import "./styles.css";
 
@@ -56,6 +57,14 @@ const App = () => (
         element={
           <Layout>
             <About />
+          </Layout>
+        }
+      />
+      <Route
+        path="/athletes"
+        element={
+          <Layout>
+            <AthletesPage />
           </Layout>
         }
       />

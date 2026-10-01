@@ -25,8 +25,13 @@ public sealed class AuthController(YscDbContext db, IPasswordHasher<AdminUser> p
 
     [HttpGet("me")]
     [Microsoft.AspNetCore.Authorization.Authorize]
-    public IActionResult Me() => Ok(new { email = User.FindFirst(System.Security.Claims.ClaimTypes.Email)?.Value,
-        role = User.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value });
+    public IActionResult Me() => Ok(new
+    {
+        email = User.FindFirst(System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames.Email)?.Value
+            ?? User.FindFirst(System.Security.Claims.ClaimTypes.Email)?.Value,
+        role = User.FindFirst("role")?.Value
+            ?? User.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value
+    });
 }
 
 public sealed record LoginRequest(string Email, string Password);

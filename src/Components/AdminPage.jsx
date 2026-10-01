@@ -1,41 +1,23 @@
 import { useEffect, useMemo, useState } from "react";
-import { api } from "../api";
+import { api, resolveMediaUrl } from "../api";
+import { contentPages, contentBlocks, defaultBlocks, emptyBlock, entriesPage, emptyEntry, newEntryId, parseEntries } from "./adminContent";
 
 const emptyEvent = {
   title: "", description: "", date: "", location: "",
   category: "Événement club", published: true, featured: false,
 };
 
-const contentPages = [
-  ["accueil", "Accueil", "Page d'accueil : hero, disciplines, palmarès, infos pratiques et CTA"],
-  ["a-propos", "À propos", "Présentation, histoire, équipe et contact"],
-  ["disciplines", "Disciplines", "Gymnastique, boxe et fitness"],
-  ["palmares", "Palmarès", "Résultats et distinctions"],
-  ["informations-pratiques", "Informations pratiques", "Horaires, tarifs et lieu"],
-  ["engagement-social", "Engagement social", "Bourses et accompagnement"],
-  ["rejoindre", "Rejoindre", "Inscription et accès au club"],
-  ["entrainements", "Entraînements", "Planning et programmes"],
-  ["evenements", "Événements", "Agenda et actualités"],
-];
-
-const contentBlocks = {
-  accueil: [["hero", "Hero (titre, sous-titre, stats)"], ["disc-gym", "Discipline : Gymnastique"], ["disc-boxe", "Discipline : Boxe"], ["disc-fitness", "Discipline : Fitness"], ["palmares-1", "Palmarès : Résultat 1"], ["palmares-2", "Palmarès : Résultat 2"], ["palmares-3", "Palmarès : Résultat 3"], ["palmares-4", "Palmarès : Résultat 4"], ["horaires", "Horaires d'entraînement"], ["tarifs", "Tarifs"], ["social", "Engagement social"], ["cta", "Appel à l'action"]],
-  "a-propos": [["intro", "Présentation et équipe"], ["performance", "Club performant"], ["history", "Notre histoire"], ["axes", "Axes de développement"], ["coaches-fig", "Coachs certifiés FIG"], ["coaches-staps-1", "Coachs STAPS (photo 1)"], ["coaches-staps-2", "Coachs STAPS (photo 2)"], ["coaches-combat-1", "Coachs sports de combat (photo 1)"], ["coaches-combat-2", "Coachs sports de combat (photo 2)"], ["coaches-combat-3", "Coachs sports de combat (photo 3)"], ["coaches-prep", "Coachs préparation physique"], ["social", "Engagement social"], ["contact", "Nous contacter"], ["cta", "Appel à l'inscription"]],
-  disciplines: [["intro", "Introduction"], ["gymnastique", "Gymnastique"], ["boxe", "Boxe éducative"], ["fitness", "Fitness & Cross-training"]],
-  palmares: [["intro", "Introduction"], ["results", "Résultats et palmarès"]],
-  "informations-pratiques": [["intro", "Introduction"], ["schedule", "Horaires"], ["prices", "Tarifs"]],
-  "engagement-social": [["intro", "Introduction"], ["programs", "Programmes sociaux"]],
-  rejoindre: [["hero", "Présentation"], ["steps", "Inscription"], ["private", "Cours privés"], ["benefits", "Bénéfices des cours privés"], ["practice", "Informations pratiques"], ["gallery", "Galerie photos"], ["testimonial", "Témoignage"], ["social", "Programme social"]],
-  entrainements: [["intro", "Introduction"], ["schedule", "Planning"], ["gymnastique", "Gymnastique"], ["boxe", "Boxe éducative"], ["fitness", "Fitness & Cross-training"]],
-  evenements: [["intro", "Introduction"]],
-};
-
-const emptyBlock = { title: "", text: "", image: "", image2: "" };
+// Bloc affiché dans l'éditeur : vide < contenu par défaut du site < contenu enregistré en base
+const resolveBlock = (blocks, page, key) => ({
+  ...emptyBlock,
+  ...(defaultBlocks[page]?.[key] || {}),
+  ...(blocks[page]?.[key] || {}),
+});
 
 const AdminPage = () => {
   const auth = api.getAuth();
   const [section, setSection] = useState("dashboard");
-  const [selectedPage, setSelectedPage] = useState("a-propos");
+  const [selectedPage, setSelectedPage] = useState(contentPages[0][0]);
   const [events, setEvents] = useState([]);
   const [form, setForm] = useState(emptyEvent);
   const [editingEventId, setEditingEventId] = useState(null);
@@ -43,6 +25,9 @@ const AdminPage = () => {
   const [notice, setNotice] = useState({ type: "", text: "" });
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState("");
+  const [entries, setEntries] = useState([]);
+  const [entryForm, setEntryForm] = useState(emptyEntry);
+  const [editingEntryId, setEditingEntryId] = useState(null);
 
   const selectedPageLabel = contentPages.find(([key]) => key === selectedPage)?.[1];
   const selectedBlocks = contentBlocks[selectedPage] || [];
@@ -65,6 +50,7 @@ const AdminPage = () => {
         }));
       });
       setBlocks(detailed);
+      setEntries(parseEntries(groups[contentPages.findIndex(([page]) => page === entriesPage)]));
       setLoading(false);
     };
     load();
@@ -118,10 +104,79 @@ const AdminPage = () => {
     }
   };
 
+  // ---- Athlètes & histoires -------------------------------------------------
+  const loadEntries = () => api.getContent(entriesPage).then((items) => setEntries(parseEntries(items))).catch((error) => notify(error.message, "error"));
+
+  const submitEntry = async (event) => {
+    event.preventDefault();
+    setSaving("entry");
+    try {
+      const existing = entries.find((entry) => entry.id === editingEntryId);
+      const id = editingEntryId || newEntryId();
+      const payload = { ...entryForm, createdAt: existing?.createdAt || new Date().toISOString() };
+      await api.saveContent(entriesPage, `entry:${id}`, JSON.stringify(payload));
+      notify(editingEntryId ? "La fiche a été modifiée." : entryForm.published ? "La fiche a été publiée." : "La fiche a été enregistrée (non publiée).");
+      setEntryForm(emptyEntry);
+      setEditingEntryId(null);
+      await loadEntries();
+    } catch (error) {
+      notify(error.message, "error");
+    } finally {
+      setSaving("");
+    }
+  };
+
+  const editEntry = (entry) => {
+    setEditingEntryId(entry.id);
+    setEntryForm({
+      kind: entry.kind || "athlete",
+      title: entry.title || "",
+      subtitle: entry.subtitle || "",
+      highlight: entry.highlight || "",
+      text: entry.text || "",
+      image: entry.image || "",
+      published: entry.published !== false,
+    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const cancelEditEntry = () => {
+    setEditingEntryId(null);
+    setEntryForm(emptyEntry);
+  };
+
+  const removeEntry = async (id) => {
+    if (!window.confirm("Supprimer définitivement cette fiche ?")) return;
+    try {
+      await api.deleteContent(entriesPage, `entry:${id}`);
+      setEntries((current) => current.filter((entry) => entry.id !== id));
+      if (editingEntryId === id) cancelEditEntry();
+      notify("Fiche supprimée.");
+    } catch (error) {
+      notify(error.message, "error");
+    }
+  };
+
+  const uploadEntryImage = async (file) => {
+    if (!file) return;
+    setSaving("entry-upload");
+    try {
+      const url = await api.uploadPhoto(file);
+      setEntryForm((current) => ({ ...current, image: url }));
+      notify("Photo importée. Cliquez sur « Enregistrer » pour publier la fiche.");
+    } catch (error) {
+      notify(error.message || "Impossible d'importer la photo.", "error");
+    } finally {
+      setSaving("");
+    }
+  };
+
+  const getBlock = (key) => resolveBlock(blocks, selectedPage, key);
+
   const saveBlock = async (key) => {
     setSaving(`block:${key}`);
     try {
-      const currentBlock = blocks[selectedPage]?.[key] || emptyBlock;
+      const currentBlock = getBlock(key);
       const block = selectedPage === "rejoindre" && key === "testimonial"
         ? { ...currentBlock, author: currentBlock.author ?? "Cora-CW, Piper-Beckett & Mosa" }
         : currentBlock;
@@ -131,6 +186,8 @@ const AdminPage = () => {
         requests.push(api.saveContent(selectedPage, "description", (block.text || "").split(/\r?\n/).filter(Boolean)[0] || ""));
       }
       await Promise.all(requests);
+      // On garde en mémoire la version enregistrée (y compris les valeurs par défaut fusionnées)
+      setBlocks((current) => ({ ...current, [selectedPage]: { ...current[selectedPage], [key]: block } }));
       notify(`Bloc « ${contentBlocks[selectedPage].find(([blockKey]) => blockKey === key)?.[1]} » enregistré.`);
     } catch (error) {
       notify(error.message, "error");
@@ -140,7 +197,28 @@ const AdminPage = () => {
   };
 
   const updateBlock = (key, field, value) => {
-    setBlocks({ ...blocks, [selectedPage]: { ...blocks[selectedPage], [key]: { ...(blocks[selectedPage]?.[key] || emptyBlock), [field]: value } } });
+    setBlocks((current) => ({
+      ...current,
+      [selectedPage]: {
+        ...current[selectedPage],
+        [key]: { ...resolveBlock(current, selectedPage, key), [field]: value },
+      },
+    }));
+  };
+
+  // Supprime la version enregistrée : le bloc retrouve le contenu d'origine du site
+  const resetBlock = async (key) => {
+    if (!window.confirm("Rétablir le contenu d'origine de ce bloc ? Vos modifications enregistrées seront perdues.")) return;
+    try {
+      await api.deleteContent(selectedPage, `block:${key}`);
+      setBlocks((current) => {
+        const { [key]: _removed, ...rest } = current[selectedPage] || {};
+        return { ...current, [selectedPage]: rest };
+      });
+      notify("Contenu d'origine rétabli.");
+    } catch (error) {
+      notify(error.message, "error");
+    }
   };
 
   const upload = async (key, file) => {
@@ -163,6 +241,7 @@ const AdminPage = () => {
         <nav className="admin-menu" aria-label="Navigation administration">
           <button type="button" aria-current={section === "dashboard" ? "page" : undefined} className={section === "dashboard" ? "active" : ""} onClick={() => setSection("dashboard")}><span className="admin-menu-icon" aria-hidden="true">▦</span><span className="admin-menu-label">Tableau de bord</span></button>
           <button type="button" aria-current={section === "events" ? "page" : undefined} className={section === "events" ? "active" : ""} onClick={() => setSection("events")}><span className="admin-menu-icon" aria-hidden="true">◷</span><span className="admin-menu-label">Événements</span></button>
+          <button type="button" aria-current={section === "athletes" ? "page" : undefined} className={section === "athletes" ? "active" : ""} onClick={() => setSection("athletes")}><span className="admin-menu-icon" aria-hidden="true">★</span><span className="admin-menu-label">Athlètes & histoires</span></button>
           <button type="button" aria-current={section === "content" ? "page" : undefined} className={section === "content" ? "active" : ""} onClick={() => setSection("content")}><span className="admin-menu-icon" aria-hidden="true">▤</span><span className="admin-menu-label">Contenu du site</span></button>
         </nav>
         <div className="admin-sidebar-bottom">
@@ -173,7 +252,7 @@ const AdminPage = () => {
 
       <main className="admin-main">
         <header className="admin-topbar">
-          <div><span className="admin-breadcrumb">Administration</span><strong>{section === "dashboard" ? "Tableau de bord" : section === "events" ? "Événements" : "Contenu du site"}</strong></div>
+          <div><span className="admin-breadcrumb">Administration</span><strong>{{ dashboard: "Tableau de bord", events: "Événements", athletes: "Athlètes & histoires", content: "Contenu du site" }[section]}</strong></div>
           <div className="admin-user"><span className="admin-avatar">{(auth?.user?.email || "A")[0].toUpperCase()}</span><span>{auth?.user?.email}</span></div>
         </header>
 
@@ -181,17 +260,15 @@ const AdminPage = () => {
           {notice.text && <div className={`admin-notice admin-notice--${notice.type}`} role="status">{notice.text}<button onClick={() => setNotice({ text: "", type: "" })}>×</button></div>}
           {loading ? <div className="admin-loading">Chargement de votre espace d’administration…</div> : (
             <>
-              {section === "dashboard" && <Dashboard events={upcomingEvents} onEvents={() => setSection("events")} onContent={() => setSection("content")} />}
+              {section === "dashboard" && <Dashboard events={upcomingEvents} pagesCount={contentPages.length} onEvents={() => setSection("events")} onContent={() => setSection("content")} />}
               {section === "events" && <EventsSection events={events} form={form} setForm={setForm} saving={saving} editingEventId={editingEventId} onSubmit={createEvent} onEdit={editEvent} onCancelEdit={cancelEditEvent} onDelete={removeEvent} />}
+              {section === "athletes" && <AthletesSection entries={entries} form={entryForm} setForm={setEntryForm} saving={saving} editingEntryId={editingEntryId} onSubmit={submitEntry} onEdit={editEntry} onCancelEdit={cancelEditEntry} onDelete={removeEntry} onUpload={uploadEntryImage} />}
               {section === "content" && (
                 <ContentSection
                   selectedPage={selectedPage} setSelectedPage={setSelectedPage} selectedPageLabel={selectedPageLabel}
-                  selectedBlocks={selectedBlocks} blocks={blocks}
-                  updateBlock={updateBlock} saveBlock={saveBlock} deleteContent={async (key) => {
-                    if (!window.confirm("Supprimer définitivement ce bloc ?")) return;
-                    try { await api.deleteContent(selectedPage, `block:${key}`); setBlocks({ ...blocks, [selectedPage]: { ...blocks[selectedPage], [key]: emptyBlock } }); notify("Bloc supprimé."); }
-                    catch (error) { notify(error.message, "error"); }
-                  }} upload={upload} saving={saving}
+                  selectedBlocks={selectedBlocks} getBlock={getBlock}
+                  updateBlock={updateBlock} saveBlock={saveBlock} resetBlock={resetBlock}
+                  upload={upload} saving={saving}
                 />
               )}
             </>
@@ -202,12 +279,12 @@ const AdminPage = () => {
   );
 };
 
-const Dashboard = ({ events, onEvents, onContent }) => (
+const Dashboard = ({ events, pagesCount, onEvents, onContent }) => (
   <div>
     <div className="admin-page-title"><div><p className="admin-eyebrow">Vue d’ensemble</p><h1>Bonjour 👋</h1><p>Gérez le contenu et l’actualité de Youth Sports Club depuis cet espace.</p></div></div>
     <div className="admin-stat-grid">
       <button className="admin-stat" onClick={onEvents}><span className="admin-stat-icon admin-stat-icon--blue">◷</span><span><strong>{events.length}</strong><small>Événements à venir</small></span><b>→</b></button>
-      <button className="admin-stat" onClick={onContent}><span className="admin-stat-icon admin-stat-icon--green">▤</span><span><strong>8</strong><small>Pages administrables</small></span><b>→</b></button>
+      <button className="admin-stat" onClick={onContent}><span className="admin-stat-icon admin-stat-icon--green">▤</span><span><strong>{pagesCount}</strong><small>Pages administrables</small></span><b>→</b></button>
       <div className="admin-stat"><span className="admin-stat-icon admin-stat-icon--gold">✓</span><span><strong>En ligne</strong><small>État du site</small></span></div>
     </div>
     <div className="admin-dashboard-grid">
@@ -240,28 +317,66 @@ const EventsSection = ({ events, form, setForm, saving, editingEventId, onSubmit
   </div>
 );
 
-const ContentSection = ({ selectedPage, setSelectedPage, selectedPageLabel, blocks, selectedBlocks, updateBlock, saveBlock, deleteContent, upload, saving }) => (
+const AthletesSection = ({ entries, form, setForm, saving, editingEntryId, onSubmit, onEdit, onCancelEdit, onDelete, onUpload }) => {
+  const isAthlete = form.kind === "athlete";
+  return (
+    <div>
+      <div className="admin-page-title"><div><p className="admin-eyebrow">Vie du club</p><h1>Athlètes & histoires</h1><p>Présentez les athlètes du Youth Sports Club et publiez de petites histoires. Le texte d’introduction de la page se modifie dans « Contenu du site ».</p></div><a href="/athletes" target="_blank" rel="noreferrer">Prévisualiser ↗</a></div>
+      <div className="admin-two-columns">
+        <form className="admin-panel admin-form" onSubmit={onSubmit}>
+          <div className="admin-panel-heading"><div><h2>{editingEntryId ? "Modifier la fiche" : "Nouvelle fiche"}</h2><p>Les champs marqués d’un * sont obligatoires.</p></div>{editingEntryId && <button type="button" className="admin-text-button" onClick={onCancelEdit}>Annuler</button>}</div>
+          <label>Type de fiche<select value={form.kind} onChange={(e) => setForm({ ...form, kind: e.target.value })}><option value="athlete">Athlète</option><option value="story">Petite histoire</option></select></label>
+          <label>{isAthlete ? "Nom de l’athlète *" : "Titre de l’histoire *"}<input required value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} /></label>
+          <label>{isAthlete ? "Discipline et catégorie" : "Accroche (une phrase)"}<input value={form.subtitle} onChange={(e) => setForm({ ...form, subtitle: e.target.value })} placeholder={isAthlete ? "Ex. : Gymnastique · Moins de 12 ans" : "Ex. : Comment tout a commencé…"} /></label>
+          {isAthlete && <label>Distinction principale<input value={form.highlight} onChange={(e) => setForm({ ...form, highlight: e.target.value })} placeholder="Ex. : 🥉 Bronze au championnat d’Afrique 2024" /></label>}
+          <label>{isAthlete ? "Parcours et présentation *" : "Histoire *"}<textarea required rows="8" value={form.text} onChange={(e) => setForm({ ...form, text: e.target.value })} placeholder="Séparez les paragraphes par une ligne vide." /></label>
+          <label>Photo<div className="admin-upload"><input value={form.image} onChange={(e) => setForm({ ...form, image: e.target.value })} placeholder="URL de la photo" /><label className="admin-file-button">Importer une photo<input type="file" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" onChange={(e) => { onUpload(e.target.files?.[0]); e.target.value = ""; }} /></label></div></label>
+          {saving === "entry-upload" && <small>Import de la photo…</small>}
+          {form.image && <img className="admin-image-preview" src={resolveMediaUrl(form.image)} alt="Aperçu de la photo" />}
+          <label className="admin-switch"><input type="checkbox" checked={form.published} onChange={(e) => setForm({ ...form, published: e.target.checked })} /><span>Publié sur le site</span></label>
+          <button className="admin-primary-button" disabled={saving === "entry" || saving === "entry-upload"}>{saving === "entry" ? "Enregistrement…" : editingEntryId ? "Enregistrer les modifications" : "Enregistrer la fiche"}</button>
+        </form>
+        <div className="admin-panel">
+          <div className="admin-panel-heading"><div><h2>Fiches du club</h2><p>{entries.length} fiche(s) · {entries.filter((entry) => entry.published !== false).length} publiée(s).</p></div></div>
+          <div className="admin-event-list">
+            {entries.map((entry) => (
+              <article className="admin-event-item" key={entry.id}>
+                <div className="admin-event-item-date">{entry.kind === "story" ? "Histoire" : "Athlète"}</div>
+                <div className="admin-event-item-body"><strong>{entry.title}</strong><small>{entry.subtitle || (entry.kind === "story" ? "Petite histoire" : "Athlète du club")}{entry.published === false ? " · Brouillon" : ""}</small></div>
+                <button className="admin-icon-button" aria-label={`Modifier ${entry.title}`} onClick={() => onEdit(entry)}>✎</button>
+                <button className="admin-icon-button admin-icon-button--danger" aria-label={`Supprimer ${entry.title}`} onClick={() => onDelete(entry.id)}>⌫</button>
+              </article>
+            ))}
+            {!entries.length && <p className="admin-empty">Aucune fiche pour le moment.</p>}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const ContentSection = ({ selectedPage, setSelectedPage, selectedPageLabel, selectedBlocks, getBlock, updateBlock, saveBlock, resetBlock, upload, saving }) => (
   <div>
     <div className="admin-page-title"><div><p className="admin-eyebrow">Éditeur de contenu</p><h1>Contenu du site</h1><p>Choisissez une page puis modifiez chaque bloc visible par les visiteurs.</p></div></div>
     <div className="admin-content-layout">
       <nav className="admin-page-list" aria-label="Pages à modifier">{contentPages.map(([key, label, description]) => <button key={key} className={selectedPage === key ? "active" : ""} onClick={() => setSelectedPage(key)}><strong>{label}</strong><small>{description}</small><span>›</span></button>)}</nav>
       <div className="admin-editor">
-        <div className="admin-editor-header"><div><p className="admin-eyebrow">Page sélectionnée</p><h2>{selectedPageLabel}</h2></div><a href={`/${selectedPage === "a-propos" ? "a-propos" : selectedPage}`} target="_blank" rel="noreferrer">Prévisualiser ↗</a></div>
+        <div className="admin-editor-header"><div><p className="admin-eyebrow">Page sélectionnée</p><h2>{selectedPageLabel}</h2></div><a href={selectedPage === "accueil" ? "/" : `/${selectedPage}`} target="_blank" rel="noreferrer">Prévisualiser ↗</a></div>
         <div className="admin-blocks-heading"><h3>Blocs de la page</h3><span>{selectedBlocks.length} blocs</span></div>
-        {selectedBlocks.map(([key, label]) => {
-          const value = { ...emptyBlock, ...(blocks[selectedPage]?.[key] || {}) };
+        {selectedBlocks.map(([key, label, hint], index) => {
+          const value = getBlock(key);
           return (
-            <div className="admin-panel admin-block-card" key={key}>
+            <div className="admin-panel admin-block-card" key={`${selectedPage}:${key}`}>
               <div className="admin-block-card-header">
-                <div><span>Bloc de contenu</span><h3>{label}</h3></div>
+                <div><span>Bloc de contenu</span><h3>{label}</h3>{hint && <small>{hint}</small>}</div>
                 <div>
-                  <span className="admin-block-number">{String(selectedBlocks.findIndex(([blockKey]) => blockKey === key) + 1).padStart(2, "0")}</span>
-                  <button type="button" className="admin-text-button admin-text-button--danger" onClick={() => deleteContent(key)}>Supprimer</button>
+                  <span className="admin-block-number">{String(index + 1).padStart(2, "0")}</span>
+                  <button type="button" className="admin-text-button admin-text-button--danger" onClick={() => resetBlock(key)}>Rétablir l’original</button>
                 </div>
               </div>
               <label>
                 Titre du bloc
-                {selectedPage === "rejoindre" && key === "social"
+                {(selectedPage === "rejoindre" && key === "social")
                   ? <textarea rows="2" value={value.title} onChange={(e) => updateBlock(key, "title", e.target.value)} />
                   : <input value={value.title} onChange={(e) => updateBlock(key, "title", e.target.value)} />}
               </label>
@@ -275,9 +390,9 @@ const ContentSection = ({ selectedPage, setSelectedPage, selectedPageLabel, bloc
                   />
                 </label>
               )}
-              <label>Image du bloc<div className="admin-upload"><input value={value.image} onChange={(e) => updateBlock(key, "image", e.target.value)} placeholder="URL de l’image principale" /><label className="admin-file-button">Importer une image<input type="file" accept="image/jpeg,image/png,image/webp" onChange={(e) => upload(key, e.target.files[0])} /></label></div></label>
-              {value.image && <img className="admin-image-preview" src={value.image} alt="Aperçu du bloc" />}
-              {key === "gallery" && <label>Deuxième image<input value={value.image2 || ""} onChange={(e) => updateBlock(key, "image2", e.target.value)} placeholder="URL de la deuxième image" /></label>}
+              <label>Image du bloc<div className="admin-upload"><input value={value.image} onChange={(e) => updateBlock(key, "image", e.target.value)} placeholder="URL de l’image principale" /><label className="admin-file-button">Importer une image<input type="file" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" onChange={(e) => { upload(key, e.target.files?.[0]); e.target.value = ""; }} /></label></div></label>
+              {value.image && <img className="admin-image-preview" src={resolveMediaUrl(value.image)} alt="Aperçu du bloc" />}
+              {selectedPage === "rejoindre" && key === "gallery" && <label>Deuxième image<input value={value.image2 || ""} onChange={(e) => updateBlock(key, "image2", e.target.value)} placeholder="URL de la deuxième image" /></label>}
               <div className="admin-block-actions">
                 <span>{saving === `upload:${key}` ? "Import de la photo…" : "Modifications non enregistrées automatiquement"}</span>
                 <button type="button" className="admin-primary-button" onClick={() => saveBlock(key)} disabled={saving === `block:${key}`}>

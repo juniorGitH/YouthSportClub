@@ -17,6 +17,7 @@ node_modules/
 # dotenv environment variables file
 .env
 .env.test
+.azure-deploy-info.json
 
 # parcel-bundler cache (https://parceljs.org/)
 .parcel-cache
